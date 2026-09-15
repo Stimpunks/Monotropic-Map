@@ -55,12 +55,6 @@ It survives in one place only — the **alt text** describing the artwork, becau
 - The twenty *What changes this* paragraphs are **ours, and Helen has not reviewed them**.
 - No offline copy, and the typeface the design asks for is not yet shipped.
 
-### Stopped saying "island"
-
-The tagline was *An island you can find yourself on*. It is now **A map you can find yourself on**, and the word is gone from the rest of the site's voice — the association it now carries is not one a page about Autistic flow states should be putting in anybody's head.
-
-It survives in one place only: the **alt text** describing the artwork, because the artwork *is* an island and a blind reader should get the same picture everyone else does. Describing a picture accurately is a different job from choosing our own words.
-
 ### This page exists
 
 All of our sites publish a changelog. This was the one that did not.
