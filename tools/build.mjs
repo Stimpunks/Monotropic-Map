@@ -198,6 +198,28 @@ ${render(lines.slice(1).join('\n').replace(/^\s*There is a second map[^\n]*\n/m,
   });
 }
 
+/**
+ * The numbered key that sits under the picture — 1 to 20, in map order.
+ *
+ * IT IS A LEGEND, NOT A SECOND LIST VIEW, and the difference is the point. The grouped
+ * list answers "what kind of place is this?"; the key answers "what is that number on
+ * the picture?". Before it existed the map view could not orient anybody on its own:
+ * area 7 was a circle, the labels printed on the artwork are unreadable at page width,
+ * and the names lived in the view you were not looking at.
+ *
+ * Helen's own training deck does exactly this — slide 14 is the map beside a numbered
+ * key — which is the strongest argument for it.
+ */
+function numberedKey() {
+  const items = AREAS.map((a) => `    <li data-tone="${a.state}"><a href="${a.slug}.html">${a.label}</a></li>`).join('\n');
+  return `  <nav class="mapkey" aria-labelledby="mapkey-heading">
+    <h2 id="mapkey-heading">Areas of the map</h2>
+    <ol>
+${items}
+    </ol>
+  </nav>`;
+}
+
 function areaCards(list) {
   return `<ul class="arealist">\n` + list.map((a) => `  <li><a href="${a.slug}.html" data-tone="${a.state}">
     <span class="num">${a.n}</span>
@@ -233,10 +255,12 @@ function buildIndex() {
 ${hotspots()}
     </ul>
   </figure>
-  <p class="mapnote">Each numbered marker opens that area. Prefer words to pointing? The list is the same twenty places, grouped by what kind of place they are.</p>
+  <p class="mapnote">Each numbered marker opens that area, and so does its name in the key below.</p>
+${numberedKey()}
 </div>
 
 <div id="view-list">
+<p class="mapnote">The same twenty places, grouped by what kind of place they are.</p>
 ${stateGroups()}
 </div>
 

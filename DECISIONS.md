@@ -52,6 +52,17 @@ Decided 2026-09-15. The island on its own reads as a personality quiz — *here 
 ### The nine zones of the second map are anchors, not pages
 Every zone there is a force rather than a place you can be. Nine separate URLs would let a reader meet one in isolation, which is the move the map argues against. They stay on one page.
 
+### A numbered key sits under the map
+Added 2026-09-15 on Ryan's suggestion, patterned on the *Areas of the Map* list in the [published article](https://stimpunks.org/2024/10/21/map-of-monotropic-experiences/).
+
+**It fixes a real hole in the map view.** Before it, the twenty names existed on the front page only inside the *other* view — so with the picture showing, area 7 was a numbered circle and nothing else, and the labels printed on the artwork are not legible at page width. The one job the picture has is orientation, and it could not do it alone.
+
+**The key and the grouped list are different tools and both stay.** The key answers *what is that number on the picture?* — compact, in map order, columns, the marker in the area's own state colour. The grouped list answers *what kind of place is this?* — Helen's own flow/connection/stuck/pressure grouping, with credits.
+
+It uses each area's **map label**, not its page title, because a legend has to match the words printed on the picture. That is why entry 13 is the long one.
+
+Helen's training deck does the same thing: slide 14 is the map beside a numbered key.
+
 ### The list view is a front door, not a fallback
 Both views are in the markup and both are visible with no JavaScript; `map.js` only collapses them into a switcher once it is certain it can switch back. A picture-only navigation excludes screen reader users, anyone who cannot point precisely, and anyone on a small screen — which is a large share of the people this map is *for*.
 
