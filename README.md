@@ -2,7 +2,9 @@
 
 The destination site for the **[Map of Monotropic Experiences](https://stimpunks.org/2024/10/21/map-of-monotropic-experiences/)** — Helen Edgar's island of twenty monotropic places, developed with the Stimpunks Foundation.
 
-Live at **monotropicmap.org** once the domain is registered. Static files, no build step, deployed by Netlify from `main`.
+Live at **[monotropicmap.netlify.app](https://monotropicmap.netlify.app/)**, and at **monotropicmap.org** once the domain is registered. Static files, no build step, deployed by Netlify from `main` — **pushing publishes, there is no staging step.**
+
+**The site is closed to search engines until launch.** `robots.txt` disallows everything and `_headers` sends `X-Robots-Tag: noindex`, because every canonical points at a domain that does not resolve yet. `tools/check.mjs` prints a PRE-LAUNCH note on every run until both are flipped, and fails if only one is. `DECISIONS.md` has the reasoning.
 
 ## What is here
 
