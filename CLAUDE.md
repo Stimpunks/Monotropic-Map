@@ -14,6 +14,12 @@ Helen Edgar and Ryan Boren both have rights to this work. **So *you* is whoever 
 
 **The map is Helen's.** The artwork, the area names, the wording printed on the map. **Propose, do not apply.**
 
+## Two properties this site holds, and checks
+
+**The front page needs no JavaScript.** The map, its numbered key and all twenty names are in the markup before any script runs; `index.html` loads nothing but `theme.js`. This replaced a picture/list switcher on 2026-09-15 — see `DECISIONS.md`, and note that `check.mjs` tests the **property** (twenty key entries, unhidden, no extra script, no always-visible control needing JS) rather than any element by name. The previous check named `#view-list` and `.viewswitch`, and would have passed a page that had neither.
+
+**Every area carries a plain-language definition, and it comes first.** `plain` in `areas.mjs`, ahead of the quoted `gloss` on the page and set in larger type. An Easy Read version placed under the "real" one in smaller type tells the reader which of the two was meant for them. `validate()` fails a definition averaging over 15 words a sentence or holding one over 18, so it cannot drift back into prose. **No script can certify Easy Read** — that needs a focus group of people with intellectual and developmental disabilities. The numbers only say the text is short.
+
 ## The one rule the whole site rests on
 
 **What changes a stuck state is a change to the conditions, never an instruction to the person.**
