@@ -4,6 +4,13 @@ What was chosen while building this site, and what is still open. Read before re
 
 ## Open
 
+### The site is deployed but closed to search engines
+Set 2026-09-15 on the first deploy, and it is **open**, not settled — it is a state to leave, not a decision to keep.
+
+`robots.txt` disallows everything and `_headers` sends `X-Robots-Tag: noindex, nofollow`. Every page's canonical points at `monotropicmap.org`, which does not resolve; a crawler that finds the netlify.app address and follows those canonicals lands on a dead domain, and that is a mess to clean up afterwards rather than before.
+
+**At launch, once the domain resolves and Helen has reviewed the site**: swap the `Disallow` in `robots.txt` for `Allow: /`, and delete the `X-Robots-Tag` line from `_headers`. `tools/check.mjs` prints a PRE-LAUNCH note on every run until both are done, and **fails** if one is flipped and the other is not.
+
 ### The domain is not registered yet
 `monotropicmap.org` was available on 2026-09-15 and is the chosen name. **Nobody has bought it.** Until somebody does, the canonicals, `og:url`, `sitemap.xml` and `llms.txt` all point at an address that does not resolve. `tools/check.mjs` deliberately skips our own origin in the external link check for exactly this reason — see the comment there — so **that check going green is not evidence the domain exists.**
 

@@ -211,5 +211,22 @@ console.log('\nexternal links');
   }
 }
 
+/* ---- 9. the pre-launch flags ---------------------------------------------- */
+/* Not a failure — a state the whole repository is in, printed every single run so
+   nobody has to remember it. A guard is worth more than a fix, and the thing most
+   easily forgotten about a pre-launch site is that it is still pre-launch. */
+{
+  const robots = readFileSync(join(ROOT, 'robots.txt'), 'utf8');
+  const headers = readFileSync(join(ROOT, '_headers'), 'utf8');
+  const blocked = /^\s*Disallow:\s*\/\s*$/m.test(robots);
+  const noindex = /X-Robots-Tag:\s*noindex/i.test(headers);
+  if (blocked || noindex) {
+    console.log('\nPRE-LAUNCH');
+    console.log(`  note  this site is closed to search engines (robots.txt: ${blocked ? 'Disallow' : 'open'}, X-Robots-Tag: ${noindex ? 'noindex' : 'absent'})`);
+    console.log('  note  flip both at launch, once monotropicmap.org resolves — robots.txt says how');
+    if (blocked !== noindex) fail('robots.txt and _headers disagree about indexing — one was flipped and the other was not');
+  }
+}
+
 console.log(failures ? `\n${failures} failure(s).\n` : '\nAll checks pass.\n');
 process.exit(failures ? 1 : 0);
