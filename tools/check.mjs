@@ -30,6 +30,22 @@ try {
   process.stdout.write(String(e.stdout || ''));
 }
 
+/* ---- 1b. the slide deck -------------------------------------------------- */
+console.log('\nslides');
+try {
+  const out = execFileSync('python3', [join(ROOT, 'tools', 'make-slides.py'), '--check'], { stdio: 'pipe', encoding: 'utf8' });
+  pass(out.trim().replace(/^make-slides --check: /, ''));
+} catch (e) {
+  const out = String(e.stdout || '') + String(e.stderr || '');
+  if (/No such file|not found|python3/.test(out) && !/FAIL/.test(out)) {
+    /* A gate that could not run has not passed. Say which, and why. */
+    fail('the slide check could not run (python3 missing) — slides NOT verified');
+  } else {
+    fail('slides are out of sync with tools/slides.mjs — run `python3 tools/make-slides.py`');
+    process.stdout.write(out);
+  }
+}
+
 /* ---- 2. internal links --------------------------------------------------- */
 console.log('\ninternal links');
 let checked = 0, broken = 0;

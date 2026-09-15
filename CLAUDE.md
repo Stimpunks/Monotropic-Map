@@ -50,6 +50,7 @@ Every `.html` at the root is output, as are `search-index.json`, `sitemap.xml` a
 | every root `.html` | `tools/areas.mjs`, `tools/domination.mjs`, `pages/*.md`, `tools/build.mjs` |
 | `search-index.json` | `tools/areas.mjs` |
 | `sitemap.xml`, `llms.txt` | the page list in `tools/build.mjs` |
+| `images/slides/*.webp` + `manifest.json` | the training PDF, via `tools/make-slides.py` |
 
 Edit the left-hand side and an edit is lost on the next run, silently.
 
@@ -57,6 +58,16 @@ Edit the left-hand side and an edit is lost on the next run, silently.
 node tools/build.mjs
 node tools/check.mjs
 ```
+
+## The training slides
+
+Sixteen slides, rendered from the published training PDF by `tools/make-slides.py` and placed in `pages/training.md` with `@slide <slug>`.
+
+**Alt text lives in `tools/slides.mjs`, not in the Markdown** — it is content, it is the slide for anyone who cannot see it, and it belongs somewhere reviewable rather than scattered through prose. `validate()` refuses alt text under 80 characters.
+
+**The source PDF is not in this repository.** It is 62 MB and Autistic Realms publishes it; the tool fetches it, so a re-render needs the network. `python3 tools/make-slides.py --check` only verifies that the rendered slides and `slides.mjs` still agree, and `check.mjs` reports plainly when it could not run at all.
+
+One slide carries **Sylvia Duckworth's Wheel of Power and Privilege**. Her handle is printed on it and must stay in the crop. See `ATTRIBUTIONS.md`.
 
 ## Adding a page
 

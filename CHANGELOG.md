@@ -20,4 +20,12 @@ The whole free training reads on the web at `/training`, transcribed from the op
 - Long prose pages get a contents list, generated from the rendered headings so the hrefs and the ids come from one place and cannot disagree.
 - `tools/check.mjs --net` now reports the **final** host behind a redirect. Three DOIs were failing as 403; the blockers are SAGE and Taylor & Francis, not doi.org, and naming the redirector would send the next person to debug the wrong service.
 
+### The slides are on the training page
+
+All sixteen, rendered from the published PDF and served from this site — about 1.2 MB, no Canva embed, no third-party frame, no CSP change. They work offline, they print, and every one carries hand-written alt text in `tools/slides.mjs`.
+
+- `tools/make-slides.py` fetches the source PDF and crops a fixed 16:9 box, verified across six pages. Per-page detection was tried first and bled into the presenter notes.
+- `tools/md.mjs` gained `@slide <slug>`; a slug with no rendered image is a hard error rather than a missing picture.
+- One slide carries Sylvia Duckworth's Wheel of Power and Privilege — her handle stays in the crop, and `ATTRIBUTIONS.md` says so.
+
 Not built yet: the *My Monotropic Map* marking tool, the shipped typeface, an offline copy. See `DECISIONS.md`.

@@ -294,3 +294,26 @@ blockquote.gloss cite { display: block; margin-block-start: 0.6rem; font-style: 
   .toc { display: none; }
   .callout { break-inside: avoid; border: 1px solid #999; background: #fff; }
 }
+
+/* ---- training slides ---------------------------------------------------- */
+
+/* The slides are 16:9 and wider than the reading measure on purpose: they are
+   pictures to look at, not prose to read along a 34rem line. */
+.slide {
+  margin: 1.75rem 0;
+  max-width: 46rem;
+}
+.slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+}
+
+@media print {
+  .slide { break-inside: avoid; max-width: 100%; }
+  .slide img { border: 1px solid #999; }
+}

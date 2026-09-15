@@ -51,6 +51,17 @@ The map is BY-SA. **ShareAlike forbids adding restrictions, and NonCommercial is
 
 This is written down because the instinct will be to match [Penguin Pebbling](https://penguinpebbling.app/), which adopted CC BY-NC-SA 4.0 on 2026-09-15. Different work, different origin. **Do not copy its licence header into this repository.**
 
+### The slides are local images, not a Canva embed
+Settled 2026-09-15. The stimpunks.org course page embeds the deck from Canva in an iframe. This site renders the sixteen slides out of the published PDF and serves them itself, at about 1.2 MB total.
+
+An embed would have meant **editing the CSP to allow a third-party frame**, which this repository treats as the signal to stop and ask whether it is worth it. Against that one convenience, local images: work offline, print, carry real alt text, need no third-party JavaScript, load no tracking, and cannot break when somebody moves a Canva link.
+
+**Ten of the PDF's 26 pages are notes continuations and carry no slide**, which is why there are sixteen images and not twenty-six.
+
+The crop is a **fixed 16:9 box**, measured once and verified across pages 1, 3, 5, 12, 14 and 26. Per-page ink-density detection was tried first and bled into the presenter notes — a constant that is right everywhere beats a detector that fails differently on every page.
+
+**The source PDF is not in this repository** — 62 MB, and Autistic Realms publishes it. `make-slides.py` fetches it, so regenerating needs the network, and `--check` verifies only that the rendered slides and `slides.mjs` still agree.
+
 ### No Monotropism Questionnaire here
 The MQ is a validated instrument by Garau et al. with 47 items written by Autistic adults. It has a home of its own. Copying somebody else's validated measure would invite readers to treat our numbers as theirs.
 

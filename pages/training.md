@@ -8,6 +8,8 @@ The whole training is on this page, presenter notes and all. It runs to about 4,
 
 **We welcome you to adapt this training to meet the needs of your community group and the people you support.** You can focus on whichever areas matter most to your group; we have deliberately left it open.
 
+@slide title
+
 ::: note
 Prefer the slides? The [PDF with presenter notes](https://autisticrealms.com/wp-content/uploads/2025/05/Training-Map-of-Monotropic-Experiences-with-presenter-notes.pdf) and the [full training pack](https://autisticrealms.com/product/training-with-notes-the-map-of-monotropic-experiences/) — slides, PowerPoint and script — are at Autistic Realms. Getting them there is what keeps this work funded.
 :::
@@ -43,6 +45,8 @@ At the heart of our work is the importance of embracing authentic Autistic ident
 
 ## Autism is not a disorder
 
+@slide not-a-disorder
+
 **Being Autistic is a difference in neurology.**
 
 After decades of being described from the outside by outsiders, Autistic people developed the theory of monotropism to describe us from the inside. The autism pathway has always been defined by outsiders imposing a deficit lens upon us, pathologising our ways of being.
@@ -50,6 +54,8 @@ After decades of being described from the outside by outsiders, Autistic people 
 The Map of Monotropic Experiences rejects that path. Our map was created by and for Autistic people so that we can follow our authentic routes and ways. With the map, we can navigate our true desire lines.
 
 ## Learning objectives
+
+@slide learning-objectives
 
 - Understanding the difficulties of neuronormative domination.
 - Understanding monotropism and stuck states.
@@ -59,6 +65,8 @@ The Map of Monotropic Experiences rejects that path. Our map was created by and 
 ----
 
 ## Embracing the neurodiversity paradigm
+
+@slide neurodiversity-paradigm
 
 The **medical model** focuses on fixing or curing the person: changing them so they fit society's norms and expectations.
 
@@ -77,6 +85,8 @@ We need to move away from deficit-based views of Autism and instead embrace neur
 
 ## Autism and the Map of Neuronormative Domination
 
+@slide two-maps
+
 We created [Autism &amp; The Map of Neuronormative Domination](neuronormative-domination.html) to help frame the Map of Monotropic Experiences.
 
 Historically, autism research has been carried out primarily by non-Autistic people with the goal of fixing or curing us. Vast quantities of money have been invested into eugenics and "cures", trying to make Autistic people more "normal" so they can fit into society — instead of thinking about how we can change society's values and the environment people live in. It has been a one-way track, a **Harmful Highway**, with the aim of getting to **Destination Neurotypical Bay**.
@@ -94,6 +104,8 @@ Choose points from [this map](neuronormative-domination.html) and consider how t
 ----
 
 ## Let's embrace the neurodiversity paradigm shift
+
+@slide paradigm-shift
 
 **Monotropism is neurodiversity affirming, and it validates inner experiences.**
 
@@ -116,6 +128,8 @@ You can find out your own score at [monotropism.org](https://monotropism.org/202
 ----
 
 ## What is monotropism?
+
+@slide what-is-monotropism
 
 Fergus Murray maintains [monotropism.org](https://monotropism.org/) and is a published monotropic writer and science teacher. They explain the theory this way:
 
@@ -142,6 +156,8 @@ After finding out about the theory of monotropism, consider how this may change 
 
 ## Intersectionality and the Double Empathy Problem
 
+@slide intersectionality
+
 Kimberlé Crenshaw is a Black feminist legal scholar. She first coined the term **intersectionality** in her essays of 1989 and 1991.
 
 Our experiences are shaped by our environment, our past and our identities. Each person will have a unique map, influenced by the wheel of power and privilege.
@@ -164,6 +180,8 @@ Where do you intersect on the wheel of power and privilege? How does this impact
 
 ## The areas of the map
 
+@slide map-with-key
+
 The Map of Monotropic Experiences has [twenty areas](areas.html). Each one has [a page of its own here](areas.html), crediting the person who named it.
 
 You can focus on specific areas in your presentation, depending on the needs of your group. We have left this open for you to adapt and to open up discussion.
@@ -171,6 +189,8 @@ You can focus on specific areas in your presentation, depending on the needs of 
 ----
 
 ## Difficulties of neuronormative domination
+
+@slide difficulties
 
 *Shark Infested Waters (13) · Burnout Whirlpools (15) · Cyclones of Unmet Needs (5)*
 
@@ -190,6 +210,8 @@ This is reflected by the **Shark Infested Waters** of neuronormativity on the ma
 ----
 
 ## Monotropism: stuck states
+
+@slide stuck-states
 
 *Mountains of Ruminating Thoughts (4) · Meerkat Mounds (11) · Burnout Whirlpools (15) · Panic Hills of Low Object Permanence (16) · Lake of Limerence (18) · Tides of the Sensory Sea (19) · Sudden Storms of Unexpected Events (20)*
 
@@ -213,6 +235,8 @@ Are there spaces or activities where you feel most safely connected to your flow
 
 ## Monotropism: flow states
 
+@slide flow-states
+
 *Attention Tunnels (1) · Tendril Theory (3) · Rabbit Holes of Research (6) · Infodump Canyon (7) · River of Monotropic Flow States (9) · Riverbanks of Monotropic Time (12) · Tides of the Sensory Sea (19)*
 
 Monotropism is a neuro-affirming theory of Autism. Everyone benefits from flow states, but for Autistic people flow is even more important.
@@ -233,6 +257,8 @@ Reflect on what supports your happy flow states in different environments.
 ----
 
 ## Monotropic socialising and the importance of environment
+
+@slide monotropic-socialising
 
 *Penguin Pebbling Cove of Friendship (2) · Rhizomatic Communities (8) · Campsite of Cavendish Spaces (10) · Beach of Body Doubling (14) · Forest of Joy, Awe and Wonder (17)*
 
@@ -255,6 +281,8 @@ Embracing neurodiversity means embracing and validating the lived experience of 
 
 ## Further ideas for using the map
 
+@slide further-ideas
+
 - Where are you on the map?
 - Where do you want to be?
 - How can you get there?
@@ -269,11 +297,15 @@ You could create a collage or painting of your own maps, as a group or an indivi
 
 ## Questions
 
+@slide questions
+
 Leave open space for questions and discussion. Please visit [Autistic Realms](https://autisticrealms.com) and [Stimpunks](https://stimpunks.org) for ideas and signposting resources.
 
 ----
 
 ## Find out more
+
+@slide find-out-more
 
 - [autisticrealms.com](https://autisticrealms.com)
 - [stimpunks.org](https://stimpunks.org)

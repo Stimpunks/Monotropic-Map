@@ -11,10 +11,27 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { AREAS, STATES, BY_SLUG, validate } from './areas.mjs';
 import { ZONES, validate as validateZones } from './domination.mjs';
+import { SLIDES, validate as validateSlides } from './slides.mjs';
 import { render } from './md.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const CHECK = process.argv.includes('--check');
+
+/** Slide slug -> everything a page needs to render it. Dimensions come from the
+ *  generated manifest so the markup always carries the real ones; an unrendered
+ *  deck is an empty Map, and md.mjs then refuses the @slide rather than emitting
+ *  a broken image. */
+const SLIDE_MANIFEST = existsSync(join(ROOT, 'images', 'slides', 'manifest.json'))
+  ? JSON.parse(readFileSync(join(ROOT, 'images', 'slides', 'manifest.json'), 'utf8'))
+  : {};
+const SLIDE_CTX = new Map(
+  SLIDES.filter((s) => SLIDE_MANIFEST[s.slug]).map((s) => [s.slug, {
+    src: `images/slides/${s.slug}.webp`,
+    alt: s.alt,
+    width: SLIDE_MANIFEST[s.slug].width,
+    height: SLIDE_MANIFEST[s.slug].height,
+  }])
+);
 
 export const SITE = {
   domain: 'monotropicmap.org',
@@ -148,7 +165,7 @@ ${fig}
 ${list}
 
 <div class="prose">
-${render(lines.slice(1).join('\n').replace(/^\s*There is a second map[^\n]*\n/m, ''), 'pages/neuronormative-domination.md')}
+${render(lines.slice(1).join('\n').replace(/^\s*There is a second map[^\n]*\n/m, ''), 'pages/neuronormative-domination.md', { slides: SLIDE_CTX })}
 </div>`;
 
   return shell({
@@ -302,7 +319,7 @@ function buildProse(slug) {
   if (!lines[0].startsWith('# ')) throw new Error(`pages/${slug}.md must open with "# Title"`);
   const title = lines[0].slice(2).trim();
   const desc = (lines.slice(1).find((l) => l.trim() && !l.startsWith('#')) || title).replace(/[*\[\]]|\(https?:[^)]+\)/g, '').trim();
-  const html = render(lines.slice(1).join('\n'), `pages/${slug}.md`);
+  const html = render(lines.slice(1).join('\n'), `pages/${slug}.md`, { slides: SLIDE_CTX });
   return shell({
     slug, title,
     description: desc.slice(0, 180),
@@ -368,7 +385,7 @@ ${ZONES.map((z, i) => `- [${plain(z.label)}](${SITE.origin}/neuronormative-domin
 
 /* ---- run ---------------------------------------------------------------- */
 
-const problems = [...validate(), ...validateZones()];
+const problems = [...validate(), ...validateZones(), ...validateSlides()];
 if (problems.length) { console.error('map data:\n  ' + problems.join('\n  ')); process.exit(1); }
 
 const outputs = new Map();

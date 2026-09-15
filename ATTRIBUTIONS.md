@@ -52,6 +52,18 @@ Every one came from filling in a first name that our own published page gave onl
 
 **Blackwater is still a surname only.** The byline is not on the live article on themighty.com. Ask Helen, or ask The Mighty, before writing a first name.
 
+## The training slides
+
+The sixteen slides on [the training page](https://monotropicmap.org/training) are rendered from *Training: Map of Monotropic Experiences with presenter notes*, the PDF Autistic Realms publishes openly. They are **Helen Edgar's and Stimpunks' own deck**, reproduced unaltered — cropped from the page, resized, and converted to WebP, with nothing added, removed or recoloured.
+
+`tools/slides.mjs` carries hand-written alt text for every one. **Alt text is content here, not a compliance box**: it is the slide for anyone who cannot see it, and `validate()` refuses one under 80 characters.
+
+### One slide carries somebody else's artwork
+
+The **Intersectionality and Double Empathy** slide reproduces the **Wheel of Power and Privilege by [Sylvia Duckworth](https://sylviaduckworth.com/)**, itself adapted from ccrweb.ca. Her handle is printed on the wheel and stays visible in our crop — **do not crop it out, and do not reproduce that wheel anywhere on this site without it.**
+
+The slide also credits **Kimberlé Crenshaw**, who coined *intersectionality* in her essays of 1989 and 1991.
+
 ## The theory
 
 Monotropism was developed by **Dinah Murray**, **Mike Lesser** and **Wenn Lawson** (Murray, Lesser &amp; Lawson, 2005). The canonical home of the theory is **[monotropism.org](https://monotropism.org/)**, maintained by **Fergus Murray**.

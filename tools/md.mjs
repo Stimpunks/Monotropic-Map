@@ -40,7 +40,10 @@ function inline(s, where) {
   return out;
 }
 
-export function render(src, where = 'markdown') {
+/** `ctx.slides` is a Map of slug -> {src, alt, width, height}, supplied by build.mjs
+ *  from slides.mjs and the generated manifest. An `@slide` naming a slug that is not
+ *  in it is a hard error: a missing slide must not render as nothing. */
+export function render(src, where = 'markdown', ctx = {}) {
   const lines = src.replace(/\r\n/g, '\n').split('\n');
   const out = [];
   let i = 0;
@@ -51,6 +54,19 @@ export function render(src, where = 'markdown') {
     if (!line.trim()) { i++; continue; }
 
     if (line === '----') { out.push('<hr>'); i++; continue; }
+
+    if (line.startsWith('@slide ')) {
+      const slug = line.slice(7).trim();
+      const slides = ctx.slides || new Map();
+      const s = slides.get(slug);
+      if (!s) {
+        throw new Error(`md: @slide "${slug}" is not a known slide (${where}, line ${i + 1}); run tools/make-slides.py, or check tools/slides.mjs`);
+      }
+      out.push(`<figure class="slide">
+  <img src="${s.src}" width="${s.width}" height="${s.height}" loading="lazy" decoding="async" alt="${s.alt.replace(/"/g, '&quot;')}">
+</figure>`);
+      i++; continue;
+    }
 
     if (line.startsWith(':::')) {
       const name = line.slice(3).trim();

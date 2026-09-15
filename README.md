@@ -24,8 +24,11 @@ tools/areas.mjs            THE twenty areas — the single source for everything
 tools/domination.mjs       the nine zones of the second map
 tools/build.mjs            generates every .html, search-index.json, sitemap.xml, llms.txt
 tools/md.mjs               a small, strict Markdown dialect
+tools/slides.mjs           the sixteen training slides and their alt text
+tools/make-slides.py       renders those slides out of the published training PDF
 tools/check.mjs            the sweep
 images/                    Helen Edgar's two maps, unaltered
+images/slides/             the training deck, generated — never hand-edit
 ```
 
 ## Never hand-edit a generated file
