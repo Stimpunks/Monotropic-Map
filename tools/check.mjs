@@ -111,6 +111,25 @@ for (const page of pages) {
 }
 if (!bad) pass(`${imgs} images, all with substantive alt text and intrinsic dimensions`);
 
+/* ---- 5b. no inline styles ------------------------------------------------- */
+/* `_headers` ships style-src 'self'. An inline style attribute is therefore dead
+   markup in production and perfectly fine on a dev server, which is the worst
+   combination available. The first deploy shipped the map hotspots that way and
+   every marker stacked in the corner. */
+console.log('\ninline styles (blocked by our own CSP)');
+{
+  let inline = 0;
+  for (const page of pages) {
+    const html = readFileSync(join(ROOT, page), 'utf8');
+    for (const m of html.matchAll(/<[^>]+\sstyle="[^"]*"/g)) {
+      inline++;
+      fail(`${page}: inline style attribute, which style-src 'self' blocks: ${m[0].slice(0, 70)}`);
+    }
+    if (/<style[\s>]/.test(html)) { inline++; fail(`${page}: an inline <style> element, which style-src 'self' blocks`); }
+  }
+  if (!inline) pass(`no inline styles in ${pages.length} pages`);
+}
+
 /* ---- 6. the no-JavaScript promise ---------------------------------------- */
 console.log('\nno-JavaScript');
 {

@@ -48,6 +48,15 @@ Both views are in the markup and both are visible with no JavaScript; `map.js` o
 
 **On screens under 700px the picture starts collapsed.** At 350px the labels printed on the artwork are not legible and no marker size fixes that. The switcher is right there; this is a default, not a decision made for anyone.
 
+### Hotspot positions are stylesheet rules, never inline styles
+Found on the first live deploy, 2026-09-15. `_headers` ships `style-src 'self'`, which blocks inline styles outright — so the `style="left:30%;top:16%"` on each marker was dead markup in production and **every hotspot on both maps stacked in the top-left corner.**
+
+It looked perfect locally, because a dev server sends no CSP at all. That is the worst available combination: correct on the machine you are working on, broken for everyone else.
+
+`tools/build.mjs` now generates `map-hotspots.css` from `areas.mjs` and `domination.mjs`, and `tools/check.mjs` **fails on any `style=` attribute or `<style>` element** in a generated page, so it cannot come back.
+
+**The general lesson, written down because it will recur: verify what a page does in production, not on a dev server.** Our own security headers only exist there.
+
 ### Hotspots go over the artwork; the artwork is never altered
 The markers are a CSS layer positioned by percentage over Helen's original PNG. No redraw, no recolour, no crop, no re-set. This keeps the CC BY-SA attribution clean and keeps a visible change to someone else's work out of scope.
 
