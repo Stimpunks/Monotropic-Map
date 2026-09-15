@@ -16,6 +16,8 @@ The plain definitions are derived from the Stimpunks glossary entries, which are
 
 **That is below ASAN's Easy Read band (grade 3–5) rather than inside it, and no script can certify Easy Read anyway** — that takes a focus group of people with intellectual and developmental disabilities. What the numbers show is that the text is short and simple. Whether it is *right* is a question for readers.
 
+**The packet that asks her is generated, not retyped.** `node tools/review.mjs` reads the forty passages out of `areas.mjs` and emits a review page; `--md` emits the same thing as Markdown to print or email. A packet with the passages copied into it would be a forty-first copy that drifts the moment either side is edited, and the drift would be the worst kind — Helen reviewing wording the site no longer carries, or approving wording it never carried. It marks *ours* and *hers* apart on purpose: a reviewer who cannot tell whose sentence she is reading cannot review it. It also carries the three questions only she can answer: Blackwater's first name, whether anyone named Rabbit Holes of Research or Infodump Canyon, and whether per-area artwork exists for version two of the marking tool.
+
 ### The marking tool is not built
 *My Monotropic Map* — mark each area, get a legend, print or submit it — is designed and described on `stories.html` and does not exist. The page says so rather than pretending. Version one annotates Helen's map and needs no new artwork; version two, which would let a person drag and resize their own island, needs per-area art that may or may not exist as separable assets in the training decks. **That is a question for Helen, not an assumption.**
 
