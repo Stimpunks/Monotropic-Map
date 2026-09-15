@@ -51,6 +51,7 @@ const NAV = [
   ['training', 'Training'],
   ['stories', 'Your map'],
   ['about', 'About'],
+  ['changelog', 'Changelog'],
 ];
 const FOOTER_ONLY = ['privacy'];
 
@@ -334,6 +335,25 @@ ${items}
 </nav>\n`;
 }
 
+/** The changelog page, built from the repository's own CHANGELOG.md.
+ *
+ *  ONE SOURCE, DELIBERATELY. A `pages/changelog.md` beside the root CHANGELOG.md would be
+ *  two accounts of the same history, and the published one is always the one that goes
+ *  stale. It also means the file has to stay readable by a visitor rather than only by
+ *  whoever wrote the commit — which is the right pressure to be under. */
+function buildChangelog() {
+  const src = readFileSync(join(ROOT, 'CHANGELOG.md'), 'utf8');
+  const lines = src.split('\n');
+  if (!lines[0].startsWith('# ')) throw new Error('CHANGELOG.md must open with "# Changelog"');
+  const html = render(lines.slice(1).join('\n'), 'CHANGELOG.md', { slides: SLIDE_CTX });
+  return shell({
+    slug: 'changelog',
+    title: lines[0].slice(2).trim(),
+    description: "What has changed on monotropicmap.org, newest first — including what we got wrong.",
+    body: `${tableOfContents(html)}<div class="prose">\n${html}\n</div>`,
+  });
+}
+
 function buildProse(slug) {
   const src = readFileSync(join(ROOT, 'pages', `${slug}.md`), 'utf8');
   const lines = src.split('\n');
@@ -373,7 +393,11 @@ function searchIndex() {
 }
 
 function sitemap() {
-  const slugs = ['index', 'areas', ...AREAS.map((a) => a.slug), 'neuronormative-domination', 'training', 'stories', 'about', 'privacy'];
+  /* Derived from the same lists the nav and the builder use. Written out by hand this
+     drifted the moment a page was added — which is the whole failure mode this file's
+     other generated lists exist to avoid. */
+  const slugs = [...NAV.map(([s]) => s), 'areas', ...AREAS.map((a) => a.slug), ...FOOTER_ONLY]
+    .filter((s, i, all) => all.indexOf(s) === i);
   const urls = slugs.map((s) => `  <url><loc>${SITE.origin}${s === 'index' ? '/' : '/' + s}</loc></url>`).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 }
@@ -400,6 +424,7 @@ ${ZONES.map((z, i) => `- [${plain(z.label)}](${SITE.origin}/neuronormative-domin
 - [Training](${SITE.origin}/training): free open-source training, about 45 minutes.
 - [Your map](${SITE.origin}/stories): mark your own, and the community story project.
 - [About](${SITE.origin}/about): who made this, and the licence.
+- [Changelog](${SITE.origin}/changelog): what has changed, including what we got wrong.
 - Machine-readable areas: ${SITE.origin}/search-index.json
 `;
 }
@@ -414,7 +439,8 @@ outputs.set('index.html', buildIndex());
 outputs.set('areas.html', buildAreasPage());
 for (const a of AREAS) outputs.set(`${a.slug}.html`, buildArea(a));
 outputs.set('neuronormative-domination.html', buildDomination());
-for (const slug of [...NAV.map(([s]) => s).filter((s) => !['index', 'areas', 'neuronormative-domination'].includes(s)), ...FOOTER_ONLY]) {
+outputs.set('changelog.html', buildChangelog());
+for (const slug of [...NAV.map(([s]) => s).filter((s) => !['index', 'areas', 'neuronormative-domination', 'changelog'].includes(s)), ...FOOTER_ONLY]) {
   outputs.set(`${slug}.html`, buildProse(slug));
 }
 outputs.set('map-hotspots.css', hotspotCss());

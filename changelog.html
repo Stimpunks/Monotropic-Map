@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Changelog — Map of Monotropic Experiences</title>
+<meta name="description" content="What has changed on monotropicmap.org, newest first — including what we got wrong.">
+<link rel="canonical" href="https://monotropicmap.org/changelog">
+<link rel="stylesheet" href="monotropic-map.css">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Changelog — Map of Monotropic Experiences">
+<meta property="og:description" content="What has changed on monotropicmap.org, newest first — including what we got wrong.">
+<meta property="og:url" content="https://monotropicmap.org/changelog">
+<meta property="og:image" content="https://monotropicmap.org/images/map-of-monotropic-experiences.png">
+<meta name="twitter:card" content="summary_large_image">
+<script src="theme.js"></script>
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <div class="bar-in">
+    <a class="home" href="/">Map of Monotropic Experiences</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="/">The map</a></li>
+        <li><a href="areas.html">The twenty areas</a></li>
+        <li><a href="neuronormative-domination.html">The frame</a></li>
+        <li><a href="training.html">Training</a></li>
+        <li><a href="stories.html">Your map</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="changelog.html" aria-current="page">Changelog</a></li>
+      </ul>
+    </nav>
+    <button class="theme-toggle" type="button" hidden>Dark</button>
+  </div>
+</header>
+<main id="main" class="wrap">
+<h1>Changelog</h1>
+<div class="prose">
+<p>What has changed here, newest first. This is the site's own account of itself — what was built, what was got wrong, and what is still missing.</p>
+<p>We publish the mistakes too. A changelog that only lists wins is an advertisement.</p>
+<hr>
+<h2 id="2026-09-15-the-site-went-live">2026-09-15 — the site went live</h2>
+<p><strong><a href="https://monotropicmap.org/">monotropicmap.org</a> exists.</strong> The Map of Monotropic Experiences has its own home, built on Helen Edgar's go-ahead with joint Stimpunks and Autistic Realms attribution settled first.</p>
+<h3 id="what-is-here">What is here</h3>
+<ul>
+  <li><strong>Both maps, and you can click them.</strong> The map's twenty areas, and the nine zones of <em>Autism &amp; The Map of Neuronormative Domination</em>. The markers sit <strong>over</strong> Helen's original artwork — nothing about the pictures was redrawn, recoloured or cropped.</li>
+  <li><strong>Twenty area pages</strong>, one for each place on the map, <strong>each crediting the person who named it</strong> and linking to their own words. This is a map of other people's coinages and the credit is the content, not a footnote.</li>
+  <li><strong>The frame is structural, not an appendix.</strong> The second map has a page of its own, and every area page follows the rule it implies: <em>what changes a stuck state is a change to the conditions, never an instruction to the person.</em> You will not find "rest more" here.</li>
+  <li><strong>The whole free training</strong>, about 4,000 words with presenter notes, all sixteen slides, and all eight <em>Consider</em> reflection prompts. The training pack and workbook stay at <a href="https://autisticrealms.com/product/training-with-notes-the-map-of-monotropic-experiences/" rel="noopener">Autistic Realms</a> — buying them there is what funds this work.</li>
+  <li><strong>The community story project</strong>, and the questions for marking your own map.</li>
+  <li><strong>No accounts, no analytics, no tracking, no third parties.</strong> See <a href="privacy.html">privacy</a>.</li>
+</ul>
+<h3 id="the-map-has-two-front-doors-on-purpose">The map has two front doors, on purpose</h3>
+<p>The picture and the list are the same twenty places, and <strong>the list is not a fallback</strong>. A picture-only way in excludes screen reader users, anyone who cannot point precisely, and anyone on a small screen — which is a large share of the people this map is for.</p>
+<p>Both are in the page before any JavaScript runs. On a narrow screen the list opens first, because at phone width the labels printed on the artwork are not legible at any size.</p>
+<h3 id="four-credits-were-wrong-and-are-fixed">Four credits were wrong, and are fixed</h3>
+<p>The first draft of the area pages carried <strong>four invented names</strong> — attributions where our own published page gave only a surname and the gap got filled in rather than looked up. Every one was wrong.</p>
+<p>They were caught by opening the sources, and corrected: the training video is <strong>Kieran Rose's</strong>, and the sensory-sea graphics are <strong>Janae Elisabeth's</strong>. A surname you can source beats a full name you cannot.</p>
+<p>One is still incomplete: the Forest of Joy, Awe and Wonder credits <strong>Blackwater</strong>, and the byline is not on the live article. If you know it, <a href="mailto:hello@stimpunks.org">tell us</a>.</p>
+<h3 id="a-bug-that-only-existed-once-it-was-public">A bug that only existed once it was public</h3>
+<p>The site sends a strict security policy that forbids inline styles. The map markers were positioned with exactly that — so on the first live deploy <strong>every marker on both maps stacked in the top-left corner</strong>, while looking perfect on the machine it was built on, because a local server sends no such policy.</p>
+<p>Fixed, and the build now refuses to ship an inline style at all. Recorded here because <em>verify in production, not on your own machine</em> is the kind of lesson that is cheap to write down and expensive to relearn.</p>
+<h3 id="said-map-stopped-saying-island">Said "map", stopped saying "island"</h3>
+<p>The site's tagline was <em>An island you can find yourself on</em>. It is now <strong>A map you can find yourself on</strong>, and the word is gone from the rest of the site's voice: the association the word now carries is not one a page about Autistic flow states should be putting in anybody's head.</p>
+<p>It survives in one place only — the <strong>alt text</strong> describing the artwork, because the artwork <em>is</em> an island and a blind reader should get the same picture everyone else does. Describing a picture accurately is a different job from choosing our own words.</p>
+<h3 id="open-and-said-out-loud">Open, and said out loud</h3>
+<ul>
+  <li><strong>The marking tool does not exist yet.</strong> <em>My Monotropic Map</em> — mark each area, get a legend you can print or send — is designed and not built. The page says so rather than pretending.</li>
+  <li>The twenty <em>What changes this</em> paragraphs are <strong>ours, and Helen has not reviewed them</strong>.</li>
+  <li>No offline copy, and the typeface the design asks for is not yet shipped.</li>
+</ul>
+<p>The full record, including what was decided and why, is in <a href="https://github.com/Stimpunks/Monotropic-Map/blob/main/DECISIONS.md" rel="noopener">DECISIONS.md</a>. Credits are in <a href="https://github.com/Stimpunks/Monotropic-Map/blob/main/ATTRIBUTIONS.md" rel="noopener">ATTRIBUTIONS.md</a>. The whole site is <a href="https://github.com/Stimpunks/Monotropic-Map" rel="noopener">open source</a>, CC BY-SA 4.0.</p>
+</div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p><strong>Map of Monotropic Experiences</strong> is by Helen Edgar (Autistic Realms) and the Stimpunks Foundation — Ryan Boren, Norah Hobbs and Chelsea Adams. The original map was created by Helen Edgar in 2024.</p>
+    <p>The map and everything on this site derived from it are licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>. Share it, adapt it, keep the credit, keep the licence.</p>
+    <p><a href="privacy.html">Privacy</a> · <a href="https://autisticrealms.com" rel="noopener">Autistic Realms</a> · <a href="https://stimpunks.org" rel="noopener">Stimpunks</a> · <a href="https://monotropism.org" rel="noopener">monotropism.org</a></p>
+  </div>
+</footer>
+</body>
+</html>

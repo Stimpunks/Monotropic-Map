@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://monotropicmap.org/</loc></url>
   <url><loc>https://monotropicmap.org/areas</loc></url>
+  <url><loc>https://monotropicmap.org/neuronormative-domination</loc></url>
+  <url><loc>https://monotropicmap.org/training</loc></url>
+  <url><loc>https://monotropicmap.org/stories</loc></url>
+  <url><loc>https://monotropicmap.org/about</loc></url>
+  <url><loc>https://monotropicmap.org/changelog</loc></url>
   <url><loc>https://monotropicmap.org/attention-tunnels</loc></url>
   <url><loc>https://monotropicmap.org/penguin-pebbling-cove-of-friendship</loc></url>
   <url><loc>https://monotropicmap.org/tendril-theory</loc></url>
@@ -22,9 +27,5 @@
   <url><loc>https://monotropicmap.org/lake-of-limerence</loc></url>
   <url><loc>https://monotropicmap.org/tides-of-the-sensory-sea</loc></url>
   <url><loc>https://monotropicmap.org/sudden-storms-of-unexpected-events</loc></url>
-  <url><loc>https://monotropicmap.org/neuronormative-domination</loc></url>
-  <url><loc>https://monotropicmap.org/training</loc></url>
-  <url><loc>https://monotropicmap.org/stories</loc></url>
-  <url><loc>https://monotropicmap.org/about</loc></url>
   <url><loc>https://monotropicmap.org/privacy</loc></url>
 </urlset>

@@ -1,39 +1,54 @@
 # Changelog
 
-## 2026-09-15 — live on monotropicmap.org
+What has changed here, newest first. This is the site's own account of itself — what was built, what was got wrong, and what is still missing.
 
-Pushed to [Stimpunks/Monotropic-Map](https://github.com/Stimpunks/Monotropic-Map) (private) and deployed to **[monotropicmap.netlify.app](https://monotropicmap.netlify.app/)**. Netlify builds from `main` on every push; pushing publishes.
+We publish the mistakes too. A changelog that only lists wins is an advertisement.
 
-**The domain went live the same day**, on Netlify DNS with `force_ssl`, `www` redirecting to the apex. The site shipped `noindex` until the domain actually resolved — every canonical pointed at it — and indexing was opened once it did.
+----
 
-**The first live deploy found a bug no local server could**: the map hotspots positioned themselves with inline `style` attributes, which our own `style-src 'self'` blocks, so every marker on both maps stacked in the corner. Positions are now generated into `map-hotspots.css`, and `check.mjs` fails on any inline style.
+## 2026-09-15 — the site went live
 
-## 2026-09-15 — the site exists
+**[monotropicmap.org](https://monotropicmap.org/) exists.** The Map of Monotropic Experiences has its own home, built on Helen Edgar's go-ahead with joint Stimpunks and Autistic Realms attribution settled first.
 
-First build, on Helen Edgar's go-ahead, with `monotropicmap.org` chosen and joint attribution settled.
+### What is here
 
-- **Both maps, with hotspots.** The island's twenty areas and the nine zones of *Autism &amp; The Map of Neuronormative Domination*, positioned over Helen's original artwork without altering it.
-- **Twenty area pages**, generated from `tools/areas.mjs`, each crediting the person who named that area.
-- **The frame is structural, not an appendix.** The second map has its own page, and every area page obeys the rule it implies: what changes a stuck state is a change to the conditions, never an instruction to the person.
-- **The list view is a front door.** Both views ship visible; JavaScript only collapses them into a switcher once it can switch back.
-- Training, the community story project, about, and privacy.
-- `tools/check.mjs`: build drift, links, sitemap, metadata, alt text, the no-JavaScript promise, and contrast across both themes.
-- **Four attributions were invented on the first pass and corrected against the sources.** `ATTRIBUTIONS.md` records what happened and why.
+- **Both maps, and you can click them.** The map's twenty areas, and the nine zones of *Autism &amp; The Map of Neuronormative Domination*. The markers sit **over** Helen's original artwork — nothing about the pictures was redrawn, recoloured or cropped.
+- **Twenty area pages**, one for each place on the map, **each crediting the person who named it** and linking to their own words. This is a map of other people's coinages and the credit is the content, not a footnote.
+- **The frame is structural, not an appendix.** The second map has a page of its own, and every area page follows the rule it implies: *what changes a stuck state is a change to the conditions, never an instruction to the person.* You will not find "rest more" here.
+- **The whole free training**, about 4,000 words with presenter notes, all sixteen slides, and all eight *Consider* reflection prompts. The training pack and workbook stay at [Autistic Realms](https://autisticrealms.com/product/training-with-notes-the-map-of-monotropic-experiences/) — buying them there is what funds this work.
+- **The community story project**, and the questions for marking your own map.
+- **No accounts, no analytics, no tracking, no third parties.** See [privacy](privacy.html).
 
-### The training is a page now
+### The map has two front doors, on purpose
 
-The whole free training reads on the web at `/training`, transcribed from the openly published PDF with presenter notes: fourteen sections, all eight *Consider* reflection prompts, the references, and inline links from every named area to its own page here.
+The picture and the list are the same twenty places, and **the list is not a fallback**. A picture-only way in excludes screen reader users, anyone who cannot point precisely, and anyone on a small screen — which is a large share of the people this map is for.
 
-- `tools/md.mjs` gained `::: consider` callouts, with an unknown callout name a hard error rather than an unstyled div.
-- Long prose pages get a contents list, generated from the rendered headings so the hrefs and the ids come from one place and cannot disagree.
-- `tools/check.mjs --net` now reports the **final** host behind a redirect. Three DOIs were failing as 403; the blockers are SAGE and Taylor & Francis, not doi.org, and naming the redirector would send the next person to debug the wrong service.
+Both are in the page before any JavaScript runs. On a narrow screen the list opens first, because at phone width the labels printed on the artwork are not legible at any size.
 
-### The slides are on the training page
+### Four credits were wrong, and are fixed
 
-All sixteen, rendered from the published PDF and served from this site — about 1.2 MB, no Canva embed, no third-party frame, no CSP change. They work offline, they print, and every one carries hand-written alt text in `tools/slides.mjs`.
+The first draft of the area pages carried **four invented names** — attributions where our own published page gave only a surname and the gap got filled in rather than looked up. Every one was wrong.
 
-- `tools/make-slides.py` fetches the source PDF and crops a fixed 16:9 box, verified across six pages. Per-page detection was tried first and bled into the presenter notes.
-- `tools/md.mjs` gained `@slide <slug>`; a slug with no rendered image is a hard error rather than a missing picture.
-- One slide carries Sylvia Duckworth's Wheel of Power and Privilege — her handle stays in the crop, and `ATTRIBUTIONS.md` says so.
+They were caught by opening the sources, and corrected: the training video is **Kieran Rose's**, and the sensory-sea graphics are **Janae Elisabeth's**. A surname you can source beats a full name you cannot.
 
-Not built yet: the *My Monotropic Map* marking tool, the shipped typeface, an offline copy. See `DECISIONS.md`.
+One is still incomplete: the Forest of Joy, Awe and Wonder credits **Blackwater**, and the byline is not on the live article. If you know it, [tell us](mailto:hello@stimpunks.org).
+
+### A bug that only existed once it was public
+
+The site sends a strict security policy that forbids inline styles. The map markers were positioned with exactly that — so on the first live deploy **every marker on both maps stacked in the top-left corner**, while looking perfect on the machine it was built on, because a local server sends no such policy.
+
+Fixed, and the build now refuses to ship an inline style at all. Recorded here because *verify in production, not on your own machine* is the kind of lesson that is cheap to write down and expensive to relearn.
+
+### Said "map", stopped saying "island"
+
+The site's tagline was *An island you can find yourself on*. It is now **A map you can find yourself on**, and the word is gone from the rest of the site's voice: the association the word now carries is not one a page about Autistic flow states should be putting in anybody's head.
+
+It survives in one place only — the **alt text** describing the artwork, because the artwork *is* an island and a blind reader should get the same picture everyone else does. Describing a picture accurately is a different job from choosing our own words.
+
+### Open, and said out loud
+
+- **The marking tool does not exist yet.** *My Monotropic Map* — mark each area, get a legend you can print or send — is designed and not built. The page says so rather than pretending.
+- The twenty *What changes this* paragraphs are **ours, and Helen has not reviewed them**.
+- No offline copy, and the typeface the design asks for is not yet shipped.
+
+The full record, including what was decided and why, is in [DECISIONS.md](https://github.com/Stimpunks/Monotropic-Map/blob/main/DECISIONS.md). Credits are in [ATTRIBUTIONS.md](https://github.com/Stimpunks/Monotropic-Map/blob/main/ATTRIBUTIONS.md). The whole site is [open source](https://github.com/Stimpunks/Monotropic-Map), CC BY-SA 4.0.
