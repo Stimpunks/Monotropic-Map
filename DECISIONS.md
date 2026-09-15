@@ -21,9 +21,6 @@ The plain definitions are derived from the Stimpunks glossary entries, which are
 ### The marking tool is not built
 *My Monotropic Map* — mark each area, get a legend, print or submit it — is designed and described on `stories.html` and does not exist. The page says so rather than pretending. Version one annotates Helen's map and needs no new artwork; version two, which would let a person drag and resize their own island, needs per-area art that may or may not exist as separable assets in the training decks. **That is a question for Helen, not an assumption.**
 
-### The typeface is named but not shipped
-The CSS asks for Atkinson Hyperlegible and falls back to the system stack, which is what everyone currently gets. Shipping the woff2 means adding a `fonts/` payload and keeping `font-src 'self'` honest. Worth doing; not done.
-
 ### There is no service worker and no offline copy
 Penguin Pebbling has one. This site does not, and that is a deliberate not-yet rather than a no: **once a worker ships it lives on people's devices until something unregisters it**, so it is worth being sure of the page shapes first.
 
@@ -39,6 +36,19 @@ The tagline went from *An island you can find yourself on* to **A map you can fi
 **Three uses were kept, all of them alt text**, and the distinction is the point: alt text describes the artwork, and the artwork *is* an island. A blind reader needs the same picture everyone else gets, and calling it a map would be describing something the image does not show. **Accuracy about a picture is not the same job as choosing our own vocabulary.**
 
 So: the word survives only where it is describing what is drawn. Anywhere the site is speaking in its own voice, it says map. **Do not "fix" the alt text for consistency** — that would make it worse.
+
+### Atkinson Hyperlegible is shipped, and the check makes sure it stays shipped
+Done 2026-09-15, on Ryan's call. **The face was named in `--font` from the first commit and no font file was ever served**, so for the site's whole first day every reader got the system stack. That is the failure mode worth naming: a named typeface looks identical to a shipped one in every local test, because the fallback is a real font and the page looks fine.
+
+Four faces, complete, from the TrueType published at google/fonts, converted to WOFF2 and changed in no other way. **Not subsetted** — 342 glyphs each, about 97 KB for the set, and no character can quietly lose its shape because a subsetter did not know the site used it. `/fonts/*` was already cached `immutable` for a year in `_headers`, and `font-src 'self'` already allowed it; **the CSP did not need editing**, which is this repository's test for whether something new belongs.
+
+**All four faces are declared even though bold italic is unused today, because declaring a face costs nothing.** A browser fetches only the faces a page actually needs, so the unused one is never downloaded — measured, not assumed: on an area page the other three report `loaded` and bold italic reports `unloaded` and is never requested. The alternative is a browser synthesising bold italic later by smearing the regular, which on a face chosen for legibility defeats the point of choosing it.
+
+**`font-display: swap`, not `block`.** A reader gets the system stack for a few hundred milliseconds and then the real face. The alternative is invisible text, and invisible text on an accessibility site is not a trade worth making. Only the regular face is preloaded, because it is the only one every page uses, and the preload carries `crossorigin` so it coalesces with the stylesheet's request instead of fetching the file twice.
+
+**The gate checks the property, not the file list**: `check.mjs` fails if the family named in `--font` has no `@font-face` serving it, if any referenced font file is missing, if a page preloads one that does not exist, or if `fonts/OFL.txt` stops travelling with the font — which the SIL OFL requires. All four failure modes were tested by breaking them.
+
+**Known and accepted: the font has no ← or → glyph.** The previous/next links at the foot of every area page use both, so those two characters render from the fallback stack while the words beside them do not. They are arrows and they look like arrows. Recorded so nobody rediscovers it as a bug.
 
 ### The repository is public
 Opened 2026-09-15, on Ryan's call, matching [Queering Earth](https://queering.earth/) rather than Penguin Pebbling. It was created private and flipped once the site was live.

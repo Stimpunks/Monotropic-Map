@@ -78,6 +78,7 @@ function shell({ slug, title, description, body, h1, wide = false }) {
 <title>${esc(pageTitle)}</title>
 <meta name="description" content="${esc(plain(description))}">
 <link rel="canonical" href="${canonical}">
+<link rel="preload" href="fonts/atkinson-hyperlegible-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="monotropic-map.css">
 ${MAP_PAGES.has(slug) ? '<link rel="stylesheet" href="map-hotspots.css">\n' : ''}
 <link rel="icon" href="favicon.svg" type="image/svg+xml">

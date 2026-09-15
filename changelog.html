@@ -6,6 +6,7 @@
 <title>Changelog — Map of Monotropic Experiences</title>
 <meta name="description" content="What has changed on monotropicmap.org, newest first — including what we got wrong.">
 <link rel="canonical" href="https://monotropicmap.org/changelog">
+<link rel="preload" href="fonts/atkinson-hyperlegible-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="monotropic-map.css">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -69,11 +70,18 @@
 <h3 id="said-map-stopped-saying-island">Said "map", stopped saying "island"</h3>
 <p>The site's tagline was <em>An island you can find yourself on</em>. It is now <strong>A map you can find yourself on</strong>, and the word is gone from the rest of the site's voice: the association the word now carries is not one a page about Autistic flow states should be putting in anybody's head.</p>
 <p>It survives in one place only — the <strong>alt text</strong> describing the artwork, because the artwork <em>is</em> an island and a blind reader should get the same picture everyone else does. Describing a picture accurately is a different job from choosing our own words.</p>
+<h3 id="the-typeface-the-design-asked-for-is-now-actually-shipped">The typeface the design asked for is now actually shipped</h3>
+<p><strong>For the whole of the site's first day, <code>Atkinson Hyperlegible</code> was named in the stylesheet and no font file was ever served</strong>, so every reader quietly got the system stack instead. Naming a face costs nothing and proves nothing. The page looked fine to everybody testing it, which is exactly why it lasted.</p>
+<p>It is now served from this origin: four faces, about 97 KB all told, cached for a year. <strong>Atkinson Hyperlegible is drawn for low vision</strong> — the letterforms are pulled apart so that b and d, i and l, and 0 and O cannot be mistaken for one another — and it is the reason the face was asked for in the first place.</p>
+<p><strong>Nothing is fetched from a third party to do it.</strong> The files are ours to serve, <code>font-src 'self'</code> is unchanged, and the CSP did not need editing — which is the test this repository applies to anything new.</p>
+<p>The font is <a href="https://brailleinstitute.org/freefont" rel="noopener">Braille Institute of America's</a>, under the SIL Open Font License, and <strong>the licence ships in <code>fonts/OFL.txt</code> beside it because the licence requires that</strong>. It was converted from the published TrueType to WOFF2 and changed in no other way — no subsetting, all 342 glyphs — so no character quietly loses its shape.</p>
+<p><strong><code>tools/check.mjs</code> now fails if the face is named and not served</strong>, if any font file referenced is missing, or if the licence stops travelling with it. The bug that lasted a day cannot last a second one.</p>
+<p>One thing it does not cover: <strong>the font has no ← or → glyph</strong>, and the previous/next links at the foot of each area page use both. Those two characters fall back to the system stack. They are arrows; they look like arrows.</p>
 <h3 id="open-and-said-out-loud">Open, and said out loud</h3>
 <ul>
   <li><strong>The marking tool does not exist yet.</strong> <em>My Monotropic Map</em> — mark each area, get a legend you can print or send — is designed and not built. The page says so rather than pretending.</li>
   <li>The twenty <em>What changes this</em> paragraphs are <strong>ours, and Helen has not reviewed them</strong>.</li>
-  <li>No offline copy, and the typeface the design asks for is not yet shipped.</li>
+  <li>No offline copy yet. <strong>Once a service worker ships it lives on people's devices until something unregisters it</strong>, so it is worth being sure of the page shapes first.</li>
 </ul>
 <h3 id="this-page-exists">This page exists</h3>
 <p>All of our sites publish a changelog. This was the one that did not.</p>

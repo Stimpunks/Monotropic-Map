@@ -162,6 +162,44 @@ console.log('\nno-JavaScript');
   else pass('no JS-dependent controls shipped visible');
 }
 
+/* ---- 6b. the typeface is shipped, not just named -------------------------- */
+/* THE BUG THIS EXISTS FOR ALREADY HAPPENED. `--font` named Atkinson Hyperlegible from
+   the first commit and no font file was ever shipped, so every reader silently got the
+   system stack and the page looked fine to everybody testing it. Naming a face costs
+   nothing and proves nothing; this checks the files are actually there. */
+console.log('\ntypeface');
+{
+  const css = readFileSync(join(ROOT, 'monotropic-map.css'), 'utf8');
+  const faces = [...css.matchAll(/@font-face\s*\{[^}]*\}/g)].map((m) => m[0]);
+  const family = (css.match(/--font:\s*"([^"]+)"/) || [])[1];
+
+  if (!family) fail('--font does not open with a quoted family name');
+  else if (!faces.some((f) => f.includes(`"${family}"`)))
+    fail(`--font names "${family}" and no @font-face serves it — readers get the fallback stack`);
+  else pass(`"${family}" is named in --font and served by ${faces.length} @font-face rules`);
+
+  /* Every url() in a @font-face, and the preload that races it, must resolve. A missing
+     file here is invisible in a browser: it just falls back, exactly like shipping none. */
+  let missing = 0, urls = 0;
+  for (const m of css.matchAll(/@font-face[^}]*url\("([^"]+)"\)/g)) {
+    urls++;
+    if (!existsSync(join(ROOT, m[1]))) { missing++; fail(`@font-face references ${m[1]}, which does not exist`); }
+  }
+  if (urls && !missing) pass(`${urls} font files all present`);
+
+  for (const page of pages) {
+    const html = readFileSync(join(ROOT, page), 'utf8');
+    for (const m of html.matchAll(/<link rel="preload" href="([^"]+)"/g)) {
+      if (!existsSync(join(ROOT, m[1]))) fail(`${page} preloads ${m[1]}, which does not exist`);
+    }
+  }
+
+  /* OFL clause 2: the licence travels with the font. Shipping the woff2 without it is a
+     licence violation, and it is the easiest thing in the world to forget. */
+  if (existsSync(join(ROOT, 'fonts', 'OFL.txt'))) pass('the OFL licence ships with the fonts');
+  else fail('fonts/OFL.txt is missing — the OFL requires the licence travel with the font');
+}
+
 /* ---- 7. contrast --------------------------------------------------------- */
 console.log('\ncontrast (WCAG AA, 4.5:1 for body text)');
 {

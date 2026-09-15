@@ -49,11 +49,25 @@ The site's tagline was *An island you can find yourself on*. It is now **A map y
 
 It survives in one place only — the **alt text** describing the artwork, because the artwork *is* an island and a blind reader should get the same picture everyone else does. Describing a picture accurately is a different job from choosing our own words.
 
+### The typeface the design asked for is now actually shipped
+
+**For the whole of the site's first day, `Atkinson Hyperlegible` was named in the stylesheet and no font file was ever served**, so every reader quietly got the system stack instead. Naming a face costs nothing and proves nothing. The page looked fine to everybody testing it, which is exactly why it lasted.
+
+It is now served from this origin: four faces, about 97 KB all told, cached for a year. **Atkinson Hyperlegible is drawn for low vision** — the letterforms are pulled apart so that b and d, i and l, and 0 and O cannot be mistaken for one another — and it is the reason the face was asked for in the first place.
+
+**Nothing is fetched from a third party to do it.** The files are ours to serve, `font-src 'self'` is unchanged, and the CSP did not need editing — which is the test this repository applies to anything new.
+
+The font is [Braille Institute of America's](https://brailleinstitute.org/freefont), under the SIL Open Font License, and **the licence ships in `fonts/OFL.txt` beside it because the licence requires that**. It was converted from the published TrueType to WOFF2 and changed in no other way — no subsetting, all 342 glyphs — so no character quietly loses its shape.
+
+**`tools/check.mjs` now fails if the face is named and not served**, if any font file referenced is missing, or if the licence stops travelling with it. The bug that lasted a day cannot last a second one.
+
+One thing it does not cover: **the font has no ← or → glyph**, and the previous/next links at the foot of each area page use both. Those two characters fall back to the system stack. They are arrows; they look like arrows.
+
 ### Open, and said out loud
 
 - **The marking tool does not exist yet.** *My Monotropic Map* — mark each area, get a legend you can print or send — is designed and not built. The page says so rather than pretending.
 - The twenty *What changes this* paragraphs are **ours, and Helen has not reviewed them**.
-- No offline copy, and the typeface the design asks for is not yet shipped.
+- No offline copy yet. **Once a service worker ships it lives on people's devices until something unregisters it**, so it is worth being sure of the page shapes first.
 
 ### This page exists
 

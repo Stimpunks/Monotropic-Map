@@ -64,6 +64,18 @@ The **Intersectionality and Double Empathy** slide reproduces the **Wheel of Pow
 
 The slide also credits **Kimberlé Crenshaw**, who coined *intersectionality* in her essays of 1989 and 1991.
 
+## The typeface
+
+The site is set in **Atkinson Hyperlegible**, by the **[Braille Institute of America](https://brailleinstitute.org/freefont)**. The font's own metadata credits **Braille Institute, Applied Design Works, Elliott Scott, Megan Eiswerth, Linus Boman and Theodore Petrosky** — listed here exactly as it lists them, because working out which of those names belongs to which organisation would be guessing, and guessing is what the section above this one exists to prevent.
+
+It is **named after the founder of the Braille Institute** — which is what the font's published description says, and it does not give his name, so neither do we. It is drawn for low vision: the letterforms are deliberately pulled apart so b and d, i and l, and 0 and O cannot be confused.
+
+**SIL Open Font License 1.1, Copyright 2020 Braille Institute of America, Inc.** The OFL requires the licence travel with the font, so it ships as `fonts/OFL.txt` and `tools/check.mjs` fails if it ever stops doing so.
+
+The four woff2 files are converted from the TrueType fonts published at [google/fonts](https://github.com/google/fonts/tree/main/ofl/atkinsonhyperlegible), **format-converted and changed in no other way** — not subsetted, all 342 glyphs intact. No Reserved Font Name is declared, so the family keeps its name.
+
+**It is served from this origin and never fetched from a third party.** `font-src 'self'` did not need editing to ship it, which is the test this repository applies to anything new.
+
 ## The theory
 
 Monotropism was developed by **Dinah Murray**, **Mike Lesser** and **Wenn Lawson** (Murray, Lesser &amp; Lawson, 2005). The canonical home of the theory is **[monotropism.org](https://monotropism.org/)**, maintained by **Fergus Murray**.

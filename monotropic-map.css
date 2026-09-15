@@ -2,6 +2,45 @@
    Colours are tokens defined once on :root and redefined for dark. Never give a
    colour its only definition inside a media query. */
 
+/* Atkinson Hyperlegible, served from this origin. It is designed for low vision —
+   letterforms are pulled apart so b/d, i/l and 0/O cannot be confused — which is the
+   whole reason it is the face named in --font, and for two years everyone got the
+   system stack instead because the files were never shipped.
+
+   SIL OFL 1.1, Copyright 2020 Braille Institute of America, Inc. The licence travels
+   with the font in fonts/OFL.txt, which clause 2 requires; ATTRIBUTIONS.md records the
+   designers. Converted TTF to WOFF2 and nothing else — no subsetting, all 342 glyphs —
+   so no character silently loses its shape.
+
+   THE FOUR FACES COST NOTHING TO DECLARE. A browser fetches only the faces a page
+   actually uses, so bold italic sits here unused and undownloaded rather than being
+   synthesised later by smearing the regular — which on a legibility face defeats the
+   point of choosing it.
+
+   `swap` and not `block`: a reader gets the system stack for a few hundred milliseconds
+   and then the real face. The alternative is invisible text, and invisible text on an
+   accessibility site is not a trade worth making. */
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("fonts/atkinson-hyperlegible-regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("fonts/atkinson-hyperlegible-italic.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("fonts/atkinson-hyperlegible-bold.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("fonts/atkinson-hyperlegible-bolditalic.woff2") format("woff2");
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+
 :root {
   color-scheme: light dark;
 
