@@ -4,7 +4,7 @@ Guidance for Claude Code working in this repository.
 
 ## What this is
 
-The destination site for the **Map of Monotropic Experiences**, Helen Edgar's island of twenty monotropic places. A joint **Stimpunks Foundation** and **Autistic Realms** property, like [Star Stuff](https://starstuff.earth/) and [Queering Earth](https://queering.earth/).
+The destination site for the **Map of Monotropic Experiences**, Helen Edgar's map of twenty monotropic places. A joint **Stimpunks Foundation** and **Autistic Realms** property, like [Star Stuff](https://starstuff.earth/) and [Queering Earth](https://queering.earth/).
 
 Read `README.md` for the layout, `ATTRIBUTIONS.md` for who owns what, `DECISIONS.md` for what was chosen and what is still open, `LICENSE.md` for the terms.
 
@@ -18,7 +18,7 @@ Helen Edgar and Ryan Boren both have rights to this work. **So *you* is whoever 
 
 **What changes a stuck state is a change to the conditions, never an instruction to the person.**
 
-An interactive island is one short step from a personality quiz, and a quiz inverts the argument — Burnout Whirlpools and the Shark Infested Waters are manufactured, by schools and workplaces and clinics built on the assumption that there is one correct way to have a mind.
+An interactive map is one short step from a personality quiz, and a quiz inverts the argument — Burnout Whirlpools and the Shark Infested Waters are manufactured, by schools and workplaces and clinics built on the assumption that there is one correct way to have a mind.
 
 So every `helps` field in `tools/areas.mjs` names what the environment changes. *"Rest more"* is the failure mode. If a new paragraph cannot be written that way, the problem is the paragraph.
 

@@ -2,7 +2,7 @@
  * domination.mjs — the nine zones of *Autism & The Map of Neuronormative Domination*.
  *
  * THE SECOND MAP, AND THE ONE THAT MAKES THE FIRST ONE HONEST. Helen Edgar made it
- * with Ryan Boren, Chelsea Adams and Norah Hobbs, and it exists because the island on
+ * with Ryan Boren, Chelsea Adams and Norah Hobbs, and it exists because the map on
  * its own reads as a picture of a person.
  *
  * THESE ARE ANCHORS, NOT PAGES, and that is deliberate. Every zone here is a force
@@ -32,7 +32,7 @@ export const ZONES = [
     slug: 'harmful-highway',
     label: 'Harmful highway',
     hot: [45, 30],
-    body: 'The one-way road running through the middle of the island, all of its arrows pointing the same way. Decades of research done from the outside, aimed at making Autistic people more normal rather than making the world more habitable.',
+    body: 'The one-way road running through the middle of the map, all of its arrows pointing the same way. Decades of research done from the outside, aimed at making Autistic people more normal rather than making the world more habitable.',
     link: null,
   },
   {

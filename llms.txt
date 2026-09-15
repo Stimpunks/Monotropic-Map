@@ -1,11 +1,11 @@
 # Map of Monotropic Experiences
 
-> An island you can find yourself on. Twenty areas of monotropic experience, mapped by Helen Edgar (Autistic Realms) and developed with the Stimpunks Foundation. CC BY-SA 4.0.
+> A map you can find yourself on. Twenty areas of monotropic experience, mapped by Helen Edgar (Autistic Realms) and developed with the Stimpunks Foundation. CC BY-SA 4.0.
 
 Monotropism is a neurodiversity-affirming theory of autism (Murray, Lesser & Lawson, 2005): monotropic minds pull more attention toward fewer interests at a time. This site maps what that is like, area by area, and names who coined each one.
 
 ## The map
-- [The map](https://monotropicmap.org/): the island, as a picture and as a list.
+- [The map](https://monotropicmap.org/): the map itself, as a picture and as a list.
 - [The twenty areas](https://monotropicmap.org/areas): grouped into flow, connection, stuck states, and pressure.
 - [The frame](https://monotropicmap.org/neuronormative-domination): why stuck states are produced rather than personal.
 
@@ -22,7 +22,7 @@ Monotropism is a neurodiversity-affirming theory of autism (Murray, Lesser & Law
 - [Campsite of Cavendish Spaces](https://monotropicmap.org/campsite-of-cavendish-spaces): Psychologically and sensory safe spaces suited to zone work, flow states, intermittent collaboration, and collaborative niche construction. Named by Ryan Boren.
 - [Meerkat Mounds](https://monotropicmap.org/meerkat-mounds): Heightened state of vigilance and arousal that involves constantly looking for danger and threat. It is more than hyper-arousal, it is an overwhelmed  Named by Tanya Adkin & David Gray-Hammond.
 - [River Banks of Monotropic Time](https://monotropicmap.org/river-banks-of-monotropic-time): When absorbed in our special interests or passions it can feel like entering a portal. Normal time can feel like it is dissolving, the outside world m Named by Helen Edgar.
-- [Shark Infested Waters of Neuronormativity and Behaviourism & Double Empathy Problems](https://monotropicmap.org/shark-infested-waters): The water around the island: neuronormativity, behaviourism, and the double empathy problem. Neuronormativity is the assumption that there is a correc Named by Damian Milton.
+- [Shark Infested Waters of Neuronormativity and Behaviourism & Double Empathy Problems](https://monotropicmap.org/shark-infested-waters): The water the whole map sits in: neuronormativity, behaviourism, and the double empathy problem. Neuronormativity is the assumption that there is a co Named by Damian Milton.
 - [Beach of Body Doubling](https://monotropicmap.org/beach-of-body-doubling): A “body double” is a person or even pet who is present with us while we work. This provides a gentle form of accountability — their presence serves as Named by Jessica McCabe.
 - [Burnout Whirlpools](https://monotropicmap.org/burnout-whirlpools): Autistic burnout is a state of physical and mental fatigue, heightened stress, and diminished capacity to manage life skills, sensory input, and/or so Named by Dora Raymaker.
 - [Panic Hills of Low Object Permanence](https://monotropicmap.org/panic-hills-of-low-object-permanence): Autistic children have difficulties with their understanding of: what’s here, what’s now, what is permanent, and so on. Named by Wenn Lawson.
@@ -34,7 +34,7 @@ Monotropism is a neurodiversity-affirming theory of autism (Murray, Lesser & Law
 ## The nine zones of neuronormative domination
 - [Mountains of Misinformation](https://monotropicmap.org/neuronormative-domination#mountains-of-misinformation): What a person has to climb before anybody will believe what they are telling them about their own mind. Decades of it, published, cited, and taught.
 - [“Disorder” Framing Disaster Zone](https://monotropicmap.org/neuronormative-domination#disorder-framing-disaster-zone): Autism as a disorder: the framing built into the diagnostic manual, the funding, and the first sentence of most things ever written about us. It puts the fault inside the person before a conversation has started.
-- [Harmful highway](https://monotropicmap.org/neuronormative-domination#harmful-highway): The one-way road running through the middle of the island, all of its arrows pointing the same way. Decades of research done from the outside, aimed at making Autistic people more normal rather than making the world more habitable.
+- [Harmful highway](https://monotropicmap.org/neuronormative-domination#harmful-highway): The one-way road running through the middle of the map, all of its arrows pointing the same way. Decades of research done from the outside, aimed at making Autistic people more normal rather than making the world more habitable.
 - [Behaviourism Bay](https://monotropicmap.org/neuronormative-domination#behaviourism-bay): A theory of learning that reduces human beings to inputs and outputs, still running at scale in schools and clinics. Compliance is measured; the person is not asked.
 - [Marsh of Masking](https://monotropicmap.org/neuronormative-domination#marsh-of-masking): It covers most of the landscape, and that is the point of putting it in the middle. Masking is a survival mechanism of suppressed needs that many Autistic people perform just to get through a day. It works, and it costs everything.
 - [Sandstorm of Stigma](https://monotropicmap.org/neuronormative-domination#sandstorm-of-stigma): The weather that arrives with the label. It changes what a room assumes about a person before they have said anything, and it does not blow over.

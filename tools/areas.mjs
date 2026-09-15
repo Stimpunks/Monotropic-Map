@@ -34,12 +34,12 @@
  *  "Autism & The Map of Neuronormative Domination: Stuck States vs Flow States"
  *  (2025-02-05), which sorts the areas into stuck states, flow states, and
  *  monotropic socialising. `pressure` is the fourth: the areas that are not places
- *  you are but forces acting on the island. */
+ *  you are but forces acting on everything else. */
 export const STATES = new Map([
   ['flow',     { name: 'Flow',            blurb: 'Where monotropic attention does what it does well. These are not indulgences; they are how a monotropic bodymind refuels.' }],
   ['social',   { name: 'Connection',      blurb: 'Monotropic socialising, and the environments that make it possible.' }],
   ['stuck',    { name: 'Stuck',           blurb: 'States of inertia — unable to start, or unable to stop. Produced by conditions, not by character.' }],
-  ['pressure', { name: 'Pressure',        blurb: 'Not places you are, but forces acting on the island. These come from outside and they are made by people.' }],
+  ['pressure', { name: 'Pressure',        blurb: 'Not places you are, but forces acting on everything else here. These come from outside and they are made by people.' }],
 ]);
 
 export const AREAS = [
@@ -218,7 +218,7 @@ export const AREAS = [
     title: 'Shark Infested Waters',
     state: 'pressure',
     hot: [11, 91],
-    gloss: 'The water around the island: neuronormativity, behaviourism, and the double empathy problem. Neuronormativity is the assumption that there is a correct way to exist in this world. Behaviorism reduces human beings to simple inputs and outputs. The double empathy problem names the mutual incomprehension between people of different dispositional outlooks — mutual, and not the Autistic person’s fault.',
+    gloss: 'The water the whole map sits in: neuronormativity, behaviourism, and the double empathy problem. Neuronormativity is the assumption that there is a correct way to exist in this world. Behaviorism reduces human beings to simple inputs and outputs. The double empathy problem names the mutual incomprehension between people of different dispositional outlooks — mutual, and not the Autistic person’s fault.',
     who: { name: 'Damian Milton', url: 'https://www.autscape.org/2013/programme/handouts/Double%20empathy%20problem.pdf' },
     stimpunks: 'https://stimpunks.org/glossary/double-empathy-problem/',
     helps: 'Nothing a person does to themselves. These are the conditions the rest of the map sits in, and they are made and maintained by institutions. This is the area that has a politics rather than a coping strategy.',

@@ -23,7 +23,7 @@ The canonical home of the theory is **[monotropism.org](https://monotropism.org/
 
 ## The map is a map of other people's words
 
-Almost every area on this island was named by somebody, and the naming is the content. Erin Human on tendril theory. Fergus Murray on attention tunnels and flow. Damian Milton on the double empathy problem. Tanya Adkin and David Gray-Hammond on meerkat mode. Dora Raymaker on Autistic burnout. Wenn Lawson on object permanence. Helen Edgar on penguin pebbling, monotropic time, and the Autistic rhizome. Ryan Boren on Cavendish Space.
+Almost every area on this map was named by somebody, and the naming is the content. Erin Human on tendril theory. Fergus Murray on attention tunnels and flow. Damian Milton on the double empathy problem. Tanya Adkin and David Gray-Hammond on meerkat mode. Dora Raymaker on Autistic burnout. Wenn Lawson on object permanence. Helen Edgar on penguin pebbling, monotropic time, and the Autistic rhizome. Ryan Boren on Cavendish Space.
 
 Every area page credits its originator and links to their own words. Where an area is a shared community coinage with no single author, the page says that rather than leaving a blank.
 
@@ -41,7 +41,7 @@ Everything on this site derived from the map carries the same licence. You can s
 - **No score, no type, no result.** This is a map, not an assessment.
 - **No accounts, no analytics, no tracking.** See [privacy](privacy.html).
 
-## Elsewhere on the island
+## Elsewhere on the map
 
 Some areas of the map have grown their own sites.
 

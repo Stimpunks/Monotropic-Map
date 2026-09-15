@@ -23,6 +23,15 @@ Penguin Pebbling has one. This site does not, and that is a deliberate not-yet r
 
 ## Settled
 
+### The site's voice says "map", not "island" — except in alt text
+Changed 2026-09-15, on Ryan's call. **"Island" now carries a Jeffrey Epstein association for a lot of readers**, which is not something a page about Autistic flow states should be making anybody think about.
+
+The tagline went from *An island you can find yourself on* to **A map you can find yourself on**, and the word was replaced in every other piece of reader-facing voice: the home page's "the water it all sits in", the Pressure blurb, the Shark Infested Waters gloss, and the prose on `stories`, `about` and `neuronormative-domination`.
+
+**Three uses were kept, all of them alt text**, and the distinction is the point: alt text describes the artwork, and the artwork *is* an island. A blind reader needs the same picture everyone else gets, and calling it a map would be describing something the image does not show. **Accuracy about a picture is not the same job as choosing our own vocabulary.**
+
+So: the word survives only where it is describing what is drawn. Anywhere the site is speaking in its own voice, it says map. **Do not "fix" the alt text for consistency** — that would make it worse.
+
 ### The repository is public
 Opened 2026-09-15, on Ryan's call, matching [Queering Earth](https://queering.earth/) rather than Penguin Pebbling. It was created private and flipped once the site was live.
 

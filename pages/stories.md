@@ -1,6 +1,6 @@
 # Your map
 
-This map is one Autistic person's island. Helen Edgar drew it in 2024 as a reflection of her own monotropic bodymind, and then a lot of people recognised themselves in it.
+This is one Autistic person's map. Helen Edgar drew it in 2024 as a reflection of her own monotropic bodymind, and then a lot of people recognised themselves in it.
 
 Yours will be a different shape.
 
@@ -8,7 +8,7 @@ Yours will be a different shape.
 
 Go through the twenty areas and say what each one is for you right now — somewhere you are living, somewhere you pass through, somewhere that has taken over the whole map this month, or somewhere you have never been.
 
-There is no score at the end of this. There is no type, no result, and no right island. You get your own legend, and you can print it, keep it, or send it to us.
+There is no score at the end of this. There is no type, no result, and no right map. You get your own legend, and you can print it, keep it, or send it to us.
 
 Nothing you mark leaves your device. There is no account and there is nothing to sign up for.
 
@@ -23,7 +23,7 @@ Nothing you mark leaves your device. There is no account and there is nothing to
 - How would you get there, and what support would you need?
 - What is your biggest hurdle?
 - What new areas would you add?
-- Are some areas bigger for you? Does the Burnout Whirlpool need to swallow half the island this year?
+- Are some areas bigger for you? Does the Burnout Whirlpool need to swallow half the map this year?
 - Are you in several places at once — how does that feel, and what helps you navigate?
 - What does the Forest of Joy, Awe and Wonder feel like for you? What are your passions?
 - What would your childhood map have looked like?

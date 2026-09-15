@@ -37,7 +37,7 @@ export const SITE = {
   domain: 'monotropicmap.org',
   origin: 'https://monotropicmap.org',
   title: 'Map of Monotropic Experiences',
-  tagline: 'An island you can find yourself on',
+  tagline: 'A map you can find yourself on',
   authors: 'Helen Edgar (Autistic Realms) and the Stimpunks Foundation',
 };
 
@@ -239,7 +239,7 @@ ${hotspots()}
 ${stateGroups()}
 </div>
 
-<h2>The water this island sits in</h2>
+<h2>The water it all sits in</h2>
 <p class="prose">It would be easy to read this map as a picture of a person. It is not. Burnout Whirlpools and the Shark Infested Waters are not weather that happens to you — they are produced, by schools and workplaces and clinics built on the assumption that there is one correct way to have a mind. <a href="neuronormative-domination.html">The second map</a> is about who makes the weather.</p>
 
 <h2>Take it further</h2>
@@ -264,7 +264,7 @@ ${stateGroups()}`;
   return shell({
     slug: 'areas',
     title: 'The twenty areas',
-    description: 'Every area of the Map of Monotropic Experiences, grouped into flow, connection, stuck states, and the pressures acting on the island.',
+    description: 'Every area of the Map of Monotropic Experiences, grouped into flow, connection, stuck states, and the pressures acting on it.',
     body,
   });
 }
@@ -302,7 +302,7 @@ ${borders}
 <h2>Read more</h2>
 <ul class="prose">
   <li><a href="${a.stimpunks}" rel="noopener">Stimpunks glossary</a></li>
-${a.who ? `  <li><a href="${a.who.url}" rel="noopener">${esc(a.who.name)} on ${esc(plain(a.title).toLowerCase())}</a></li>\n` : ''}${a.sibling ? `  <li><a href="${a.sibling.url}" rel="noopener">${esc(a.sibling.name)}</a> — a whole site about this part of the island.</li>\n` : ''}</ul>
+${a.who ? `  <li><a href="${a.who.url}" rel="noopener">${esc(a.who.name)} on ${esc(plain(a.title).toLowerCase())}</a></li>\n` : ''}${a.sibling ? `  <li><a href="${a.sibling.url}" rel="noopener">${esc(a.sibling.name)}</a> — a whole site about this part of the map.</li>\n` : ''}</ul>
 
 <nav class="pager" aria-label="Areas">
   <a href="${prev.slug}.html">← ${prev.n}. ${prev.label}</a>
@@ -386,7 +386,7 @@ function llmsTxt() {
 Monotropism is a neurodiversity-affirming theory of autism (Murray, Lesser & Lawson, 2005): monotropic minds pull more attention toward fewer interests at a time. This site maps what that is like, area by area, and names who coined each one.
 
 ## The map
-- [The map](${SITE.origin}/): the island, as a picture and as a list.
+- [The map](${SITE.origin}/): the map itself, as a picture and as a list.
 - [The twenty areas](${SITE.origin}/areas): grouped into flow, connection, stuck states, and pressure.
 - [The frame](${SITE.origin}/neuronormative-domination): why stuck states are produced rather than personal.
 

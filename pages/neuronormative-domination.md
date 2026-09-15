@@ -2,7 +2,7 @@
 
 There is a second map, and the first one does not make sense without it.
 
-*Autism &amp; The Map of Neuronormative Domination: Stuck States vs Flow States* was made by Helen Edgar with Ryan Boren, Chelsea Adams and Norah Hobbs. It exists because the island on its own is too easy to misread.
+*Autism &amp; The Map of Neuronormative Domination: Stuck States vs Flow States* was made by Helen Edgar with Ryan Boren, Chelsea Adams and Norah Hobbs. It exists because the map on its own is too easy to misread.
 
 ## The misreading
 
@@ -31,7 +31,7 @@ So the question the map asks is never *what is wrong with this person*. It is *w
 
 ## Why this page exists at all
 
-We built this site knowing that a beautiful interactive island is one short step from a personality quiz.
+We built this site knowing that a beautiful interactive map is one short step from a personality quiz.
 
 So there is a rule underneath every area page: **what changes a stuck state is a change to the conditions, not an instruction to the person.** You will not find "rest more" here. You will find what an environment can stop doing.
 

@@ -1,12 +1,12 @@
 # Map of Monotropic Experiences
 
-The destination site for the **[Map of Monotropic Experiences](https://stimpunks.org/2024/10/21/map-of-monotropic-experiences/)** — Helen Edgar's island of twenty monotropic places, developed with the Stimpunks Foundation.
+The destination site for the **[Map of Monotropic Experiences](https://stimpunks.org/2024/10/21/map-of-monotropic-experiences/)** — Helen Edgar's map of twenty monotropic places, developed with the Stimpunks Foundation.
 
 Live at **[monotropicmap.org](https://monotropicmap.org/)**. Static files, no build step, deployed by Netlify from `main` — **pushing publishes, there is no staging step.**
 
 ## What is here
 
-- **Two maps, both with hotspots.** The island, and *Autism &amp; The Map of Neuronormative Domination* — the frame that explains who makes the weather.
+- **Two maps, both with hotspots.** The map itself, and *Autism &amp; The Map of Neuronormative Domination* — the frame that explains who makes the weather.
 - **Twenty area pages**, each crediting the person who named that area and linking to their own words.
 - **The free training**, the workbook, posters, and the community story project.
 - **No accounts, no analytics, no third parties.** `default-src 'none'`.
@@ -14,7 +14,7 @@ Live at **[monotropicmap.org](https://monotropicmap.org/)**. Static files, no bu
 ## Layout
 
 ```
-index.html                 the island: picture and list, both real front doors
+index.html                 the map: picture and list, both real front doors
 areas.html                 all twenty, grouped by flow / connection / stuck / pressure
 <twenty area pages>.html   generated, one per area
 neuronormative-domination.html   the second map and its nine zones
