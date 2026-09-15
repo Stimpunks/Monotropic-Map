@@ -152,7 +152,9 @@ The crop is a **fixed 16:9 box**, measured once and verified across pages 1, 3, 
 **The source PDF is not in this repository** — 62 MB, and Autistic Realms publishes it. `make-slides.py` fetches it, so regenerating needs the network, and `--check` verifies only that the rendered slides and `slides.mjs` still agree.
 
 ### No Monotropism Questionnaire here
-The MQ is a validated instrument by Garau et al. with 47 items written by Autistic adults. It has a home of its own. Copying somebody else's validated measure would invite readers to treat our numbers as theirs.
+The MQ is a validated instrument by Garau et al. with 47 items written by Autistic adults, shared under CC BY-NC-SA. Copying somebody else's validated measure would invite readers to treat our numbers as theirs.
+
+**Where we point changed on 2026-09-15, on Ryan's call**, from `dlcincluded.github.io/MQ` to [pa11erns.com/psychometrics/mq](https://pa11erns.com/psychometrics/mq/). The wording around every one of those links changed with it, and that is the part worth reading twice: two of them said the link went to the measure's **own authors** — *hosted by its own authors*, *a home of its own* — and the new host is a third party that implements the MQ and cites Garau et al. rather than being them. **Swapping the URL under that sentence would have pinned the authors' name to a site that is not theirs**, which is the Dorothy Tennov error in `ATTRIBUTIONS.md` exactly, committed a second time. The links now say the measure is Garau et al.'s and the hosting is not.
 
 ### No score, no type, no result, no account
 This is a map, not an assessment. The moment the site emits a number it is a quiz.

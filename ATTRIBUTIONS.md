@@ -80,7 +80,7 @@ The four woff2 files are converted from the TrueType fonts published at [google/
 
 Monotropism was developed by **Dinah Murray**, **Mike Lesser** and **Wenn Lawson** (Murray, Lesser &amp; Lawson, 2005). The canonical home of the theory is **[monotropism.org](https://monotropism.org/)**, maintained by **Fergus Murray**.
 
-The **Monotropism Questionnaire** is by **Garau et al. (2023)** and lives at [dlcincluded.github.io/MQ](https://dlcincluded.github.io/MQ/). **We link it and never copy it.**
+The **Monotropism Questionnaire** is by **Garau et al. (2023)**, shared under CC BY-NC-SA. We point people to [pa11erns.com/psychometrics/mq](https://pa11erns.com/psychometrics/mq/), which hosts it and cites the authors. **The measure is theirs and the hosting is somebody else's again — we copy neither**, and the wording here says "hosts it" rather than "their own home" for exactly that reason.
 
 Intersectionality is **Kimberlé Crenshaw's**. The double empathy problem is **Damian Milton's** (2012).
 

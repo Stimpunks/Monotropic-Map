@@ -37,7 +37,7 @@ Everything on this site derived from the map carries the same licence. You can s
 
 ## What this site does not do
 
-- **No Monotropism Questionnaire here.** The MQ is a validated self-report measure developed by Garau et al. in 2023, with 47 items written by Autistic adults from lived experience and academic expertise. It has [a home of its own](https://dlcincluded.github.io/MQ/). We link it. Copying somebody else's validated instrument would invite people to read our numbers as theirs.
+- **No Monotropism Questionnaire here.** The MQ is a validated self-report measure developed by Garau et al. in 2023, with 47 items written by Autistic adults from lived experience and academic expertise. You can [take it online](https://pa11erns.com/psychometrics/mq/), hosted elsewhere with its authors cited. We link it. Copying somebody else's validated instrument would invite people to read our numbers as theirs.
 - **No score, no type, no result.** This is a map, not an assessment.
 - **No accounts, no analytics, no tracking.** See [privacy](privacy.html).
 

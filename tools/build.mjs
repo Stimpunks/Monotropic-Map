@@ -261,7 +261,7 @@ ${numberedKey()}
 <ul class="prose">
   <li><a href="training.html">Free open-source training</a> — about forty-five minutes, for schools, workplaces, health settings and community groups.</li>
   <li><a href="stories.html">Mark your own map</a>, and share it with the community story project.</li>
-  <li><a href="https://dlcincluded.github.io/MQ/" rel="noopener">The Monotropism Questionnaire</a> — Garau et al.'s validated measure, hosted by its own authors. We link it rather than copying it.</li>
+  <li><a href="https://pa11erns.com/psychometrics/mq/" rel="noopener">The Monotropism Questionnaire</a> — Garau et al.'s validated measure, shared under CC BY-NC-SA. We link it rather than copying it.</li>
 </ul>`;
   return shell({
     slug: 'index',
