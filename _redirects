@@ -1,0 +1,7 @@
+# The map moved here from four addresses across two domains. Those keep working
+# where we control them; these are the shapes people will guess at.
+/map            /                 301
+/the-map        /                 301
+/monotropism    /about            301
+/workbook       /training         301
+/questionnaire  https://dlcincluded.github.io/MQ/  302

@@ -1,0 +1,12 @@
+# monotropicmap.org — static files, no build step. Netlify serves them as-is.
+# Pushing to main publishes. There is no staging step.
+
+[build]
+  publish = "."
+  command = ""
+
+[build.processing]
+  skip_processing = true
+
+# Response headers live in _headers so they sit beside the site rather than in
+# a dashboard nobody can grep.

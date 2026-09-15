@@ -1,0 +1,348 @@
+{
+  "site": "Map of Monotropic Experiences",
+  "url": "https://monotropicmap.org",
+  "generated_from": "tools/areas.mjs",
+  "note": "The twenty areas, published as text so a mirror gets the content and not just the page furniture.",
+  "entries": [
+    {
+      "n": 1,
+      "slug": "attention-tunnels",
+      "title": "Attention Tunnels",
+      "label": "Attention Tunnels",
+      "state": "flow",
+      "url": "https://monotropicmap.org/attention-tunnels",
+      "definition": "Entering flow states — or attention tunnels — is a necessary coping strategy for many of us. Flow states are the pinnacle of intrinsic motivation.",
+      "named_by": "Fergus Murray",
+      "source": "https://oolong.medium.com/craft-flow-and-cognitive-styles-a47f827fcd6a",
+      "what_changes_this": "Time that is not interrupted, and a warning before it ends. A tunnel is cheap to stay in and expensive to re-enter, so the thing an environment can give is a long uninterrupted stretch and notice before the end of it.",
+      "borders": [
+        "river-of-monotropic-flow-states",
+        "tendril-theory",
+        "sudden-storms-of-unexpected-events"
+      ]
+    },
+    {
+      "n": 2,
+      "slug": "penguin-pebbling-cove-of-friendship",
+      "title": "Penguin Pebbling Cove of Friendship",
+      "label": "Penguin Pebbling Cove of Friendship",
+      "state": "social",
+      "url": "https://monotropicmap.org/penguin-pebbling-cove-of-friendship",
+      "definition": "“Penguin pebbling” is a little exchange between two people to show that they care and want to build a meaningful connection.",
+      "named_by": "Helen Edgar",
+      "source": "https://autisticrealms.com/penguin-pebbling-an-autistic-love-language/",
+      "what_changes_this": "Somewhere to put the pebble, and people who know what one is. A link sent with no message is a whole sentence; an environment that reads it as noise is the thing that needs to change.",
+      "borders": [
+        "rhizomatic-communities",
+        "forest-of-joy-awe-and-wonder",
+        "infodump-canyon"
+      ]
+    },
+    {
+      "n": 3,
+      "slug": "tendril-theory",
+      "title": "Tendril Theory",
+      "label": "Tendril Theory",
+      "state": "flow",
+      "url": "https://monotropicmap.org/tendril-theory",
+      "definition": "When I’m focused on something, my mind sends out a million tendrils of thought, expands into all of the thoughts & feelings. When I need to switch tasks, I must retract all of the tendrils of my mind. This takes some time.",
+      "named_by": "Erin Human",
+      "source": "https://eisforerin.com/2015/08/10/tendril-theory/",
+      "what_changes_this": "Transitions with a runway. The cost is in the retraction, not the task, so the change an environment can make is to stop treating “just switch to this quickly” as a small ask.",
+      "borders": [
+        "attention-tunnels",
+        "river-banks-of-monotropic-time",
+        "sudden-storms-of-unexpected-events"
+      ]
+    },
+    {
+      "n": 4,
+      "slug": "mountains-of-ruminating-thoughts",
+      "title": "Mountains of Ruminating Thoughts",
+      "label": "Mountains of Ruminating Thoughts",
+      "state": "stuck",
+      "url": "https://monotropicmap.org/mountains-of-ruminating-thoughts",
+      "definition": "When your thoughts are all swirly and you just keep chewing on the same thought over and over and you can’t stop thinking about it and it’s distracting you and sometimes even putting you in a really bad mood or making you irritable.",
+      "named_by": "Dusty Chipura",
+      "source": "https://twitter.com/dustychipura/status/1303759000022908928",
+      "what_changes_this": "Resolution, or permission to stop waiting for it. A great deal of rumination is an unanswered question held open by somebody else — a decision not made, a reply not sent, a rule nobody will state plainly.",
+      "borders": [
+        "cyclones-of-unmet-needs",
+        "meerkat-mounds",
+        "burnout-whirlpools"
+      ]
+    },
+    {
+      "n": 5,
+      "slug": "cyclones-of-unmet-needs",
+      "title": "Cyclones of Unmet Needs",
+      "label": "Cyclones of Unmet Needs",
+      "state": "pressure",
+      "url": "https://monotropicmap.org/cyclones-of-unmet-needs",
+      "definition": "Mismatch between the areas we actually receive support, compared to the areas we would ideally like support.",
+      "named_by": "Cassidy et al.",
+      "source": "https://molecularautism.biomedcentral.com/articles/10.1186/s13229-018-0226-4",
+      "what_changes_this": "Meeting the need. This one is not a metaphor and it does not need reframing — it is a gap between support asked for and support given, and it closes from the side that holds the resources.",
+      "borders": [
+        "shark-infested-waters",
+        "burnout-whirlpools",
+        "mountains-of-ruminating-thoughts"
+      ]
+    },
+    {
+      "n": 6,
+      "slug": "rabbit-holes-of-research",
+      "title": "Rabbit Holes of Research",
+      "label": "Rabbit Holes of Research",
+      "state": "flow",
+      "url": "https://monotropicmap.org/rabbit-holes-of-research",
+      "definition": "“Down the rabbit hole” is an English-language idiom or trope which refers to getting deep into something, or ending up somewhere strange.",
+      "named_by": null,
+      "source": null,
+      "what_changes_this": "Being allowed to go all the way down. Depth is the point, and an environment that rewards only breadth is asking a monotropic mind to work against its own grain and calling the result a focus problem.",
+      "borders": [
+        "infodump-canyon",
+        "attention-tunnels",
+        "river-of-monotropic-flow-states"
+      ]
+    },
+    {
+      "n": 7,
+      "slug": "infodump-canyon",
+      "title": "Infodump Canyon",
+      "label": "Infodump Canyon",
+      "state": "social",
+      "url": "https://monotropicmap.org/infodump-canyon",
+      "definition": "Talking a lot about a topic in great detail.",
+      "named_by": null,
+      "source": null,
+      "what_changes_this": "Somewhere it lands as a gift. An infodump is an act of intimacy — it is how a lot of us say *I want you to have this* — and a room that hears it as domination will get less of everything, not just less talking.",
+      "borders": [
+        "rabbit-holes-of-research",
+        "penguin-pebbling-cove-of-friendship",
+        "rhizomatic-communities"
+      ]
+    },
+    {
+      "n": 8,
+      "slug": "rhizomatic-communities",
+      "title": "Rhizomatic Communities",
+      "label": "Rhizomatic Communities",
+      "state": "social",
+      "url": "https://monotropicmap.org/rhizomatic-communities",
+      "definition": "A growing and evolving network of Autistic communities with no hierarchy or dependence on anothers existence.",
+      "named_by": "Helen Edgar",
+      "source": "https://autisticrealms.com/the-autistic-rhizome/",
+      "what_changes_this": "No single point of failure. A rhizome survives because nothing at its centre can be captured — which is also why it resists being organised into something legible by an institution.",
+      "borders": [
+        "penguin-pebbling-cove-of-friendship",
+        "campsite-of-cavendish-spaces",
+        "forest-of-joy-awe-and-wonder"
+      ]
+    },
+    {
+      "n": 9,
+      "slug": "river-of-monotropic-flow-states",
+      "title": "River of Monotropic Flow States",
+      "label": "River of Monotropic Flow States",
+      "state": "flow",
+      "url": "https://monotropicmap.org/river-of-monotropic-flow-states",
+      "definition": "Entering flow states — or attention tunnels — is a necessary coping strategy for many of us. Flow states are the pinnacle of intrinsic motivation.",
+      "named_by": "Fergus Murray",
+      "source": "https://oolong.medium.com/craft-flow-and-cognitive-styles-a47f827fcd6a",
+      "what_changes_this": "Let the river run. Flow is how a monotropic bodymind recharges, so time in it is not time off the work — and an environment that treats it as a reward to be earned after the real tasks has the arithmetic backwards.",
+      "borders": [
+        "attention-tunnels",
+        "river-banks-of-monotropic-time",
+        "burnout-whirlpools"
+      ]
+    },
+    {
+      "n": 10,
+      "slug": "campsite-of-cavendish-spaces",
+      "title": "Campsite of Cavendish Spaces",
+      "label": "Campsite of Cavendish Spaces",
+      "state": "social",
+      "url": "https://monotropicmap.org/campsite-of-cavendish-spaces",
+      "definition": "Psychologically and sensory safe spaces suited to zone work, flow states, intermittent collaboration, and collaborative niche construction.",
+      "named_by": "Ryan Boren",
+      "source": "https://stimpunks.org/space/cavendish/",
+      "what_changes_this": "Cave, campfire, watering hole, library, habitat — and the ability to choose between them. The point is not one perfect room; it is that a person can move to the zone that fits what they are doing right now.",
+      "borders": [
+        "rhizomatic-communities",
+        "beach-of-body-doubling",
+        "forest-of-joy-awe-and-wonder"
+      ]
+    },
+    {
+      "n": 11,
+      "slug": "meerkat-mounds",
+      "title": "Meerkat Mounds",
+      "label": "Meerkat Mounds",
+      "state": "stuck",
+      "url": "https://monotropicmap.org/meerkat-mounds",
+      "definition": "Heightened state of vigilance and arousal that involves constantly looking for danger and threat. It is more than hyper-arousal, it is an overwhelmed monotropic person desperately looking for a hook into a monotropic flow-state.",
+      "named_by": "Tanya Adkin & David Gray-Hammond",
+      "source": "https://emergentdivergence.com/2023/06/06/what-is-meerkat-mode-and-how-does-it-relate-to-audhd/",
+      "what_changes_this": "Removing the threat, not the vigilance. Meerkat mode is an accurate reading of an unsafe room. It stops when the room is safe, and telling somebody to calm down inside it is asking them to stop perceiving correctly.",
+      "borders": [
+        "mountains-of-ruminating-thoughts",
+        "shark-infested-waters",
+        "burnout-whirlpools"
+      ]
+    },
+    {
+      "n": 12,
+      "slug": "river-banks-of-monotropic-time",
+      "title": "Riverbanks of Monotropic Time",
+      "label": "River Banks of Monotropic Time",
+      "state": "flow",
+      "url": "https://monotropicmap.org/river-banks-of-monotropic-time",
+      "definition": "When absorbed in our special interests or passions it can feel like entering a portal. Normal time can feel like it is dissolving, the outside world may feel like it is melting away. This can be really rejuvenating for the sensory system and help to recharge the bodymind.",
+      "named_by": "Helen Edgar",
+      "source": "https://autisticrealms.com/monotropic-time/",
+      "what_changes_this": "Clocks that bend. Deadlines that arrive without warning, meetings that fragment a day into unusable pieces, and “it only takes five minutes” are all the same request: leave monotropic time and keep working anyway.",
+      "borders": [
+        "river-of-monotropic-flow-states",
+        "tendril-theory",
+        "attention-tunnels"
+      ]
+    },
+    {
+      "n": 13,
+      "slug": "shark-infested-waters",
+      "title": "Shark Infested Waters",
+      "label": "Shark Infested Waters of Neuronormativity and Behaviourism & Double Empathy Problems",
+      "state": "pressure",
+      "url": "https://monotropicmap.org/shark-infested-waters",
+      "definition": "The water around the island: neuronormativity, behaviourism, and the double empathy problem. Neuronormativity is the assumption that there is a correct way to exist in this world. Behaviorism reduces human beings to simple inputs and outputs. The double empathy problem names the mutual incomprehension between people of different dispositional outlooks — mutual, and not the Autistic person’s fault.",
+      "named_by": "Damian Milton",
+      "source": "https://www.autscape.org/2013/programme/handouts/Double%20empathy%20problem.pdf",
+      "what_changes_this": "Nothing a person does to themselves. These are the conditions the rest of the map sits in, and they are made and maintained by institutions. This is the area that has a politics rather than a coping strategy.",
+      "borders": [
+        "cyclones-of-unmet-needs",
+        "meerkat-mounds",
+        "burnout-whirlpools"
+      ]
+    },
+    {
+      "n": 14,
+      "slug": "beach-of-body-doubling",
+      "title": "Beach of Body Doubling",
+      "label": "Beach of Body Doubling",
+      "state": "social",
+      "url": "https://monotropicmap.org/beach-of-body-doubling",
+      "definition": "A “body double” is a person or even pet who is present with us while we work. This provides a gentle form of accountability — their presence serves as a reminder of what we’re supposed to be doing so we’re less likely to get distracted.",
+      "named_by": "Jessica McCabe",
+      "source": "https://www.youtube.com/watch?v=ni9biXNDZe0",
+      "what_changes_this": "Company without supervision. The difference matters: a body double is present, not watching. The moment presence becomes monitoring it stops working and starts costing.",
+      "borders": [
+        "campsite-of-cavendish-spaces",
+        "rhizomatic-communities",
+        "river-of-monotropic-flow-states"
+      ]
+    },
+    {
+      "n": 15,
+      "slug": "burnout-whirlpools",
+      "title": "Burnout Whirlpools",
+      "label": "Burnout Whirlpools",
+      "state": "stuck",
+      "url": "https://monotropicmap.org/burnout-whirlpools",
+      "definition": "Autistic burnout is a state of physical and mental fatigue, heightened stress, and diminished capacity to manage life skills, sensory input, and/or social interactions, which comes from years of being severely overtaxed by the strain of trying to live up to demands that are out of sync with our needs.",
+      "named_by": "Dora Raymaker",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/32851204/",
+      "what_changes_this": "Lowering the demands that caused it. Burnout is manufactured by years of mismatch, so it is not cured by resilience training, and a return to the same conditions is a return to the whirlpool.",
+      "borders": [
+        "cyclones-of-unmet-needs",
+        "shark-infested-waters",
+        "meerkat-mounds"
+      ]
+    },
+    {
+      "n": 16,
+      "slug": "panic-hills-of-low-object-permanence",
+      "title": "Panic Hills of Low Object Permanence",
+      "label": "Panic Hills of Low Object Permanence",
+      "state": "stuck",
+      "url": "https://monotropicmap.org/panic-hills-of-low-object-permanence",
+      "definition": "Autistic children have difficulties with their understanding of: what’s here, what’s now, what is permanent, and so on.",
+      "named_by": "Wenn Lawson",
+      "source": "https://www.researchgate.net/publication/319456203_Problems_with_Object_Permanence_Rethinking_Traditional_Beliefs_Associated_with_Poor_Theory_of_Mind_in_Autism",
+      "what_changes_this": "Making things visible. Out of sight really is out of mind here — for objects, for tasks, and for people — so open shelving, a visible list, and a friend who does not read silence as rejection do more than any reminder to try harder.",
+      "borders": [
+        "mountains-of-ruminating-thoughts",
+        "lake-of-limerence",
+        "tides-of-the-sensory-sea"
+      ]
+    },
+    {
+      "n": 17,
+      "slug": "forest-of-joy-awe-and-wonder",
+      "title": "Forest of Joy, Awe and Wonder",
+      "label": "Forest of Joy, Awe & Wonder",
+      "state": "social",
+      "url": "https://monotropicmap.org/forest-of-joy-awe-and-wonder",
+      "definition": "Autistic joy is one of our favorite things about being autistic. It can be intense as a meltdown, but filled with overwhelming happiness and excitement. When we experience joy, we feel the excited vibrations throughout our bodies. To release the energy, we do a “happy stim.”",
+      "named_by": "Blackwater",
+      "source": "https://themighty.com/topic/autism-spectrum-disorder/how-i-experience-autistic-joy/",
+      "what_changes_this": "Room to show it. Autistic joy is loud in the body, and an environment that requires it to be performed quietly is asking for the joy without the person.",
+      "borders": [
+        "rhizomatic-communities",
+        "penguin-pebbling-cove-of-friendship",
+        "campsite-of-cavendish-spaces"
+      ]
+    },
+    {
+      "n": 18,
+      "slug": "lake-of-limerence",
+      "title": "Lake of Limerence",
+      "label": "Lake of Limerence",
+      "state": "stuck",
+      "url": "https://monotropicmap.org/lake-of-limerence",
+      "definition": "Limerence is a state of involuntary obsession with another person. The experience of limerence is different from love or lust in that it is based on the uncertainty that the person you desire also desires you.",
+      "named_by": "Psychology Today",
+      "source": "https://www.psychologytoday.com/us/basics/limerence",
+      "what_changes_this": "Certainty, which is the thing limerence is missing. It is built out of not knowing, and it is a monotropic attention system running its ordinary depth on a person — not a character flaw and not a warning about you.",
+      "borders": [
+        "panic-hills-of-low-object-permanence",
+        "mountains-of-ruminating-thoughts",
+        "forest-of-joy-awe-and-wonder"
+      ]
+    },
+    {
+      "n": 19,
+      "slug": "tides-of-the-sensory-sea",
+      "title": "Tides of the Sensory Sea",
+      "label": "Tides of the Sensory Sea",
+      "state": "stuck",
+      "url": "https://monotropicmap.org/tides-of-the-sensory-sea",
+      "definition": "Neurodivergent people are hypersensitive to mindset and environment due to a greater number of neuronal connections. They have both a higher risk for trauma and a large capacity for sensing safety.",
+      "named_by": "Janae Elisabeth",
+      "source": "https://medium.com/age-of-awareness/neuroception-and-the-3-part-brain-b38f482c34b0",
+      "what_changes_this": "Control over the inputs. Light you can dim, sound you can leave, fabric you chose — the tide is not a mood, and the lever is in the room rather than in the person.",
+      "borders": [
+        "panic-hills-of-low-object-permanence",
+        "sudden-storms-of-unexpected-events",
+        "burnout-whirlpools"
+      ]
+    },
+    {
+      "n": 20,
+      "slug": "sudden-storms-of-unexpected-events",
+      "title": "Sudden Storms of Unexpected Events",
+      "label": "Sudden Storms of Unexpected Events",
+      "state": "stuck",
+      "url": "https://monotropicmap.org/sudden-storms-of-unexpected-events",
+      "definition": "If an autistic person is pulled out of monotropic flow too quickly, it causes our sensory systems to dysregulate. This in turn triggers us into emotional dysregulation, and we quickly find ourselves in a state ranging from uncomfortable, to grumpy, to angry, or even triggered into a meltdown or a shutdown.",
+      "named_by": "Kieran Rose",
+      "source": "https://www.youtube.com/watch?v=qUFDAevkd3E&t=224s",
+      "what_changes_this": "Warning. Almost all of the damage here is in the suddenness rather than the change, and notice is free to give.",
+      "borders": [
+        "attention-tunnels",
+        "tendril-theory",
+        "tides-of-the-sensory-sea"
+      ]
+    }
+  ]
+}

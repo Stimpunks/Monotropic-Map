@@ -1,0 +1,49 @@
+# Map of Monotropic Experiences
+
+> An island you can find yourself on. Twenty areas of monotropic experience, mapped by Helen Edgar (Autistic Realms) and developed with the Stimpunks Foundation. CC BY-SA 4.0.
+
+Monotropism is a neurodiversity-affirming theory of autism (Murray, Lesser & Lawson, 2005): monotropic minds pull more attention toward fewer interests at a time. This site maps what that is like, area by area, and names who coined each one.
+
+## The map
+- [The map](https://monotropicmap.org/): the island, as a picture and as a list.
+- [The twenty areas](https://monotropicmap.org/areas): grouped into flow, connection, stuck states, and pressure.
+- [The frame](https://monotropicmap.org/neuronormative-domination): why stuck states are produced rather than personal.
+
+## The twenty areas
+- [Attention Tunnels](https://monotropicmap.org/attention-tunnels): Entering flow states — or attention tunnels — is a necessary coping strategy for many of us. Flow states are the pinnacle of intrinsic motivation. Named by Fergus Murray.
+- [Penguin Pebbling Cove of Friendship](https://monotropicmap.org/penguin-pebbling-cove-of-friendship): “Penguin pebbling” is a little exchange between two people to show that they care and want to build a meaningful connection. Named by Helen Edgar.
+- [Tendril Theory](https://monotropicmap.org/tendril-theory): When I’m focused on something, my mind sends out a million tendrils of thought, expands into all of the thoughts & feelings. When I need to switch tas Named by Erin Human.
+- [Mountains of Ruminating Thoughts](https://monotropicmap.org/mountains-of-ruminating-thoughts): When your thoughts are all swirly and you just keep chewing on the same thought over and over and you can’t stop thinking about it and it’s distractin Named by Dusty Chipura.
+- [Cyclones of Unmet Needs](https://monotropicmap.org/cyclones-of-unmet-needs): Mismatch between the areas we actually receive support, compared to the areas we would ideally like support. Named by Cassidy et al..
+- [Rabbit Holes of Research](https://monotropicmap.org/rabbit-holes-of-research): “Down the rabbit hole” is an English-language idiom or trope which refers to getting deep into something, or ending up somewhere strange.
+- [Infodump Canyon](https://monotropicmap.org/infodump-canyon): Talking a lot about a topic in great detail.
+- [Rhizomatic Communities](https://monotropicmap.org/rhizomatic-communities): A growing and evolving network of Autistic communities with no hierarchy or dependence on anothers existence. Named by Helen Edgar.
+- [River of Monotropic Flow States](https://monotropicmap.org/river-of-monotropic-flow-states): Entering flow states — or attention tunnels — is a necessary coping strategy for many of us. Flow states are the pinnacle of intrinsic motivation. Named by Fergus Murray.
+- [Campsite of Cavendish Spaces](https://monotropicmap.org/campsite-of-cavendish-spaces): Psychologically and sensory safe spaces suited to zone work, flow states, intermittent collaboration, and collaborative niche construction. Named by Ryan Boren.
+- [Meerkat Mounds](https://monotropicmap.org/meerkat-mounds): Heightened state of vigilance and arousal that involves constantly looking for danger and threat. It is more than hyper-arousal, it is an overwhelmed  Named by Tanya Adkin & David Gray-Hammond.
+- [River Banks of Monotropic Time](https://monotropicmap.org/river-banks-of-monotropic-time): When absorbed in our special interests or passions it can feel like entering a portal. Normal time can feel like it is dissolving, the outside world m Named by Helen Edgar.
+- [Shark Infested Waters of Neuronormativity and Behaviourism & Double Empathy Problems](https://monotropicmap.org/shark-infested-waters): The water around the island: neuronormativity, behaviourism, and the double empathy problem. Neuronormativity is the assumption that there is a correc Named by Damian Milton.
+- [Beach of Body Doubling](https://monotropicmap.org/beach-of-body-doubling): A “body double” is a person or even pet who is present with us while we work. This provides a gentle form of accountability — their presence serves as Named by Jessica McCabe.
+- [Burnout Whirlpools](https://monotropicmap.org/burnout-whirlpools): Autistic burnout is a state of physical and mental fatigue, heightened stress, and diminished capacity to manage life skills, sensory input, and/or so Named by Dora Raymaker.
+- [Panic Hills of Low Object Permanence](https://monotropicmap.org/panic-hills-of-low-object-permanence): Autistic children have difficulties with their understanding of: what’s here, what’s now, what is permanent, and so on. Named by Wenn Lawson.
+- [Forest of Joy, Awe & Wonder](https://monotropicmap.org/forest-of-joy-awe-and-wonder): Autistic joy is one of our favorite things about being autistic. It can be intense as a meltdown, but filled with overwhelming happiness and excitemen Named by Blackwater.
+- [Lake of Limerence](https://monotropicmap.org/lake-of-limerence): Limerence is a state of involuntary obsession with another person. The experience of limerence is different from love or lust in that it is based on t Named by Psychology Today.
+- [Tides of the Sensory Sea](https://monotropicmap.org/tides-of-the-sensory-sea): Neurodivergent people are hypersensitive to mindset and environment due to a greater number of neuronal connections. They have both a higher risk for  Named by Janae Elisabeth.
+- [Sudden Storms of Unexpected Events](https://monotropicmap.org/sudden-storms-of-unexpected-events): If an autistic person is pulled out of monotropic flow too quickly, it causes our sensory systems to dysregulate. This in turn triggers us into emotio Named by Kieran Rose.
+
+## The nine zones of neuronormative domination
+- [Mountains of Misinformation](https://monotropicmap.org/neuronormative-domination#mountains-of-misinformation): What a person has to climb before anybody will believe what they are telling them about their own mind. Decades of it, published, cited, and taught.
+- [“Disorder” Framing Disaster Zone](https://monotropicmap.org/neuronormative-domination#disorder-framing-disaster-zone): Autism as a disorder: the framing built into the diagnostic manual, the funding, and the first sentence of most things ever written about us. It puts the fault inside the person before a conversation has started.
+- [Harmful highway](https://monotropicmap.org/neuronormative-domination#harmful-highway): The one-way road running through the middle of the island, all of its arrows pointing the same way. Decades of research done from the outside, aimed at making Autistic people more normal rather than making the world more habitable.
+- [Behaviourism Bay](https://monotropicmap.org/neuronormative-domination#behaviourism-bay): A theory of learning that reduces human beings to inputs and outputs, still running at scale in schools and clinics. Compliance is measured; the person is not asked.
+- [Marsh of Masking](https://monotropicmap.org/neuronormative-domination#marsh-of-masking): It covers most of the landscape, and that is the point of putting it in the middle. Masking is a survival mechanism of suppressed needs that many Autistic people perform just to get through a day. It works, and it costs everything.
+- [Sandstorm of Stigma](https://monotropicmap.org/neuronormative-domination#sandstorm-of-stigma): The weather that arrives with the label. It changes what a room assumes about a person before they have said anything, and it does not blow over.
+- [Dunes of Deficit Metaphors](https://monotropicmap.org/neuronormative-domination#dunes-of-deficit-metaphors): The language itself. Deficit, impairment, symptom, severity, risk — vocabulary that turns a difference into a deficiency before the sentence has finished. The puzzle piece is here too.
+- [Canyon of Cures & Eugenics](https://monotropicmap.org/neuronormative-domination#canyon-of-cures-and-eugenics): Where the money went. Vast sums invested in cures and in preventing Autistic people from existing at all, while the things Autistic people actually asked for went unfunded. This is the zone that is not a metaphor.
+- [Destination Neurotypical Bay](https://monotropicmap.org/neuronormative-domination#destination-neurotypical-bay): Where the highway was always going. A person who has arrived is indistinguishable from their peers, and exhausted, and nobody is measuring the second part.
+
+## Also
+- [Training](https://monotropicmap.org/training): free open-source training, about 45 minutes.
+- [Your map](https://monotropicmap.org/stories): mark your own, and the community story project.
+- [About](https://monotropicmap.org/about): who made this, and the licence.
+- Machine-readable areas: https://monotropicmap.org/search-index.json

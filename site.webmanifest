@@ -1,0 +1,10 @@
+{
+  "name": "Map of Monotropic Experiences",
+  "short_name": "Monotropic Map",
+  "description": "Twenty places a monotropic mind goes.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f6efe2",
+  "theme_color": "#0b6b82",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
