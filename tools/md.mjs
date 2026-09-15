@@ -4,10 +4,21 @@
  * ANYTHING IT DOES NOT UNDERSTAND IS A HARD ERROR, never a silent drop. A page that
  * quietly loses a paragraph still looks fine, which is exactly why it must not be
  * possible. Supported: `##`/`###` headings, paragraphs, `-` lists, `>` quotes,
- * `----` rules (four dashes, house style), links, **bold**, *italic*, `code`.
+ * `----` rules (four dashes, house style), links, **bold**, *italic*, `code`, and
+ * `::: consider` … `:::` callouts.
+ *
+ * THE CALLOUT NAME IS CHECKED. `::: whatever` is a hard error rather than a div with a
+ * class nobody styled — a callout that renders as an unstyled paragraph is the same
+ * silent-loss failure as a dropped line, wearing a box.
  */
 
 const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;' };
+
+/** Callout name -> the label printed on it. Add a name here AND style it in the CSS. */
+const CALLOUTS = new Map([
+  ['consider', 'Consider'],
+  ['note', 'Note'],
+]);
 
 /** Escape text, but leave existing entities (&amp;, &#36;) alone. */
 function esc(s) {
@@ -40,6 +51,36 @@ export function render(src, where = 'markdown') {
     if (!line.trim()) { i++; continue; }
 
     if (line === '----') { out.push('<hr>'); i++; continue; }
+
+    if (line.startsWith(':::')) {
+      const name = line.slice(3).trim();
+      if (!CALLOUTS.has(name)) {
+        throw new Error(`md: unknown callout ":::${name}" (${where}, line ${i + 1}); known: ${[...CALLOUTS.keys()].join(', ')}`);
+      }
+      i++;
+      const body = [];
+      while (i < lines.length && lines[i].trim() !== ':::') {
+        if (lines[i].trim()) body.push(lines[i]);
+        i++;
+      }
+      if (i >= lines.length) throw new Error(`md: callout ":::${name}" is never closed (${where})`);
+      i++;
+      const inner = body.map((t) => t.startsWith('- ') ? null : `  <p>${inline(t, where)}</p>`);
+      const rendered = [];
+      let bullets = null;
+      for (let k = 0; k < body.length; k++) {
+        if (body[k].startsWith('- ')) {
+          if (!bullets) { bullets = []; }
+          bullets.push(`    <li>${inline(body[k].slice(2), where)}</li>`);
+        } else {
+          if (bullets) { rendered.push(`  <ul>\n${bullets.join('\n')}\n  </ul>`); bullets = null; }
+          rendered.push(inner[k]);
+        }
+      }
+      if (bullets) rendered.push(`  <ul>\n${bullets.join('\n')}\n  </ul>`);
+      out.push(`<aside class="callout ${name}">\n  <p class="callout-label">${CALLOUTS.get(name)}</p>\n${rendered.join('\n')}\n</aside>`);
+      continue;
+    }
     if (/^-{3}$|^-{5,}$/.test(line.trim())) {
       throw new Error(`md: horizontal rules are four dashes in this house (${where}, line ${i + 1})`);
     }

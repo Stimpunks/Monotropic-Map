@@ -280,16 +280,33 @@ ${a.who ? `  <li><a href="${a.who.url}" rel="noopener">${esc(a.who.name)} on ${e
   });
 }
 
+/** A contents list for a long page. Built from the rendered h2s rather than from the
+ *  Markdown, so the hrefs and the ids come from one place and cannot disagree — the
+ *  id-generation rule mangles apostrophes ("Let's" -> "let-s") and a second
+ *  implementation of it would drift silently. check.mjs verifies every fragment. */
+function tableOfContents(html) {
+  const heads = [...html.matchAll(/<h2 id="([^"]+)">(.*?)<\/h2>/g)];
+  if (heads.length < 5) return '';
+  const items = heads.map(([, id, label]) => `    <li><a href="#${id}">${label}</a></li>`).join('\n');
+  return `<nav class="toc" aria-labelledby="toc-heading">
+  <h2 id="toc-heading">On this page</h2>
+  <ol>
+${items}
+  </ol>
+</nav>\n`;
+}
+
 function buildProse(slug) {
   const src = readFileSync(join(ROOT, 'pages', `${slug}.md`), 'utf8');
   const lines = src.split('\n');
   if (!lines[0].startsWith('# ')) throw new Error(`pages/${slug}.md must open with "# Title"`);
   const title = lines[0].slice(2).trim();
   const desc = (lines.slice(1).find((l) => l.trim() && !l.startsWith('#')) || title).replace(/[*\[\]]|\(https?:[^)]+\)/g, '').trim();
+  const html = render(lines.slice(1).join('\n'), `pages/${slug}.md`);
   return shell({
     slug, title,
     description: desc.slice(0, 180),
-    body: `<div class="prose">\n${render(lines.slice(1).join('\n'), `pages/${slug}.md`)}\n</div>`,
+    body: `${tableOfContents(html)}<div class="prose">\n${html}\n</div>`,
   });
 }
 

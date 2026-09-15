@@ -250,3 +250,47 @@ blockquote.gloss cite { display: block; margin-block-start: 0.6rem; font-style: 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* ---- callouts and contents --------------------------------------------- */
+
+.callout {
+  max-width: var(--measure);
+  margin-block: 1.5rem;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--line);
+  border-inline-start: 5px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  background: var(--card);
+}
+.callout > p, .callout > ul { margin-block: 0.5rem; }
+.callout > :last-child { margin-block-end: 0; }
+.callout-label {
+  font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+  font-weight: 700; color: var(--accent); margin-block: 0 0.35rem !important;
+}
+.callout.consider { border-inline-start-color: var(--social); background: var(--wash); }
+.callout.consider .callout-label { color: var(--social); }
+.callout.consider ul { padding-inline-start: 1.2rem; }
+
+.toc {
+  max-width: var(--measure);
+  margin-block: 1.5rem 2.5rem;
+  padding: 0.9rem 1.2rem 1.1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.toc h2 { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+          color: var(--fg-soft); margin-block: 0 0.5rem; }
+.toc ol { margin: 0; padding-inline-start: 1.4rem; }
+.toc li { margin-block: 0.28rem; }
+.toc a { text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+
+/* A heading jumped to from the contents should not sit under the sticky bar. */
+:is(h2, h3, section)[id] { scroll-margin-top: 5.5rem; }
+
+@media print {
+  .toc { display: none; }
+  .callout { break-inside: avoid; border: 1px solid #999; background: #fff; }
+}

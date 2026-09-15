@@ -166,17 +166,27 @@ console.log('\nexternal links');
        these is NOT evidence the page is gone — verified by hand in a real browser on
        2026-09-15 — so it is reported and not failed. Anything else that 4xx/5xx fails.
        Add to this list only after opening the URL yourself. */
-    const BLOCKS_ROBOTS = [/(^|\.)medium\.com$/, /(^|\.)researchgate\.net$/];
+    const BLOCKS_ROBOTS = [
+      /(^|\.)medium\.com$/, /(^|\.)researchgate\.net$/,
+      /(^|\.)sagepub\.com$/, /(^|\.)tandfonline\.com$/, /(^|\.)liebertpub\.com$/,
+    ];
     let dead = 0, blocked = 0;
     for (const url of ext) {
-      let code = 0;
+      let code = 0, finalUrl = url;
       try {
-        code = Number(execFileSync('curl', ['-sS', '-o', '/dev/null', '-w', '%{http_code}', '-L', '--max-time', '20', '-A', 'Mozilla/5.0 (monotropicmap.org link check)', url], { encoding: 'utf8' }).trim());
+        /* The FINAL host is what matters: a DOI is a redirector, so a 403 belongs to
+           the publisher it lands on, not to doi.org. Reporting doi.org as the blocker
+           would send the next person to debug the wrong service. */
+        const out = execFileSync('curl', ['-sS', '-o', '/dev/null', '-w', '%{http_code} %{url_effective}', '-L', '--max-time', '20', '-A', 'Mozilla/5.0 (monotropicmap.org link check)', url], { encoding: 'utf8' }).trim();
+        const sp = out.indexOf(' ');
+        code = Number(out.slice(0, sp));
+        finalUrl = out.slice(sp + 1);
       } catch { code = 0; }
-      const host = (() => { try { return new URL(url).hostname; } catch { return ''; } })();
+      const host = (() => { try { return new URL(finalUrl).hostname; } catch { return ''; } })();
       if (code === 403 && BLOCKS_ROBOTS.some((re) => re.test(host))) {
         blocked++;
-        console.log(`  note  403 from ${host} — blocks robots, not a dead link: ${url}`);
+        const via = host === new URL(url).hostname ? '' : ` (via ${new URL(url).hostname})`;
+        console.log(`  note  403 from ${host}${via} — blocks robots, not a dead link: ${url}`);
         continue;
       }
       if (code === 0 || code >= 400) { dead++; fail(`${code || 'no response'}  ${url}`); }

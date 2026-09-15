@@ -57,8 +57,16 @@ The MQ is a validated instrument by Garau et al. with 47 items written by Autist
 ### No score, no type, no result, no account
 This is a map, not an assessment. The moment the site emits a number it is a quiz.
 
-### The site drives to Helen's shop rather than hosting the paid downloads
-The training pack and the workbook are paid downloads on autisticrealms.com — free to individuals and anyone with limited funds, with a suggested donation for organisations. Hosting copies here would take income from a Disabled creator, which is the thing we say we are against.
+### The free training text is hosted here; the paid pack is not
+Settled 2026-09-15, on Ryan's call, and the distinction is the whole of it.
+
+**`training.html` carries the full training** — about 4,000 words, presenter notes and all eight *Consider* prompts — transcribed from *Training: Map of Monotropic Experiences with presenter notes*, the PDF Autistic Realms publishes openly. That document describes itself as "our free open-source training" and says in its own text: **"We welcome you to adapt this training to meet the needs of your community group and those you support."** Putting it on the web as readable, linkable, translatable HTML is the thing it asks for. A 62 MB PDF is not an accessible document.
+
+**The training pack stays at Autistic Realms.** The slides, the PowerPoint, the script-only PDF and the workbook are Helen's downloads — free to individuals and anyone with limited funds, with a suggested donation for organisations and professionals. The page links to them at the top and at the foot and does not host copies. Getting them there is what funds this work.
+
+**The earlier wording of this entry said the site "drives to Helen's shop rather than hosting the paid downloads", which a later session could easily read as "host no training content at all."** It never meant that — the proposal this site was built from asked for the training hosted properly — but the sentence was ambiguous enough to stop someone doing the right thing. Hence this rewrite.
+
+The source PDF is linked rather than mirrored, so Helen's copy stays the copy.
 
 ### Node, dependency-free, no build step
 Matches [Star Stuff](https://starstuff.earth/) and [Queering Earth](https://queering.earth/), the two other joint Stimpunks and Autistic Realms sites. Penguin Pebbling's tools are Python; that is a game, this is a reference site, and the sibling-document sites are the pattern to follow.
