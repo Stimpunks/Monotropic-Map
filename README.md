@@ -63,6 +63,10 @@ Helen Edgar and Ryan Boren both have rights to this work. **So *you* is whoever 
 
 **The map is Helen's.** The artwork, the area names, the wording of the map itself. Propose, do not apply.
 
+## This repository is public
+
+Everything here is world-readable, **including the history**. No secrets, no tokens, no private links — and keep it that way. The Netlify deploy key and webhook live on GitHub and Netlify, never in these files.
+
 ## Licence
 
 **CC BY-SA 4.0.** See `LICENSE.md` — and note that **it cannot become CC BY-NC-SA**, whatever the sibling repositories do.

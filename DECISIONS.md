@@ -23,6 +23,13 @@ Penguin Pebbling has one. This site does not, and that is a deliberate not-yet r
 
 ## Settled
 
+### The repository is public
+Opened 2026-09-15, on Ryan's call, matching [Queering Earth](https://queering.earth/) rather than Penguin Pebbling. It was created private and flipped once the site was live.
+
+Scanned before flipping, because **making a repository public exposes its whole history permanently** — forks and caches outlive a revert. Nothing secret in the tree or in any commit; the only address in the content is the public `hello@stimpunks.org`; the Netlify deploy key and webhook live on GitHub and Netlify and were never in these files. The deploy key and webhook both survived the visibility change, and CI was re-verified with a push afterwards.
+
+**`DECISIONS.md` and `ATTRIBUTIONS.md` are public now too**, including the record of four attributions invented on the first pass and the open note that Helen has not yet reviewed the twenty *What changes this* paragraphs. That is deliberate — it is the same accountability we ask of everyone else — but it is worth knowing it is readable.
+
 ### Launched on monotropicmap.org, 2026-09-15
 The domain was registered the same day the site was built, pointed at Netlify DNS (`nsone.net` nameservers), and set as the Netlify custom domain with `force_ssl`. `www` 301s to the apex; HTTP 301s to HTTPS.
 

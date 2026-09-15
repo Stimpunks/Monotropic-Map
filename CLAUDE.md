@@ -87,7 +87,7 @@ No npm, no bundler, no framework, no CDN, no analytics, nothing fetched from a t
 
 ## Deploying
 
-- **Repository**: [Stimpunks/Monotropic-Map](https://github.com/Stimpunks/Monotropic-Map) — **private**, like Penguin-Pebbling.
+- **Repository**: [Stimpunks/Monotropic-Map](https://github.com/Stimpunks/Monotropic-Map) — **public**, like Queering Earth. Anything committed here is world-readable, history included.
 - **Live**: <https://monotropicmap.org/> (Netlify project `monotropicmap`, Stimpunks team; `monotropicmap.netlify.app` still serves it).
 
 **Netlify builds from `main` on every push, so pushing publishes.** There is no staging step and no build command — the files are served as-is. Treat a push as the publish it is.
