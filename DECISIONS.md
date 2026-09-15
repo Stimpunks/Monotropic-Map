@@ -7,8 +7,14 @@ What was chosen while building this site, and what is still open. Read before re
 ### "Blackwater" is a surname with no first name
 Area 17's definition is credited to Blackwater, which is what our own published page says, and the byline is not on the live article at themighty.com. Ask Helen or ask The Mighty. **Do not guess** — four names were guessed on the first pass and all four were wrong (`ATTRIBUTIONS.md`).
 
-### The "What changes this" text is ours and unreviewed
-Twenty new paragraphs, one per area, drafted by Stimpunks. Helen has not read them. They are the one place on the site where we put words into a map that is hers, and they should get her eye before launch.
+### Two sets of our own words sit on Helen's map, and she has reviewed neither
+**Forty short passages now, not twenty.** The *What changes this* paragraph and the *In plain words* definition on each area page are both drafted by Stimpunks. They are the places where we put our words into a map that is hers, and they should get her eye.
+
+The plain definitions are derived from the Stimpunks glossary entries, which are collections of academic quotations — useful, and not what somebody meeting an idea for the first time should have to read first.
+
+**Measured, not asserted**: 472 words over 63 sentences, 7.5 words a sentence, longest 14, reading ease 95/100, Flesch-Kincaid 1.9, 3% three-syllable words, no sentence over 15 words. `validate()` in `areas.mjs` fails any definition averaging over 15 words a sentence or containing one over 18, so this cannot quietly drift back into prose.
+
+**That is below ASAN's Easy Read band (grade 3–5) rather than inside it, and no script can certify Easy Read anyway** — that takes a focus group of people with intellectual and developmental disabilities. What the numbers show is that the text is short and simple. Whether it is *right* is a question for readers.
 
 ### The marking tool is not built
 *My Monotropic Map* — mark each area, get a legend, print or submit it — is designed and described on `stories.html` and does not exist. The page says so rather than pretending. Version one annotates Helen's map and needs no new artwork; version two, which would let a person drag and resize their own island, needs per-area art that may or may not exist as separable assets in the training decks. **That is a question for Helen, not an assumption.**
@@ -51,6 +57,13 @@ Decided 2026-09-15. The island on its own reads as a personality quiz — *here 
 
 ### The nine zones of the second map are anchors, not pages
 Every zone there is a force rather than a place you can be. Nine separate URLs would let a reader meet one in isolation, which is the move the map argues against. They stay on one page.
+
+### The plain definition comes first on an area page
+Added 2026-09-15 on Ryan's suggestion. Order on the page is: the area's name, what kind of place it is, **In plain words**, then the quoted definition with its credit, then what changes it.
+
+**Plain first, and set in larger type than the quotation below it.** An Easy Read version placed underneath the "real" one, in smaller type, tells the reader which of the two was meant for them. The plain definition is not a simplified aside; for a lot of people it is the definition.
+
+The quoted one stays, in full, with its attribution — this is a map of other people's words and the plain version paraphrases rather than replaces them.
 
 ### A numbered key sits under the map
 Added 2026-09-15 on Ryan's suggestion, patterned on the *Areas of the Map* list in the [published article](https://stimpunks.org/2024/10/21/map-of-monotropic-experiences/).

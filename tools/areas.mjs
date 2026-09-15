@@ -24,6 +24,13 @@
  * `hot` is [x, y] as a percentage of the 1080x1080 artwork, measured from the label on
  * Helen Edgar's original. It positions a hotspot OVER her art; it never alters it.
  *
+ * `plain` IS THE PLAIN-LANGUAGE DEFINITION, and it comes FIRST on the page — before the
+ * quoted one, not after it as a simplified afterthought. The glossary entries this is derived
+ * from are collections of academic quotations; useful, and not the first thing somebody
+ * meeting an idea should have to read. Target is ASAN's: 10-15 words a sentence, one idea a
+ * sentence, everyday words. `validate()` enforces the sentence length so it cannot drift back
+ * into prose.
+ *
  * `helps` IS NEW TEXT AND IS ABOUT THE ENVIRONMENT, NEVER THE PERSON. This is the one
  * rule that keeps the site from reading as a personality quiz: a stuck state is produced
  * by conditions, so the sentence names the conditions that change. "Rest more" is the
@@ -50,6 +57,7 @@ export const AREAS = [
     title: 'Attention Tunnels',
     state: 'flow',
     hot: [30, 16],
+    plain: "Your attention goes deep into one thing. The rest of the world fades out. It feels good, and it helps you think. Coming back out again is hard.",
     gloss: 'Entering flow states — or attention tunnels — is a necessary coping strategy for many of us. Flow states are the pinnacle of intrinsic motivation.',
     who: { name: 'Fergus Murray', url: 'https://oolong.medium.com/craft-flow-and-cognitive-styles-a47f827fcd6a' },
     stimpunks: 'https://stimpunks.org/glossary/flow/',
@@ -64,6 +72,7 @@ export const AREAS = [
     title: 'Penguin Pebbling Cove of Friendship',
     state: 'social',
     hot: [60, 16],
+    plain: "You send someone a small thing you found. A link, a photo, a funny picture. It means: I was thinking about you. It is a way of saying love.",
     gloss: '“Penguin pebbling” is a little exchange between two people to show that they care and want to build a meaningful connection.',
     who: { name: 'Helen Edgar', url: 'https://autisticrealms.com/penguin-pebbling-an-autistic-love-language/' },
     stimpunks: 'https://stimpunks.org/glossary/penguin-pebbling/',
@@ -78,6 +87,7 @@ export const AREAS = [
     title: 'Tendril Theory',
     state: 'flow',
     hot: [89, 27],
+    plain: "When you focus, your mind reaches out like lots of vines. To stop, you have to pull every vine back in. That takes time. Being rushed hurts.",
     gloss: 'When I’m focused on something, my mind sends out a million tendrils of thought, expands into all of the thoughts &amp; feelings. When I need to switch tasks, I must retract all of the tendrils of my mind. This takes some time.',
     who: { name: 'Erin Human', url: 'https://eisforerin.com/2015/08/10/tendril-theory/' },
     stimpunks: 'https://stimpunks.org/glossary/tendril-theory/',
@@ -92,6 +102,7 @@ export const AREAS = [
     title: 'Mountains of Ruminating Thoughts',
     state: 'stuck',
     hot: [7, 19],
+    plain: "The same thought goes round and round. You cannot put it down. It gets in the way, and it can leave you tired or cross.",
     gloss: 'When your thoughts are all swirly and you just keep chewing on the same thought over and over and you can’t stop thinking about it and it’s distracting you and sometimes even putting you in a really bad mood or making you irritable.',
     who: { name: 'Dusty Chipura', url: 'https://twitter.com/dustychipura/status/1303759000022908928' },
     stimpunks: 'https://stimpunks.org/glossary/rumination/',
@@ -106,6 +117,7 @@ export const AREAS = [
     title: 'Cyclones of Unmet Needs',
     state: 'pressure',
     hot: [8, 33],
+    plain: "You asked for help and did not get it. The gap between what you need and what you are given keeps growing.",
     gloss: 'Mismatch between the areas we actually receive support, compared to the areas we would ideally like support.',
     who: { name: 'Cassidy et al.', url: 'https://molecularautism.biomedcentral.com/articles/10.1186/s13229-018-0226-4' },
     stimpunks: 'https://stimpunks.org/glossary/unmet-needs/',
@@ -120,6 +132,7 @@ export const AREAS = [
     title: 'Rabbit Holes of Research',
     state: 'flow',
     hot: [36, 31],
+    plain: "You start looking one thing up. Hours later you are still going. You end up knowing a great deal about it.",
     gloss: '“Down the rabbit hole” is an English-language idiom or trope which refers to getting deep into something, or ending up somewhere strange.',
     who: null,
     stimpunks: 'https://stimpunks.org/glossary/rabbit-hole/',
@@ -134,6 +147,7 @@ export const AREAS = [
     title: 'Infodump Canyon',
     state: 'social',
     hot: [64, 34],
+    plain: "You tell someone everything about a thing you love. All of the detail. This is a gift, not a lecture.",
     gloss: 'Talking a lot about a topic in great detail.',
     who: null,
     stimpunks: 'https://stimpunks.org/glossary/infodump/',
@@ -148,6 +162,7 @@ export const AREAS = [
     title: 'Rhizomatic Communities',
     state: 'social',
     hot: [23, 42],
+    plain: "Lots of small Autistic groups, all joined up. Nobody is in charge. If one group stops, the rest carry on.",
     gloss: 'A growing and evolving network of Autistic communities with no hierarchy or dependence on anothers existence.',
     who: { name: 'Helen Edgar', url: 'https://autisticrealms.com/the-autistic-rhizome/' },
     stimpunks: 'https://stimpunks.org/glossary/autistic-rhizome/',
@@ -162,6 +177,7 @@ export const AREAS = [
     title: 'River of Monotropic Flow States',
     state: 'flow',
     hot: [54, 46],
+    plain: "You are deep in something and time goes soft. Your body settles. This is how a monotropic person gets energy back.",
     gloss: 'Entering flow states — or attention tunnels — is a necessary coping strategy for many of us. Flow states are the pinnacle of intrinsic motivation.',
     who: { name: 'Fergus Murray', url: 'https://oolong.medium.com/craft-flow-and-cognitive-styles-a47f827fcd6a' },
     stimpunks: 'https://stimpunks.org/glossary/flow/',
@@ -176,6 +192,7 @@ export const AREAS = [
     title: 'Campsite of Cavendish Spaces',
     state: 'social',
     hot: [78, 46],
+    plain: "A place that fits your body and your senses. Somewhere you can work, rest, or be with people without it costing you.",
     gloss: 'Psychologically and sensory safe spaces suited to zone work, flow states, intermittent collaboration, and collaborative niche construction.',
     who: { name: 'Ryan Boren', url: 'https://stimpunks.org/space/cavendish/' },
     stimpunks: 'https://stimpunks.org/space/cavendish/',
@@ -190,6 +207,7 @@ export const AREAS = [
     title: 'Meerkat Mounds',
     state: 'stuck',
     hot: [27, 52],
+    plain: "You are watching for danger all the time. You cannot settle into anything. This happens when a place does not feel safe.",
     gloss: 'Heightened state of vigilance and arousal that involves constantly looking for danger and threat. It is more than hyper-arousal, it is an overwhelmed monotropic person desperately looking for a hook into a monotropic flow-state.',
     who: { name: 'Tanya Adkin &amp; David Gray-Hammond', url: 'https://emergentdivergence.com/2023/06/06/what-is-meerkat-mode-and-how-does-it-relate-to-audhd/' },
     stimpunks: 'https://stimpunks.org/glossary/meerkat-mode/',
@@ -204,6 +222,7 @@ export const AREAS = [
     title: 'Riverbanks of Monotropic Time',
     state: 'flow',
     hot: [39, 48],
+    plain: "Deep focus changes time. An hour can feel like ten minutes. The outside world melts away for a while.",
     gloss: 'When absorbed in our special interests or passions it can feel like entering a portal. Normal time can feel like it is dissolving, the outside world may feel like it is melting away. This can be really rejuvenating for the sensory system and help to recharge the bodymind.',
     who: { name: 'Helen Edgar', url: 'https://autisticrealms.com/monotropic-time/' },
     stimpunks: 'https://stimpunks.org/glossary/monotropic-time/',
@@ -218,6 +237,7 @@ export const AREAS = [
     title: 'Shark Infested Waters',
     state: 'pressure',
     hot: [11, 91],
+    plain: "The water around everything else. It is the idea that there is one right way to have a mind. It is in schools, jobs and doctors' rooms.",
     gloss: 'The water the whole map sits in: neuronormativity, behaviourism, and the double empathy problem. Neuronormativity is the assumption that there is a correct way to exist in this world. Behaviorism reduces human beings to simple inputs and outputs. The double empathy problem names the mutual incomprehension between people of different dispositional outlooks — mutual, and not the Autistic person’s fault.',
     who: { name: 'Damian Milton', url: 'https://www.autscape.org/2013/programme/handouts/Double%20empathy%20problem.pdf' },
     stimpunks: 'https://stimpunks.org/glossary/double-empathy-problem/',
@@ -232,6 +252,7 @@ export const AREAS = [
     title: 'Beach of Body Doubling',
     state: 'social',
     hot: [38, 81],
+    plain: "Someone sits nearby while you work. They do not help you and they do not watch you. Having them there makes it easier to start.",
     gloss: 'A “body double” is a person or even pet who is present with us while we work. This provides a gentle form of accountability — their presence serves as a reminder of what we’re supposed to be doing so we’re less likely to get distracted.',
     who: { name: 'Jessica McCabe', url: 'https://www.youtube.com/watch?v=ni9biXNDZe0' },
     stimpunks: 'https://stimpunks.org/glossary/body-doubling/',
@@ -246,6 +267,7 @@ export const AREAS = [
     title: 'Burnout Whirlpools',
     state: 'stuck',
     hot: [53, 61],
+    plain: "You have run on empty for years. Now things you used to do are too hard. Rest on its own does not fix it. The demands have to come down.",
     gloss: 'Autistic burnout is a state of physical and mental fatigue, heightened stress, and diminished capacity to manage life skills, sensory input, and/or social interactions, which comes from years of being severely overtaxed by the strain of trying to live up to demands that are out of sync with our needs.',
     who: { name: 'Dora Raymaker', url: 'https://pubmed.ncbi.nlm.nih.gov/32851204/' },
     stimpunks: 'https://stimpunks.org/burnout/',
@@ -260,6 +282,7 @@ export const AREAS = [
     title: 'Panic Hills of Low Object Permanence',
     state: 'stuck',
     hot: [81, 63],
+    plain: "Out of sight, out of mind. Things, jobs and people you cannot see can drop away. Then you remember, and it is a shock.",
     gloss: 'Autistic children have difficulties with their understanding of: what’s here, what’s now, what is permanent, and so on.',
     who: { name: 'Wenn Lawson', url: 'https://www.researchgate.net/publication/319456203_Problems_with_Object_Permanence_Rethinking_Traditional_Beliefs_Associated_with_Poor_Theory_of_Mind_in_Autism' },
     stimpunks: 'https://stimpunks.org/glossary/object-permanence/',
@@ -274,6 +297,7 @@ export const AREAS = [
     title: 'Forest of Joy, Awe and Wonder',
     state: 'social',
     hot: [62, 84],
+    plain: "Happiness so big that your body has to move. Flapping, bouncing, dancing. This is one of the best parts of being Autistic.",
     gloss: 'Autistic joy is one of our favorite things about being autistic. It can be intense as a meltdown, but filled with overwhelming happiness and excitement. When we experience joy, we feel the excited vibrations throughout our bodies. To release the energy, we do a “happy stim.”',
     who: { name: 'Blackwater', url: 'https://themighty.com/topic/autism-spectrum-disorder/how-i-experience-autistic-joy/' },
     stimpunks: 'https://stimpunks.org/glossary/autistic-joy/',
@@ -288,6 +312,7 @@ export const AREAS = [
     title: 'Lake of Limerence',
     state: 'stuck',
     hot: [73, 88],
+    plain: "You cannot stop thinking about one person. You do not know if they feel the same. The not knowing is what keeps it going.",
     gloss: 'Limerence is a state of involuntary obsession with another person. The experience of limerence is different from love or lust in that it is based on the uncertainty that the person you desire also desires you.',
     who: { name: 'Psychology Today', url: 'https://www.psychologytoday.com/us/basics/limerence' },
     coiner: 'Dorothy Tennov',
@@ -303,6 +328,7 @@ export const AREAS = [
     title: 'Tides of the Sensory Sea',
     state: 'stuck',
     hot: [91, 79],
+    plain: "Sound, light, touch and smell come in strong. Some days much more than others. It is not a mood. It is your senses.",
     gloss: 'Neurodivergent people are hypersensitive to mindset and environment due to a greater number of neuronal connections. They have both a higher risk for trauma and a large capacity for sensing safety.',
     who: { name: 'Janae Elisabeth', url: 'https://medium.com/age-of-awareness/neuroception-and-the-3-part-brain-b38f482c34b0' },
     stimpunks: 'https://stimpunks.org/access/sensory-experience/',
@@ -317,6 +343,7 @@ export const AREAS = [
     title: 'Sudden Storms of Unexpected Events',
     state: 'stuck',
     hot: [14, 6],
+    plain: "Something changes with no warning. You get pulled out of what you were doing. Your body reacts before you can think.",
     gloss: 'If an autistic person is pulled out of monotropic flow too quickly, it causes our sensory systems to dysregulate. This in turn triggers us into emotional dysregulation, and we quickly find ourselves in a state ranging from uncomfortable, to grumpy, to angry, or even triggered into a meltdown or a shutdown.',
     who: { name: 'Kieran Rose', url: 'https://www.youtube.com/watch?v=qUFDAevkd3E&t=224s' },
     stimpunks: 'https://stimpunks.org/glossary/flow/#dont-dysregulate-me',
@@ -337,6 +364,17 @@ export function validate() {
     if (seen.has(a.slug)) problems.push(`duplicate slug: ${a.slug}`);
     seen.add(a.slug);
     if (!STATES.has(a.state)) problems.push(`${a.slug}: unknown state "${a.state}"`);
+    /* Plain language, held to ASAN's shape: short sentences, one idea each. A long
+       sentence here is the failure mode — it is how a plain definition quietly turns
+       back into the prose it was written to replace. */
+    if (!a.plain) problems.push(`${a.slug}: no plain-language definition`);
+    else {
+      const sentences = a.plain.split(/(?<=[.!?])\s+/).filter(Boolean);
+      const longest = Math.max(...sentences.map((x) => x.trim().split(/\s+/).length));
+      const avg = a.plain.trim().split(/\s+/).length / sentences.length;
+      if (longest > 18) problems.push(`${a.slug}: plain definition has an ${longest}-word sentence (max 18)`);
+      if (avg > 15) problems.push(`${a.slug}: plain definition averages ${avg.toFixed(1)} words a sentence (max 15)`);
+    }
     for (const b of a.borders) {
       if (!BY_SLUG.has(b)) problems.push(`${a.slug}: borders unknown area "${b}"`);
       if (b === a.slug) problems.push(`${a.slug}: borders itself`);

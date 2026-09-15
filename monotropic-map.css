@@ -335,3 +335,28 @@ blockquote.gloss cite { display: block; margin-block-start: 0.6rem; font-style: 
 @media print {
   .mapkey ol { columns: 2; }
 }
+
+/* ---- the plain-language definition -------------------------------------- */
+
+/* It comes FIRST on an area page and is styled to look like the main text,
+   not like a simplified aside. An Easy Read version placed below the "real"
+   one, in smaller type, tells the reader which of the two is for them. */
+.plain {
+  max-width: var(--measure);
+  margin-block: 1.25rem 1.5rem;
+}
+.plain h2 {
+  font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--tone, var(--accent)); margin-block: 0 0.5rem;
+}
+.plain p {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+@media print {
+  .plain { break-inside: avoid; }
+  .plain p { font-size: 12pt; }
+}

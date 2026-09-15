@@ -295,6 +295,11 @@ function buildArea(a) {
   <p><span class="tag">${esc(st.name)}</span></p>
 </div>
 
+<section class="plain" data-tone="${a.state}" aria-labelledby="plain-heading">
+  <h2 id="plain-heading">In plain words</h2>
+  <p>${a.plain}</p>
+</section>
+
 <blockquote class="gloss" data-tone="${a.state}">
   <p>${a.gloss}</p>
   ${a.who ? `<cite>${a.coiner ? `Named by ${a.coiner}. Definition quoted from ` : ''}${a.coiner ? `<a href="${a.who.url}" rel="noopener">${a.who.name}</a>.` : `${a.who.name} — <a href="${a.who.url}" rel="noopener">in their own words</a>`}</cite>` : `<cite>A shared community coinage with no single originator.</cite>`}
@@ -394,6 +399,7 @@ function searchIndex() {
       label: plain(a.label),
       state: a.state,
       url: `${SITE.origin}/${a.slug}`,
+      plain_language: plain(a.plain),
       definition: plain(a.gloss),
       named_by: a.who ? plain(a.who.name) : null,
       source: a.who ? a.who.url : null,
@@ -426,7 +432,7 @@ Monotropism is a neurodiversity-affirming theory of autism (Murray, Lesser & Law
 - [The frame](${SITE.origin}/neuronormative-domination): why stuck states are produced rather than personal.
 
 ## The twenty areas
-${AREAS.map((a) => `- [${plain(a.label)}](${SITE.origin}/${a.slug}): ${plain(a.gloss).slice(0, 150)}${a.who ? ` Named by ${plain(a.who.name)}.` : ''}`).join('\n')}
+${AREAS.map((a) => `- [${plain(a.label)}](${SITE.origin}/${a.slug}): ${plain(a.plain)}${a.who ? ` Named by ${plain(a.coiner || a.who.name)}.` : ''}`).join('\n')}
 
 ## The nine zones of neuronormative domination
 ${ZONES.map((z, i) => `- [${plain(z.label)}](${SITE.origin}/neuronormative-domination#${z.slug}): ${plain(z.body)}`).join('\n')}
