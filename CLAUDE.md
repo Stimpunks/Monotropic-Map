@@ -87,6 +87,14 @@ No npm, no bundler, no framework, no CDN, no analytics, nothing fetched from a t
 
 ## Deploying
 
-**Netlify deploys from `main`, so pushing publishes.** There is no staging step. Treat a push as the publish it is.
+- **Repository**: [Stimpunks/Monotropic-Map](https://github.com/Stimpunks/Monotropic-Map) — **private**, like Penguin-Pebbling.
+- **Live**: <https://monotropicmap.netlify.app/> (Netlify project `monotropicmap`, Stimpunks team).
+- **monotropicmap.org is chosen but not registered.** Every canonical points at it.
+
+**Netlify builds from `main` on every push, so pushing publishes.** There is no staging step and no build command — the files are served as-is. Treat a push as the publish it is.
+
+**The site is closed to search engines until launch**: `robots.txt` disallows everything and `_headers` sends `X-Robots-Tag: noindex`. `check.mjs` prints a PRE-LAUNCH note every run until both are flipped, and fails if only one is. `robots.txt` carries the launch steps.
+
+**Verify in production, not on a dev server.** Our security headers only exist there, and the first live deploy proved the point: the map hotspots were positioned with inline `style` attributes, which `style-src 'self'` blocks, so every marker on both maps stacked in the corner while looking perfect locally.
 
 Netlify's Pretty URLs rewrites the served HTML, so **a diff of the live page against this repository will never be clean.** Verify what a page does, not that its bytes match.
