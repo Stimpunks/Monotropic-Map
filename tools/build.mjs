@@ -88,7 +88,6 @@ ${MAP_PAGES.has(slug) ? '<link rel="stylesheet" href="map-hotspots.css">\n' : ''
 <meta property="og:image" content="${SITE.origin}/images/map-of-monotropic-experiences.png">
 <meta name="twitter:card" content="summary_large_image">
 <script src="theme.js"></script>
-${slug === 'index' ? '<script src="map.js" defer></script>' : ''}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -242,12 +241,6 @@ function stateGroups() {
 function buildIndex() {
   const body = `<p class="prose">Twenty places a monotropic mind goes. Some of them are where the good work happens; some of them are weather that other people make. This is Helen Edgar's map of her own Autistic and ADHD experience, and it turned out that a great many of us live here too.</p>
 
-<div class="viewswitch" role="group" aria-label="How to read the map" hidden>
-  <button type="button" data-view="map" aria-pressed="true">Picture</button>
-  <button type="button" data-view="list" aria-pressed="false">List</button>
-</div>
-
-<div id="view-map">
   <figure class="mapframe">
     <img src="images/map-of-monotropic-experiences.png" width="1080" height="1080"
          alt="An illustrated island in a blue sea. Around and on it: Sudden Storms of Unexpected Events, Attention Tunnels, Penguin Pebbling Cove of Friendship, Tendril Theory, Mountains of Ruminating Thoughts, Cyclones of Unmet Needs, Rabbit Holes of Research, Infodump Canyon, Rhizomatic Communities, River of Monotropic Flow States, Campsite of Cavendish Spaces, River Banks of Monotropic Time, Meerkat Mounds, Burnout Whirlpools, Panic Hills of Low Object Permanence, Shark Infested Waters of Neuronormativity and Behaviourism and Double Empathy Problems, Beach of Body Doubling, Forest of Joy Awe and Wonder, Lake of Limerence, and Tides of the Sensory Sea.">
@@ -255,14 +248,8 @@ function buildIndex() {
 ${hotspots()}
     </ul>
   </figure>
-  <p class="mapnote">Each numbered marker opens that area, and so does its name in the key below.</p>
+  <p class="mapnote">Each numbered marker opens that area, and so does its name in the key below. Prefer them sorted by what kind of place they are? <a href="areas.html">The twenty areas</a> groups them into flow, connection, stuck states and pressure.</p>
 ${numberedKey()}
-</div>
-
-<div id="view-list">
-<p class="mapnote">The same twenty places, grouped by what kind of place they are.</p>
-${stateGroups()}
-</div>
 
 <h2>The water it all sits in</h2>
 <p class="prose">It would be easy to read this map as a picture of a person. It is not. Burnout Whirlpools and the Shark Infested Waters are not weather that happens to you — they are produced, by schools and workplaces and clinics built on the assumption that there is one correct way to have a mind. <a href="neuronormative-domination.html">The second map</a> is about who makes the weather.</p>

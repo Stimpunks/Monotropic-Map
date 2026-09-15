@@ -131,17 +131,35 @@ console.log('\ninline styles (blocked by our own CSP)');
 }
 
 /* ---- 6. the no-JavaScript promise ---------------------------------------- */
+/* The front page must be fully usable with JavaScript switched off. It was a
+   picture/list switcher until 2026-09-15; it is now a picture with a permanent
+   text key, which needs no script at all. What is checked is the PROPERTY, not
+   the old implementation: twenty names, readable, in the markup, unhidden, and
+   nothing on the page that depends on a script to reveal them. */
 console.log('\nno-JavaScript');
 {
   const html = readFileSync(join(ROOT, 'index.html'), 'utf8');
-  const listBlock = /<div id="view-list"([^>]*)>/.exec(html);
-  const swBlock = /<div class="viewswitch"([^>]*)>/.exec(html);
-  if (!listBlock) fail('index.html has no list view at all');
-  else if (/\bhidden\b/.test(listBlock[1])) fail('index.html hides the list view in markup — with JS off the map is the only way in');
-  else pass('the list view is present and visible without JavaScript');
-  if (!swBlock) fail('index.html has no view switcher');
-  else if (!/\bhidden\b/.test(swBlock[1])) fail('the view switcher is visible without JS, but it cannot work without JS');
-  else pass('the view switcher is hidden until JavaScript can wire it up');
+
+  const key = /<nav class="mapkey"[^>]*>([\s\S]*?)<\/nav>/.exec(html);
+  if (!key) fail('index.html has no map key — the picture would be numbered circles and nothing else');
+  else {
+    const entries = [...key[1].matchAll(/<li[^>]*><a href="([^"]+)"/g)];
+    if (entries.length !== 20) fail(`the map key lists ${entries.length} areas, expected 20`);
+    else if (/<nav class="mapkey"[^>]*\shidden/.test(html)) fail('the map key ships hidden — with JS off the picture is unreadable');
+    else pass('the map key lists all twenty areas, visible without JavaScript');
+  }
+
+  const scripts = [...html.matchAll(/<script[^>]*src="([^"]+)"/g)].map((m) => m[1]);
+  const nonTheme = scripts.filter((sc) => sc !== 'theme.js');
+  if (nonTheme.length) fail(`index.html loads ${nonTheme.join(', ')} — the front page should need no script but the theme toggle`);
+  else pass('index.html loads no script but theme.js');
+
+  /* A control that cannot work without JS must not be visible without it. There are
+     none left on the front page; this catches one coming back. */
+  const controls = [...html.matchAll(/<button(?![^>]*\shidden)[^>]*>/g)]
+    .filter((m) => !/class="theme-toggle"/.test(m[0]));
+  if (controls.length) fail(`${controls.length} always-visible button(s) on index.html that JavaScript would have to wire up`);
+  else pass('no JS-dependent controls shipped visible');
 }
 
 /* ---- 7. contrast --------------------------------------------------------- */

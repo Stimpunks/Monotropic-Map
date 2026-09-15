@@ -63,12 +63,21 @@ It uses each area's **map label**, not its page title, because a legend has to m
 
 Helen's training deck does the same thing: slide 14 is the map beside a numbered key.
 
-### The list view is a front door, not a fallback
-Both views are in the markup and both are visible with no JavaScript; `map.js` only collapses them into a switcher once it is certain it can switch back. A picture-only navigation excludes screen reader users, anyone who cannot point precisely, and anyone on a small screen — which is a large share of the people this map is *for*.
+### The front page shows the map and its key, and needs no JavaScript at all
+**This replaces the picture/list switcher**, which shipped on 2026-09-15 and was removed the same day, on Ryan's call. The entry it replaces argued that the list was a front door and not a fallback — that principle was right and is now served better, which is why the mechanism went and the principle stayed.
 
-`tools/check.mjs` enforces this: it fails if `#view-list` ships with a `hidden` attribute, and fails if the switcher is *not* hidden, since a control that cannot work without JavaScript must not be visible without it.
+**The switcher's own design was what undermined it.** Making the picture and the list mutually exclusive meant the twenty names lived in the view you were *not* looking at: with the picture showing, area 7 was a numbered circle, and the labels printed on the artwork are not legible at page width. A front door you have to close to use the other one is not two front doors.
 
-**On screens under 700px the picture starts collapsed.** At 350px the labels printed on the artwork are not legible and no marker size fixes that. The switcher is right there; this is a default, not a decision made for anyone.
+The key fixed that, and once it existed the switcher had nothing left to do. The front page is now: the picture, the key beneath it, and a link to `areas.html` for the grouped view — which the switcher's list view had been duplicating exactly, while `areas.html` was already the second item in the nav.
+
+**What this bought:**
+- `map.js` is deleted. `index.html` loads **no script but the theme toggle**, and the whole page works with JavaScript off — not as a degraded fallback, as the only mode there is.
+- The narrow-screen special case is gone too. It existed because the artwork alone could not orient anybody at 375px; with twenty readable names underneath, it can. Phones get the same page as everything else.
+- Three dead CSS rules and a stored `mm-view` preference nobody asked for.
+
+**`tools/check.mjs` checks the property rather than the old implementation**: twenty key entries present and unhidden, no script on the front page but `theme.js`, and no always-visible control that JavaScript would have to wire up. The previous version tested for `#view-list` and `.viewswitch` by name, which would have gone green on a page that no longer had either.
+
+The key's columns are set by **column-width, not column-count**, so the browser fits as many as the space allows — one on a phone, three on a wide screen, no breakpoints to keep in sync. Fixed at two, entry 13's long label wrapped five lines deep at 375px.
 
 ### Hotspot positions are stylesheet rules, never inline styles
 Found on the first live deploy, 2026-09-15. `_headers` ships `style-src 'self'`, which blocks inline styles outright — so the `style="left:30%;top:16%"` on each marker was dead markup in production and **every hotspot on both maps stacked in the top-left corner.**

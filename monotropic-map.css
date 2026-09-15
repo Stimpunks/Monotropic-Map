@@ -134,20 +134,6 @@ footer.site .wrap > * + * { margin-block-start: 0.75rem; }
 
 /* ---- the map ----------------------------------------------------------- */
 
-.viewswitch { display: flex; gap: 0.4rem; margin-block: 1.25rem 0.75rem; flex-wrap: wrap; }
-.viewswitch button {
-  font: inherit; cursor: pointer;
-  background: var(--card); color: var(--fg);
-  border: 1px solid var(--line); border-radius: 999px;
-  padding: 0.35rem 0.95rem;
-}
-.viewswitch button[aria-pressed="true"] {
-  background: var(--accent); color: var(--accent-fg); border-color: var(--accent);
-}
-
-/* The artwork is the point, so the markers stay small and let it through.
-   The visible circle is 1.9rem; an invisible ::after extends the hit area past
-   the 44px minimum, so the target is big without the badge being big. */
 .mapframe { position: relative; margin-block: 1rem; max-width: 46rem; }
 .mapframe img { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--line); }
 .hotspots { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; }
@@ -240,7 +226,7 @@ blockquote.gloss cite { display: block; margin-block-start: 0.6rem; font-style: 
 /* ---- print ------------------------------------------------------------- */
 
 @media print {
-  .bar, .viewswitch, .theme-toggle, .pager, .skip { display: none !important; }
+  .bar, .theme-toggle, .pager, .skip { display: none !important; }
   body { background: #fff; color: #000; font-size: 11pt; }
   a { color: #000; }
   .panel, blockquote.gloss, .arealist a { border: 1px solid #999; background: #fff; }
@@ -328,12 +314,14 @@ blockquote.gloss cite { display: block; margin-block-start: 0.6rem; font-style: 
   font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--fg-soft); margin-block: 0 0.6rem;
 }
+/* column-WIDTH, not column-count: the browser fits as many as the space allows, so
+   this is one column on a phone and three on a wide screen with no breakpoints to
+   keep in sync. Fixed at two, entry 13's long label wrapped five deep at 375px. */
 .mapkey ol {
   margin: 0; padding-inline-start: 1.6rem;
-  columns: 2; column-gap: 2rem;
+  columns: 13rem; column-gap: 2rem;
   font-size: 0.95rem;
 }
-@media (min-width: 52rem) { .mapkey ol { columns: 3; } }
 .mapkey li {
   margin-block: 0.22rem;
   break-inside: avoid;

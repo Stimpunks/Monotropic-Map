@@ -17,7 +17,6 @@
 <meta property="og:image" content="https://monotropicmap.org/images/map-of-monotropic-experiences.png">
 <meta name="twitter:card" content="summary_large_image">
 <script src="theme.js"></script>
-<script src="map.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -42,12 +41,6 @@
 <h1>Map of Monotropic Experiences</h1>
 <p class="prose">Twenty places a monotropic mind goes. Some of them are where the good work happens; some of them are weather that other people make. This is Helen Edgar's map of her own Autistic and ADHD experience, and it turned out that a great many of us live here too.</p>
 
-<div class="viewswitch" role="group" aria-label="How to read the map" hidden>
-  <button type="button" data-view="map" aria-pressed="true">Picture</button>
-  <button type="button" data-view="list" aria-pressed="false">List</button>
-</div>
-
-<div id="view-map">
   <figure class="mapframe">
     <img src="images/map-of-monotropic-experiences.png" width="1080" height="1080"
          alt="An illustrated island in a blue sea. Around and on it: Sudden Storms of Unexpected Events, Attention Tunnels, Penguin Pebbling Cove of Friendship, Tendril Theory, Mountains of Ruminating Thoughts, Cyclones of Unmet Needs, Rabbit Holes of Research, Infodump Canyon, Rhizomatic Communities, River of Monotropic Flow States, Campsite of Cavendish Spaces, River Banks of Monotropic Time, Meerkat Mounds, Burnout Whirlpools, Panic Hills of Low Object Permanence, Shark Infested Waters of Neuronormativity and Behaviourism and Double Empathy Problems, Beach of Body Doubling, Forest of Joy Awe and Wonder, Lake of Limerence, and Tides of the Sensory Sea.">
@@ -74,7 +67,7 @@
     <li><a class="hs-sudden-storms-of-unexpected-events" href="sudden-storms-of-unexpected-events.html" data-tone="stuck">20<span class="sr">. Sudden Storms of Unexpected Events</span></a></li>
     </ul>
   </figure>
-  <p class="mapnote">Each numbered marker opens that area, and so does its name in the key below.</p>
+  <p class="mapnote">Each numbered marker opens that area, and so does its name in the key below. Prefer them sorted by what kind of place they are? <a href="areas.html">The twenty areas</a> groups them into flow, connection, stuck states and pressure.</p>
   <nav class="mapkey" aria-labelledby="mapkey-heading">
     <h2 id="mapkey-heading">Areas of the map</h2>
     <ol>
@@ -100,138 +93,6 @@
     <li data-tone="stuck"><a href="sudden-storms-of-unexpected-events.html">Sudden Storms of Unexpected Events</a></li>
     </ol>
   </nav>
-</div>
-
-<div id="view-list">
-<p class="mapnote">The same twenty places, grouped by what kind of place they are.</p>
-<section class="stategroup" data-tone="flow">
-  <h2><span class="tag">Flow</span></h2>
-  <p>Where monotropic attention does what it does well. These are not indulgences; they are how a monotropic bodymind refuels.</p>
-  <ul class="arealist">
-  <li><a href="attention-tunnels.html" data-tone="flow">
-    <span class="num">1</span>
-    <span class="name">Attention Tunnels</span>
-    <span class="who">named by Fergus Murray</span>
-  </a></li>
-  <li><a href="tendril-theory.html" data-tone="flow">
-    <span class="num">3</span>
-    <span class="name">Tendril Theory</span>
-    <span class="who">named by Erin Human</span>
-  </a></li>
-  <li><a href="rabbit-holes-of-research.html" data-tone="flow">
-    <span class="num">6</span>
-    <span class="name">Rabbit Holes of Research</span>
-    <span class="who">no single originator</span>
-  </a></li>
-  <li><a href="river-of-monotropic-flow-states.html" data-tone="flow">
-    <span class="num">9</span>
-    <span class="name">River of Monotropic Flow States</span>
-    <span class="who">named by Fergus Murray</span>
-  </a></li>
-  <li><a href="river-banks-of-monotropic-time.html" data-tone="flow">
-    <span class="num">12</span>
-    <span class="name">River Banks of Monotropic Time</span>
-    <span class="who">named by Helen Edgar</span>
-  </a></li>
-</ul>
-</section>
-
-<section class="stategroup" data-tone="social">
-  <h2><span class="tag">Connection</span></h2>
-  <p>Monotropic socialising, and the environments that make it possible.</p>
-  <ul class="arealist">
-  <li><a href="penguin-pebbling-cove-of-friendship.html" data-tone="social">
-    <span class="num">2</span>
-    <span class="name">Penguin Pebbling Cove of Friendship</span>
-    <span class="who">named by Helen Edgar</span>
-  </a></li>
-  <li><a href="infodump-canyon.html" data-tone="social">
-    <span class="num">7</span>
-    <span class="name">Infodump Canyon</span>
-    <span class="who">no single originator</span>
-  </a></li>
-  <li><a href="rhizomatic-communities.html" data-tone="social">
-    <span class="num">8</span>
-    <span class="name">Rhizomatic Communities</span>
-    <span class="who">named by Helen Edgar</span>
-  </a></li>
-  <li><a href="campsite-of-cavendish-spaces.html" data-tone="social">
-    <span class="num">10</span>
-    <span class="name">Campsite of Cavendish Spaces</span>
-    <span class="who">named by Ryan Boren</span>
-  </a></li>
-  <li><a href="beach-of-body-doubling.html" data-tone="social">
-    <span class="num">14</span>
-    <span class="name">Beach of Body Doubling</span>
-    <span class="who">named by Jessica McCabe</span>
-  </a></li>
-  <li><a href="forest-of-joy-awe-and-wonder.html" data-tone="social">
-    <span class="num">17</span>
-    <span class="name">Forest of Joy, Awe &amp; Wonder</span>
-    <span class="who">named by Blackwater</span>
-  </a></li>
-</ul>
-</section>
-
-<section class="stategroup" data-tone="stuck">
-  <h2><span class="tag">Stuck</span></h2>
-  <p>States of inertia — unable to start, or unable to stop. Produced by conditions, not by character.</p>
-  <ul class="arealist">
-  <li><a href="mountains-of-ruminating-thoughts.html" data-tone="stuck">
-    <span class="num">4</span>
-    <span class="name">Mountains of Ruminating Thoughts</span>
-    <span class="who">named by Dusty Chipura</span>
-  </a></li>
-  <li><a href="meerkat-mounds.html" data-tone="stuck">
-    <span class="num">11</span>
-    <span class="name">Meerkat Mounds</span>
-    <span class="who">named by Tanya Adkin &amp; David Gray-Hammond</span>
-  </a></li>
-  <li><a href="burnout-whirlpools.html" data-tone="stuck">
-    <span class="num">15</span>
-    <span class="name">Burnout Whirlpools</span>
-    <span class="who">named by Dora Raymaker</span>
-  </a></li>
-  <li><a href="panic-hills-of-low-object-permanence.html" data-tone="stuck">
-    <span class="num">16</span>
-    <span class="name">Panic Hills of Low Object Permanence</span>
-    <span class="who">named by Wenn Lawson</span>
-  </a></li>
-  <li><a href="lake-of-limerence.html" data-tone="stuck">
-    <span class="num">18</span>
-    <span class="name">Lake of Limerence</span>
-    <span class="who">named by Dorothy Tennov</span>
-  </a></li>
-  <li><a href="tides-of-the-sensory-sea.html" data-tone="stuck">
-    <span class="num">19</span>
-    <span class="name">Tides of the Sensory Sea</span>
-    <span class="who">named by Janae Elisabeth</span>
-  </a></li>
-  <li><a href="sudden-storms-of-unexpected-events.html" data-tone="stuck">
-    <span class="num">20</span>
-    <span class="name">Sudden Storms of Unexpected Events</span>
-    <span class="who">named by Kieran Rose</span>
-  </a></li>
-</ul>
-</section>
-
-<section class="stategroup" data-tone="pressure">
-  <h2><span class="tag">Pressure</span></h2>
-  <p>Not places you are, but forces acting on everything else here. These come from outside and they are made by people.</p>
-  <ul class="arealist">
-  <li><a href="cyclones-of-unmet-needs.html" data-tone="pressure">
-    <span class="num">5</span>
-    <span class="name">Cyclones of Unmet Needs</span>
-    <span class="who">named by Cassidy et al.</span>
-  </a></li>
-  <li><a href="shark-infested-waters.html" data-tone="pressure">
-    <span class="num">13</span>
-    <span class="name">Shark Infested Waters of Neuronormativity and Behaviourism &amp; Double Empathy Problems</span>
-    <span class="who">named by Damian Milton</span>
-  </a></li>
-</ul>
-</section>
-</div>
 
 <h2>The water it all sits in</h2>
 <p class="prose">It would be easy to read this map as a picture of a person. It is not. Burnout Whirlpools and the Shark Infested Waters are not weather that happens to you — they are produced, by schools and workplaces and clinics built on the assumption that there is one correct way to have a mind. <a href="neuronormative-domination.html">The second map</a> is about who makes the weather.</p>
