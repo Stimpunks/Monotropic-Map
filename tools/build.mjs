@@ -123,12 +123,36 @@ ${h1 === false ? '' : `<h1>${esc(h1 ?? title)}</h1>\n`}${body}
 /* ---- the map ------------------------------------------------------------ */
 
 /** One map figure, used by both maps. `items` are {href, x, y, marker, label, tone}. */
+/**
+ * One map image, as a <picture> chain. WebP first, the original PNG as the fallback.
+ *
+ * THE WEBP IS PIXEL-FOR-PIXEL THE PNG — lossless, and `tools/make-map-webp.py` verifies
+ * it by decoding both and comparing, rather than trusting an encoder's flag. That is the
+ * only reason this is allowed at all: ATTRIBUTIONS.md says both artworks are reproduced
+ * unaltered, and a lossy re-encode of somebody else's drawing would break that.
+ *
+ * THE PNG STAYS, and not only as a fallback for old browsers. It is the file Helen
+ * published, and it is what somebody re-using the map under CC BY-SA should be able to
+ * download. WebP is how we deliver it, not what it is.
+ *
+ * `width` and `height` live on the <img>, where the browser reads them to reserve the
+ * slot — a <source> carries no intrinsic size, and moving them would hand us the layout
+ * shift they exist to prevent.
+ */
+function mapPicture({ src, width, height, alt }) {
+  const webp = src.replace(/\.png$/, '.webp');
+  return `    <picture>
+      <source srcset="${webp}" type="image/webp">
+      <img src="${src}" width="${width}" height="${height}" alt="${esc(alt)}">
+    </picture>`;
+}
+
 function mapFigure({ src, width, height, alt, items }) {
   const spots = items.map((it) =>
     `    <li><a class="hs-${it.id}" href="${it.href}"${it.tone ? ` data-tone="${it.tone}"` : ''}${it.area ? ` data-area="${it.area}"` : ''}>${it.marker}<span class="sr">. ${esc(plain(it.label))}</span></a></li>`
   ).join('\n');
   return `  <figure class="mapframe">
-    <img src="${src}" width="${width}" height="${height}" alt="${esc(alt)}">
+${mapPicture({ src, width, height, alt })}
     <ul class="hotspots">
 ${spots}
     </ul>
@@ -245,8 +269,10 @@ function buildIndex() {
   const body = `<p class="prose">Twenty places a monotropic mind goes. Some of them are where the good work happens; some of them are weather that other people make. This is Helen Edgar's map of her own Autistic and ADHD experience, and it turned out that a great many of us live here too.</p>
 
   <figure class="mapframe">
-    <img src="images/map-of-monotropic-experiences.png" width="1080" height="1080"
-         alt="An illustrated island in a blue sea. Around and on it: Sudden Storms of Unexpected Events, Attention Tunnels, Penguin Pebbling Cove of Friendship, Tendril Theory, Mountains of Ruminating Thoughts, Cyclones of Unmet Needs, Rabbit Holes of Research, Infodump Canyon, Rhizomatic Communities, River of Monotropic Flow States, Campsite of Cavendish Spaces, River Banks of Monotropic Time, Meerkat Mounds, Burnout Whirlpools, Panic Hills of Low Object Permanence, Shark Infested Waters of Neuronormativity and Behaviourism and Double Empathy Problems, Beach of Body Doubling, Forest of Joy Awe and Wonder, Lake of Limerence, and Tides of the Sensory Sea.">
+${mapPicture({
+    src: 'images/map-of-monotropic-experiences.png', width: 1080, height: 1080,
+    alt: 'An illustrated island in a blue sea. Around and on it: Sudden Storms of Unexpected Events, Attention Tunnels, Penguin Pebbling Cove of Friendship, Tendril Theory, Mountains of Ruminating Thoughts, Cyclones of Unmet Needs, Rabbit Holes of Research, Infodump Canyon, Rhizomatic Communities, River of Monotropic Flow States, Campsite of Cavendish Spaces, River Banks of Monotropic Time, Meerkat Mounds, Burnout Whirlpools, Panic Hills of Low Object Permanence, Shark Infested Waters of Neuronormativity and Behaviourism and Double Empathy Problems, Beach of Body Doubling, Forest of Joy Awe and Wonder, Lake of Limerence, and Tides of the Sensory Sea.',
+  })}
     <ul class="hotspots">
 ${hotspots()}
     </ul>

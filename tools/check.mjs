@@ -114,6 +114,40 @@ for (const page of pages) {
 }
 if (!bad) pass(`${imgs} images, all with substantive alt text and intrinsic dimensions`);
 
+/* ---- 5c. the <picture> sources ------------------------------------------- */
+/* A <source> pointing at a file that is not there does not error, does not warn, and
+   does not show a broken image: the browser drops to the <img> fallback and the page
+   looks perfect while every visitor downloads the big PNG. Exactly the shape of the
+   inline-style bug below — correct-looking and wrong — so it gets the same treatment. */
+console.log('\n<picture> sources');
+{
+  let sources = 0, missing = 0;
+  for (const page of pages) {
+    const html = readFileSync(join(ROOT, page), 'utf8');
+    for (const m of html.matchAll(/<source[^>]*srcset="([^"]+)"/g)) {
+      sources++;
+      if (!existsSync(join(ROOT, m[1]))) { missing++; fail(`${page}: <source> points at ${m[1]}, which does not exist`); }
+    }
+  }
+  if (!sources) fail('no <picture> sources found — the maps should offer WebP before the PNG');
+  else if (!missing) pass(`${sources} <picture> sources all resolve`);
+
+  /* The WebP must still BE the PNG. make-map-webp.py decodes both and compares, so this
+     is the gate that keeps a lossy re-encode of Helen's artwork off the site. */
+  try {
+    execFileSync('python3', [join(ROOT, 'tools', 'make-map-webp.py'), '--check'], { stdio: 'pipe', encoding: 'utf8' });
+    pass('both map WebPs decode to exactly the same pixels as their PNGs');
+  } catch (e) {
+    const out = String(e.stdout || '') + String(e.stderr || '');
+    if (/Pillow is not installed|No such file|python3/.test(out) && !/FAIL/.test(out)) {
+      fail('the map WebP check could not run (python3 or Pillow missing) — the artwork was NOT verified');
+    } else {
+      fail('a map WebP no longer matches its PNG');
+      process.stdout.write(out);
+    }
+  }
+}
+
 /* ---- 5b. no inline styles ------------------------------------------------- */
 /* `_headers` ships style-src 'self'. An inline style attribute is therefore dead
    markup in production and perfectly fine on a dev server, which is the worst

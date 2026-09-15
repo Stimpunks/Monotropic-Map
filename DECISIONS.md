@@ -37,6 +37,19 @@ The tagline went from *An island you can find yourself on* to **A map you can fi
 
 So: the word survives only where it is describing what is drawn. Anywhere the site is speaking in its own voice, it says map. **Do not "fix" the alt text for consistency** — that would make it worse.
 
+### The maps ship as lossless WebP, and a check proves the pixels are unchanged
+Done 2026-09-15, on Ryan's call, after auditing the site against [The Website Specification](https://specification.website/spec/performance/image-optimization/), where image optimisation is **required** and says in as many words: *"PNG for photos. PNG is for graphics with sharp edges and few colours."* Both maps are full-colour illustrations, both were PNG, and together they were **742 KB** — the larger one is the front page's LCP element.
+
+They are now a `<picture>` chain: WebP first, **the original PNG still there as the fallback**. 742 KB becomes 596 KB, and the domination map alone drops 36%.
+
+**The PNG stays for two reasons and only one of them is old browsers.** It is the file Helen published, and it is what somebody re-using the map under CC BY-SA should be able to download. WebP is how we deliver the artwork, not what the artwork is.
+
+**Lossless, and verified rather than asserted.** `tools/make-map-webp.py` encodes, then decodes both files back to RGBA and compares them pixel by pixel; if one byte differs it writes nothing and deletes the output. `--check` re-runs the comparison against what is committed, and `check.mjs` calls it. **A "lossless" flag is a promise from an encoder; the comparison is evidence** — and the thing being promised is that we have not altered somebody else's drawing, which `ATTRIBUTIONS.md` forbids.
+
+**`check.mjs` also fails on a `<source>` pointing at a file that is not there.** That failure is invisible by design: the browser drops silently to the `<img>` fallback, so the page looks perfect while every visitor downloads the big PNG. Same shape as the inline-style bug — correct-looking and wrong. Both gates were tested by breaking them.
+
+**Not done, and worth knowing: AVIF is dramatically better here.** Lossless AVIF measured 231 KB and 72 KB against WebP's 376 KB and 220 KB — the domination map is a quarter of the size again. The spec says to encode AVIF first and keep the chain. It was left out of this pass only because WebP was what was asked for; adding a third `<source>` is one line and the tool already has the encoder.
+
 ### My Monotropic Map, version one, marks Helen's map and emits no number
 Built 2026-09-15, on Ryan's call, into `stories.html` rather than a page of its own — the page already promised it, in that exact spot, under *Mark where you are*, and "Your map" in the nav already led here. A separate URL would have meant an eighth nav item or a page reachable only by a link from the page that describes it.
 
