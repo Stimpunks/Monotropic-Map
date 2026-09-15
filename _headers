@@ -4,9 +4,6 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), camera=(), microphone=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
-  # PRE-LAUNCH — remove this line at launch. robots.txt explains why. A header is
-  # belt and braces over robots.txt, which is a request rather than a control.
-  X-Robots-Tag: noindex, nofollow
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate

@@ -1,12 +1,5 @@
-# PRE-LAUNCH. monotropicmap.org is not registered yet, and every page's canonical
-# points at it. A crawler that finds this site at its netlify.app address and follows
-# those canonicals lands on a domain that does not resolve.
-#
-# AT LAUNCH, once the domain resolves and Helen has reviewed the site:
-#   1. replace the Disallow below with "Allow: /"
-#   2. delete the X-Robots-Tag line from _headers
-#   3. tools/check.mjs stops printing its PRE-LAUNCH warning on its own
+# monotropicmap.org is live. Crawl away.
 User-agent: *
-Disallow: /
+Allow: /
 
 Sitemap: https://monotropicmap.org/sitemap.xml

@@ -1,10 +1,10 @@
 # Changelog
 
-## 2026-09-15 — live, and closed to search engines
+## 2026-09-15 — live on monotropicmap.org
 
 Pushed to [Stimpunks/Monotropic-Map](https://github.com/Stimpunks/Monotropic-Map) (private) and deployed to **[monotropicmap.netlify.app](https://monotropicmap.netlify.app/)**. Netlify builds from `main` on every push; pushing publishes.
 
-**The site is noindex until launch**, because every canonical points at `monotropicmap.org`, which does not resolve yet.
+**The domain went live the same day**, on Netlify DNS with `force_ssl`, `www` redirecting to the apex. The site shipped `noindex` until the domain actually resolved — every canonical pointed at it — and indexing was opened once it did.
 
 **The first live deploy found a bug no local server could**: the map hotspots positioned themselves with inline `style` attributes, which our own `style-src 'self'` blocks, so every marker on both maps stacked in the corner. Positions are now generated into `map-hotspots.css`, and `check.mjs` fails on any inline style.
 

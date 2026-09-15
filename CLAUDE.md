@@ -88,12 +88,11 @@ No npm, no bundler, no framework, no CDN, no analytics, nothing fetched from a t
 ## Deploying
 
 - **Repository**: [Stimpunks/Monotropic-Map](https://github.com/Stimpunks/Monotropic-Map) — **private**, like Penguin-Pebbling.
-- **Live**: <https://monotropicmap.netlify.app/> (Netlify project `monotropicmap`, Stimpunks team).
-- **monotropicmap.org is chosen but not registered.** Every canonical points at it.
+- **Live**: <https://monotropicmap.org/> (Netlify project `monotropicmap`, Stimpunks team; `monotropicmap.netlify.app` still serves it).
 
 **Netlify builds from `main` on every push, so pushing publishes.** There is no staging step and no build command — the files are served as-is. Treat a push as the publish it is.
 
-**The site is closed to search engines until launch**: `robots.txt` disallows everything and `_headers` sends `X-Robots-Tag: noindex`. `check.mjs` prints a PRE-LAUNCH note every run until both are flipped, and fails if only one is. `robots.txt` carries the launch steps.
+**`robots.txt` and `X-Robots-Tag` must agree.** The site was `noindex` until the domain resolved; `check.mjs` still fails if one of the pair is ever flipped without the other.
 
 **Verify in production, not on a dev server.** Our security headers only exist there, and the first live deploy proved the point: the map hotspots were positioned with inline `style` attributes, which `style-src 'self'` blocks, so every marker on both maps stacked in the corner while looking perfect locally.
 
