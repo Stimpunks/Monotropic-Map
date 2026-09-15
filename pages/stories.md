@@ -12,7 +12,9 @@ There is no score at the end of this. There is no type, no result, and no right 
 
 Nothing you mark leaves your device. There is no account and there is nothing to sign up for.
 
-*The marking tool is being built. Until it lands, the [workbook](https://autisticrealms.com/product/my-monotropic-map-workbook/) does this on paper, and the questions below work with a blank page.*
+@mymap
+
+The [workbook](https://autisticrealms.com/product/my-monotropic-map-workbook/) does the same thing on paper, in more depth, and the questions below work with a blank page.
 
 ----
 

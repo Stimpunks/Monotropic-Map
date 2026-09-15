@@ -11,6 +11,9 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+/* The source of the twenty, so the tool can be checked against it rather than against
+   itself — a generated page agreeing with its own generator proves nothing. */
+import { AREAS } from './areas.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const NET = process.argv.includes('--net');
@@ -198,6 +201,60 @@ console.log('\ntypeface');
      licence violation, and it is the easiest thing in the world to forget. */
   if (existsSync(join(ROOT, 'fonts', 'OFL.txt'))) pass('the OFL licence ships with the fonts');
   else fail('fonts/OFL.txt is missing — the OFL requires the licence travel with the font');
+}
+
+/* ---- 6c. the marking tool -------------------------------------------------- */
+/* WHAT IS CHECKED IS THE PROMISE, not the markup. stories.md has said since before the
+   tool existed that there is no score, that nothing leaves the device, and that every
+   area can be marked. Those three are the ones worth a gate, because all three are
+   quiet to break: a stray counter, a fetch added for a good reason, an area added to
+   areas.mjs that never reaches the tool. */
+console.log('\nthe marking tool');
+{
+  const html = readFileSync(join(ROOT, 'stories.html'), 'utf8');
+  const js = existsSync(join(ROOT, 'my-map.js')) ? readFileSync(join(ROOT, 'my-map.js'), 'utf8') : '';
+
+  if (!js) fail('my-map.js is missing — the tool on stories.html would do nothing');
+
+  const rows = [...html.matchAll(/class="markrow" id="mark-([a-z0-9-]+)"/g)].map((m) => m[1]);
+  const slugs = new Set(AREAS.map((a) => a.slug));
+  const missing = [...slugs].filter((sl) => !rows.includes(sl));
+  if (rows.length !== 20 || missing.length)
+    fail(`the tool offers ${rows.length} areas to mark, expected 20${missing.length ? ` (missing ${missing.join(', ')})` : ''}`);
+  else pass('all twenty areas can be marked');
+
+  /* Every row must offer the same marks, or one area quietly answers a different
+     question from the other nineteen. */
+  const perRow = [...html.matchAll(/<fieldset class="marks">([\s\S]*?)<\/fieldset>/g)]
+    .map((m) => [...m[1].matchAll(/value="([^"]*)"/g)].map((v) => v[1]).join(','));
+  if (new Set(perRow).size === 1 && perRow.length === 20) pass(`every area offers the same ${perRow[0].split(',').length} marks`);
+  else fail(`the twenty rows do not offer the same marks (${new Set(perRow).size} different sets)`);
+
+  /* NOTHING LEAVES THE DEVICE. connect-src 'self' and form-action 'none' already forbid
+     it at the browser, but a gate that says so here names the promise rather than
+     leaving it to a header nobody reads. mailto: is the reader's own mail app and is
+     the one way out, by their hand. */
+  const exfil = /\bfetch\s*\(|XMLHttpRequest|navigator\.sendBeacon|new WebSocket|<form[^>]*\saction=/i;
+  if (exfil.test(js) || exfil.test(html)) fail('the marking tool contains a way to send marks off the device');
+  else pass('nothing in the tool can send a mark anywhere');
+
+  /* NO SCORE, NO TYPE, NO RESULT. "The moment the site emits a number it is a quiz" —
+     so the tool must never render a tally of the marks. */
+  /* Block comments are stripped first: this file explains the no-counts rule in prose,
+     and the first version of this gate caught its own explanation. Only `/* *\/` is
+     removed — stripping `//` would eat the rest of any line holding a URL. */
+  const code = js.replace(/\/\*[\s\S]*?\*\//g, '');
+  const counts = /\.length\s*\+\s*["'` ]|textContent\s*=\s*[^;\n]*\.length|of 20|\/ *20\b/;
+  if (counts.test(code)) fail('the tool looks like it renders a count — no score, no type, no result');
+  else pass('the tool emits no count of the marks');
+
+  /* The four marks are stories.md's own sentence. If the prose stops saying them the
+     tool is answering a question the page no longer asks. */
+  const prose = readFileSync(join(ROOT, 'pages', 'stories.md'), 'utf8').toLowerCase();
+  const promised = ['living', 'pass through', 'taken over', 'never been'];
+  const dropped = promised.filter((w) => !prose.includes(w));
+  if (dropped.length) fail(`stories.md no longer offers: ${dropped.join(', ')} — the prose and the marks must say the same thing`);
+  else pass('the marks still match the words stories.md uses');
 }
 
 /* ---- 7. contrast --------------------------------------------------------- */

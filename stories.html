@@ -8,6 +8,7 @@
 <link rel="canonical" href="https://monotropicmap.org/stories">
 <link rel="preload" href="fonts/atkinson-hyperlegible-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="monotropic-map.css">
+<link rel="stylesheet" href="map-hotspots.css">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
@@ -17,6 +18,7 @@
 <meta property="og:image" content="https://monotropicmap.org/images/map-of-monotropic-experiences.png">
 <meta name="twitter:card" content="summary_large_image">
 <script src="theme.js"></script>
+<script src="my-map.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -46,7 +48,357 @@
 <p>Go through the twenty areas and say what each one is for you right now — somewhere you are living, somewhere you pass through, somewhere that has taken over the whole map this month, or somewhere you have never been.</p>
 <p>There is no score at the end of this. There is no type, no result, and no right map. You get your own legend, and you can print it, keep it, or send it to us.</p>
 <p>Nothing you mark leaves your device. There is no account and there is nothing to sign up for.</p>
-<p><em>The marking tool is being built. Until it lands, the <a href="https://autisticrealms.com/product/my-monotropic-map-workbook/" rel="noopener">workbook</a> does this on paper, and the questions below work with a blank page.</em></p>
+<section class="mymap" id="my-monotropic-map" aria-labelledby="mymap-h">
+  <h3 id="mymap-h">My Monotropic Map</h3>
+  <p class="mymap-lede">Say what each of the twenty areas is for you right now. Nothing you mark leaves this device, there is no score at the end, and you can change any of it whenever you like.</p>
+
+  <figure class="mapframe">
+    <img src="images/map-of-monotropic-experiences.png" width="1080" height="1080" alt="Helen Edgar's Map of Monotropic Experiences, with a numbered marker over each of the twenty areas. Each marker shows how you have marked that area.">
+    <ul class="hotspots">
+    <li><a class="hs-attention-tunnels" href="#mark-attention-tunnels" data-tone="flow" data-area="attention-tunnels">1<span class="sr">. Attention Tunnels</span></a></li>
+    <li><a class="hs-penguin-pebbling-cove-of-friendship" href="#mark-penguin-pebbling-cove-of-friendship" data-tone="social" data-area="penguin-pebbling-cove-of-friendship">2<span class="sr">. Penguin Pebbling Cove of Friendship</span></a></li>
+    <li><a class="hs-tendril-theory" href="#mark-tendril-theory" data-tone="flow" data-area="tendril-theory">3<span class="sr">. Tendril Theory</span></a></li>
+    <li><a class="hs-mountains-of-ruminating-thoughts" href="#mark-mountains-of-ruminating-thoughts" data-tone="stuck" data-area="mountains-of-ruminating-thoughts">4<span class="sr">. Mountains of Ruminating Thoughts</span></a></li>
+    <li><a class="hs-cyclones-of-unmet-needs" href="#mark-cyclones-of-unmet-needs" data-tone="pressure" data-area="cyclones-of-unmet-needs">5<span class="sr">. Cyclones of Unmet Needs</span></a></li>
+    <li><a class="hs-rabbit-holes-of-research" href="#mark-rabbit-holes-of-research" data-tone="flow" data-area="rabbit-holes-of-research">6<span class="sr">. Rabbit Holes of Research</span></a></li>
+    <li><a class="hs-infodump-canyon" href="#mark-infodump-canyon" data-tone="social" data-area="infodump-canyon">7<span class="sr">. Infodump Canyon</span></a></li>
+    <li><a class="hs-rhizomatic-communities" href="#mark-rhizomatic-communities" data-tone="social" data-area="rhizomatic-communities">8<span class="sr">. Rhizomatic Communities</span></a></li>
+    <li><a class="hs-river-of-monotropic-flow-states" href="#mark-river-of-monotropic-flow-states" data-tone="flow" data-area="river-of-monotropic-flow-states">9<span class="sr">. River of Monotropic Flow States</span></a></li>
+    <li><a class="hs-campsite-of-cavendish-spaces" href="#mark-campsite-of-cavendish-spaces" data-tone="social" data-area="campsite-of-cavendish-spaces">10<span class="sr">. Campsite of Cavendish Spaces</span></a></li>
+    <li><a class="hs-meerkat-mounds" href="#mark-meerkat-mounds" data-tone="stuck" data-area="meerkat-mounds">11<span class="sr">. Meerkat Mounds</span></a></li>
+    <li><a class="hs-river-banks-of-monotropic-time" href="#mark-river-banks-of-monotropic-time" data-tone="flow" data-area="river-banks-of-monotropic-time">12<span class="sr">. River Banks of Monotropic Time</span></a></li>
+    <li><a class="hs-shark-infested-waters" href="#mark-shark-infested-waters" data-tone="pressure" data-area="shark-infested-waters">13<span class="sr">. Shark Infested Waters of Neuronormativity and Behaviourism &amp; Double Empathy Problems</span></a></li>
+    <li><a class="hs-beach-of-body-doubling" href="#mark-beach-of-body-doubling" data-tone="social" data-area="beach-of-body-doubling">14<span class="sr">. Beach of Body Doubling</span></a></li>
+    <li><a class="hs-burnout-whirlpools" href="#mark-burnout-whirlpools" data-tone="stuck" data-area="burnout-whirlpools">15<span class="sr">. Burnout Whirlpools</span></a></li>
+    <li><a class="hs-panic-hills-of-low-object-permanence" href="#mark-panic-hills-of-low-object-permanence" data-tone="stuck" data-area="panic-hills-of-low-object-permanence">16<span class="sr">. Panic Hills of Low Object Permanence</span></a></li>
+    <li><a class="hs-forest-of-joy-awe-and-wonder" href="#mark-forest-of-joy-awe-and-wonder" data-tone="social" data-area="forest-of-joy-awe-and-wonder">17<span class="sr">. Forest of Joy, Awe &amp; Wonder</span></a></li>
+    <li><a class="hs-lake-of-limerence" href="#mark-lake-of-limerence" data-tone="stuck" data-area="lake-of-limerence">18<span class="sr">. Lake of Limerence</span></a></li>
+    <li><a class="hs-tides-of-the-sensory-sea" href="#mark-tides-of-the-sensory-sea" data-tone="stuck" data-area="tides-of-the-sensory-sea">19<span class="sr">. Tides of the Sensory Sea</span></a></li>
+    <li><a class="hs-sudden-storms-of-unexpected-events" href="#mark-sudden-storms-of-unexpected-events" data-tone="stuck" data-area="sudden-storms-of-unexpected-events">20<span class="sr">. Sudden Storms of Unexpected Events</span></a></li>
+    </ul>
+  </figure>
+
+  <noscript>
+    <p class="mymap-note"><strong>JavaScript is switched off, so this page cannot remember your marks or build the legend for you.</strong> The twenty areas below still work — fill them in and print the page — and the <a href="https://autisticrealms.com/product/my-monotropic-map-workbook/" rel="noopener">workbook</a> does the same job on paper.</p>
+  </noscript>
+
+  <ol class="markrows">
+    <li class="markrow" id="mark-attention-tunnels" data-area="attention-tunnels" data-tone="flow">
+      <div class="markrow-h">
+        <span class="markrow-n">1</span>
+        <a class="markrow-name" href="attention-tunnels.html">Attention Tunnels</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Attention Tunnels — how is it for you right now?</legend>
+        <label class="mark" for="mark-attention-tunnels-none"><input type="radio" id="mark-attention-tunnels-none" name="mark-attention-tunnels" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-attention-tunnels-living"><input type="radio" id="mark-attention-tunnels-living" name="mark-attention-tunnels" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-attention-tunnels-passing"><input type="radio" id="mark-attention-tunnels-passing" name="mark-attention-tunnels" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-attention-tunnels-swallowed"><input type="radio" id="mark-attention-tunnels-swallowed" name="mark-attention-tunnels" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-attention-tunnels-never"><input type="radio" id="mark-attention-tunnels-never" name="mark-attention-tunnels" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-penguin-pebbling-cove-of-friendship" data-area="penguin-pebbling-cove-of-friendship" data-tone="social">
+      <div class="markrow-h">
+        <span class="markrow-n">2</span>
+        <a class="markrow-name" href="penguin-pebbling-cove-of-friendship.html">Penguin Pebbling Cove of Friendship</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Penguin Pebbling Cove of Friendship — how is it for you right now?</legend>
+        <label class="mark" for="mark-penguin-pebbling-cove-of-friendship-none"><input type="radio" id="mark-penguin-pebbling-cove-of-friendship-none" name="mark-penguin-pebbling-cove-of-friendship" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-penguin-pebbling-cove-of-friendship-living"><input type="radio" id="mark-penguin-pebbling-cove-of-friendship-living" name="mark-penguin-pebbling-cove-of-friendship" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-penguin-pebbling-cove-of-friendship-passing"><input type="radio" id="mark-penguin-pebbling-cove-of-friendship-passing" name="mark-penguin-pebbling-cove-of-friendship" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-penguin-pebbling-cove-of-friendship-swallowed"><input type="radio" id="mark-penguin-pebbling-cove-of-friendship-swallowed" name="mark-penguin-pebbling-cove-of-friendship" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-penguin-pebbling-cove-of-friendship-never"><input type="radio" id="mark-penguin-pebbling-cove-of-friendship-never" name="mark-penguin-pebbling-cove-of-friendship" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-tendril-theory" data-area="tendril-theory" data-tone="flow">
+      <div class="markrow-h">
+        <span class="markrow-n">3</span>
+        <a class="markrow-name" href="tendril-theory.html">Tendril Theory</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Tendril Theory — how is it for you right now?</legend>
+        <label class="mark" for="mark-tendril-theory-none"><input type="radio" id="mark-tendril-theory-none" name="mark-tendril-theory" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-tendril-theory-living"><input type="radio" id="mark-tendril-theory-living" name="mark-tendril-theory" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-tendril-theory-passing"><input type="radio" id="mark-tendril-theory-passing" name="mark-tendril-theory" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-tendril-theory-swallowed"><input type="radio" id="mark-tendril-theory-swallowed" name="mark-tendril-theory" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-tendril-theory-never"><input type="radio" id="mark-tendril-theory-never" name="mark-tendril-theory" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-mountains-of-ruminating-thoughts" data-area="mountains-of-ruminating-thoughts" data-tone="stuck">
+      <div class="markrow-h">
+        <span class="markrow-n">4</span>
+        <a class="markrow-name" href="mountains-of-ruminating-thoughts.html">Mountains of Ruminating Thoughts</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Mountains of Ruminating Thoughts — how is it for you right now?</legend>
+        <label class="mark" for="mark-mountains-of-ruminating-thoughts-none"><input type="radio" id="mark-mountains-of-ruminating-thoughts-none" name="mark-mountains-of-ruminating-thoughts" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-mountains-of-ruminating-thoughts-living"><input type="radio" id="mark-mountains-of-ruminating-thoughts-living" name="mark-mountains-of-ruminating-thoughts" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-mountains-of-ruminating-thoughts-passing"><input type="radio" id="mark-mountains-of-ruminating-thoughts-passing" name="mark-mountains-of-ruminating-thoughts" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-mountains-of-ruminating-thoughts-swallowed"><input type="radio" id="mark-mountains-of-ruminating-thoughts-swallowed" name="mark-mountains-of-ruminating-thoughts" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-mountains-of-ruminating-thoughts-never"><input type="radio" id="mark-mountains-of-ruminating-thoughts-never" name="mark-mountains-of-ruminating-thoughts" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-cyclones-of-unmet-needs" data-area="cyclones-of-unmet-needs" data-tone="pressure">
+      <div class="markrow-h">
+        <span class="markrow-n">5</span>
+        <a class="markrow-name" href="cyclones-of-unmet-needs.html">Cyclones of Unmet Needs</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Cyclones of Unmet Needs — how is it for you right now?</legend>
+        <label class="mark" for="mark-cyclones-of-unmet-needs-none"><input type="radio" id="mark-cyclones-of-unmet-needs-none" name="mark-cyclones-of-unmet-needs" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-cyclones-of-unmet-needs-living"><input type="radio" id="mark-cyclones-of-unmet-needs-living" name="mark-cyclones-of-unmet-needs" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-cyclones-of-unmet-needs-passing"><input type="radio" id="mark-cyclones-of-unmet-needs-passing" name="mark-cyclones-of-unmet-needs" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-cyclones-of-unmet-needs-swallowed"><input type="radio" id="mark-cyclones-of-unmet-needs-swallowed" name="mark-cyclones-of-unmet-needs" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-cyclones-of-unmet-needs-never"><input type="radio" id="mark-cyclones-of-unmet-needs-never" name="mark-cyclones-of-unmet-needs" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-rabbit-holes-of-research" data-area="rabbit-holes-of-research" data-tone="flow">
+      <div class="markrow-h">
+        <span class="markrow-n">6</span>
+        <a class="markrow-name" href="rabbit-holes-of-research.html">Rabbit Holes of Research</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Rabbit Holes of Research — how is it for you right now?</legend>
+        <label class="mark" for="mark-rabbit-holes-of-research-none"><input type="radio" id="mark-rabbit-holes-of-research-none" name="mark-rabbit-holes-of-research" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-rabbit-holes-of-research-living"><input type="radio" id="mark-rabbit-holes-of-research-living" name="mark-rabbit-holes-of-research" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-rabbit-holes-of-research-passing"><input type="radio" id="mark-rabbit-holes-of-research-passing" name="mark-rabbit-holes-of-research" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-rabbit-holes-of-research-swallowed"><input type="radio" id="mark-rabbit-holes-of-research-swallowed" name="mark-rabbit-holes-of-research" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-rabbit-holes-of-research-never"><input type="radio" id="mark-rabbit-holes-of-research-never" name="mark-rabbit-holes-of-research" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-infodump-canyon" data-area="infodump-canyon" data-tone="social">
+      <div class="markrow-h">
+        <span class="markrow-n">7</span>
+        <a class="markrow-name" href="infodump-canyon.html">Infodump Canyon</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Infodump Canyon — how is it for you right now?</legend>
+        <label class="mark" for="mark-infodump-canyon-none"><input type="radio" id="mark-infodump-canyon-none" name="mark-infodump-canyon" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-infodump-canyon-living"><input type="radio" id="mark-infodump-canyon-living" name="mark-infodump-canyon" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-infodump-canyon-passing"><input type="radio" id="mark-infodump-canyon-passing" name="mark-infodump-canyon" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-infodump-canyon-swallowed"><input type="radio" id="mark-infodump-canyon-swallowed" name="mark-infodump-canyon" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-infodump-canyon-never"><input type="radio" id="mark-infodump-canyon-never" name="mark-infodump-canyon" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-rhizomatic-communities" data-area="rhizomatic-communities" data-tone="social">
+      <div class="markrow-h">
+        <span class="markrow-n">8</span>
+        <a class="markrow-name" href="rhizomatic-communities.html">Rhizomatic Communities</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Rhizomatic Communities — how is it for you right now?</legend>
+        <label class="mark" for="mark-rhizomatic-communities-none"><input type="radio" id="mark-rhizomatic-communities-none" name="mark-rhizomatic-communities" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-rhizomatic-communities-living"><input type="radio" id="mark-rhizomatic-communities-living" name="mark-rhizomatic-communities" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-rhizomatic-communities-passing"><input type="radio" id="mark-rhizomatic-communities-passing" name="mark-rhizomatic-communities" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-rhizomatic-communities-swallowed"><input type="radio" id="mark-rhizomatic-communities-swallowed" name="mark-rhizomatic-communities" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-rhizomatic-communities-never"><input type="radio" id="mark-rhizomatic-communities-never" name="mark-rhizomatic-communities" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-river-of-monotropic-flow-states" data-area="river-of-monotropic-flow-states" data-tone="flow">
+      <div class="markrow-h">
+        <span class="markrow-n">9</span>
+        <a class="markrow-name" href="river-of-monotropic-flow-states.html">River of Monotropic Flow States</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">River of Monotropic Flow States — how is it for you right now?</legend>
+        <label class="mark" for="mark-river-of-monotropic-flow-states-none"><input type="radio" id="mark-river-of-monotropic-flow-states-none" name="mark-river-of-monotropic-flow-states" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-river-of-monotropic-flow-states-living"><input type="radio" id="mark-river-of-monotropic-flow-states-living" name="mark-river-of-monotropic-flow-states" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-river-of-monotropic-flow-states-passing"><input type="radio" id="mark-river-of-monotropic-flow-states-passing" name="mark-river-of-monotropic-flow-states" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-river-of-monotropic-flow-states-swallowed"><input type="radio" id="mark-river-of-monotropic-flow-states-swallowed" name="mark-river-of-monotropic-flow-states" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-river-of-monotropic-flow-states-never"><input type="radio" id="mark-river-of-monotropic-flow-states-never" name="mark-river-of-monotropic-flow-states" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-campsite-of-cavendish-spaces" data-area="campsite-of-cavendish-spaces" data-tone="social">
+      <div class="markrow-h">
+        <span class="markrow-n">10</span>
+        <a class="markrow-name" href="campsite-of-cavendish-spaces.html">Campsite of Cavendish Spaces</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Campsite of Cavendish Spaces — how is it for you right now?</legend>
+        <label class="mark" for="mark-campsite-of-cavendish-spaces-none"><input type="radio" id="mark-campsite-of-cavendish-spaces-none" name="mark-campsite-of-cavendish-spaces" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-campsite-of-cavendish-spaces-living"><input type="radio" id="mark-campsite-of-cavendish-spaces-living" name="mark-campsite-of-cavendish-spaces" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-campsite-of-cavendish-spaces-passing"><input type="radio" id="mark-campsite-of-cavendish-spaces-passing" name="mark-campsite-of-cavendish-spaces" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-campsite-of-cavendish-spaces-swallowed"><input type="radio" id="mark-campsite-of-cavendish-spaces-swallowed" name="mark-campsite-of-cavendish-spaces" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-campsite-of-cavendish-spaces-never"><input type="radio" id="mark-campsite-of-cavendish-spaces-never" name="mark-campsite-of-cavendish-spaces" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-meerkat-mounds" data-area="meerkat-mounds" data-tone="stuck">
+      <div class="markrow-h">
+        <span class="markrow-n">11</span>
+        <a class="markrow-name" href="meerkat-mounds.html">Meerkat Mounds</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Meerkat Mounds — how is it for you right now?</legend>
+        <label class="mark" for="mark-meerkat-mounds-none"><input type="radio" id="mark-meerkat-mounds-none" name="mark-meerkat-mounds" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-meerkat-mounds-living"><input type="radio" id="mark-meerkat-mounds-living" name="mark-meerkat-mounds" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-meerkat-mounds-passing"><input type="radio" id="mark-meerkat-mounds-passing" name="mark-meerkat-mounds" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-meerkat-mounds-swallowed"><input type="radio" id="mark-meerkat-mounds-swallowed" name="mark-meerkat-mounds" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-meerkat-mounds-never"><input type="radio" id="mark-meerkat-mounds-never" name="mark-meerkat-mounds" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-river-banks-of-monotropic-time" data-area="river-banks-of-monotropic-time" data-tone="flow">
+      <div class="markrow-h">
+        <span class="markrow-n">12</span>
+        <a class="markrow-name" href="river-banks-of-monotropic-time.html">River Banks of Monotropic Time</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">River Banks of Monotropic Time — how is it for you right now?</legend>
+        <label class="mark" for="mark-river-banks-of-monotropic-time-none"><input type="radio" id="mark-river-banks-of-monotropic-time-none" name="mark-river-banks-of-monotropic-time" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-river-banks-of-monotropic-time-living"><input type="radio" id="mark-river-banks-of-monotropic-time-living" name="mark-river-banks-of-monotropic-time" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-river-banks-of-monotropic-time-passing"><input type="radio" id="mark-river-banks-of-monotropic-time-passing" name="mark-river-banks-of-monotropic-time" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-river-banks-of-monotropic-time-swallowed"><input type="radio" id="mark-river-banks-of-monotropic-time-swallowed" name="mark-river-banks-of-monotropic-time" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-river-banks-of-monotropic-time-never"><input type="radio" id="mark-river-banks-of-monotropic-time-never" name="mark-river-banks-of-monotropic-time" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-shark-infested-waters" data-area="shark-infested-waters" data-tone="pressure">
+      <div class="markrow-h">
+        <span class="markrow-n">13</span>
+        <a class="markrow-name" href="shark-infested-waters.html">Shark Infested Waters of Neuronormativity and Behaviourism &amp; Double Empathy Problems</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Shark Infested Waters of Neuronormativity and Behaviourism &amp; Double Empathy Problems — how is it for you right now?</legend>
+        <label class="mark" for="mark-shark-infested-waters-none"><input type="radio" id="mark-shark-infested-waters-none" name="mark-shark-infested-waters" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-shark-infested-waters-living"><input type="radio" id="mark-shark-infested-waters-living" name="mark-shark-infested-waters" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-shark-infested-waters-passing"><input type="radio" id="mark-shark-infested-waters-passing" name="mark-shark-infested-waters" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-shark-infested-waters-swallowed"><input type="radio" id="mark-shark-infested-waters-swallowed" name="mark-shark-infested-waters" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-shark-infested-waters-never"><input type="radio" id="mark-shark-infested-waters-never" name="mark-shark-infested-waters" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-beach-of-body-doubling" data-area="beach-of-body-doubling" data-tone="social">
+      <div class="markrow-h">
+        <span class="markrow-n">14</span>
+        <a class="markrow-name" href="beach-of-body-doubling.html">Beach of Body Doubling</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Beach of Body Doubling — how is it for you right now?</legend>
+        <label class="mark" for="mark-beach-of-body-doubling-none"><input type="radio" id="mark-beach-of-body-doubling-none" name="mark-beach-of-body-doubling" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-beach-of-body-doubling-living"><input type="radio" id="mark-beach-of-body-doubling-living" name="mark-beach-of-body-doubling" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-beach-of-body-doubling-passing"><input type="radio" id="mark-beach-of-body-doubling-passing" name="mark-beach-of-body-doubling" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-beach-of-body-doubling-swallowed"><input type="radio" id="mark-beach-of-body-doubling-swallowed" name="mark-beach-of-body-doubling" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-beach-of-body-doubling-never"><input type="radio" id="mark-beach-of-body-doubling-never" name="mark-beach-of-body-doubling" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-burnout-whirlpools" data-area="burnout-whirlpools" data-tone="stuck">
+      <div class="markrow-h">
+        <span class="markrow-n">15</span>
+        <a class="markrow-name" href="burnout-whirlpools.html">Burnout Whirlpools</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Burnout Whirlpools — how is it for you right now?</legend>
+        <label class="mark" for="mark-burnout-whirlpools-none"><input type="radio" id="mark-burnout-whirlpools-none" name="mark-burnout-whirlpools" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-burnout-whirlpools-living"><input type="radio" id="mark-burnout-whirlpools-living" name="mark-burnout-whirlpools" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-burnout-whirlpools-passing"><input type="radio" id="mark-burnout-whirlpools-passing" name="mark-burnout-whirlpools" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-burnout-whirlpools-swallowed"><input type="radio" id="mark-burnout-whirlpools-swallowed" name="mark-burnout-whirlpools" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-burnout-whirlpools-never"><input type="radio" id="mark-burnout-whirlpools-never" name="mark-burnout-whirlpools" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-panic-hills-of-low-object-permanence" data-area="panic-hills-of-low-object-permanence" data-tone="stuck">
+      <div class="markrow-h">
+        <span class="markrow-n">16</span>
+        <a class="markrow-name" href="panic-hills-of-low-object-permanence.html">Panic Hills of Low Object Permanence</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Panic Hills of Low Object Permanence — how is it for you right now?</legend>
+        <label class="mark" for="mark-panic-hills-of-low-object-permanence-none"><input type="radio" id="mark-panic-hills-of-low-object-permanence-none" name="mark-panic-hills-of-low-object-permanence" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-panic-hills-of-low-object-permanence-living"><input type="radio" id="mark-panic-hills-of-low-object-permanence-living" name="mark-panic-hills-of-low-object-permanence" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-panic-hills-of-low-object-permanence-passing"><input type="radio" id="mark-panic-hills-of-low-object-permanence-passing" name="mark-panic-hills-of-low-object-permanence" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-panic-hills-of-low-object-permanence-swallowed"><input type="radio" id="mark-panic-hills-of-low-object-permanence-swallowed" name="mark-panic-hills-of-low-object-permanence" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-panic-hills-of-low-object-permanence-never"><input type="radio" id="mark-panic-hills-of-low-object-permanence-never" name="mark-panic-hills-of-low-object-permanence" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-forest-of-joy-awe-and-wonder" data-area="forest-of-joy-awe-and-wonder" data-tone="social">
+      <div class="markrow-h">
+        <span class="markrow-n">17</span>
+        <a class="markrow-name" href="forest-of-joy-awe-and-wonder.html">Forest of Joy, Awe &amp; Wonder</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Forest of Joy, Awe &amp; Wonder — how is it for you right now?</legend>
+        <label class="mark" for="mark-forest-of-joy-awe-and-wonder-none"><input type="radio" id="mark-forest-of-joy-awe-and-wonder-none" name="mark-forest-of-joy-awe-and-wonder" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-forest-of-joy-awe-and-wonder-living"><input type="radio" id="mark-forest-of-joy-awe-and-wonder-living" name="mark-forest-of-joy-awe-and-wonder" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-forest-of-joy-awe-and-wonder-passing"><input type="radio" id="mark-forest-of-joy-awe-and-wonder-passing" name="mark-forest-of-joy-awe-and-wonder" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-forest-of-joy-awe-and-wonder-swallowed"><input type="radio" id="mark-forest-of-joy-awe-and-wonder-swallowed" name="mark-forest-of-joy-awe-and-wonder" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-forest-of-joy-awe-and-wonder-never"><input type="radio" id="mark-forest-of-joy-awe-and-wonder-never" name="mark-forest-of-joy-awe-and-wonder" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-lake-of-limerence" data-area="lake-of-limerence" data-tone="stuck">
+      <div class="markrow-h">
+        <span class="markrow-n">18</span>
+        <a class="markrow-name" href="lake-of-limerence.html">Lake of Limerence</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Lake of Limerence — how is it for you right now?</legend>
+        <label class="mark" for="mark-lake-of-limerence-none"><input type="radio" id="mark-lake-of-limerence-none" name="mark-lake-of-limerence" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-lake-of-limerence-living"><input type="radio" id="mark-lake-of-limerence-living" name="mark-lake-of-limerence" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-lake-of-limerence-passing"><input type="radio" id="mark-lake-of-limerence-passing" name="mark-lake-of-limerence" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-lake-of-limerence-swallowed"><input type="radio" id="mark-lake-of-limerence-swallowed" name="mark-lake-of-limerence" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-lake-of-limerence-never"><input type="radio" id="mark-lake-of-limerence-never" name="mark-lake-of-limerence" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-tides-of-the-sensory-sea" data-area="tides-of-the-sensory-sea" data-tone="stuck">
+      <div class="markrow-h">
+        <span class="markrow-n">19</span>
+        <a class="markrow-name" href="tides-of-the-sensory-sea.html">Tides of the Sensory Sea</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Tides of the Sensory Sea — how is it for you right now?</legend>
+        <label class="mark" for="mark-tides-of-the-sensory-sea-none"><input type="radio" id="mark-tides-of-the-sensory-sea-none" name="mark-tides-of-the-sensory-sea" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-tides-of-the-sensory-sea-living"><input type="radio" id="mark-tides-of-the-sensory-sea-living" name="mark-tides-of-the-sensory-sea" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-tides-of-the-sensory-sea-passing"><input type="radio" id="mark-tides-of-the-sensory-sea-passing" name="mark-tides-of-the-sensory-sea" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-tides-of-the-sensory-sea-swallowed"><input type="radio" id="mark-tides-of-the-sensory-sea-swallowed" name="mark-tides-of-the-sensory-sea" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-tides-of-the-sensory-sea-never"><input type="radio" id="mark-tides-of-the-sensory-sea-never" name="mark-tides-of-the-sensory-sea" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+    <li class="markrow" id="mark-sudden-storms-of-unexpected-events" data-area="sudden-storms-of-unexpected-events" data-tone="stuck">
+      <div class="markrow-h">
+        <span class="markrow-n">20</span>
+        <a class="markrow-name" href="sudden-storms-of-unexpected-events.html">Sudden Storms of Unexpected Events</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">Sudden Storms of Unexpected Events — how is it for you right now?</legend>
+        <label class="mark" for="mark-sudden-storms-of-unexpected-events-none"><input type="radio" id="mark-sudden-storms-of-unexpected-events-none" name="mark-sudden-storms-of-unexpected-events" value="" checked><span>Not said yet</span></label>
+        <label class="mark" for="mark-sudden-storms-of-unexpected-events-living"><input type="radio" id="mark-sudden-storms-of-unexpected-events-living" name="mark-sudden-storms-of-unexpected-events" value="living"><span>Living here</span></label>
+        <label class="mark" for="mark-sudden-storms-of-unexpected-events-passing"><input type="radio" id="mark-sudden-storms-of-unexpected-events-passing" name="mark-sudden-storms-of-unexpected-events" value="passing"><span>Passing through</span></label>
+        <label class="mark" for="mark-sudden-storms-of-unexpected-events-swallowed"><input type="radio" id="mark-sudden-storms-of-unexpected-events-swallowed" name="mark-sudden-storms-of-unexpected-events" value="swallowed"><span>Taken over the map</span></label>
+        <label class="mark" for="mark-sudden-storms-of-unexpected-events-never"><input type="radio" id="mark-sudden-storms-of-unexpected-events-never" name="mark-sudden-storms-of-unexpected-events" value="never"><span>Never been</span></label>
+      </fieldset>
+    </li>
+  </ol>
+
+  <div class="legend" id="my-legend">
+    <h3>Your legend</h3>
+    <p class="legend-empty">Mark an area above and it will appear here.</p>
+    <div class="legend-groups">
+      <section class="legend-g" data-mark="living" hidden>
+        <h4>Living here</h4>
+        <ul></ul>
+      </section>
+      <section class="legend-g" data-mark="passing" hidden>
+        <h4>Passing through</h4>
+        <ul></ul>
+      </section>
+      <section class="legend-g" data-mark="swallowed" hidden>
+        <h4>Taken over the map</h4>
+        <ul></ul>
+      </section>
+      <section class="legend-g" data-mark="never" hidden>
+        <h4>Never been</h4>
+        <ul></ul>
+      </section>
+      <section class="legend-g" data-mark="" hidden>
+        <h4>Not said yet</h4>
+        <ul></ul>
+      </section>
+    </div>
+    <p class="legend-actions">
+      <button type="button" class="btn" id="legend-print" hidden>Print this</button>
+      <button type="button" class="btn" id="legend-copy" hidden>Copy as text</button>
+      <button type="button" class="btn btn-quiet" id="legend-clear" hidden>Clear every mark</button>
+    </p>
+    <p class="legend-note" id="legend-status" role="status"></p>
+  </div>
+</section>
+<p>The <a href="https://autisticrealms.com/product/my-monotropic-map-workbook/" rel="noopener">workbook</a> does the same thing on paper, in more depth, and the questions below work with a blank page.</p>
 <hr>
 <h2 id="questions-to-sit-with">Questions to sit with</h2>
 <ul>

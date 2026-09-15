@@ -18,8 +18,8 @@ The plain definitions are derived from the Stimpunks glossary entries, which are
 
 **The packet that asks her is generated, not retyped.** `node tools/review.mjs` reads the forty passages out of `areas.mjs` and emits a review page; `--md` emits the same thing as Markdown to print or email. A packet with the passages copied into it would be a forty-first copy that drifts the moment either side is edited, and the drift would be the worst kind — Helen reviewing wording the site no longer carries, or approving wording it never carried. It marks *ours* and *hers* apart on purpose: a reviewer who cannot tell whose sentence she is reading cannot review it. It also carries the three questions only she can answer: Blackwater's first name, whether anyone named Rabbit Holes of Research or Infodump Canyon, and whether per-area artwork exists for version two of the marking tool.
 
-### The marking tool is not built
-*My Monotropic Map* — mark each area, get a legend, print or submit it — is designed and described on `stories.html` and does not exist. The page says so rather than pretending. Version one annotates Helen's map and needs no new artwork; version two, which would let a person drag and resize their own island, needs per-area art that may or may not exist as separable assets in the training decks. **That is a question for Helen, not an assumption.**
+### Version two of the marking tool needs artwork that may not exist
+Version one shipped on 2026-09-15 (below). Version two is the one that would let a person **drag and resize their own island** rather than mark Helen's, and it needs each area as a separable image. Whether those exist anywhere in the training decks **is a question for Helen, not an assumption**, and it is in the review packet. If the answer is no, version two does not happen: we are not redrawing her map to get it.
 
 ### There is no service worker and no offline copy
 Penguin Pebbling has one. This site does not, and that is a deliberate not-yet rather than a no: **once a worker ships it lives on people's devices until something unregisters it**, so it is worth being sure of the page shapes first.
@@ -36,6 +36,23 @@ The tagline went from *An island you can find yourself on* to **A map you can fi
 **Three uses were kept, all of them alt text**, and the distinction is the point: alt text describes the artwork, and the artwork *is* an island. A blind reader needs the same picture everyone else gets, and calling it a map would be describing something the image does not show. **Accuracy about a picture is not the same job as choosing our own vocabulary.**
 
 So: the word survives only where it is describing what is drawn. Anywhere the site is speaking in its own voice, it says map. **Do not "fix" the alt text for consistency** — that would make it worse.
+
+### My Monotropic Map, version one, marks Helen's map and emits no number
+Built 2026-09-15, on Ryan's call, into `stories.html` rather than a page of its own — the page already promised it, in that exact spot, under *Mark where you are*, and "Your map" in the nav already led here. A separate URL would have meant an eighth nav item or a page reachable only by a link from the page that describes it.
+
+**The four marks are the page's own sentence, not new vocabulary.** `stories.md` has asked the same question since before any tool existed — "somewhere you are living, somewhere you pass through, somewhere that has taken over the whole map this month, or somewhere you have never been" — so the marks were lifted from it. A fifth, **Not said yet**, is the resting state, because twenty areas silently defaulting to nothing and twenty areas a person has actually considered are not the same map. `check.mjs` fails if the prose stops offering one of the four.
+
+**No score, no type, no result — and that rules out counts.** "The moment the site emits a number it is a quiz", and *8 of 20* is a number. So the tool never tallies anything, and the way a person sees what they have not reached is that it is listed by name under *Not said yet*. `check.mjs` greps the script for a rendered count. The first version of that gate failed on the comment explaining the rule, so it strips block comments and reads the code.
+
+**Nothing interprets the marks.** No advice is generated from them, which is the site's one rule seen from the other side: what changes a stuck state is a change to the conditions, and a web page does not know anybody's conditions. Each area in the legend links to its own page, where the environmental change is already written down by somebody who thought about it.
+
+**The controls are real radios and work with JavaScript off.** What the script adds is remembering, the legend, the map reflecting the marks, and the print/copy/send buttons — and those buttons ship `hidden` and are revealed by the script, the way `theme.js` reveals the theme toggle, because a control that needs a script must not be visible before the script has run. With JS off a person can still fill the page in and print it, and a `noscript` note says the marks will not be remembered and points at the workbook.
+
+**Nothing leaves the device, and the tool offers no route out at all.** No fetch, no form, `connect-src 'self'` and `form-action 'none'` in `_headers`. A *Send it to us* button that built a `mailto:` was in the first version and **was taken out on Ryan's call before it ever shipped**: copy puts the legend on the clipboard and the person decides what to do with it, which is one fewer thing the page presumes about them, and it means the page never addresses anybody. `check.mjs` fails on a `fetch`, `XMLHttpRequest`, `sendBeacon`, `WebSocket` or form `action` appearing in the tool.
+
+**Two things were got wrong in the first pass and are worth keeping written down.** *Never been* was drawn as a faded marker, which made a real answer look like an unanswered one — it now recedes by dropping the area's colour for the muted grey and going dotted, rather than by fading until it reads as a rendering fault on somebody else's artwork. And *Not said yet*, being checked on all twenty at load, was styled as emphatically as a real mark, so the tool opened looking like twenty confident answers nobody had given. Both were only visible by looking at the thing.
+
+**The vocabulary is written down once.** `my-map.js` reads every label back out of the DOM that `build.mjs` generated, so there is no second list to fall out of step with the first.
 
 ### Atkinson Hyperlegible is shipped, and the check makes sure it stays shipped
 Done 2026-09-15, on Ryan's call. **The face was named in `--font` from the first commit and no font file was ever served**, so for the site's whole first day every reader got the system stack. That is the failure mode worth naming: a named typeface looks identical to a shipped one in every local test, because the fallback is a real font and the page looks fine.

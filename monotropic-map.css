@@ -399,3 +399,116 @@ blockquote.gloss cite { display: block; margin-block-start: 0.6rem; font-style: 
   .plain { break-inside: avoid; }
   .plain p { font-size: 12pt; }
 }
+
+/* ---- My Monotropic Map, version one ------------------------------------- */
+/* The controls are real radios and are styled, not replaced: the input keeps its own
+   focus ring and keyboard behaviour and is only visually folded into its label. A
+   custom control here would mean rebuilding arrow-key roving and checked state by hand
+   for no gain. See tools/build.mjs for why there are five marks and not four, and
+   my-map.js for why there are no counts anywhere. */
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.mymap { margin-block: 2rem 1rem; }
+.mymap-lede { max-width: var(--measure); color: var(--fg-soft); }
+.mymap-note {
+  max-width: var(--measure); background: var(--wash);
+  border: 1px solid var(--line); border-radius: 8px; padding: 0.9rem 1rem;
+}
+
+.markrows { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 0.75rem; }
+.markrow {
+  background: var(--card); border: 1px solid var(--line);
+  border-inline-start: 5px solid var(--tone, var(--accent));
+  border-radius: 8px; padding: 0.8rem 1rem;
+  scroll-margin-block-start: 5rem;
+}
+.markrow:target { outline: 3px solid var(--accent); outline-offset: 2px; }
+.markrow-h { display: flex; align-items: baseline; gap: 0.6rem; }
+.markrow-n { font-family: var(--mono); font-size: 0.85rem; color: var(--fg-soft); }
+.markrow-name { font-weight: 700; color: var(--fg); text-decoration: none; }
+.markrow-name:hover { text-decoration: underline; }
+
+.marks { border: 0; margin: 0.6rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.mark {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 0.3rem 0.75rem 0.3rem 0.55rem;
+  font-size: 0.9rem; color: var(--fg-soft);
+  cursor: pointer; background: var(--bg);
+}
+.mark input { accent-color: var(--tone, var(--accent)); margin: 0; }
+.mark:hover { border-color: var(--tone, var(--accent)); color: var(--fg); }
+.mark:has(input:checked) {
+  border-color: var(--tone, var(--accent));
+  background: color-mix(in srgb, var(--tone, var(--accent)) 12%, var(--card));
+  color: var(--fg); font-weight: 700;
+}
+/* The resting state must not look like an answer. "Not said yet" is checked on all
+   twenty when the page opens, and given the same weight as a real mark it made the
+   tool read as twenty confident answers nobody had given yet. It stays quiet, in the
+   muted grey, until a person actually chooses something. */
+.mark:has(input[value=""]:checked) {
+  border-color: var(--line);
+  background: var(--bg);
+  color: var(--fg-soft);
+  font-weight: 400;
+}
+.mark:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* The picture repeats what the list says. Each state differs in fill AND in outline
+   weight, never in hue alone, and my-map.js writes the mark into the marker's
+   accessible name as well — colour is not information everybody can receive. */
+.hotspots a[data-mark="living"] {
+  background: var(--tone, var(--accent)); color: var(--accent-fg); border-width: 3px;
+}
+.hotspots a[data-mark="passing"] { border-style: dashed; border-width: 3px; }
+.hotspots a[data-mark="swallowed"] {
+  background: var(--tone, var(--accent)); color: var(--accent-fg);
+  border-width: 3px; box-shadow: 0 0 0 3px var(--card), 0 0 0 5px var(--tone, var(--accent));
+}
+/* "Never been" is an answer, not an absence, so it must not read as unanswered — and
+   the unmarked marker is the ordinary-looking one. It recedes by dropping the area's
+   own colour for the muted grey and going dotted, rather than by fading until it looks
+   like a rendering fault on somebody else's artwork. */
+.hotspots a[data-mark="never"] {
+  border-style: dotted; border-color: var(--fg-soft); color: var(--fg-soft); opacity: 0.75;
+}
+
+.legend {
+  margin-block-start: 2rem; padding: 1.25rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+}
+.legend h3 { margin-block: 0 0.75rem; }
+.legend-empty { color: var(--fg-soft); margin: 0; }
+.legend-groups { display: grid; gap: 1.25rem; }
+.legend-g h4 {
+  margin-block: 0 0.5rem; font-size: 0.78rem; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--fg-soft);
+}
+.legend-g ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
+.legend-g li { display: flex; gap: 0.6rem; align-items: baseline; }
+.legend-n { font-family: var(--mono); font-size: 0.85rem; color: var(--fg-soft); min-width: 1.5rem; }
+
+.legend-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-block: 1.25rem 0; }
+.btn {
+  font: inherit; font-size: 0.92rem;
+  background: var(--accent); color: var(--accent-fg);
+  border: 1px solid var(--accent); border-radius: 999px;
+  padding: 0.4rem 1rem; cursor: pointer; text-decoration: none;
+}
+.btn:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+.btn-quiet { background: none; color: var(--fg-soft); border-color: var(--line); }
+.btn-quiet:hover { background: none; color: var(--fg); border-color: var(--fg); }
+.legend-note { color: var(--fg-soft); font-size: 0.9rem; margin-block: 0.75rem 0; min-height: 1.4em; }
+
+/* What prints is the legend and the marked map — the thing stories.md promises you can
+   keep. The eighty radio buttons that produced it are not the artefact. */
+@media print {
+  .mymap-lede, .markrows, .legend-actions, .legend-note, .mymap-note { display: none !important; }
+  .legend { border: 0; padding: 0; background: #fff; break-inside: avoid; }
+  .legend-g { break-inside: avoid; }
+  .mymap .mapframe { max-width: 14cm; }
+  .hotspots a { background: #fff; color: #000; border-color: #000; }
+  .hotspots a[data-mark="living"], .hotspots a[data-mark="swallowed"] { background: #000; color: #fff; }
+}

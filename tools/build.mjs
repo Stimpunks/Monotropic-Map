@@ -59,7 +59,9 @@ const esc = (s) => String(s).replace(/&(?![a-zA-Z]+;|#\d+;)/g, '&amp;').replace(
 /** Strip tags and entities for use in <meta> and JSON. */
 const plain = (s) => String(s).replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&#(\d+);/g, (_, d) => String.fromCharCode(+d)).replace(/&[a-z]+;/g, ' ').replace(/\s+/g, ' ').trim();
 
-const MAP_PAGES = new Set(['index', 'neuronormative-domination']);
+const MAP_PAGES = new Set(['index', 'neuronormative-domination', 'stories']);
+/** Pages carrying an interactive tool, and so the one script that is not the theme. */
+const TOOL_PAGES = new Set(['stories']);
 
 function shell({ slug, title, description, body, h1, wide = false }) {
   const canonical = slug === 'index' ? `${SITE.origin}/` : `${SITE.origin}/${slug}`;
@@ -89,7 +91,7 @@ ${MAP_PAGES.has(slug) ? '<link rel="stylesheet" href="map-hotspots.css">\n' : ''
 <meta property="og:image" content="${SITE.origin}/images/map-of-monotropic-experiences.png">
 <meta name="twitter:card" content="summary_large_image">
 <script src="theme.js"></script>
-</head>
+${TOOL_PAGES.has(slug) ? '<script src="my-map.js" defer></script>\n' : ''}</head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar">
@@ -123,7 +125,7 @@ ${h1 === false ? '' : `<h1>${esc(h1 ?? title)}</h1>\n`}${body}
 /** One map figure, used by both maps. `items` are {href, x, y, marker, label, tone}. */
 function mapFigure({ src, width, height, alt, items }) {
   const spots = items.map((it) =>
-    `    <li><a class="hs-${it.id}" href="${it.href}"${it.tone ? ` data-tone="${it.tone}"` : ''}>${it.marker}<span class="sr">. ${esc(plain(it.label))}</span></a></li>`
+    `    <li><a class="hs-${it.id}" href="${it.href}"${it.tone ? ` data-tone="${it.tone}"` : ''}${it.area ? ` data-area="${it.area}"` : ''}>${it.marker}<span class="sr">. ${esc(plain(it.label))}</span></a></li>`
   ).join('\n');
   return `  <figure class="mapframe">
     <img src="${src}" width="${width}" height="${height}" alt="${esc(alt)}">
@@ -377,12 +379,113 @@ function buildProse(slug) {
   if (!lines[0].startsWith('# ')) throw new Error(`pages/${slug}.md must open with "# Title"`);
   const title = lines[0].slice(2).trim();
   const desc = (lines.slice(1).find((l) => l.trim() && !l.startsWith('#')) || title).replace(/[*\[\]]|\(https?:[^)]+\)/g, '').trim();
-  const html = render(lines.slice(1).join('\n'), `pages/${slug}.md`, { slides: SLIDE_CTX });
+  const html = render(lines.slice(1).join('\n'), `pages/${slug}.md`, { slides: SLIDE_CTX, mymap: TOOL_PAGES.has(slug) ? myMapTool() : null });
   return shell({
     slug, title,
     description: desc.slice(0, 180),
     body: `${tableOfContents(html)}<div class="prose">\n${html}\n</div>`,
   });
+}
+
+/* ---- My Monotropic Map, version one -------------------------------------- */
+
+/**
+ * THE FOUR MARKS ARE THE PAGE'S OWN WORDS, not new ones. `pages/stories.md` has asked
+ * the same question since before any tool existed — "somewhere you are living, somewhere
+ * you pass through, somewhere that has taken over the whole map this month, or somewhere
+ * you have never been" — so the marks are lifted from that sentence. If the prose
+ * changes, these move with it; they are one thing said twice, not two things.
+ *
+ * NO SCORE, NO TYPE, NO RESULT, AND NO COUNTS. `DECISIONS.md` puts it as "the moment the
+ * site emits a number it is a quiz", and a tally of how many areas you marked is a
+ * number. So the legend names places and never counts them, and the way you see what
+ * you have not reached yet is that it is listed under "Not said yet" — by name.
+ *
+ * NOTHING HERE INTERPRETS THE MARKS. No advice is generated from them, which is the
+ * site's one rule seen from the other side: what changes a stuck state is a change to
+ * the conditions, and this tool does not know anybody's conditions. Each area links to
+ * its own page, where the environmental change is already written down.
+ *
+ * THE VOCABULARY LIVES HERE AND NOWHERE ELSE. `my-map.js` reads these labels back out
+ * of the DOM instead of keeping its own copy, so there is no second list to drift.
+ */
+const MARKS = [
+  { id: '',          label: 'Not said yet' },
+  { id: 'living',    label: 'Living here' },
+  { id: 'passing',   label: 'Passing through' },
+  { id: 'swallowed', label: 'Taken over the map' },
+  { id: 'never',     label: 'Never been' },
+];
+
+function myMapTool() {
+  const fig = mapFigure({
+    src: 'images/map-of-monotropic-experiences.png',
+    width: 1080, height: 1080,
+    alt: "Helen Edgar's Map of Monotropic Experiences, with a numbered marker over each of the twenty areas. Each marker shows how you have marked that area.",
+    items: AREAS.map((a) => ({
+      id: a.slug, area: a.slug, href: `#mark-${a.slug}`,
+      marker: a.n, label: a.label, tone: a.state,
+    })),
+  });
+
+  /* Real radios, visible and working with JavaScript switched off. What JS adds is
+     remembering, the legend, and the map reflecting the marks — enhancements, not the
+     control itself. A person with no JS can still fill this in and print it. */
+  const rows = AREAS.map((a) => {
+    const opts = MARKS.map((m) => {
+      const id = `mark-${a.slug}-${m.id || 'none'}`;
+      return `        <label class="mark" for="${id}"><input type="radio" id="${id}" name="mark-${a.slug}" value="${m.id}"${m.id ? '' : ' checked'}><span>${m.label}</span></label>`;
+    }).join('\n');
+    return `    <li class="markrow" id="mark-${a.slug}" data-area="${a.slug}" data-tone="${a.state}">
+      <div class="markrow-h">
+        <span class="markrow-n">${a.n}</span>
+        <a class="markrow-name" href="${a.slug}.html">${a.label}</a>
+      </div>
+      <fieldset class="marks">
+        <legend class="sr">${esc(plain(a.label))} — how is it for you right now?</legend>
+${opts}
+      </fieldset>
+    </li>`;
+  }).join('\n');
+
+  /* The legend reads what you said first and what you have not said last, which is the
+     opposite of the radio row — there "Not said yet" is the resting state and belongs on
+     the left. Leading a person's own legend with fifteen areas they have not reached
+     buries the five they have. */
+  const legendOrder = MARKS.filter((m) => m.id).concat(MARKS.filter((m) => !m.id));
+  const groups = legendOrder.map((m) => `      <section class="legend-g" data-mark="${m.id}" hidden>
+        <h4>${m.label}</h4>
+        <ul></ul>
+      </section>`).join('\n');
+
+  return `<section class="mymap" id="my-monotropic-map" aria-labelledby="mymap-h">
+  <h3 id="mymap-h">My Monotropic Map</h3>
+  <p class="mymap-lede">Say what each of the twenty areas is for you right now. Nothing you mark leaves this device, there is no score at the end, and you can change any of it whenever you like.</p>
+
+${fig}
+
+  <noscript>
+    <p class="mymap-note"><strong>JavaScript is switched off, so this page cannot remember your marks or build the legend for you.</strong> The twenty areas below still work — fill them in and print the page — and the <a href="https://autisticrealms.com/product/my-monotropic-map-workbook/" rel="noopener">workbook</a> does the same job on paper.</p>
+  </noscript>
+
+  <ol class="markrows">
+${rows}
+  </ol>
+
+  <div class="legend" id="my-legend">
+    <h3>Your legend</h3>
+    <p class="legend-empty">Mark an area above and it will appear here.</p>
+    <div class="legend-groups">
+${groups}
+    </div>
+    <p class="legend-actions">
+      <button type="button" class="btn" id="legend-print" hidden>Print this</button>
+      <button type="button" class="btn" id="legend-copy" hidden>Copy as text</button>
+      <button type="button" class="btn btn-quiet" id="legend-clear" hidden>Clear every mark</button>
+    </p>
+    <p class="legend-note" id="legend-status" role="status"></p>
+  </div>
+</section>`;
 }
 
 /* ---- derived ------------------------------------------------------------ */

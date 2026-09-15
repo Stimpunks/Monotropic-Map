@@ -49,6 +49,20 @@ The site's tagline was *An island you can find yourself on*. It is now **A map y
 
 It survives in one place only — the **alt text** describing the artwork, because the artwork *is* an island and a blind reader should get the same picture everyone else does. Describing a picture accurately is a different job from choosing our own words.
 
+### My Monotropic Map: you can mark the map now
+
+The tool the *Your map* page has been describing since launch is built. Go through the twenty areas and say what each is for you right now — **living here, passing through, taken over the map, never been** — and the map above fills in as you go. You get a legend you can print or copy.
+
+Those four are not new words. They are the sentence that page has used from the start, which is where they came from.
+
+**There is no score, no type and no result, and that includes counts.** The tool will never tell you that you marked eight of twenty, because eight of twenty is a number and a number would make this a quiz. What you have not got to yet is listed under *Not said yet*, by name. Nothing on the page interprets your marks or offers you advice about them — each area links to its own page, where what the *environment* can change is already written down.
+
+**Nothing you mark leaves your device, and the tool has no way to send it anywhere.** There is no account, no upload, and no request to anywhere — the page is not permitted to make one, and there is no button that would want to. Copying the legend puts it on your clipboard, and what happens to it after that is entirely yours. Clearing your browser data clears your marks; there is nothing on our side to delete.
+
+**It works with JavaScript switched off**, because the twenty controls are ordinary radio buttons. What a script adds is remembering your marks between visits, assembling the legend, and the print and copy buttons. Without one you can still fill the page in and print it, and the page says so rather than silently doing less.
+
+The [workbook](https://autisticrealms.com/product/my-monotropic-map-workbook/) still does this on paper and in far more depth. This is the five-minute version.
+
 ### The typeface the design asked for is now actually shipped
 
 **For the whole of the site's first day, `Atkinson Hyperlegible` was named in the stylesheet and no font file was ever served**, so every reader quietly got the system stack instead. Naming a face costs nothing and proves nothing. The page looked fine to everybody testing it, which is exactly why it lasted.
@@ -65,7 +79,7 @@ One thing it does not cover: **the font has no ← or → glyph**, and the previ
 
 ### Open, and said out loud
 
-- **The marking tool does not exist yet.** *My Monotropic Map* — mark each area, get a legend you can print or send — is designed and not built. The page says so rather than pretending.
+- **The marking tool marks our map, not yours yet.** Version one is on [your map](stories.html). Version two would let you drag and resize your own island, and it needs each area as a separate drawing — which may not exist. That is Helen's to answer.
 - The twenty *What changes this* paragraphs are **ours, and Helen has not reviewed them**.
 - No offline copy yet. **Once a service worker ships it lives on people's devices until something unregisters it**, so it is worth being sure of the page shapes first.
 

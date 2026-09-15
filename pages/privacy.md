@@ -9,7 +9,7 @@ No accounts. No analytics. No tracking. No cookies. No third-party anything — 
 Two things, both yours, both local, and neither of them ever sent anywhere:
 
 - **Your light or dark preference**, if you use the theme button.
-- **Your own marks on the map**, once the marking tool ships. They stay in your browser. They are not uploaded, they are not readable by us, and clearing your browser data removes them.
+- **Your own marks on the map**, if you use the marking tool on [your map](stories.html). They stay in your browser. They are not uploaded, they are not readable by us, and clearing your browser data removes them. The tool has no way to send them anywhere; copying the legend puts it on your clipboard and what happens next is yours.
 
 There is nothing to delete on our side, because there is nothing on our side.
 
