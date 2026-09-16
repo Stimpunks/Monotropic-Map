@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "monotropic-map",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8917"],
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "serve", ".", "-l", "8917", "--no-clipboard"],
       "port": 8917
     }
   ]

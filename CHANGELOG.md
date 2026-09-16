@@ -6,6 +6,18 @@ We publish the mistakes too. A changelog that only lists wins is an advertisemen
 
 ----
 
+## 2026-09-16 — A second tool: draw your own map
+
+**[Draw a map](draw.html) is new, and version one has not gone anywhere.** They ask different questions. The [marking tool](stories.html) asks where you are on Helen's map; the new one hands over blank ground and fifty-one shapes and asks what yours looks like. Shipping only the second would have taken the easier door away.
+
+- **The shapes are ours, drawn from scratch.** Islands with beaches and without, rivers that turn whichever way you turn them, a rabbit, a penguin, a meerkat, an octopus, a tent, a campfire, a shark, a storm, a canyon, a whirlpool. Nothing is traced from Helen's map or from anybody's stock library, which is what makes them yours to keep, copy and change under the same licence as everything else here.
+- **No score, no type, no result, and no counts** — the same rule version one is held to. The tool says where a piece is in words, and says nothing about what your map means.
+- **Nothing you draw leaves the device.** No account, no upload, nowhere for a map to go. It is kept in your browser and gone when you clear the site's data.
+- **Two colours were added to the palette**, a leaf green and a storm navy, because a tree painted in one of the four area colours would be claiming the tree is a state. Both are checked for contrast in both themes like the rest.
+- **The board needs JavaScript and says so.** Drawing does in a way that marking does not, so the page shows the sentence rather than a board that will never respond, and points at the marking tool and the paper workbook instead.
+
+----
+
 ## 2026-09-16 — Helen's review came back
 
 **The map's author read the forty passages Stimpunks wrote onto her map, and sent notes on eighteen of them.** Those notes are now the pages. This is the part of the process the site was built around: our words sit on her map, so she gets to say whether they are right.

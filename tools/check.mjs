@@ -14,6 +14,7 @@ import { execFileSync } from 'node:child_process';
 /* The source of the twenty, so the tool can be checked against it rather than against
    itself — a generated page agreeing with its own generator proves nothing. */
 import { AREAS } from './areas.mjs';
+import { SHAPES } from './shapes.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const NET = process.argv.includes('--net');
@@ -22,6 +23,9 @@ const fail = (msg) => { failures++; console.log(`  FAIL  ${msg}`); };
 const pass = (msg) => console.log(`  ok    ${msg}`);
 
 const pages = readdirSync(ROOT).filter((f) => f.endsWith('.html'));
+
+/** An area label as it would appear in prose, for looking for it where it should not be. */
+const plainish = (s) => String(s).replace(/&amp;/g, '&').replace(/<[^>]+>/g, '').trim();
 
 /* ---- 1. build drift ------------------------------------------------------ */
 console.log('\nbuild drift');
@@ -291,6 +295,99 @@ console.log('\nthe marking tool');
   else pass('the marks still match the words stories.md uses');
 }
 
+/* ---- 6c-bis. llms.txt keeps up with the nav -------------------------------- */
+/* The sitemap is generated from the page lists and cannot drift. llms.txt is written
+   by hand, one editorial line per page, and so it can — which is exactly what happened
+   the first time a page was added after it was written. */
+console.log('\nllms.txt');
+{
+  const llms = existsSync(join(ROOT, 'llms.txt')) ? readFileSync(join(ROOT, 'llms.txt'), 'utf8') : '';
+  if (!llms) fail('llms.txt is missing');
+  else {
+    const navSlugs = [...readFileSync(join(ROOT, 'sitemap.xml'), 'utf8').matchAll(/<loc>[^<]*?\/([a-z0-9-]+)<\/loc>/g)].map((m) => m[1]);
+    const areaSlugs = new Set(AREAS.map((a) => a.slug));
+    const wanted = navSlugs.filter((sl) => !areaSlugs.has(sl) && sl !== 'privacy' && sl !== 'changelog');
+    const absent = wanted.filter((sl) => !llms.includes(`/${sl})`));
+    if (absent.length) fail(`llms.txt does not list: ${absent.join(', ')} — it is written by hand, so adding a page means adding a line`);
+    else pass(`every page the sitemap offers is described in llms.txt`);
+  }
+}
+
+/* ---- 6d. the map builder --------------------------------------------------- */
+/* THE SAME THREE PROMISES, PLUS THE ONE THIS TOOL ADDS. Version two says the same
+   things version one does — no score, nothing leaves the device, every area reachable —
+   and one more that only applies here: the board cannot work without JavaScript, so it
+   must ship hidden and the sentence saying so must ship visible. A tool that appears
+   before its script has run is a set of controls that do nothing. */
+console.log('\nthe map builder');
+{
+  const html = existsSync(join(ROOT, 'draw.html')) ? readFileSync(join(ROOT, 'draw.html'), 'utf8') : '';
+  const js = existsSync(join(ROOT, 'map-canvas.js')) ? readFileSync(join(ROOT, 'map-canvas.js'), 'utf8') : '';
+
+  if (!html) fail('draw.html is missing — the builder page was not built');
+  if (!js) fail('map-canvas.js is missing — the board on draw.html would never appear');
+
+  if (html && js) {
+    /* Each tool gets its own script, and neither page loads the other's. */
+    if (!/<script src="map-canvas\.js" defer><\/script>/.test(html)) fail('draw.html does not load map-canvas.js');
+    else if (/my-map\.js/.test(html)) fail('draw.html loads the marking tool as well — the two tools share no state and should share no script');
+    else pass('the builder page loads its own script and only its own');
+
+    /* Hidden until the script reveals it, with the explanation visible meanwhile. */
+    const toolHidden = /<section class="canvas-tool" id="map-canvas"[^>]*\shidden>/.test(html);
+    const offVisible = /<p class="canvas-off" id="canvas-off">/.test(html) && !/id="canvas-off"[^>]*\shidden/.test(html);
+    if (toolHidden && offVisible) pass('the board ships hidden and the no-JavaScript note ships visible');
+    else fail(`the builder's no-JavaScript arrangement is wrong (tool ${toolHidden ? 'hidden' : 'VISIBLE'}, note ${offVisible ? 'visible' : 'MISSING or hidden'})`);
+
+    /* The note has to send a reader somewhere that does work without a script. */
+    if (/canvas-off[\s\S]*?stories\.html/.test(html)) pass('the no-JavaScript note points at the tool that works without one');
+    else fail('the no-JavaScript note does not link the marking tool, which is the thing that still works');
+
+    /* Every shape reaches the page, as a symbol and as a button, or the tray offers a
+       drawing the canvas cannot place — or holds a drawing nobody can reach. */
+    const symbols = new Set([...html.matchAll(/<g id="sh-([A-Za-z0-9]+)"/g)].map((m) => m[1]));
+    const buttons = new Set([...html.matchAll(/data-shape="([A-Za-z0-9]+)"/g)].map((m) => m[1]));
+    const ids = Object.keys(SHAPES);
+    const noSymbol = ids.filter((id) => !symbols.has(id));
+    const noButton = ids.filter((id) => !buttons.has(id));
+    if (noSymbol.length || noButton.length)
+      fail(`shapes missing from draw.html: ${noSymbol.length ? `no symbol for ${noSymbol.join(', ')}` : ''}${noSymbol.length && noButton.length ? '; ' : ''}${noButton.length ? `no button for ${noButton.join(', ')}` : ''}`);
+    else pass(`all ${ids.length} shapes are in the page, each drawn once and offered once`);
+
+    /* The twenty are the twenty here too. */
+    const placed = [...html.matchAll(/data-place="(\d+)"/g)].map((m) => Number(m[1]));
+    const wanted = AREAS.map((a) => a.n);
+    if (placed.length === 20 && wanted.every((n) => placed.includes(n))) pass('all twenty places can be put on a map');
+    else fail(`the tray offers ${placed.length} of the twenty places`);
+
+    /* NOT ONE DRAWING, NAME OR AREA IS REPEATED IN THE SCRIPT. The page is the single
+       copy; a shape hard-coded here is a shape that drifts from tools/shapes.mjs. */
+    const code = js.replace(/\/\*[\s\S]*?\*\//g, '');
+    const drawings = /\bd\s*=\s*["'`]M[\s\d.-]|<path|<circle|<ellipse/;
+    if (drawings.test(code)) fail('map-canvas.js contains drawing data — the shapes live in tools/shapes.mjs and reach the page through build.mjs');
+    else pass('the script carries no drawing of its own');
+
+    const names = AREAS.filter((a) => code.includes(plainish(a.label)));
+    if (names.length) fail(`map-canvas.js names areas itself (${names.map((a) => a.n).join(', ')}) — it must read them off the page`);
+    else pass('the script names none of the twenty itself');
+
+    /* NOTHING LEAVES THE DEVICE. */
+    const exfil = /\bfetch\s*\(|XMLHttpRequest|navigator\.sendBeacon|new WebSocket|<form[^>]*\saction=/i;
+    if (exfil.test(js) || exfil.test(html)) fail('the builder contains a way to send a drawing off the device');
+    else pass('nothing in the builder can send a drawing anywhere');
+
+    /* NO COUNTS, the same rule version one is held to. */
+    const counts = /\.length\s*\+\s*["'` ]|textContent\s*=\s*[^;\n]*\.length|of 20|\/ *20\b/;
+    if (counts.test(code)) fail('the builder looks like it renders a count — no score, no type, no result');
+    else pass('the builder emits no count of the pieces');
+
+    /* MOVED BY ATTRIBUTES, NEVER BY STYLE. This is the rule the first live deploy
+       taught, and a drag tool is exactly where it would be broken again. */
+    if (/\.style\b/.test(code)) fail('map-canvas.js touches .style — style-src \'self\' blocks inline styles, so pieces move by transform attribute');
+    else pass('every move is an attribute, never an inline style');
+  }
+}
+
 /* ---- 7. contrast --------------------------------------------------------- */
 console.log('\ncontrast (WCAG AA, 4.5:1 for body text)');
 {
@@ -304,8 +401,8 @@ console.log('\ncontrast (WCAG AA, 4.5:1 for body text)');
   const darkBlock = css.slice(css.indexOf(':root[data-theme="dark"]'), css.indexOf('*, *::before'));
   const L = tokens(lightBlock), D = tokens(darkBlock);
   const themes = [
-    ['light', { bg: L['--sand'], card: L['--paper'], fg: L['--ink'], soft: L['--ink-soft'], accent: L['--sea'], wash: L['--sea-wash'], flow: L['--flow'], social: L['--social'], stuck: L['--stuck'], pressure: L['--pressure'] }],
-    ['dark', { bg: D['--bg'], card: D['--card'], fg: D['--fg'], soft: D['--fg-soft'], accent: D['--accent'], wash: D['--wash'], flow: D['--flow'], social: D['--social'], stuck: D['--stuck'], pressure: D['--pressure'] }],
+    ['light', { bg: L['--sand'], card: L['--paper'], fg: L['--ink'], soft: L['--ink-soft'], accent: L['--sea'], wash: L['--sea-wash'], flow: L['--flow'], social: L['--social'], stuck: L['--stuck'], pressure: L['--pressure'], leaf: L['--leaf'], sky: L['--sky'] }],
+    ['dark', { bg: D['--bg'], card: D['--card'], fg: D['--fg'], soft: D['--fg-soft'], accent: D['--accent'], wash: D['--wash'], flow: D['--flow'], social: D['--social'], stuck: D['--stuck'], pressure: D['--pressure'], leaf: D['--leaf'], sky: D['--sky'] }],
   ];
   let cbad = 0, ctested = 0;
   for (const [name, t] of themes) {
@@ -316,6 +413,11 @@ console.log('\ncontrast (WCAG AA, 4.5:1 for body text)');
       ['quote text on wash', t.fg, t.wash],
       ['flow tag on card', t.flow, t.card], ['social tag on card', t.social, t.card],
       ['stuck tag on card', t.stuck, t.card], ['pressure tag on card', t.pressure, t.card],
+      /* --leaf and --sky are paint rather than state, and nothing on the site draws with
+         them yet. They are held to the same 4.5:1 anyway, because the first rule that
+         uses one should not be the thing that discovers it fails. */
+      ['leaf on page', t.leaf, t.bg], ['leaf on card', t.leaf, t.card],
+      ['sky on page', t.sky, t.bg], ['sky on card', t.sky, t.card],
     ];
     for (const [what, fg, bg] of pairs) {
       if (!fg || !bg) { fail(`${name}: could not resolve a colour for "${what}" — the check did not run`); cbad++; continue; }

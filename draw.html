@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Draw a map — Map of Monotropic Experiences</title>
+<meta name="description" content="The map on this site is one Autistic person's. Helen Edgar drew it in 2024 as a picture of her own monotropic bodymind, and a great many people have recognised themselves in it sin">
+<link rel="canonical" href="https://monotropicmap.org/draw">
+<link rel="preload" href="fonts/atkinson-hyperlegible-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="monotropic-map.css">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Draw a map — Map of Monotropic Experiences">
+<meta property="og:description" content="The map on this site is one Autistic person's. Helen Edgar drew it in 2024 as a picture of her own monotropic bodymind, and a great many people have recognised themselves in it sin">
+<meta property="og:url" content="https://monotropicmap.org/draw">
+<meta property="og:image" content="https://monotropicmap.org/images/map-of-monotropic-experiences.png">
+<meta name="twitter:card" content="summary_large_image">
+<script src="theme.js"></script>
+<script src="map-canvas.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <div class="bar-in">
+    <a class="home" href="/">Map of Monotropic Experiences</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="/">The map</a></li>
+        <li><a href="areas.html">The twenty areas</a></li>
+        <li><a href="neuronormative-domination.html">The frame</a></li>
+        <li><a href="training.html">Training</a></li>
+        <li><a href="stories.html">Your map</a></li>
+        <li><a href="draw.html" aria-current="page">Draw a map</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+      </ul>
+    </nav>
+    <button class="theme-toggle" type="button" hidden>Dark</button>
+  </div>
+</header>
+<main id="main" class="wrap">
+<h1>Draw a map</h1>
+<div class="prose">
+<p>The map on this site is one Autistic person's. Helen Edgar drew it in 2024 as a picture of her own monotropic bodymind, and a great many people have recognised themselves in it since.</p>
+<p>The invitation has always been to draw your own. This is somewhere to do that.</p>
+<p>Put an island down. Run a river through it, or don't. Make the whirlpool big enough to swallow half the coast if that is the kind of year it has been. Add the places from Helen's map that are yours, leave off the ones that are not, and add nothing at all if the shapes say it better.</p>
+<section class="canvas-tool" id="map-canvas" aria-labelledby="canvas-h" hidden>
+  <h3 id="canvas-h">Draw your own map</h3>
+  <p class="canvas-lede">Put an island down, add what belongs on it, and move things until it looks like your year. Nothing you draw leaves this device, there is no score at the end, and no two maps are supposed to match.</p>
+
+  <svg class="shape-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+    <g id="sh-isleRound" data-tone="leaf"><g><g class="f-tone" opacity="0.5"><path d="M 97.7 -12.1 Q 98.9 0.0 100.0 12.7 Q 101.2 25.3 89.8 34.6 Q 78.4 43.9 68.5 53.0 Q 58.6 62.1 43.7 65.3 Q 28.9 68.5 14.4 70.3 Q 0.0 72.1 -13.1 67.2 Q -26.2 62.3 -40.1 59.7 Q -53.9 57.2 -68.1 51.6 Q -82.3 46.1 -91.9 35.8 Q -101.5 25.4 -101.2 12.7 Q -101.0 0.0 -96.3 -11.5 Q -91.6 -22.9 -85.1 -33.5 Q -78.6 -44.0 -68.9 -53.4 Q -59.2 -62.8 -45.5 -69.2 Q -31.9 -75.7 -15.9 -76.8 Q -0.0 -78.0 15.1 -74.9 Q 30.2 -71.8 44.1 -66.6 Q 58.0 -61.5 68.1 -52.7 Q 78.2 -43.8 87.4 -34.0 Q 96.5 -24.2 97.7 -12.1 Z"/></g><g class="s-tone" fill="none" stroke-width="3" opacity="0.45"><path d="M 97.7 -12.1 Q 98.9 0.0 100.0 12.7 Q 101.2 25.3 89.8 34.6 Q 78.4 43.9 68.5 53.0 Q 58.6 62.1 43.7 65.3 Q 28.9 68.5 14.4 70.3 Q 0.0 72.1 -13.1 67.2 Q -26.2 62.3 -40.1 59.7 Q -53.9 57.2 -68.1 51.6 Q -82.3 46.1 -91.9 35.8 Q -101.5 25.4 -101.2 12.7 Q -101.0 0.0 -96.3 -11.5 Q -91.6 -22.9 -85.1 -33.5 Q -78.6 -44.0 -68.9 -53.4 Q -59.2 -62.8 -45.5 -69.2 Q -31.9 -75.7 -15.9 -76.8 Q -0.0 -78.0 15.1 -74.9 Q 30.2 -71.8 44.1 -66.6 Q 58.0 -61.5 68.1 -52.7 Q 78.2 -43.8 87.4 -34.0 Q 96.5 -24.2 97.7 -12.1 Z"/></g></g></g>
+    <g id="sh-isleLong" data-tone="leaf"><g><g class="f-tone" opacity="0.5"><path d="M 112.1 -7.1 Q 118.1 0.0 116.8 7.7 Q 115.5 15.4 108.6 22.8 Q 101.7 30.3 88.7 36.5 Q 75.7 42.7 57.2 45.8 Q 38.8 48.9 19.4 50.2 Q 0.0 51.4 -18.2 48.7 Q -36.5 46.0 -55.3 43.9 Q -74.0 41.8 -85.6 35.3 Q -97.2 28.9 -107.3 22.3 Q -117.5 15.6 -115.5 7.8 Q -113.5 0.0 -113.9 -7.6 Q -114.3 -15.2 -104.6 -21.7 Q -94.9 -28.3 -82.5 -33.9 Q -70.1 -39.5 -52.4 -41.7 Q -34.8 -43.9 -17.4 -46.0 Q -0.0 -48.1 18.2 -47.0 Q 36.4 -45.9 52.1 -42.0 Q 67.8 -38.2 78.5 -32.4 Q 89.2 -26.6 97.7 -20.3 Q 106.2 -14.1 112.1 -7.1 Z"/></g><g class="s-tone" fill="none" stroke-width="3" opacity="0.45"><path d="M 112.1 -7.1 Q 118.1 0.0 116.8 7.7 Q 115.5 15.4 108.6 22.8 Q 101.7 30.3 88.7 36.5 Q 75.7 42.7 57.2 45.8 Q 38.8 48.9 19.4 50.2 Q 0.0 51.4 -18.2 48.7 Q -36.5 46.0 -55.3 43.9 Q -74.0 41.8 -85.6 35.3 Q -97.2 28.9 -107.3 22.3 Q -117.5 15.6 -115.5 7.8 Q -113.5 0.0 -113.9 -7.6 Q -114.3 -15.2 -104.6 -21.7 Q -94.9 -28.3 -82.5 -33.9 Q -70.1 -39.5 -52.4 -41.7 Q -34.8 -43.9 -17.4 -46.0 Q -0.0 -48.1 18.2 -47.0 Q 36.4 -45.9 52.1 -42.0 Q 67.8 -38.2 78.5 -32.4 Q 89.2 -26.6 97.7 -20.3 Q 106.2 -14.1 112.1 -7.1 Z"/></g></g></g>
+    <g id="sh-isleLobed" data-tone="leaf"><g><g class="f-tone" opacity="0.5"><g transform="translate(-33 -13)"><path d="M 62.2 -8.1 Q 67.3 0.0 65.4 9.0 Q 63.5 18.0 57.8 25.5 Q 52.1 33.0 43.5 37.4 Q 34.9 41.8 26.4 44.9 Q 17.9 48.0 8.9 47.4 Q 0.0 46.8 -8.4 45.9 Q -16.8 45.1 -26.6 44.4 Q -36.5 43.7 -44.0 38.2 Q -51.5 32.6 -57.8 25.4 Q -64.1 18.1 -64.6 9.1 Q -65.1 0.0 -65.5 -9.3 Q -66.0 -18.7 -59.5 -26.1 Q -53.1 -33.6 -45.8 -39.8 Q -38.4 -46.0 -29.4 -50.3 Q -20.4 -54.6 -10.2 -58.1 Q -0.0 -61.5 10.9 -60.0 Q 21.8 -58.5 29.3 -51.3 Q 36.8 -44.1 41.4 -36.6 Q 46.0 -29.1 51.5 -22.6 Q 57.0 -16.1 62.2 -8.1 Z"/><path d="M 52.9 -6.8 Q 52.8 0.0 52.4 6.6 Q 52.0 13.3 49.4 20.0 Q 46.9 26.8 39.7 31.0 Q 32.5 35.2 24.8 38.3 Q 17.1 41.5 8.6 41.0 Q 0.0 40.6 -8.5 40.9 Q -17.1 41.3 -23.6 36.9 Q -30.1 32.6 -37.5 29.1 Q -44.8 25.6 -48.0 19.3 Q -51.2 13.1 -55.6 6.5 Q -60.0 0.0 -56.5 -6.8 Q -53.1 -13.6 -49.5 -19.9 Q -45.9 -26.2 -38.7 -30.1 Q -31.5 -34.0 -24.4 -37.9 Q -17.3 -41.8 -8.6 -42.6 Q -0.0 -43.3 8.5 -42.2 Q 17.0 -41.1 25.6 -39.0 Q 34.2 -36.9 39.9 -31.5 Q 45.7 -26.1 49.3 -19.8 Q 52.9 -13.5 52.9 -6.8 Z" transform="translate(66 26)"/></g></g></g></g>
+    <g id="sh-isleSand" data-tone="social"><g><g class="f-tone" opacity="0.5"><path d="M 91.6 -11.0 Q 96.2 0.0 96.6 12.2 Q 97.0 24.5 87.7 34.3 Q 78.3 44.1 69.0 53.9 Q 59.7 63.7 44.8 67.5 Q 29.9 71.3 14.9 76.1 Q 0.0 80.9 -14.6 75.2 Q -29.1 69.5 -44.0 66.1 Q -58.9 62.8 -67.1 52.7 Q -75.4 42.5 -84.2 33.0 Q -93.0 23.4 -92.1 11.7 Q -91.1 0.0 -88.8 -10.9 Q -86.4 -21.8 -79.1 -31.1 Q -71.8 -40.4 -62.8 -49.0 Q -53.8 -57.5 -41.9 -64.4 Q -29.9 -71.4 -15.0 -73.0 Q -0.0 -74.6 15.1 -73.4 Q 30.2 -72.2 42.3 -65.1 Q 54.4 -58.0 64.9 -50.3 Q 75.4 -42.5 81.2 -32.2 Q 87.0 -21.9 91.6 -11.0 Z"/></g><g class="f-leaf" transform="scale(0.86)" opacity="0.5"><path d="M 91.6 -11.0 Q 96.2 0.0 96.6 12.2 Q 97.0 24.5 87.7 34.3 Q 78.3 44.1 69.0 53.9 Q 59.7 63.7 44.8 67.5 Q 29.9 71.3 14.9 76.1 Q 0.0 80.9 -14.6 75.2 Q -29.1 69.5 -44.0 66.1 Q -58.9 62.8 -67.1 52.7 Q -75.4 42.5 -84.2 33.0 Q -93.0 23.4 -92.1 11.7 Q -91.1 0.0 -88.8 -10.9 Q -86.4 -21.8 -79.1 -31.1 Q -71.8 -40.4 -62.8 -49.0 Q -53.8 -57.5 -41.9 -64.4 Q -29.9 -71.4 -15.0 -73.0 Q -0.0 -74.6 15.1 -73.4 Q 30.2 -72.2 42.3 -65.1 Q 54.4 -58.0 64.9 -50.3 Q 75.4 -42.5 81.2 -32.2 Q 87.0 -21.9 91.6 -11.0 Z"/></g></g></g>
+    <g id="sh-isleBay" data-tone="social"><g><g class="f-tone" opacity="0.5"><path d="M 91.2 -10.2 Q 92.4 0.0 89.1 9.7 Q 85.8 19.5 80.0 28.6 Q 74.2 37.7 68.1 48.6 Q 61.9 59.5 48.7 67.9 Q 35.5 76.3 17.8 77.0 Q 0.0 77.6 -15.2 71.6 Q -30.5 65.5 -42.5 58.9 Q -54.5 52.4 -68.4 47.1 Q -82.3 41.8 -95.3 33.1 Q -108.2 24.5 -109.0 12.3 Q -109.7 0.0 -106.8 -11.8 Q -103.9 -23.6 -91.2 -31.7 Q -78.5 -39.8 -68.6 -48.1 Q -58.6 -56.3 -45.0 -61.8 Q -31.3 -67.3 -15.7 -70.2 Q -0.0 -73.1 15.8 -70.4 Q 31.5 -67.8 43.1 -60.1 Q 54.6 -52.5 64.6 -45.2 Q 74.6 -37.8 82.3 -29.1 Q 90.0 -20.4 91.2 -10.2 Z"/></g><g class="f-leaf" transform="scale(0.86)" opacity="0.5"><path d="M 91.2 -10.2 Q 92.4 0.0 89.1 9.7 Q 85.8 19.5 80.0 28.6 Q 74.2 37.7 68.1 48.6 Q 61.9 59.5 48.7 67.9 Q 35.5 76.3 17.8 77.0 Q 0.0 77.6 -15.2 71.6 Q -30.5 65.5 -42.5 58.9 Q -54.5 52.4 -68.4 47.1 Q -82.3 41.8 -95.3 33.1 Q -108.2 24.5 -109.0 12.3 Q -109.7 0.0 -106.8 -11.8 Q -103.9 -23.6 -91.2 -31.7 Q -78.5 -39.8 -68.6 -48.1 Q -58.6 -56.3 -45.0 -61.8 Q -31.3 -67.3 -15.7 -70.2 Q -0.0 -73.1 15.8 -70.4 Q 31.5 -67.8 43.1 -60.1 Q 54.6 -52.5 64.6 -45.2 Q 74.6 -37.8 82.3 -29.1 Q 90.0 -20.4 91.2 -10.2 Z"/></g><path class="f-flow" d="M 39.9 -5.0 Q 40.3 0.0 38.5 4.6 Q 36.8 9.2 32.7 12.7 Q 28.6 16.1 25.8 20.2 Q 22.9 24.3 18.0 27.8 Q 13.1 31.2 6.6 31.9 Q 0.0 32.7 -6.7 32.2 Q -13.3 31.7 -19.8 29.9 Q -26.3 28.0 -31.5 24.3 Q -36.6 20.6 -37.5 15.1 Q -38.4 9.6 -38.4 4.8 Q -38.4 0.0 -38.7 -4.9 Q -39.1 -9.8 -38.1 -15.3 Q -37.2 -20.9 -32.9 -25.7 Q -28.6 -30.5 -22.0 -33.5 Q -15.3 -36.5 -7.7 -37.2 Q -0.0 -37.9 7.2 -36.1 Q 14.4 -34.3 20.3 -31.1 Q 26.2 -27.9 30.0 -23.4 Q 33.8 -19.0 36.7 -14.5 Q 39.6 -9.9 39.9 -5.0 Z" transform="translate(40 26)" opacity="0.45"/></g></g>
+    <g id="sh-isleGroup" data-tone="social"><g><g class="f-tone" opacity="0.5"><path d="M 80.9 -9.3 Q 84.0 0.0 84.7 10.2 Q 85.3 20.5 76.5 28.4 Q 67.8 36.3 58.8 43.5 Q 49.9 50.7 37.6 54.2 Q 25.4 57.8 12.7 60.2 Q 0.0 62.6 -12.8 60.4 Q -25.6 58.1 -36.6 53.3 Q -47.7 48.4 -58.1 42.6 Q -68.5 36.7 -74.6 28.0 Q -80.7 19.4 -84.3 9.7 Q -87.8 0.0 -85.3 -9.9 Q -82.8 -19.8 -76.2 -28.6 Q -69.7 -37.4 -60.2 -44.4 Q -50.6 -51.4 -38.2 -54.9 Q -25.7 -58.4 -12.9 -61.5 Q -0.0 -64.7 13.2 -62.3 Q 26.4 -60.0 36.9 -54.0 Q 47.3 -48.1 54.8 -40.7 Q 62.2 -33.4 70.0 -26.0 Q 77.8 -18.6 80.9 -9.3 Z"/></g><g class="f-leaf" transform="scale(0.86)" opacity="0.5"><path d="M 80.9 -9.3 Q 84.0 0.0 84.7 10.2 Q 85.3 20.5 76.5 28.4 Q 67.8 36.3 58.8 43.5 Q 49.9 50.7 37.6 54.2 Q 25.4 57.8 12.7 60.2 Q 0.0 62.6 -12.8 60.4 Q -25.6 58.1 -36.6 53.3 Q -47.7 48.4 -58.1 42.6 Q -68.5 36.7 -74.6 28.0 Q -80.7 19.4 -84.3 9.7 Q -87.8 0.0 -85.3 -9.9 Q -82.8 -19.8 -76.2 -28.6 Q -69.7 -37.4 -60.2 -44.4 Q -50.6 -51.4 -38.2 -54.9 Q -25.7 -58.4 -12.9 -61.5 Q -0.0 -64.7 13.2 -62.3 Q 26.4 -60.0 36.9 -54.0 Q 47.3 -48.1 54.8 -40.7 Q 62.2 -33.4 70.0 -26.0 Q 77.8 -18.6 80.9 -9.3 Z"/></g><g transform="translate(-104 46) scale(0.34)"><path class="f-tone" d="M 84.5 -10.5 Q 85.0 0.0 82.2 9.9 Q 79.3 19.9 73.5 28.9 Q 67.6 37.9 60.5 47.2 Q 53.3 56.6 41.5 63.4 Q 29.6 70.3 14.8 73.4 Q 0.0 76.4 -15.4 74.6 Q -30.7 72.8 -43.6 66.4 Q -56.6 60.0 -65.2 50.7 Q -73.8 41.3 -82.3 32.0 Q -90.9 22.8 -93.7 11.4 Q -96.4 0.0 -94.5 -11.6 Q -92.5 -23.2 -84.5 -33.0 Q -76.5 -42.9 -65.2 -50.0 Q -53.9 -57.2 -41.6 -63.3 Q -29.3 -69.4 -14.6 -70.0 Q -0.0 -70.5 15.8 -72.8 Q 31.7 -75.1 45.0 -68.5 Q 58.3 -61.8 67.9 -52.7 Q 77.6 -43.5 80.8 -32.2 Q 83.9 -21.0 84.5 -10.5 Z" opacity="0.5"/><g transform="scale(0.86)"><path class="f-leaf" d="M 84.5 -10.5 Q 85.0 0.0 82.2 9.9 Q 79.3 19.9 73.5 28.9 Q 67.6 37.9 60.5 47.2 Q 53.3 56.6 41.5 63.4 Q 29.6 70.3 14.8 73.4 Q 0.0 76.4 -15.4 74.6 Q -30.7 72.8 -43.6 66.4 Q -56.6 60.0 -65.2 50.7 Q -73.8 41.3 -82.3 32.0 Q -90.9 22.8 -93.7 11.4 Q -96.4 0.0 -94.5 -11.6 Q -92.5 -23.2 -84.5 -33.0 Q -76.5 -42.9 -65.2 -50.0 Q -53.9 -57.2 -41.6 -63.3 Q -29.3 -69.4 -14.6 -70.0 Q -0.0 -70.5 15.8 -72.8 Q 31.7 -75.1 45.0 -68.5 Q 58.3 -61.8 67.9 -52.7 Q 77.6 -43.5 80.8 -32.2 Q 83.9 -21.0 84.5 -10.5 Z" opacity="0.5"/></g></g><g transform="translate(96 -52) scale(0.26)"><path class="f-tone" d="M 89.6 -11.3 Q 88.8 0.0 90.5 11.5 Q 92.2 23.1 85.9 33.8 Q 79.5 44.6 68.2 52.5 Q 56.9 60.4 42.8 64.2 Q 28.6 68.0 14.3 72.1 Q 0.0 76.3 -15.3 74.5 Q -30.6 72.6 -44.1 66.8 Q -57.5 61.0 -67.8 52.4 Q -78.1 43.7 -85.2 33.4 Q -92.3 23.1 -97.1 11.6 Q -101.8 0.0 -96.5 -11.4 Q -91.1 -22.8 -85.3 -33.7 Q -79.6 -44.6 -68.9 -53.2 Q -58.2 -61.7 -45.3 -69.3 Q -32.4 -76.9 -16.2 -80.3 Q -0.0 -83.6 15.5 -78.4 Q 30.9 -73.3 45.4 -68.4 Q 59.9 -63.5 68.2 -53.2 Q 76.6 -42.9 83.5 -32.8 Q 90.4 -22.7 89.6 -11.3 Z" opacity="0.5"/><g transform="scale(0.86)"><path class="f-leaf" d="M 89.6 -11.3 Q 88.8 0.0 90.5 11.5 Q 92.2 23.1 85.9 33.8 Q 79.5 44.6 68.2 52.5 Q 56.9 60.4 42.8 64.2 Q 28.6 68.0 14.3 72.1 Q 0.0 76.3 -15.3 74.5 Q -30.6 72.6 -44.1 66.8 Q -57.5 61.0 -67.8 52.4 Q -78.1 43.7 -85.2 33.4 Q -92.3 23.1 -97.1 11.6 Q -101.8 0.0 -96.5 -11.4 Q -91.1 -22.8 -85.3 -33.7 Q -79.6 -44.6 -68.9 -53.2 Q -58.2 -61.7 -45.3 -69.3 Q -32.4 -76.9 -16.2 -80.3 Q -0.0 -83.6 15.5 -78.4 Q 30.9 -73.3 45.4 -68.4 Q 59.9 -63.5 68.2 -53.2 Q 76.6 -42.9 83.5 -32.8 Q 90.4 -22.7 89.6 -11.3 Z" opacity="0.5"/></g></g></g></g>
+    <g id="sh-blob" data-tone="social"><path class="f-tone" d="M -55 -42 C 15 -66 82 -32 74 12 C 66 56 -6 72 -48 52 C -90 32 -96 -26 -55 -42 Z" opacity="0.8"/></g>
+    <g id="sh-ridge" data-tone="pressure"><path class="f-tone" d="M -95 50 L -45 -40 L 0 20 L 42 -54 L 100 50 Z" opacity="0.8"/></g>
+    <g id="sh-shore" data-tone="flow"><g><path class="f-tone" d="M -100 -6 C -46 -36 4 24 100 -14 L 100 70 L -100 70 Z" opacity="0.32"/><path class="s-tone" d="M -100 -6 C -46 -36 4 24 100 -14" fill="none" stroke-width="6" opacity="0.9"/></g></g>
+    <g id="sh-pool" data-tone="flow"><g><ellipse class="f-tone" rx="84" ry="52" opacity="0.4"/><ellipse class="s-tone" rx="84" ry="52" fill="none" stroke-width="6" opacity="0.85"/><ellipse class="f-tone" cx="-22" cy="-14" rx="30" ry="14" opacity="0.3"/></g></g>
+    <g id="sh-grove" data-tone="leaf"><g><g class="f-social" opacity="0.75"><rect x="-50" y="18" width="13" height="34" rx="5"/><rect x="-7" y="26" width="15" height="30" rx="6"/><rect x="34" y="20" width="12" height="32" rx="5"/></g><g class="f-tone"><circle cx="-44" cy="2" r="31" opacity="0.85"/><circle cx="0" cy="-20" r="39" opacity="0.9"/><circle cx="40" cy="0" r="33" opacity="0.8"/><circle cx="-18" cy="10" r="24" opacity="0.7"/></g></g></g>
+    <g id="sh-haze" data-tone="soft"><g class="f-tone"><ellipse rx="96" ry="56" opacity="0.18"/><ellipse cx="-18" cy="6" rx="66" ry="38" opacity="0.2"/><ellipse cx="26" cy="-8" rx="44" ry="26" opacity="0.22"/></g></g>
+    <g id="sh-band" data-tone="flow"><path class="s-tone" d="M -100 -40 C -40 -10 -60 30 -10 45 C 40 60 60 40 95 58" fill="none" stroke-width="26" stroke-linecap="round" opacity="0.85"/></g>
+    <g id="sh-path" data-tone="soft"><path class="s-tone" d="M -95 34 C -40 -32 30 52 95 -24" fill="none" stroke-width="11" stroke-linecap="round" stroke-dasharray="1 26" opacity="0.95"/></g>
+    <g id="sh-drift" data-tone="flow"><g class="s-tone" fill="none" stroke-width="8" stroke-linecap="round" opacity="0.7"><path d="M -92 -36 C -50 -54 -14 -18 28 -36 C 60 -50 78 -42 92 -48"/><path d="M -92 0 C -50 -18 -14 18 28 0 C 60 -14 78 -6 92 -12"/><path d="M -92 36 C -50 18 -14 54 28 36 C 60 22 78 30 92 24"/></g></g>
+    <g id="sh-tendril" data-tone="flow"><polyline class="s-tone" points="-38.9,0.0 -38.5,6.9 -39.1,13.5 -40.8,19.5 -43.3,24.8 -46.6,29.0 -50.4,32.2 -54.6,34.2 -58.9,34.9 -63.2,34.3 -67.3,32.6 -71.0,29.6 -74.1,25.7 -76.5,20.9 -78.0,15.5 -78.6,9.5 -78.2,3.3 -76.9,-2.9 -74.5,-8.9 -71.2,-14.5 -67.1,-19.5 -62.3,-23.7 -56.9,-27.0 -51.1,-29.2 -45.1,-30.4 -39.0,-30.5 -33.1,-29.5 -27.4,-27.4 -22.1,-24.4 -17.5,-20.6 -13.5,-16.1 -10.3,-11.1 -8.0,-5.8 -6.5,-0.4 -5.9,5.0 -6.1,10.0 -7.1,14.6 -8.7,18.6 -10.9,21.8 -13.5,24.3 -16.4,25.7 -19.4,26.3 -22.4,25.9 -25.1,24.5 -27.6,22.4 -29.6,19.4 -31.1,15.8 -31.9,11.8 -32.0,7.4 -31.4,2.8 -30.1,-1.8 -28.0,-6.2 -25.3,-10.3 -22.0,-14.0 -18.1,-17.0 -13.9,-19.4 -9.4,-21.0 -4.7,-21.9 0.0,-21.9 4.7,-21.2 9.1,-19.7 13.1,-17.5 16.8,-14.8 19.9,-11.6 22.5,-8.0 24.5,-4.3 25.9,-0.5 26.6,3.2 26.8,6.7 26.5,9.9 25.7,12.6 24.6,14.8 23.2,16.4 21.6,17.4 20.0,17.7 18.3,17.4 16.9,16.5 15.7,15.0 14.7,13.0 14.2,10.6 14.1,7.9 14.5,5.0 15.3,2.0 16.7,-1.0 18.5,-3.8 20.7,-6.4 23.3,-8.6 26.2,-10.5 29.3,-12.0 32.6,-12.9 36.0,-13.4 39.3,-13.3 42.6,-12.8 45.7,-11.9 48.6,-10.5 51.2,-8.8 53.5,-6.9 55.4,-4.8 57.0,-2.6 58.3,-0.4 59.1,1.6 59.7,3.6 60.0,5.3 60.1,6.7 59.9,7.9 59.7,8.6 59.4,9.1 59.1,9.1 58.9,8.9 58.7,8.3 58.7,7.5 59.0,6.4 59.4,5.1 60.0,3.8 61.0,2.4 62.1,1.0 63.5,-0.3 65.0,-1.6 66.8,-2.6 68.7,-3.5" fill="none" stroke-width="9" stroke-linecap="round" opacity="0.9"/></g>
+    <g id="sh-knot" data-tone="stuck"><path class="s-tone" d="M -20 -54 C 52 -76 76 12 18 34 C -40 56 -74 4 -30 -18 C 14 -40 48 12 6 44" fill="none" stroke-width="10" stroke-linecap="round" opacity="0.9"/></g>
+    <g id="sh-reach" data-tone="flow"><path class="s-tone" d="M -100 0 L 100 0" fill="none" stroke-width="34" opacity="0.85"/></g>
+    <g id="sh-meander" data-tone="flow"><path class="s-tone" d="M -100 -34 C -58 -58 -56 -6 -18 -20 C 20 -34 18 22 56 12 C 78 6 88 26 100 34" fill="none" stroke-width="24" stroke-linecap="round" opacity="0.85"/></g>
+    <g id="sh-delta" data-tone="flow"><g class="s-tone" fill="none" stroke-linecap="round" opacity="0.85"><path d="M -100 -14 C -56 -28 -34 -8 -10 -2" stroke-width="26"/><path d="M -12 -2 C 18 4 42 20 98 32" stroke-width="17"/><path d="M -12 -2 C 18 -10 44 -24 98 -36" stroke-width="15"/><path d="M -12 -2 C 14 -2 44 0 96 -2" stroke-width="11" opacity="0.8"/></g></g>
+    <g id="sh-spiral" data-tone="flow"><polyline class="s-tone" points="3.0,0.0 3.4,0.8 3.7,1.7 3.6,2.8 3.2,3.9 2.5,5.0 1.5,5.9 0.2,6.6 -1.3,7.0 -3.1,7.0 -4.8,6.6 -6.5,5.8 -8.1,4.4 -9.4,2.7 -10.3,0.6 -10.7,-1.7 -10.5,-4.2 -9.8,-6.7 -8.4,-9.0 -6.5,-11.1 -4.1,-12.8 -1.3,-13.9 1.8,-14.3 5.1,-14.1 8.3,-13.1 11.3,-11.3 14.0,-8.8 16.0,-5.7 17.4,-2.2 18.0,1.7 17.7,5.8 16.4,9.8 14.3,13.5 11.3,16.7 7.6,19.3 3.3,20.9 -1.4,21.7 -6.3,21.3 -11.0,19.9 -15.5,17.4 -19.3,13.9 -22.4,9.6 -24.4,4.6 -25.3,-0.9 -25.0,-6.5 -23.5,-12.1 -20.7,-17.2 -16.7,-21.8 -11.8,-25.3 -6.1,-27.8 0.1,-29.0 6.6,-28.8 12.9,-27.1 18.8,-24.1 24.0,-19.7 28.2,-14.2 31.2,-7.8 32.6,-0.9 32.5,6.4 30.8,13.5 27.6,20.2 22.8,26.2 16.8,31.0 9.8,34.4 2.1,36.2 -6.0,36.3 -13.9,34.6 -21.5,31.2 -28.1,26.1 -33.6,19.6 -37.5,11.9 -39.8,3.5 -40.1,-5.3 -38.4,-14.1 -34.9,-22.5 -29.5,-29.9 -22.5,-36.1 -14.3,-40.6 -5.2,-43.3 4.5,-43.9 14.1,-42.3 23.2,-38.7 31.5,-33.0 38.4,-25.7 43.5,-16.9 46.7,-7.0 47.6,3.4 46.2,13.8 42.5,23.8 36.7,32.9 28.9,40.5 19.6,46.3 9.1,50.0 -2.0,51.3 -13.3,50.1 -24.2,46.5 -34.1,40.5 -42.5,32.4 -49.0,22.6 -53.3,11.4 -55.0,-0.5 -54.1,-12.6 -50.5,-24.3 -44.4,-35.1 -36.0,-44.3 -25.7,-51.6 -13.9,-56.4 -1.3,-58.6 11.6,-58.0 24.2,-54.5 35.9,-48.4 45.9,-39.7 54.0,-29.0 59.5,-16.6 62.2,-3.3 61.9,10.5 58.6,23.9 52.4,36.4 43.6,47.4 32.4,56.2 19.5,62.4 5.5,65.7 -9.0,65.8 -23.4,62.8 -36.8,56.6 -48.6,47.5 -58.3,36.1 -65.2,22.7 -69.1,7.9 -69.7,-7.4 -66.9,-22.6 -60.8,-36.9 -51.6,-49.6 -39.9,-60.2 -26.0,-67.9 -10.6,-72.4 5.5,-73.5 21.6,-71.0 36.8,-65.1 50.5,-55.9 61.9,-43.8 70.4,-29.4 75.7,-13.4 77.3,3.4 75.2,20.3 69.4,36.5 60.2,51.1 47.9,63.4 33.1,72.8 16.5,78.8" fill="none" stroke-width="8" stroke-linecap="round" opacity="0.85"/></g>
+    <g id="sh-rings" data-tone="stuck"><g class="s-tone" fill="none" stroke-width="8"><circle r="78" opacity="0.25"/><circle r="56" opacity="0.45"/><circle r="34" opacity="0.65"/><circle r="14" opacity="0.9"/></g></g>
+    <g id="sh-crater" data-tone="stuck"><g><circle class="f-tone" r="72" opacity="0.3"/><circle class="s-tone" r="72" fill="none" stroke-width="7" opacity="0.85"/><circle class="f-ground" r="34"/><circle class="s-tone" r="34" fill="none" stroke-width="5" opacity="0.6"/></g></g>
+    <g id="sh-burst" data-tone="pressure"><g class="s-tone" stroke-width="9" stroke-linecap="round" opacity="0.85"><line x1="18.0" y1="0.0" x2="84.0" y2="0.0"/><line x1="16.2" y1="7.8" x2="39.6" y2="19.1"/><line x1="11.2" y1="14.1" x2="52.4" y2="65.7"/><line x1="4.0" y1="17.5" x2="9.8" y2="42.9"/><line x1="-4.0" y1="17.5" x2="-18.7" y2="81.9"/><line x1="-11.2" y1="14.1" x2="-27.4" y2="34.4"/><line x1="-16.2" y1="7.8" x2="-75.7" y2="36.4"/><line x1="-18.0" y1="0.0" x2="-44.0" y2="0.0"/><line x1="-16.2" y1="-7.8" x2="-75.7" y2="-36.4"/><line x1="-11.2" y1="-14.1" x2="-27.4" y2="-34.4"/><line x1="-4.0" y1="-17.5" x2="-18.7" y2="-81.9"/><line x1="4.0" y1="-17.5" x2="9.8" y2="-42.9"/><line x1="11.2" y1="-14.1" x2="52.4" y2="-65.7"/><line x1="16.2" y1="-7.8" x2="39.6" y2="-19.1"/></g><circle class="f-tone" r="13" opacity="0.85"/></g>
+    <g id="sh-scatter" data-tone="soft"><g class="f-tone" opacity="0.7"><ellipse cx="-62" cy="-8" rx="15" ry="12"/><ellipse cx="-24" cy="-34" rx="10" ry="8"/><ellipse cx="4" cy="6" rx="18" ry="14"/><ellipse cx="40" cy="-22" rx="12" ry="10"/><ellipse cx="66" cy="14" rx="9" ry="7"/><ellipse cx="-40" cy="30" rx="11" ry="9"/><ellipse cx="22" cy="40" rx="8" ry="7"/></g></g>
+    <g id="sh-mesh" data-tone="social"><g class="s-tone" stroke-width="5" stroke-linecap="round" opacity="0.55"><line x1="-138" y1="-60" x2="-18" y2="60"/><line x1="-138" y1="60" x2="-18" y2="-60"/><line x1="-112" y1="-60" x2="8" y2="60"/><line x1="-112" y1="60" x2="8" y2="-60"/><line x1="-86" y1="-60" x2="34" y2="60"/><line x1="-86" y1="60" x2="34" y2="-60"/><line x1="-60" y1="-60" x2="60" y2="60"/><line x1="-60" y1="60" x2="60" y2="-60"/><line x1="-34" y1="-60" x2="86" y2="60"/><line x1="-34" y1="60" x2="86" y2="-60"/><line x1="-8" y1="-60" x2="112" y2="60"/><line x1="-8" y1="60" x2="112" y2="-60"/><line x1="18" y1="-60" x2="138" y2="60"/><line x1="18" y1="60" x2="138" y2="-60"/></g></g>
+    <g id="sh-arch" data-tone="soft"><g><path class="f-tone" d="M -62 58 L -62 -8 A 62 62 0 0 1 62 -8 L 62 58 Z" opacity="0.75"/><path class="f-ground" d="M -28 58 L -28 -6 A 28 28 0 0 1 28 -6 L 28 58 Z"/></g></g>
+    <g id="sh-wall" data-tone="pressure"><g><rect class="f-tone" x="-96" y="-16" width="192" height="32" rx="8" opacity="0.85"/><rect class="f-tone" x="-96" y="20" width="192" height="12" rx="6" opacity="0.4"/></g></g>
+    <g id="sh-penguin" data-tone="social"><g><ellipse class="f-fg" rx="44" ry="58" opacity="0.92"/><ellipse class="f-card" cy="10" rx="28" ry="44"/><circle class="f-card" cx="-14" cy="-28" r="10"/><circle class="f-card" cx="14" cy="-28" r="10"/><circle class="f-fg" cx="-14" cy="-27" r="4"/><circle class="f-fg" cx="14" cy="-27" r="4"/><path class="f-tone" d="M -8 -14 L 8 -14 L 0 -3 Z"/><ellipse class="f-tone" cx="-19" cy="60" rx="15" ry="7"/><ellipse class="f-tone" cx="19" cy="60" rx="15" ry="7"/></g></g>
+    <g id="sh-rabbit" data-tone="social"><g><ellipse class="f-card s-tone" cx="-17" cy="-34" rx="9" ry="30" stroke-width="5"/><ellipse class="f-card s-tone" cx="17" cy="-34" rx="9" ry="30" stroke-width="5"/><circle class="f-card s-tone" cy="4" r="32" stroke-width="5"/><circle class="f-fg" cx="-12" cy="-2" r="4"/><circle class="f-fg" cx="12" cy="-2" r="4"/><path class="f-tone" d="M -6 10 L 6 10 L 0 17 Z"/><path class="f-tone" d="M -94 64 C -70 26 -40 34 0 34 C 40 34 70 26 94 64 Z" opacity="0.85"/></g></g>
+    <g id="sh-meerkat" data-tone="social"><g><path class="f-tone" d="M -22 56 C -27 6 -18 -16 0 -16 C 18 -16 27 6 22 56 Z" opacity="0.9"/><circle class="f-tone" cy="-36" r="22" opacity="0.9"/><circle class="f-tone" cx="-17" cy="-51" r="7" opacity="0.9"/><circle class="f-tone" cx="17" cy="-51" r="7" opacity="0.9"/><ellipse class="f-fg" cx="-9" cy="-39" rx="6" ry="7"/><ellipse class="f-fg" cx="9" cy="-39" rx="6" ry="7"/><ellipse class="f-fg" cy="-25" rx="5" ry="4"/><path class="f-tone" d="M -88 64 C -60 40 -30 46 0 46 C 30 46 60 40 88 64 Z" opacity="0.5"/></g></g>
+    <g id="sh-shark" data-tone="soft"><g><path class="f-tone" d="M -22 -62 C 2 -34 16 -8 24 16 L -64 16 C -48 -10 -36 -38 -22 -62 Z" opacity="0.9"/><path class="f-tone" d="M 52 16 C 62 2 72 -8 88 -18 C 80 -2 80 8 88 22 C 72 14 62 14 52 16 Z" opacity="0.75"/><path class="f-flow" d="M -98 20 C -60 6 -20 34 18 20 C 54 8 78 28 98 18 L 98 62 L -98 62 Z" opacity="0.4"/><path class="s-flow" d="M -98 20 C -60 6 -20 34 18 20 C 54 8 78 28 98 18" fill="none" stroke-width="7" opacity="0.85" stroke-linecap="round"/></g></g>
+    <g id="sh-tent" data-tone="stuck"><g><path class="f-tone" d="M 0 -58 L 76 52 L -76 52 Z" opacity="0.9"/><path class="f-ground" d="M 0 -26 L 25 52 L -25 52 Z"/><path class="s-tone" d="M -90 52 L 90 52" stroke-width="9" stroke-linecap="round" opacity="0.75"/></g></g>
+    <g id="sh-campfire" data-tone="stuck"><g><path class="f-tone" d="M 2 -62 C 24 -32 36 -16 30 8 C 24 32 2 42 -10 34 C -28 22 -28 -4 -14 -20 C -12 -6 -4 -2 0 -8 C 8 -20 4 -42 2 -62 Z" opacity="0.9"/><path class="f-social" d="M 4 -24 C 14 -8 16 2 11 12 C 6 22 -6 22 -11 15 C -17 7 -12 -6 -3 -14 Z" opacity="0.95"/><rect class="f-social" x="-48" y="26" width="96" height="15" rx="7" opacity="0.85" transform="rotate(-11 0 33)"/><rect class="f-social" x="-48" y="26" width="96" height="15" rx="7" opacity="0.6" transform="rotate(11 0 33)"/></g></g>
+    <g id="sh-storm" data-tone="sky"><g><g class="f-tone" opacity="0.9"><circle cx="-34" cy="-26" r="28"/><circle cx="2" cy="-40" r="34"/><circle cx="38" cy="-22" r="24"/><rect x="-62" y="-30" width="102" height="32" rx="16"/></g><path class="f-social" d="M 8 6 L -16 44 L 0 44 L -10 76 L 24 32 L 8 32 Z"/></g></g>
+    <g id="sh-cyclone" data-tone="flow"><g class="f-tone" opacity="0.85"><ellipse cy="-56" rx="64" ry="15"/><ellipse cy="-30" rx="52" ry="13"/><ellipse cy="-6" rx="39" ry="11"/><ellipse cy="16" rx="27" ry="9"/><ellipse cy="36" rx="15" ry="7"/><ellipse cy="54" rx="7" ry="5"/></g></g>
+    <g id="sh-canyon" data-tone="social"><g><path class="f-tone" d="M -98 -62 L -30 -62 L -22 -30 L -40 -4 L -24 22 L -34 62 L -98 62 Z" opacity="0.9"/><path class="f-fg" d="M -30 -62 L -22 -30 L -40 -4 L -24 22 L -34 62 L -50 62 L -42 20 L -56 -6 L -40 -30 L -48 -62 Z" opacity="0.13"/><path class="f-tone" d="M 98 -62 L 34 -62 L 26 -30 L 42 -4 L 28 22 L 38 62 L 98 62 Z" opacity="0.62"/><path class="f-flow" d="M -20 -62 C -12 -20 -22 20 -26 62 L 30 62 C 24 20 16 -20 26 -62 Z" opacity="0.5"/><path class="s-flow" d="M -20 -62 C -12 -20 -22 20 -26 62" fill="none" stroke-width="5" opacity="0.7"/></g></g>
+    <g id="sh-whirl" data-tone="stuck"><g class="s-tone" fill="none" stroke-linecap="round"><path d="M 80.0 0.0 L 78.0 12.9" stroke-width="14.9" opacity="0.35"/><path d="M 78.0 12.9 L 73.3 25.2" stroke-width="14.8" opacity="0.36"/><path d="M 73.3 25.2 L 65.9 36.3" stroke-width="14.7" opacity="0.36"/><path d="M 65.9 36.3 L 56.4 46.1" stroke-width="14.7" opacity="0.37"/><path d="M 56.4 46.1 L 44.9 54.0" stroke-width="14.6" opacity="0.37"/><path d="M 44.9 54.0 L 32.0 59.9" stroke-width="14.5" opacity="0.37"/><path d="M 32.0 59.9 L 18.1 63.5" stroke-width="14.4" opacity="0.38"/><path d="M 18.1 63.5 L 3.8 64.9" stroke-width="14.3" opacity="0.38"/><path d="M 3.8 64.9 L -10.4 63.8" stroke-width="14.2" opacity="0.39"/><path d="M -10.4 63.8 L -24.1 60.5" stroke-width="14.2" opacity="0.39"/><path d="M -24.1 60.5 L -36.6 55.1" stroke-width="14.1" opacity="0.39"/><path d="M -36.6 55.1 L -47.7 47.8" stroke-width="14.0" opacity="0.40"/><path d="M -47.7 47.8 L -56.9 38.9" stroke-width="13.9" opacity="0.40"/><path d="M -56.9 38.9 L -64.0 28.7" stroke-width="13.8" opacity="0.41"/><path d="M -64.0 28.7 L -68.6 17.7" stroke-width="13.7" opacity="0.41"/><path d="M -68.6 17.7 L -70.7 6.2" stroke-width="13.6" opacity="0.41"/><path d="M -70.7 6.2 L -70.2 -5.4" stroke-width="13.6" opacity="0.42"/><path d="M -70.2 -5.4 L -67.2 -16.5" stroke-width="13.5" opacity="0.42"/><path d="M -67.2 -16.5 L -61.9 -26.9" stroke-width="13.4" opacity="0.43"/><path d="M -61.9 -26.9 L -54.4 -36.2" stroke-width="13.3" opacity="0.43"/><path d="M -54.4 -36.2 L -45.1 -44.0" stroke-width="13.2" opacity="0.43"/><path d="M -45.1 -44.0 L -34.4 -50.1" stroke-width="13.1" opacity="0.44"/><path d="M -34.4 -50.1 L -22.5 -54.4" stroke-width="13.0" opacity="0.44"/><path d="M -22.5 -54.4 L -10.1 -56.6" stroke-width="13.0" opacity="0.45"/><path d="M -10.1 -56.6 L 2.5 -56.7" stroke-width="12.9" opacity="0.45"/><path d="M 2.5 -56.7 L 14.8 -54.8" stroke-width="12.8" opacity="0.45"/><path d="M 14.8 -54.8 L 26.3 -51.0" stroke-width="12.7" opacity="0.46"/><path d="M 26.3 -51.0 L 36.7 -45.4" stroke-width="12.6" opacity="0.46"/><path d="M 36.7 -45.4 L 45.6 -38.3" stroke-width="12.5" opacity="0.47"/><path d="M 45.6 -38.3 L 52.8 -29.9" stroke-width="12.4" opacity="0.47"/><path d="M 52.8 -29.9 L 57.9 -20.6" stroke-width="12.4" opacity="0.47"/><path d="M 57.9 -20.6 L 60.8 -10.8" stroke-width="12.3" opacity="0.48"/><path d="M 60.8 -10.8 L 61.5 -0.7" stroke-width="12.2" opacity="0.48"/><path d="M 61.5 -0.7 L 60.0 9.2" stroke-width="12.1" opacity="0.49"/><path d="M 60.0 9.2 L 56.4 18.6" stroke-width="12.0" opacity="0.49"/><path d="M 56.4 18.6 L 50.8 27.2" stroke-width="11.9" opacity="0.49"/><path d="M 50.8 27.2 L 43.5 34.6" stroke-width="11.9" opacity="0.50"/><path d="M 43.5 34.6 L 34.8 40.7" stroke-width="11.8" opacity="0.50"/><path d="M 34.8 40.7 L 25.0 45.2" stroke-width="11.7" opacity="0.51"/><path d="M 25.0 45.2 L 14.5 47.9" stroke-width="11.6" opacity="0.51"/><path d="M 14.5 47.9 L 3.6 49.0" stroke-width="11.5" opacity="0.51"/><path d="M 3.6 49.0 L -7.1 48.2" stroke-width="11.4" opacity="0.52"/><path d="M -7.1 48.2 L -17.4 45.7" stroke-width="11.3" opacity="0.52"/><path d="M -17.4 45.7 L -26.8 41.6" stroke-width="11.3" opacity="0.53"/><path d="M -26.8 41.6 L -35.1 36.2" stroke-width="11.2" opacity="0.53"/><path d="M -35.1 36.2 L -42.0 29.5" stroke-width="11.1" opacity="0.53"/><path d="M -42.0 29.5 L -47.2 21.9" stroke-width="11.0" opacity="0.54"/><path d="M -47.2 21.9 L -50.7 13.7" stroke-width="10.9" opacity="0.54"/><path d="M -50.7 13.7 L -52.2 5.2" stroke-width="10.8" opacity="0.55"/><path d="M -52.2 5.2 L -51.9 -3.4" stroke-width="10.8" opacity="0.55"/><path d="M -51.9 -3.4 L -49.6 -11.6" stroke-width="10.7" opacity="0.55"/><path d="M -49.6 -11.6 L -45.7 -19.2" stroke-width="10.6" opacity="0.56"/><path d="M -45.7 -19.2 L -40.2 -26.0" stroke-width="10.5" opacity="0.56"/><path d="M -40.2 -26.0 L -33.4 -31.7" stroke-width="10.4" opacity="0.57"/><path d="M -33.4 -31.7 L -25.5 -36.2" stroke-width="10.3" opacity="0.57"/><path d="M -25.5 -36.2 L -16.9 -39.2" stroke-width="10.2" opacity="0.57"/><path d="M -16.9 -39.2 L -7.9 -40.8" stroke-width="10.2" opacity="0.58"/><path d="M -7.9 -40.8 L 1.2 -40.9" stroke-width="10.1" opacity="0.58"/><path d="M 1.2 -40.9 L 10.0 -39.5" stroke-width="10.0" opacity="0.59"/><path d="M 10.0 -39.5 L 18.3 -36.7" stroke-width="9.9" opacity="0.59"/><path d="M 18.3 -36.7 L 25.7 -32.7" stroke-width="9.8" opacity="0.59"/><path d="M 25.7 -32.7 L 32.0 -27.6" stroke-width="9.7" opacity="0.60"/><path d="M 32.0 -27.6 L 37.0 -21.6" stroke-width="9.6" opacity="0.60"/><path d="M 37.0 -21.6 L 40.6 -15.0" stroke-width="9.6" opacity="0.61"/><path d="M 40.6 -15.0 L 42.6 -8.0" stroke-width="9.5" opacity="0.61"/><path d="M 42.6 -8.0 L 43.0 -1.0" stroke-width="9.4" opacity="0.61"/><path d="M 43.0 -1.0 L 41.9 6.0" stroke-width="9.3" opacity="0.62"/><path d="M 41.9 6.0 L 39.3 12.5" stroke-width="9.2" opacity="0.62"/><path d="M 39.3 12.5 L 35.4 18.4" stroke-width="9.1" opacity="0.63"/><path d="M 35.4 18.4 L 30.3 23.5" stroke-width="9.1" opacity="0.63"/><path d="M 30.3 23.5 L 24.3 27.6" stroke-width="9.0" opacity="0.63"/><path d="M 24.3 27.6 L 17.5 30.6" stroke-width="8.9" opacity="0.64"/><path d="M 17.5 30.6 L 10.3 32.4" stroke-width="8.8" opacity="0.64"/><path d="M 10.3 32.4 L 3.0 33.1" stroke-width="8.7" opacity="0.65"/><path d="M 3.0 33.1 L -4.3 32.5" stroke-width="8.6" opacity="0.65"/><path d="M -4.3 32.5 L -11.2 30.7" stroke-width="8.5" opacity="0.65"/><path d="M -11.2 30.7 L -17.4 27.9" stroke-width="8.5" opacity="0.66"/><path d="M -17.4 27.9 L -22.9 24.2" stroke-width="8.4" opacity="0.66"/><path d="M -22.9 24.2 L -27.4 19.8" stroke-width="8.3" opacity="0.67"/><path d="M -27.4 19.8 L -30.8 14.7" stroke-width="8.2" opacity="0.67"/><path d="M -30.8 14.7 L -32.9 9.3" stroke-width="8.1" opacity="0.67"/><path d="M -32.9 9.3 L -33.8 3.7" stroke-width="8.0" opacity="0.68"/><path d="M -33.8 3.7 L -33.5 -1.8" stroke-width="7.9" opacity="0.68"/><path d="M -33.5 -1.8 L -31.9 -7.1" stroke-width="7.9" opacity="0.69"/><path d="M -31.9 -7.1 L -29.3 -11.9" stroke-width="7.8" opacity="0.69"/><path d="M -29.3 -11.9 L -25.7 -16.2" stroke-width="7.7" opacity="0.69"/><path d="M -25.7 -16.2 L -21.3 -19.7" stroke-width="7.6" opacity="0.70"/><path d="M -21.3 -19.7 L -16.3 -22.4" stroke-width="7.5" opacity="0.70"/><path d="M -16.3 -22.4 L -10.9 -24.2" stroke-width="7.4" opacity="0.71"/><path d="M -10.9 -24.2 L -5.3 -25.1" stroke-width="7.3" opacity="0.71"/><path d="M -5.3 -25.1 L 0.3 -25.0" stroke-width="7.3" opacity="0.71"/><path d="M 0.3 -25.0 L 5.7 -24.0" stroke-width="7.2" opacity="0.72"/><path d="M 5.7 -24.0 L 10.6 -22.2" stroke-width="7.1" opacity="0.72"/><path d="M 10.6 -22.2 L 15.0 -19.7" stroke-width="7.0" opacity="0.73"/><path d="M 15.0 -19.7 L 18.7 -16.5" stroke-width="6.9" opacity="0.73"/><path d="M 18.7 -16.5 L 21.5 -12.9" stroke-width="6.8" opacity="0.73"/><path d="M 21.5 -12.9 L 23.5 -9.0" stroke-width="6.8" opacity="0.74"/><path d="M 23.5 -9.0 L 24.5 -4.9" stroke-width="6.7" opacity="0.74"/><path d="M 24.5 -4.9 L 24.5 -0.8" stroke-width="6.6" opacity="0.75"/><path d="M 24.5 -0.8 L 23.7 3.1" stroke-width="6.5" opacity="0.75"/><path d="M 23.7 3.1 L 22.1 6.7" stroke-width="6.4" opacity="0.75"/><path d="M 22.1 6.7 L 19.7 10.0" stroke-width="6.3" opacity="0.76"/><path d="M 19.7 10.0 L 16.8 12.7" stroke-width="6.2" opacity="0.76"/><path d="M 16.8 12.7 L 13.3 14.8" stroke-width="6.2" opacity="0.77"/><path d="M 13.3 14.8 L 9.6 16.3" stroke-width="6.1" opacity="0.77"/><path d="M 9.6 16.3 L 5.7 17.1" stroke-width="6.0" opacity="0.77"/><path d="M 5.7 17.1 L 1.8 17.2" stroke-width="5.9" opacity="0.78"/><path d="M 1.8 17.2 L -1.9 16.7" stroke-width="5.8" opacity="0.78"/><path d="M -1.9 16.7 L -5.4 15.6" stroke-width="5.7" opacity="0.79"/><path d="M -5.4 15.6 L -8.5 14.0" stroke-width="5.6" opacity="0.79"/><path d="M -8.5 14.0 L -11.1 12.0" stroke-width="5.6" opacity="0.79"/><path d="M -11.1 12.0 L -13.1 9.7" stroke-width="5.5" opacity="0.80"/><path d="M -13.1 9.7 L -14.5 7.2" stroke-width="5.4" opacity="0.80"/><path d="M -14.5 7.2 L -15.3 4.5" stroke-width="5.3" opacity="0.81"/><path d="M -15.3 4.5 L -15.4 1.9" stroke-width="5.2" opacity="0.81"/><path d="M -15.4 1.9 L -15.0 -0.6" stroke-width="5.1" opacity="0.81"/><path d="M -15.0 -0.6 L -14.1 -2.9" stroke-width="5.1" opacity="0.82"/><path d="M -14.1 -2.9 L -12.7 -5.0" stroke-width="5.0" opacity="0.82"/><path d="M -12.7 -5.0 L -10.9 -6.7" stroke-width="4.9" opacity="0.83"/><path d="M -10.9 -6.7 L -8.8 -8.0" stroke-width="4.8" opacity="0.83"/><path d="M -8.8 -8.0 L -6.6 -8.9" stroke-width="4.7" opacity="0.83"/><path d="M -6.6 -8.9 L -4.4 -9.3" stroke-width="4.6" opacity="0.84"/><path d="M -4.4 -9.3 L -2.1 -9.4" stroke-width="4.5" opacity="0.84"/><path d="M -2.1 -9.4 L -0.0 -9.1" stroke-width="4.5" opacity="0.85"/><path d="M -0.0 -9.1 L 1.9 -8.4" stroke-width="4.4" opacity="0.85"/><path d="M 1.9 -8.4 L 3.5 -7.5" stroke-width="4.3" opacity="0.85"/><path d="M 3.5 -7.5 L 4.8 -6.4" stroke-width="4.2" opacity="0.86"/><path d="M 4.8 -6.4 L 5.7 -5.2" stroke-width="4.1" opacity="0.86"/><path d="M 5.7 -5.2 L 6.3 -3.9" stroke-width="4.0" opacity="0.87"/></g><circle class="f-tone" r="9"/></g>
+    <g id="sh-wave" data-tone="flow"><g><path class="f-tone" d="M -96 30 C -62 -34 -18 -36 8 2 C 28 30 54 30 70 8 C 79 -4 88 -8 96 -6 L 96 58 L -96 58 Z" opacity="0.45"/><path class="s-tone" d="M -96 30 C -62 -34 -18 -36 8 2" fill="none" stroke-width="9" opacity="0.9" stroke-linecap="round"/><path class="s-tone" d="M 8 2 C 28 30 54 30 70 8" fill="none" stroke-width="8" opacity="0.7" stroke-linecap="round"/></g></g>
+    <g id="sh-pebble" data-tone="soft"><g class="f-tone"><ellipse cx="-18" cy="10" rx="46" ry="34" opacity="0.8"/><ellipse cx="36" cy="26" rx="25" ry="18" opacity="0.55"/><ellipse cx="-30" cy="-2" rx="16" ry="10" opacity="0.35"/></g></g>
+    <g id="sh-rhizome" data-tone="leaf"><g class="s-social" fill="none" stroke-linecap="round" opacity="0.9"><path d="M -94 2 C -60 -20 -20 18 12 0 C 44 -18 70 8 96 -4" stroke-width="13"/><path d="M -58 -10 C -66 10 -74 20 -80 36" stroke-width="7" opacity="0.6"/><path d="M -10 6 C -6 24 0 34 4 50" stroke-width="7" opacity="0.6"/><path d="M 42 -6 C 48 14 54 24 60 42" stroke-width="7" opacity="0.6"/></g><g class="s-tone" fill="none" stroke-linecap="round" opacity="0.9"><path d="M -58 -10 C -62 -26 -56 -38 -58 -52" stroke-width="9"/><path d="M -10 6 C -14 -12 -6 -24 -8 -38" stroke-width="9"/><path d="M 42 -6 C 38 -24 46 -34 44 -48" stroke-width="9"/></g><g class="f-social" opacity="0.95"><circle cx="-58" cy="-10" r="12"/><circle cx="-10" cy="6" r="12"/><circle cx="42" cy="-6" r="12"/></g><g class="f-tone" opacity="0.85"><ellipse cx="-58" cy="-56" rx="11" ry="8"/><ellipse cx="-8" cy="-42" rx="11" ry="8"/><ellipse cx="44" cy="-52" rx="11" ry="8"/></g></g>
+    <g id="sh-sparkle" data-tone="pressure"><g class="f-tone"><path d="M -8 -68 L 4.4 -18.4 L 54 -6 L 4.4 6.4 L -8 56 L -20.4 6.4 L -70 -6 L -20.4 -18.4 Z" opacity="0.9"/><path d="M 52 4 L 58 28 L 82 34 L 58 40 L 52 64 L 46 40 L 22 34 L 46 28 Z" opacity="0.7"/><path d="M -62 18 L -57.6 35.6 L -40 40 L -57.6 44.4 L -62 62 L -66.4 44.4 L -84 40 L -66.4 35.6 Z" opacity="0.55"/><path d="M 44 -64 L 47.6 -49.6 L 62 -46 L 47.6 -42.4 L 44 -28 L 40.4 -42.4 L 26 -46 L 40.4 -49.6 Z" opacity="0.5"/></g></g>
+    <g id="sh-pair" data-tone="social"><g><g class="f-tone" opacity="0.85"><circle cx="-36" cy="-28" r="21"/><path d="M -68 54 C -68 14 -52 0 -36 0 C -20 0 -4 14 -4 54 Z"/></g><g class="f-flow" opacity="0.75"><circle cx="36" cy="-20" r="18"/><path d="M 8 54 C 8 20 22 8 36 8 C 50 8 64 20 64 54 Z"/></g></g></g>
+    <g id="sh-heart" data-tone="stuck"><path class="f-tone" d="M 0 58 C -72 8 -62 -48 -23 -48 C -9 -48 0 -35 0 -25 C 0 -35 9 -48 23 -48 C 62 -48 72 8 0 58 Z" opacity="0.85"/></g>
+    <g id="sh-octopus" data-tone="stuck"><g><path class="f-tone" d="M -46 -8 C -46 -54 -22 -74 0 -74 C 22 -74 46 -54 46 -8 C 46 8 30 14 0 14 C -30 14 -46 8 -46 -8 Z" opacity="0.92"/><circle class="f-card" cx="-17" cy="-28" r="7"/><circle class="f-card" cx="17" cy="-28" r="7"/><circle class="f-fg" cx="-17" cy="-28" r="3.5"/><circle class="f-fg" cx="17" cy="-28" r="3.5"/><g class="s-tone" fill="none" stroke-width="13" stroke-linecap="round" opacity="0.85"><path d="M -38 6 C -54 28 -62 48 -50 62 C -42 70 -32 64 -34 54"/><path d="M -20 12 C -28 36 -30 54 -18 66"/><path d="M -3 14 C -5 40 -7 58 3 70"/><path d="M 16 12 C 22 38 24 54 14 66"/><path d="M 34 6 C 50 28 58 48 46 62 C 38 70 28 64 30 54"/></g></g></g>
+    <g id="sh-mushroom" data-tone="stuck"><g><path class="f-card s-tone" d="M -20 12 C -17 38 -22 56 -15 66 L 15 66 C 22 56 17 38 20 12 Z" stroke-width="4" opacity="0.95"/><path class="f-tone" d="M -64 4 C -64 -36 -33 -62 0 -62 C 33 -62 64 -36 64 4 C 64 13 40 18 0 18 C -40 18 -64 13 -64 4 Z" opacity="0.92"/><g class="f-card" opacity="0.85"><ellipse cx="-34" cy="-14" rx="11" ry="9"/><ellipse cx="2" cy="-32" rx="9" ry="7"/><ellipse cx="30" cy="-10" rx="12" ry="9"/><ellipse cx="-10" cy="2" rx="7" ry="5"/></g></g></g>
+    <g id="sh-hole" data-tone="social"><g><ellipse class="f-tone" cy="12" rx="74" ry="42" opacity="0.55"/><ellipse class="f-tone" cy="14" rx="58" ry="31" opacity="0.5"/><ellipse class="f-fg" cy="10" rx="52" ry="27" opacity="0.82"/><ellipse class="f-fg" cy="2" rx="40" ry="18" opacity="0.5"/></g></g>
+    <g id="sh-mound" data-tone="social"><g class="f-tone"><path d="M -86 46 C -70 4 -40 -32 0 -32 C 40 -32 70 4 86 46 Z" opacity="0.85"/><ellipse cx="-58" cy="52" rx="17" ry="8" opacity="0.6"/><ellipse cx="32" cy="54" rx="12" ry="6" opacity="0.5"/><ellipse cx="66" cy="50" rx="9" ry="5" opacity="0.45"/><ellipse cx="-14" cy="6" rx="22" ry="11" opacity="0.25"/></g></g>
+    <g id="sh-butterfly" data-tone="pressure"><g><g class="f-tone" opacity="0.85"><path d="M -7 -6 C -30 -58 -78 -64 -86 -36 C -92 -12 -50 6 -7 4 Z"/><path d="M 7 -6 C 30 -58 78 -64 86 -36 C 92 -12 50 6 7 4 Z"/><path d="M -7 8 C -34 16 -66 40 -54 60 C -42 76 -14 48 -7 26 Z"/><path d="M 7 8 C 34 16 66 40 54 60 C 42 76 14 48 7 26 Z"/></g><g class="f-tone" opacity="0.45"><circle cx="-46" cy="-30" r="10"/><circle cx="46" cy="-30" r="10"/></g><ellipse class="f-fg" cy="6" rx="6" ry="36" opacity="0.85"/><g class="s-fg" fill="none" stroke-width="3" stroke-linecap="round" opacity="0.8"><path d="M -3 -28 C -10 -46 -18 -54 -28 -58"/><path d="M 3 -28 C 10 -46 18 -54 28 -58"/></g></g></g>
+    <g id="sh-star" data-tone="social"><path class="f-tone" d="M 0.0 -74.0 L 17.6 -24.3 L 70.4 -22.9 L 28.5 9.3 L 43.5 59.9 L 0.0 30.0 L -43.5 59.9 L -28.5 9.3 L -70.4 -22.9 L -17.6 -24.3 Z" opacity="0.9"/></g>
+    <g id="sh-pine" data-tone="leaf"><g><rect class="f-social" x="-9" y="26" width="18" height="34" rx="5" opacity="0.8"/><g class="f-tone" opacity="0.9"><path d="M 0 -64 L 28 -20 L -28 -20 Z"/><path d="M 0 -40 L 40 8 L -40 8 Z"/><path d="M 0 -14 L 52 40 L -52 40 Z"/></g></g></g>
+  </defs></svg>
+
+  <div class="canvas-board">
+    <div class="canvas-bar">
+      <button class="btn" type="button" id="canvas-bigger">Bigger</button>
+      <button class="btn" type="button" id="canvas-smaller">Smaller</button>
+      <button class="btn" type="button" id="canvas-turn">Turn</button>
+      <button class="btn" type="button" id="canvas-flip">Flip</button>
+      <button class="btn" type="button" id="canvas-remove">Take it off</button>
+      <span class="canvas-spacer"></span>
+      <button class="btn btn-quiet" type="button" id="canvas-clear">Clear the map</button>
+    </div>
+
+    <svg class="canvas-stage" id="canvas-stage" viewBox="0 0 1000 720" role="application"
+         aria-label="Your map. Tab to a piece, then move it with the arrow keys.">
+      <g id="canvas-pieces"></g>
+    </svg>
+
+    <p class="canvas-say" id="canvas-say" role="status"></p>
+    <p class="canvas-keys">Drag a piece, or tab to it and use the <strong>arrow keys</strong> to move it, <strong>+</strong> and <strong>&#8722;</strong> to resize, <strong>[</strong> and <strong>]</strong> to turn, <strong>f</strong> to flip, <strong>Delete</strong> to take it off. A river turned is a river running the other way, which is why there is one of each shape rather than eight.</p>
+  </div>
+
+  <div class="canvas-tray">
+    <section>
+      <h4 class="trayhead">Shapes</h4>
+      <p class="setnote">Drawn from scratch in the site's own tones, never traced from the map — which is what makes them yours to keep, copy and change.</p>
+      <div class="shapesets">
+      <section class="shapeset">
+        <h4>Islands</h4>
+        <p class="setnote">Start here. These go behind everything else.</p>
+        <div class="shapes">
+        <button class="shapebtn" type="button" data-shape="isleRound" data-name="Isle" data-tone="leaf" data-back="yes" data-size="2.6">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Isle</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="isleLong" data-name="Long isle" data-tone="leaf" data-back="yes" data-size="2.6">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Long isle</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="isleLobed" data-name="Two lobes" data-tone="leaf" data-back="yes" data-size="2.6">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Two lobes</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="isleSand" data-name="Beach isle" data-tone="social" data-back="yes" data-size="2.6">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Beach isle</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="isleBay" data-name="Bay" data-tone="social" data-back="yes" data-size="2.6">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Bay</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="isleGroup" data-name="Scattered" data-tone="social" data-back="yes" data-size="2.6">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Scattered</span>
+        </button>
+        </div>
+      </section>
+      <section class="shapeset">
+        <h4>Ground</h4>
+        <p class="setnote">What an area is made of.</p>
+        <div class="shapes">
+        <button class="shapebtn" type="button" data-shape="blob" data-name="Blob" data-tone="social">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Blob</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="ridge" data-name="Ridge" data-tone="pressure">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Ridge</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="shore" data-name="Shore" data-tone="flow">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Shore</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="pool" data-name="Pool" data-tone="flow">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Pool</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="grove" data-name="Grove" data-tone="leaf">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Grove</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="haze" data-name="Haze" data-tone="soft">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Haze</span>
+        </button>
+        </div>
+      </section>
+      <section class="shapeset">
+        <h4>Ways</h4>
+        <p class="setnote">Things you travel along, or round and round.</p>
+        <div class="shapes">
+        <button class="shapebtn" type="button" data-shape="band" data-name="Band" data-tone="flow">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Band</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="path" data-name="Path" data-tone="soft">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Path</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="drift" data-name="Drift" data-tone="flow">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Drift</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="tendril" data-name="Tendril" data-tone="flow">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Tendril</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="knot" data-name="Knot" data-tone="stuck">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Knot</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="reach" data-name="Reach" data-tone="flow">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Reach</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="meander" data-name="Meander" data-tone="flow">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Meander</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="delta" data-name="Delta" data-tone="flow">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Delta</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="spiral" data-name="Spiral" data-tone="flow">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Spiral</span>
+        </button>
+        </div>
+      </section>
+      <section class="shapeset">
+        <h4>Marks</h4>
+        <p class="setnote">Things that sit on the ground.</p>
+        <div class="shapes">
+        <button class="shapebtn" type="button" data-shape="rings" data-name="Rings" data-tone="stuck">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Rings</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="crater" data-name="Crater" data-tone="stuck">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Crater</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="burst" data-name="Burst" data-tone="pressure">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Burst</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="scatter" data-name="Scatter" data-tone="soft">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Scatter</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="mesh" data-name="Mesh" data-tone="social">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Mesh</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="arch" data-name="Arch" data-tone="soft">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Arch</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="wall" data-name="Wall" data-tone="pressure">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Wall</span>
+        </button>
+        </div>
+      </section>
+      <section class="shapeset">
+        <h4>Things</h4>
+        <p class="setnote">The twenty, covered. Drawn by us, from scratch — combine them, and nobody's map has to look like anybody else's.</p>
+        <div class="shapes">
+        <button class="shapebtn" type="button" data-shape="penguin" data-name="Penguin" data-tone="social">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Penguin</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="rabbit" data-name="Rabbit" data-tone="social">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Rabbit</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="meerkat" data-name="Meerkat" data-tone="social">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Meerkat</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="shark" data-name="Shark" data-tone="soft">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Shark</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="tent" data-name="Tent" data-tone="stuck">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Tent</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="campfire" data-name="Campfire" data-tone="stuck">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Campfire</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="storm" data-name="Storm" data-tone="sky">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Storm</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="cyclone" data-name="Cyclone" data-tone="flow">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Cyclone</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="canyon" data-name="Canyon" data-tone="social">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Canyon</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="whirl" data-name="Whirlpool" data-tone="stuck">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Whirlpool</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="wave" data-name="Wave" data-tone="flow">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Wave</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="pebble" data-name="Pebble" data-tone="soft">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Pebble</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="rhizome" data-name="Rhizome" data-tone="leaf">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Rhizome</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="sparkle" data-name="Sparkle" data-tone="pressure">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Sparkle</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="pair" data-name="Pair" data-tone="social">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Pair</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="heart" data-name="Heart" data-tone="stuck">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Heart</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="octopus" data-name="Octopus" data-tone="stuck">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Octopus</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="mushroom" data-name="Mushroom" data-tone="stuck">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Mushroom</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="hole" data-name="Hole" data-tone="social">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Hole</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="mound" data-name="Mound" data-tone="social">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Mound</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="butterfly" data-name="Butterfly" data-tone="pressure">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Butterfly</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="star" data-name="Star" data-tone="social">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Star</span>
+        </button>
+        <button class="shapebtn" type="button" data-shape="pine" data-name="Pine" data-tone="leaf">
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>Pine</span>
+        </button>
+        </div>
+      </section>
+      </div>
+    </section>
+
+    <section>
+      <h4 class="trayhead">The twenty places</h4>
+      <p class="setnote">Add the ones that are yours. Leaving one off is an answer too.</p>
+      <ul class="places">
+        <li><button class="placebtn" type="button" data-place="1" data-name="Attention Tunnels" data-tone="flow">
+          <span class="placen">1</span><span>Attention Tunnels</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="2" data-name="Penguin Pebbling Cove of Friendship" data-tone="social">
+          <span class="placen">2</span><span>Penguin Pebbling Cove of Friendship</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="3" data-name="Tendril Theory" data-tone="flow">
+          <span class="placen">3</span><span>Tendril Theory</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="4" data-name="Mountains of Ruminating Thoughts" data-tone="stuck">
+          <span class="placen">4</span><span>Mountains of Ruminating Thoughts</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="5" data-name="Cyclones of Unmet Needs" data-tone="pressure">
+          <span class="placen">5</span><span>Cyclones of Unmet Needs</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="6" data-name="Rabbit Holes of Research" data-tone="flow">
+          <span class="placen">6</span><span>Rabbit Holes of Research</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="7" data-name="Infodump Canyon" data-tone="social">
+          <span class="placen">7</span><span>Infodump Canyon</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="8" data-name="Rhizomatic Communities" data-tone="social">
+          <span class="placen">8</span><span>Rhizomatic Communities</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="9" data-name="River of Monotropic Flow States" data-tone="flow">
+          <span class="placen">9</span><span>River of Monotropic Flow States</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="10" data-name="Campsite of Cavendish Spaces" data-tone="social">
+          <span class="placen">10</span><span>Campsite of Cavendish Spaces</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="11" data-name="Meerkat Mounds" data-tone="stuck">
+          <span class="placen">11</span><span>Meerkat Mounds</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="12" data-name="River Banks of Monotropic Time" data-tone="flow">
+          <span class="placen">12</span><span>River Banks of Monotropic Time</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="13" data-name="Shark Infested Waters of Neuronormativity and Behaviourism &amp; Double Empathy Problems" data-tone="pressure">
+          <span class="placen">13</span><span>Shark Infested Waters of Neuronormativity and Behaviourism &amp; Double Empathy Problems</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="14" data-name="Beach of Body Doubling" data-tone="social">
+          <span class="placen">14</span><span>Beach of Body Doubling</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="15" data-name="Burnout Whirlpools" data-tone="stuck">
+          <span class="placen">15</span><span>Burnout Whirlpools</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="16" data-name="Panic Hills of Low Object Permanence" data-tone="stuck">
+          <span class="placen">16</span><span>Panic Hills of Low Object Permanence</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="17" data-name="Forest of Joy, Awe &amp; Wonder" data-tone="social">
+          <span class="placen">17</span><span>Forest of Joy, Awe &amp; Wonder</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="18" data-name="Lake of Limerence" data-tone="stuck">
+          <span class="placen">18</span><span>Lake of Limerence</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="19" data-name="Tides of the Sensory Sea" data-tone="stuck">
+          <span class="placen">19</span><span>Tides of the Sensory Sea</span>
+        </button></li>
+        <li><button class="placebtn" type="button" data-place="20" data-name="Sudden Storms of Unexpected Events" data-tone="stuck">
+          <span class="placen">20</span><span>Sudden Storms of Unexpected Events</span>
+        </button></li>
+      </ul>
+    </section>
+  </div>
+</section>
+
+<p class="canvas-off" id="canvas-off"><strong>JavaScript is switched off, so the drawing board on this page cannot run.</strong> Drawing needs a script in a way that marking does not — so the <a href="stories.html">marking tool</a> still works with the script off and can be printed, and the <a href="https://autisticrealms.com/product/my-monotropic-map-workbook/" rel="noopener">workbook</a> does this job on paper, which is where the invitation started.</p>
+<hr>
+<h2 id="there-is-no-right-map">There is no right map</h2>
+<p><strong>There is no score, no type and no result here.</strong> Nothing counts what you put down or tells you what it means. The one thing this site is sure of is that a stuck state is changed by changing the conditions around a person, never by a page telling them what they are — so the tool draws, and says nothing about what it sees.</p>
+<p>Every area on Helen's map has <a href="areas.html">its own page</a> naming who coined it and what changes it, and the <a href="stories.html">marking tool</a> asks the smaller question: where are you on her map right now. That one works with JavaScript switched off, and prints.</p>
+<p>The <a href="https://autisticrealms.com/product/my-monotropic-map-workbook/" rel="noopener">workbook</a> does all of this on paper, in more depth.</p>
+<hr>
+<h2 id="what-you-draw-stays-here">What you draw stays here</h2>
+<p>Nothing you place is sent anywhere. There is no account, no upload and nowhere for a map to go: the site has no server that accepts one, and its own security headers forbid the browser from trying.</p>
+<p>Your map is kept in this browser, on this device, so it is still here when you come back — and it is gone the moment you clear the site's data, or press <strong>Clear the map</strong>. A different browser, or a different device, starts from blank ground.</p>
+<p>The shapes are <a href="https://stimpunks.org/" rel="noopener">Stimpunks</a>' own drawing and, like everything else here, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>. Take them, change them, pass them on.</p>
+<h2 id="share-what-you-make">Share what you make</h2>
+<p>If a map you draw says something you want to say, <a href="stories.html">the story project</a> is open — poems, art, blogs, essays, music, anything.</p>
+</div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p><strong>Map of Monotropic Experiences</strong> is by Helen Edgar (Autistic Realms) and the Stimpunks Foundation — Ryan Boren, Norah Hobbs and Chelsea Adams. The original map was created by Helen Edgar in 2024.</p>
+    <p>The map and everything on this site derived from it are licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>. Share it, adapt it, keep the credit, keep the licence.</p>
+    <p><a href="privacy.html">Privacy</a> · <a href="https://autisticrealms.com" rel="noopener">Autistic Realms</a> · <a href="https://stimpunks.org" rel="noopener">Stimpunks</a> · <a href="https://monotropism.org" rel="noopener">monotropism.org</a></p>
+  </div>
+</footer>
+</body>
+</html>

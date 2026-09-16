@@ -12,6 +12,7 @@ import { fileURLToPath } from 'node:url';
 import { AREAS, STATES, BY_SLUG, validate } from './areas.mjs';
 import { ZONES, validate as validateZones } from './domination.mjs';
 import { SLIDES, validate as validateSlides } from './slides.mjs';
+import { SHAPES, SETS, validate as validateShapes } from './shapes.mjs';
 import { render } from './md.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -50,6 +51,7 @@ const NAV = [
   ['neuronormative-domination', 'The frame'],
   ['training', 'Training'],
   ['stories', 'Your map'],
+  ['draw', 'Draw a map'],
   ['about', 'About'],
   ['changelog', 'Changelog'],
 ];
@@ -60,8 +62,13 @@ const esc = (s) => String(s).replace(/&(?![a-zA-Z]+;|#\d+;)/g, '&amp;').replace(
 const plain = (s) => String(s).replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&#(\d+);/g, (_, d) => String.fromCharCode(+d)).replace(/&[a-z]+;/g, ' ').replace(/\s+/g, ' ').trim();
 
 const MAP_PAGES = new Set(['index', 'neuronormative-domination', 'stories']);
-/** Pages carrying an interactive tool, and so the one script that is not the theme. */
-const TOOL_PAGES = new Set(['stories']);
+/** Pages carrying an interactive tool, and the script each one needs. The two tools
+ *  share no state and no file: version one marks Helen's map, version two draws your
+ *  own, and a page that loads both would be paying for a tool it does not show. */
+const TOOL_SCRIPTS = new Map([
+  ['stories', 'my-map.js'],
+  ['draw', 'map-canvas.js'],
+]);
 
 function shell({ slug, title, description, body, h1, wide = false }) {
   const canonical = slug === 'index' ? `${SITE.origin}/` : `${SITE.origin}/${slug}`;
@@ -91,7 +98,7 @@ ${MAP_PAGES.has(slug) ? '<link rel="stylesheet" href="map-hotspots.css">\n' : ''
 <meta property="og:image" content="${SITE.origin}/images/map-of-monotropic-experiences.png">
 <meta name="twitter:card" content="summary_large_image">
 <script src="theme.js"></script>
-${TOOL_PAGES.has(slug) ? '<script src="my-map.js" defer></script>\n' : ''}</head>
+${TOOL_SCRIPTS.has(slug) ? `<script src="${TOOL_SCRIPTS.get(slug)}" defer></script>\n` : ''}</head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar">
@@ -405,7 +412,11 @@ function buildProse(slug) {
   if (!lines[0].startsWith('# ')) throw new Error(`pages/${slug}.md must open with "# Title"`);
   const title = lines[0].slice(2).trim();
   const desc = (lines.slice(1).find((l) => l.trim() && !l.startsWith('#')) || title).replace(/[*\[\]]|\(https?:[^)]+\)/g, '').trim();
-  const html = render(lines.slice(1).join('\n'), `pages/${slug}.md`, { slides: SLIDE_CTX, mymap: TOOL_PAGES.has(slug) ? myMapTool() : null });
+  const html = render(lines.slice(1).join('\n'), `pages/${slug}.md`, {
+    slides: SLIDE_CTX,
+    mymap: slug === 'stories' ? myMapTool() : null,
+    canvas: slug === 'draw' ? canvasTool() : null,
+  });
   return shell({
     slug, title,
     description: desc.slice(0, 180),
@@ -514,6 +525,152 @@ ${groups}
 </section>`;
 }
 
+/* ---- the map builder, version two ---------------------------------------- */
+
+/**
+ * EVERY DRAWING IS WRITTEN INTO THE PAGE ONCE, into a <defs> block, and map-canvas.js
+ * copies one out whenever it needs it — for a tray preview, and for each piece a
+ * person stamps on the canvas. Fifty-one drawings placed twenty times is still
+ * fifty-one drawings in the file.
+ *
+ * COPIED, NOT <use>d, AS A PRECAUTION RATHER THAN A FIX. A <use> draws its reference
+ * in a shadow tree, and how reliably CSS custom properties inherit into one varies by
+ * engine. Every colour in these drawings is a custom property, so the failure mode is
+ * the whole tray rendering solid black — too costly to leave to an engine detail we
+ * cannot test here. A copy is an ordinary child of the page and inherits --tone,
+ * --card and the rest like anything else.
+ *
+ * FOR THE RECORD, that is NOT what made the icons black on 2026-09-16: the stylesheet
+ * in the browser was a cached older copy with none of these rules in it. `serve` does
+ * not honour `_headers`, so a local preview can hold a stale CSS file across edits
+ * while the served file is current. Look at `document.styleSheets` before believing a
+ * styling bug.
+ *
+ * THE VOCABULARY IS READ BACK OUT OF THE DOM, exactly as my-map.js reads the four
+ * marks rather than keeping its own copy. `map-canvas.js` carries no shape data, no
+ * names and no list of the twenty: it asks the buttons this function generated. So
+ * tools/shapes.mjs and tools/areas.mjs stay the only places either is written down.
+ *
+ * THE WHOLE TOOL SHIPS `hidden`, and the script reveals it — the same rule as the
+ * theme toggle and version one's print button. A drag-and-resize canvas cannot work
+ * without JavaScript, and a control that cannot work must not be sitting there
+ * looking like it can. What a reader with no script gets instead is `canvas-off`,
+ * which is visible by default and says where to go: the marking tool, which does
+ * work without a script, and the paper workbook.
+ *
+ * NO COUNTS, for the same reason version one has none. A canvas invites a readout —
+ * how many pieces, how big, what percentage of the map is whirlpool — and the moment
+ * the site emits a number it is a quiz. Position is said in words, and size is
+ * "bigger" and "smaller".
+ */
+
+/** Paint goes on as a class, never as `fill="var(--x)"`.
+ *
+ *  A `var()` inside a presentation attribute is not a thing every browser resolves,
+ *  and a shape whose fill does not resolve is a black shape — so the colour is moved
+ *  into a class and the rule lives in `monotropic-map.css`, which is also the only
+ *  way a theme switch can reach it. This is the same reason `map-hotspots.css` exists
+ *  rather than twenty `style` attributes: the stylesheet is where colour is allowed
+ *  to live on this site, and the CSP agrees.
+ *
+ *  A shape painting something this map does not know about is a hard error rather
+ *  than a silently black drawing. */
+const PAINT = new Map([
+  ['TONE', 'tone'], ['var(--card)', 'card'], ['var(--fg)', 'fg'], ['var(--flow)', 'flow'],
+  ['var(--ground)', 'ground'], ['var(--leaf)', 'leaf'], ['var(--social)', 'social'],
+]);
+
+function paintToClasses(draw, id) {
+  return draw.replace(/<([a-z]+)([^>]*)>/g, (whole, tag, attrs) => {
+    const classes = [];
+    const rest = attrs.replace(/\s(fill|stroke)="([^"]+)"/g, (mm, prop, val) => {
+      if (val === 'none') return mm;
+      const name = PAINT.get(val);
+      if (!name) throw new Error(`build: shape "${id}" paints ${prop}="${val}", which has no class — add it to PAINT in build.mjs and a rule to monotropic-map.css`);
+      classes.push(`${prop === 'fill' ? 'f' : 's'}-${name}`);
+      return '';
+    });
+    return `<${tag}${classes.length ? ` class="${classes.join(' ')}"` : ''}${rest}>`;
+  });
+}
+
+function canvasTool() {
+  /* `data-tone` on the symbol sets --tone, using the same rules the area pages and the
+     map hotspots already use, so a shape's own colour follows the theme for free. */
+  const defs = Object.entries(SHAPES).map(([id, sh]) =>
+    `    <g id="sh-${id}" data-tone="${sh.tone}">${paintToClasses(sh.draw, id)}</g>`).join('\n');
+
+  const sets = SETS.map(([setId, setName, setNote]) => {
+    const buttons = Object.entries(SHAPES).filter(([, sh]) => sh.set === setId).map(([id, sh]) =>
+      `        <button class="shapebtn" type="button" data-shape="${id}" data-name="${esc(sh.name)}" data-tone="${sh.tone}"${
+        sh.back ? ' data-back="yes"' : ''}${sh.size ? ` data-size="${sh.size}"` : ''}>
+          <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
+          <span>${esc(sh.name)}</span>
+        </button>`).join('\n');
+    return `      <section class="shapeset">
+        <h4>${esc(setName)}</h4>
+        <p class="setnote">${esc(setNote)}</p>
+        <div class="shapes">
+${buttons}
+        </div>
+      </section>`;
+  }).join('\n');
+
+  /* The same twenty, from the same source as everything else on the site. */
+  const places = AREAS.map((a) => `        <li><button class="placebtn" type="button" data-place="${a.n}" data-name="${esc(plain(a.label))}" data-tone="${a.state}">
+          <span class="placen">${a.n}</span><span>${a.label}</span>
+        </button></li>`).join('\n');
+
+  return `<section class="canvas-tool" id="map-canvas" aria-labelledby="canvas-h" hidden>
+  <h3 id="canvas-h">Draw your own map</h3>
+  <p class="canvas-lede">Put an island down, add what belongs on it, and move things until it looks like your year. Nothing you draw leaves this device, there is no score at the end, and no two maps are supposed to match.</p>
+
+  <svg class="shape-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+${defs}
+  </defs></svg>
+
+  <div class="canvas-board">
+    <div class="canvas-bar">
+      <button class="btn" type="button" id="canvas-bigger">Bigger</button>
+      <button class="btn" type="button" id="canvas-smaller">Smaller</button>
+      <button class="btn" type="button" id="canvas-turn">Turn</button>
+      <button class="btn" type="button" id="canvas-flip">Flip</button>
+      <button class="btn" type="button" id="canvas-remove">Take it off</button>
+      <span class="canvas-spacer"></span>
+      <button class="btn btn-quiet" type="button" id="canvas-clear">Clear the map</button>
+    </div>
+
+    <svg class="canvas-stage" id="canvas-stage" viewBox="0 0 1000 720" role="application"
+         aria-label="Your map. Tab to a piece, then move it with the arrow keys.">
+      <g id="canvas-pieces"></g>
+    </svg>
+
+    <p class="canvas-say" id="canvas-say" role="status"></p>
+    <p class="canvas-keys">Drag a piece, or tab to it and use the <strong>arrow keys</strong> to move it, <strong>+</strong> and <strong>&#8722;</strong> to resize, <strong>[</strong> and <strong>]</strong> to turn, <strong>f</strong> to flip, <strong>Delete</strong> to take it off. A river turned is a river running the other way, which is why there is one of each shape rather than eight.</p>
+  </div>
+
+  <div class="canvas-tray">
+    <section>
+      <h4 class="trayhead">Shapes</h4>
+      <p class="setnote">Drawn from scratch in the site's own tones, never traced from the map — which is what makes them yours to keep, copy and change.</p>
+      <div class="shapesets">
+${sets}
+      </div>
+    </section>
+
+    <section>
+      <h4 class="trayhead">The twenty places</h4>
+      <p class="setnote">Add the ones that are yours. Leaving one off is an answer too.</p>
+      <ul class="places">
+${places}
+      </ul>
+    </section>
+  </div>
+</section>
+
+<p class="canvas-off" id="canvas-off"><strong>JavaScript is switched off, so the drawing board on this page cannot run.</strong> Drawing needs a script in a way that marking does not — so the <a href="stories.html">marking tool</a> still works with the script off and can be printed, and the <a href="https://autisticrealms.com/product/my-monotropic-map-workbook/" rel="noopener">workbook</a> does this job on paper, which is where the invitation started.</p>`;
+}
+
 /* ---- derived ------------------------------------------------------------ */
 
 function searchIndex() {
@@ -569,7 +726,8 @@ ${ZONES.map((z, i) => `- [${plain(z.label)}](${SITE.origin}/neuronormative-domin
 
 ## Also
 - [Training](${SITE.origin}/training): free open-source training, about 45 minutes.
-- [Your map](${SITE.origin}/stories): mark your own, and the community story project.
+- [Your map](${SITE.origin}/stories): mark where you are on the map, and the community story project.
+- [Draw a map](${SITE.origin}/draw): blank ground and a tray of shapes, for drawing your own instead of marking hers.
 - [About](${SITE.origin}/about): who made this, and the licence.
 - [Changelog](${SITE.origin}/changelog): what has changed, including what we got wrong.
 - Machine-readable areas: ${SITE.origin}/search-index.json
@@ -578,7 +736,7 @@ ${ZONES.map((z, i) => `- [${plain(z.label)}](${SITE.origin}/neuronormative-domin
 
 /* ---- run ---------------------------------------------------------------- */
 
-const problems = [...validate(), ...validateZones(), ...validateSlides()];
+const problems = [...validate(), ...validateZones(), ...validateSlides(), ...validateShapes()];
 if (problems.length) { console.error('map data:\n  ' + problems.join('\n  ')); process.exit(1); }
 
 const outputs = new Map();

@@ -19,6 +19,13 @@ The plain definitions are derived from the Stimpunks glossary entries, which are
 
 **Four of her notes were general and apply to the whole site**, not to one area: keep the capital A on Autistic; spell out Autistic Self Advocacy Network on first use and link it; "monotropic mind" becomes "monotropic person" everywhere; and the senses are eight, not five. The first was already true in our own words and is **deliberately not applied inside quotations** — several sources write it lowercase, and correcting someone else's words is not ours to do. The other three are applied.
 
+### Both versions ship, because they are two different questions
+Settled 2026-09-16, on Ryan's call. **Version one asks *where are you on Helen's map*. Version two asks *what does your map look like*.** Those are not the same question and the second does not replace the first: a person meeting monotropism for the first time needs the twenty places named and a way to say which are theirs, and a person who already knows needs a blank ground. Shipping only the builder would take the easier door away.
+
+So `stories` keeps the marking tool, and the canvas gets **its own page**, added to `NAV` and to the same list `sitemap.xml` is generated from. `TOOL_PAGES` in `tools/build.mjs` grows a second entry and a second script, because the two tools share no state and should not share a file.
+
+**The no-JavaScript floor does not move.** Version one works with the script off — real radios, printable. A drag-and-resize canvas cannot, so the builder page must say so plainly and send a reader to the marking tool and to the paper workbook, the way `stories` already sends them to the workbook. **A page whose whole content needs a script must not pretend otherwise**, and the front page's promise is untouched either way: `index.html` still loads nothing but `theme.js`.
+
 ### Version two has its artwork, and a licence question in place of the old one
 **Answered on 2026-09-16: the separable artwork exists.** Helen sent the working files — a Pixelmator document and a 17 MB SVG export of the same thing — and they hold the map's drawings laid out unlabelled, without the landmass and without the printed names. Version one shipped on 2026-09-15 (below); version two is the one that would let a person **drag and resize their own island** rather than mark Helen's.
 

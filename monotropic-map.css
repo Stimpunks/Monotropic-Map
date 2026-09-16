@@ -58,6 +58,14 @@
   --stuck:     #8a3324;
   --pressure:  #5b3a72;
 
+  /* TWO COLOURS THAT ARE NOT STATES. The four above mean something — they are the four
+     kinds of area, and the page uses them to say which is which — so painting a tree in
+     one would be claiming the tree is a state. These two are paint: leaves, and a storm
+     sky. Added 2026-09-16 for the version-two canvas, which is why no rule in this file
+     uses them yet; `check.mjs` holds them to the same 4.5:1 as the rest. */
+  --leaf:      #2f6b3f;
+  --sky:       #2b4a72;
+
   --bg:        var(--sand);
   --card:      var(--paper);
   --fg:        var(--ink);
@@ -86,6 +94,8 @@
     --social:    #e0b85c;
     --stuck:     #f09a86;
     --pressure:  #c3a0dc;
+    --leaf:      #7fcb8f;
+    --sky:       #9dbce4;
   }
 }
 :root[data-theme="dark"] {
@@ -101,6 +111,8 @@
   --social:    #e0b85c;
   --stuck:     #f09a86;
   --pressure:  #c3a0dc;
+  --leaf:      #7fcb8f;
+  --sky:       #9dbce4;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -225,6 +237,11 @@ footer.site .wrap > * + * { margin-block-start: 0.75rem; }
 [data-tone="social"]   { --tone: var(--social); }
 [data-tone="stuck"]    { --tone: var(--stuck); }
 [data-tone="pressure"] { --tone: var(--pressure); }
+/* The builder's shapes use the same mechanism, and reach for two tones the four
+   states do not have: leaves and a storm sky are paint, not a kind of area. */
+[data-tone="leaf"]     { --tone: var(--leaf); }
+[data-tone="sky"]      { --tone: var(--sky); }
+[data-tone="soft"]     { --tone: var(--fg-soft); }
 
 .tag {
   display: inline-block; font-size: 0.78rem; letter-spacing: 0.04em;
@@ -509,9 +526,111 @@ div.gloss { border-inline-start: 1px solid var(--line); border-radius: 8px; }
 .btn-quiet:hover { background: none; color: var(--fg); border-color: var(--fg); }
 .legend-note { color: var(--fg-soft); font-size: 0.9rem; margin-block: 0.75rem 0; min-height: 1.4em; }
 
+
+/* ---- the map builder, version two --------------------------------------- */
+
+/* THE WHOLE TOOL IS HIDDEN UNTIL map-canvas.js REVEALS IT, and `.canvas-off` says so
+   in the meantime. Drawing needs a script the way marking does not, so the honest
+   thing is to show the sentence rather than a board that will never respond. */
+/* THE BOARD STEPS OUT OF THE READING MEASURE. Prose is 34rem because that is how wide
+   a line should be; a drawing board is not prose, and squeezed into 34rem the tray
+   stacks under a canvas barely wider than a phone. So it takes the page's own column,
+   anchored at the same left edge, and never more than the viewport minus its gutter —
+   which is what keeps the page from scrolling sideways at 375px. */
+.canvas-tool {
+  margin-block: 2rem 1rem; display: grid; gap: 1.5rem;
+  width: min(calc(100vw - 2.5rem), 57.5rem); max-width: none;
+}
+@media (min-width: 62rem) {
+  .canvas-tool { grid-template-columns: minmax(0, 1fr) 21rem; align-items: start; }
+  .canvas-tool > h3, .canvas-tool > .canvas-lede, .canvas-tool > .shape-defs { grid-column: 1 / -1; }
+}
+.canvas-lede { max-width: var(--measure); color: var(--fg-soft); }
+.canvas-off {
+  background: var(--wash); border-inline-start: 5px solid var(--accent);
+  padding: 1rem 1.25rem; border-radius: 0 10px 10px 0; max-width: var(--measure);
+}
+
+/* The drawings are written into the page once and used from here, so this element
+   holds every shape and shows none of them. */
+.shape-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.canvas-board { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 0.75rem; }
+.canvas-bar { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; margin-block-end: 0.6rem; }
+.canvas-bar .btn { font-size: 0.85rem; padding: 0.3rem 0.8rem; }
+.canvas-spacer { flex: 1 1 auto; }
+.canvas-stage {
+  display: block; width: 100%; height: auto;
+  background: var(--wash); border-radius: 8px; touch-action: none;
+}
+.canvas-say { color: var(--fg-soft); font-size: 0.95rem; margin-block: 0.6rem 0; min-height: 1.5em; }
+.canvas-keys { color: var(--fg-soft); font-size: 0.85rem; margin-block: 0.25rem 0; }
+
+.piece { cursor: grab; }
+.piece:focus-visible { outline: 3px solid var(--accent); }
+.piece[data-held="yes"] { cursor: grabbing; }
+.ring { fill: none; stroke: var(--accent); stroke-width: 3; stroke-dasharray: 7 7; }
+
+/* Paint. `fill="var(--x)"` in a presentation attribute is not resolved everywhere,
+   so build.mjs turns every colour into one of these and the cascade does the rest —
+   which is also what lets a theme switch reach inside a <use>. */
+.f-tone   { fill: var(--tone, var(--accent)); }
+.f-card   { fill: var(--card); }
+.f-fg     { fill: var(--fg); }
+.f-flow   { fill: var(--flow); }
+.f-ground { fill: var(--wash); }
+.f-leaf   { fill: var(--leaf); }
+.f-social { fill: var(--social); }
+.s-tone   { stroke: var(--tone, var(--accent)); }
+.s-fg     { stroke: var(--fg); }
+.s-flow   { stroke: var(--flow); }
+.s-social { stroke: var(--social); }
+
+.canvas-tray { display: grid; gap: 1.5rem; }
+.trayhead {
+  margin-block: 0 0.35rem; font-size: 0.78rem; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--fg-soft);
+}
+.setnote { color: var(--fg-soft); font-size: 0.85rem; margin-block: 0 0.6rem; max-width: var(--measure); }
+.shapesets { display: grid; gap: 1.1rem; }
+.shapeset h4 {
+  margin-block: 0 0.2rem; font-size: 0.72rem; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--fg-soft);
+}
+.shapes { display: grid; grid-template-columns: repeat(auto-fill, minmax(5.2rem, 1fr)); gap: 0.5rem; }
+.shapebtn {
+  display: grid; gap: 0.25rem; place-items: center; padding: 0.5rem 0.3rem;
+  background: var(--card); color: var(--fg);
+  border: 1px solid var(--line); border-radius: 10px;
+  font: inherit; font-size: 0.78rem; cursor: pointer;
+}
+.shapebtn:hover { border-color: var(--accent); }
+.shapebtn svg { display: block; }
+
+.places { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; max-height: 24rem; overflow-y: auto; }
+.places li { margin: 0; }
+.placebtn {
+  width: 100%; display: flex; gap: 0.55rem; align-items: center; text-align: start;
+  background: var(--card); color: var(--fg);
+  border: 1px solid var(--line); border-radius: 8px;
+  padding: 0.3rem 0.45rem; font: inherit; font-size: 0.82rem; cursor: pointer;
+}
+.placebtn:hover { border-color: var(--accent); }
+.placebtn[data-placed="yes"] { opacity: 0.5; }
+.placen {
+  flex: 0 0 auto; width: 1.55rem; height: 1.55rem; display: grid; place-items: center;
+  border-radius: 999px; border: 2px solid var(--tone, var(--accent));
+  font-weight: 700; font-size: 0.74rem;
+}
+
 /* What prints is the legend and the marked map — the thing stories.md promises you can
    keep. The eighty radio buttons that produced it are not the artefact. */
 @media print {
+  /* Same rule for the builder: the map is the artefact, the tray that built it is not. */
+  .canvas-tray, .canvas-bar, .canvas-keys, .canvas-say, .canvas-lede { display: none !important; }
+  .canvas-board { border: 0; padding: 0; }
+  .canvas-stage { background: #fff; border: 1px solid #000; }
+
   .mymap-lede, .markrows, .legend-actions, .legend-note, .mymap-note { display: none !important; }
   .legend { border: 0; padding: 0; background: #fff; break-inside: avoid; }
   .legend-g { break-inside: avoid; }

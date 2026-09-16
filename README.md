@@ -19,9 +19,12 @@ areas.html                 all twenty, grouped by flow / connection / stuck / pr
 <twenty area pages>.html   generated, one per area
 neuronormative-domination.html   the second map and its nine zones
 training.html stories.html about.html privacy.html
+draw.html                  the map builder: blank ground, fifty-one shapes, the twenty places
+map-canvas.js              the builder's behaviour; my-map.js is the marking tool's
 pages/*.md                 the prose sources for the pages above
 tools/areas.mjs            THE twenty areas — the single source for everything
 tools/domination.mjs       the nine zones of the second map
+tools/shapes.mjs           THE shapes the builder offers — drawn by us, never traced
 tools/build.mjs            generates every .html, search-index.json, sitemap.xml, llms.txt
 tools/md.mjs               a small, strict Markdown dialect
 tools/slides.mjs           the sixteen training slides and their alt text
@@ -56,6 +59,12 @@ Then look at it:
 ```bash
 npx -y serve . -l 8917 --no-clipboard
 ```
+
+`.claude/launch.json` starts the same server, and `serve.json` next to it tells `serve`
+to send `no-store` on everything. **That file is for local preview only.** `serve` does
+not read `_headers`, so without it a browser will happily hold a stale stylesheet across
+edits — which on 2026-09-16 looked exactly like every icon in the map builder rendering
+solid black. Production caching is `_headers`' job, and that is unaffected.
 
 ## Two people work here
 
