@@ -110,15 +110,19 @@ export const SHAPES = {
   pine:     { set:"things", name:"Pine",     tone:"leaf",   draw:'<g><rect x="-9" y="26" width="18" height="34" rx="5" fill="var(--social)" opacity="0.8"/><g fill="TONE" opacity="0.9"><path d="M 0 -64 L 28 -20 L -28 -20 Z"/><path d="M 0 -40 L 40 8 L -40 8 Z"/><path d="M 0 -14 L 52 40 L -52 40 Z"/></g></g>' }
 };
 
-/* THE TRAY OPENS WITH JOINING. It used to open with "Start here" on a set of single
-   islands, which taught the tool's first lesson as *put yourself on your own rock* —
-   and separate islands are the arrangement the map's author named as the neuronormative
-   one. The board is already fresh water. So the first thing offered is what crosses it,
-   and land comes after, described as something that need not sit on its own. */
+/* ORDER IS DISCOVERABILITY, and it beat the argument it was carrying.
+ 
+   For a while this opened with the ways across the water, because the tool's first
+   instruction used to be "Start here" on a set of single islands, and separate islands
+   are the arrangement the map's author named as the neuronormative one. Then she used
+   it and did not find the land at all: third in a tray of ninety-five is the same as
+   not being there. Her point survives in the wording rather than in the position —
+   the board is water, the land does not have to sit on its own, and what crosses it is
+   named right there in the first note. */
 export const SETS = [
-  ["ways",   "Water, and the ways across it", "The board is fresh water. Rivers run through a map, bridges cross to another one, boats go between. Nothing here has to be marooned to be yours."],
+  ["islands","Land and islands", "Ground to stand on, as much or as little as you want. These drop behind everything else, and they do not have to sit on their own: the water, bridges and boats are further down."],
   ["areas",  "The twenty, drawn", "Each of Helen's twenty areas as we picture it. Ours, not hers — use them, or build your own out of the shapes below."],
-  ["islands","Land", "Ground to stand on, as much or as little as you want. It drops behind everything else — and it does not have to sit on its own."],
+  ["ways",   "Water, and the ways across it", "The board is fresh water. Rivers run through a map, bridges cross to another one, boats go between. Nothing here has to be marooned to be yours."],
   ["ground", "Ground",  "What an area is made of."],
   ["marks",  "Marks",   "Things that sit on the ground."],
   ["things", "Things",  "The twenty, covered. Drawn by us, from scratch — combine them, and nobody's map has to look like anybody else's."]
