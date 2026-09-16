@@ -28,6 +28,23 @@
  * They are copied rather than imported because `build.mjs` writes files on import.
  */
 import { AREAS, STATES, validate } from './areas.mjs';
+import { SHAPES, SETS } from './shapes.mjs';
+import { AREA_ART, composeAreaArt } from './area-art.mjs';
+
+/* The builder is the second thing under review, so its vocabulary is counted here
+   rather than described. A packet that says "ninety-five shapes" because somebody typed
+   ninety-five is a packet that will still say it after the hundredth is added.
+   The twenty illustrations are composed the way build.mjs composes them, or the count
+   would be short by twenty and the packet would understate what she is being shown. */
+Object.assign(SHAPES, composeAreaArt(SHAPES, AREAS));
+const SHAPE_COUNT = Object.keys(SHAPES).length;
+const SET_NAMES = SETS.map(([, name]) => name);
+/* And the twenty illustrations are listed by what they are actually made of, out of
+   area-art.mjs, so she reviews the arrangements rather than a description of them. */
+const madeOf = (slug) => (AREA_ART[slug] || [])
+  .map((part) => (SHAPES[part.shape] || {}).name || part.shape)
+  .join(', ')
+  .toLowerCase();
 
 const MD = process.argv.includes('--md');
 
@@ -113,9 +130,35 @@ if (MD) {
   L.push('');
   L.push('**2. Two areas had no named originator.** Answered: **Rabbit Holes of Research and Infodump Canyon are both yours.** Both now say so. The definitions quoted on those two pages are still general ones rather than your words, so the page credits you with the area and not with the sentence.');
   L.push('');
-  L.push('**3. Per-area artwork.** Answered, and superseded by your own design for version two: a blank map, icons a person places where they like, open "?" symbols they fill with their own image, art or wording, and the maps joined by fresh water with bridges and boats rather than left as separate islands. Recorded in `DECISIONS.md`; nothing is built yet.');
+  L.push('**3. Per-area artwork.** Answered, and superseded by your own design for version two. **That design is now built** — see below.');
   L.push('');
-  L.push('**One question is open in their place.** The map is composed of Canva elements, and Canva\'s licence turns on whether every one of them is Free Content rather than Pro. It is visible per element in Canva: hover, the three dots, Content source information. A single Pro element anywhere governs the whole design.');
+  L.push('----');
+  L.push('');
+  L.push('## Version two is built, and this is the part to look at');
+  L.push('');
+  L.push('**<https://monotropicmap.org/draw>** — a blank board of fresh water, ' + SHAPE_COUNT + ' shapes to put on it, the twenty places, and a **"?"** you fill with your own words for something the twenty do not name. Bridges and boats, so a map need not be marooned. Drag a shape out of the tray or click it; undo and redo anything; download the finished map as a drawing you can open and change anywhere.');
+  L.push('');
+  L.push('The tray is in ' + SET_NAMES.length + ' sets:');
+  L.push('');
+  for (const name of SET_NAMES) L.push(`- ${name}`);
+  L.push('');
+  L.push('**Nothing anybody draws or writes leaves their device.** No account, no upload, and the site\'s own headers forbid the page from trying.');
+  L.push('');
+  L.push('**The Canva question no longer decides anything.** Every shape is Stimpunks\' own drawing, made from scratch and traced from nothing — not from your map, not from a stock library. Your map stays exactly as you made it, reproduced unaltered, and its elements stay in your files. That is also what lets these be given away under the same licence as the rest of the site.');
+  L.push('');
+  L.push('### The twenty, drawn in our hand');
+  L.push('');
+  L.push('One illustration for each area, in the builder and at the top of each area page. **They are ours, not yours** — our picture of your idea — and each is an arrangement of the shapes above rather than a new drawing. Say if any of them is wrong about the area, or if you would rather your pages carried no illustration but yours.');
+  L.push('');
+  for (const a of AREAS) {
+    L.push(`- **${plain(a.label)}** — ${madeOf(a.slug) || 'no illustration'}`);
+  }
+  L.push('');
+  L.push('### What is still open, and it is yours and Ryan\'s to settle');
+  L.push('');
+  L.push('**Images in the "?" symbol.** Your design said image, art *or* wording. Wording is built. An image is not, and it is not a small thing: showing one means loosening the security headers that currently forbid this page from loading anything but the site\'s own files, and a photograph is a heavier thing to keep on somebody\'s device than a sentence. The same decision would allow a **PNG** download, which is the format for sharing a map somewhere that will not open an SVG. Worth deciding once, for both.');
+  L.push('');
+  L.push('**On a phone**, dragging from the tray to the board means dragging off the edge of the screen, because the two stack. Tapping a shape still places it. Worth knowing if that is how you use it.');
   L.push('');
   if (problems.length) {
     L.push('----');
@@ -328,11 +371,31 @@ ${blocks}
     <ol>
       <li><strong>Blackwater&rsquo;s first name.</strong> Answered: <strong>Amelia Blackwater</strong>, <a href="https://themighty.com/u/amelia-blackwater" rel="noopener">her profile at The Mighty</a>. Area 17 now carries the full name.</li>
       <li><strong>Two areas had no named originator.</strong> Answered: <strong>Rabbit Holes of Research and Infodump Canyon are both yours.</strong> Both now say so. The definitions quoted on those two pages are still general ones rather than your words, so the page credits you with the area and not with the sentence.</li>
-      <li><strong>Per-area artwork.</strong> Answered, and superseded by your own design for version two: a blank map, icons a person places where they like, open &ldquo;?&rdquo; symbols they fill with their own image, art or wording, and the maps joined by fresh water with bridges and boats rather than left as separate islands. Recorded in <code>DECISIONS.md</code>; nothing is built yet.</li>
+      <li><strong>Per-area artwork.</strong> Answered, and superseded by your own design for version two. <strong>That design is now built</strong> &mdash; see below.</li>
     </ol>
-    <p><strong>One question is open in their place.</strong> The map is composed of Canva elements, and Canva&rsquo;s licence turns on whether every one of them is Free Content rather than Pro. It is visible per element in Canva: hover, the three dots, Content source information. A single Pro element anywhere governs the whole design.</p>
   </section>
 
-  <p class="foot">Generated from <code>tools/areas.mjs</code> by <code>tools/review.mjs</code>, so this packet cannot drift from the live pages. The map, the area names and the wording printed on the artwork are Helen Edgar&rsquo;s. Map of Monotropic Experiences is CC BY-SA 4.0.</p>
+  <section class="qs">
+    <h2>Version two is built, and this is the part to look at</h2>
+    <p><strong><a href="https://monotropicmap.org/draw">monotropicmap.org/draw</a></strong> &mdash; a blank board of fresh water, ${SHAPE_COUNT} shapes to put on it, the twenty places, and a <strong>&ldquo;?&rdquo;</strong> you fill with your own words for something the twenty do not name. Bridges and boats, so a map need not be marooned. Drag a shape out of the tray or click it; undo and redo anything; download the finished map as a drawing you can open and change anywhere.</p>
+    <p>The tray is in ${SET_NAMES.length} sets:</p>
+    <ul>
+${SET_NAMES.map((name) => `      <li>${esc(name)}</li>`).join('\n')}
+    </ul>
+    <p><strong>Nothing anybody draws or writes leaves their device.</strong> No account, no upload, and the site&rsquo;s own headers forbid the page from trying.</p>
+    <p><strong>The Canva question no longer decides anything.</strong> Every shape is Stimpunks&rsquo; own drawing, made from scratch and traced from nothing &mdash; not from your map, not from a stock library. Your map stays exactly as you made it, reproduced unaltered, and its elements stay in your files. That is also what lets these be given away under the same licence as the rest of the site.</p>
+
+    <h3>The twenty, drawn in our hand</h3>
+    <p>One illustration for each area, in the builder and at the top of each area page. <strong>They are ours, not yours</strong> &mdash; our picture of your idea &mdash; and each is an arrangement of the shapes above rather than a new drawing. Say if any of them is wrong about the area, or if you would rather your pages carried no illustration but yours.</p>
+    <ul>
+${AREAS.map((a) => `      <li><strong>${a.label}</strong> &mdash; ${esc(madeOf(a.slug) || 'no illustration')}</li>`).join('\n')}
+    </ul>
+
+    <h3>What is still open, and it is yours and Ryan&rsquo;s to settle</h3>
+    <p><strong>Images in the &ldquo;?&rdquo; symbol.</strong> Your design said image, art <em>or</em> wording. Wording is built. An image is not, and it is not a small thing: showing one means loosening the security headers that currently forbid this page from loading anything but the site&rsquo;s own files, and a photograph is a heavier thing to keep on somebody&rsquo;s device than a sentence. The same decision would allow a <strong>PNG</strong> download, which is the format for sharing a map somewhere that will not open an SVG. Worth deciding once, for both.</p>
+    <p><strong>On a phone</strong>, dragging from the tray to the board means dragging off the edge of the screen, because the two stack. Tapping a shape still places it. Worth knowing if that is how you use it.</p>
+  </section>
+
+  <p class="foot">Generated from <code>tools/areas.mjs</code>, <code>tools/shapes.mjs</code> and <code>tools/area-art.mjs</code> by <code>tools/review.mjs</code>, so this packet cannot drift from the live pages. The map, the area names and the wording printed on the artwork are Helen Edgar&rsquo;s. Map of Monotropic Experiences is CC BY-SA 4.0.</p>
 </div>
 `);
