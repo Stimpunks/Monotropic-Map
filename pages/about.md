@@ -46,5 +46,5 @@ Everything on this site derived from the map carries the same licence. You can s
 Some areas of the map have grown their own sites.
 
 - [Penguin Pebbling](https://penguinpebbling.app/) — area 2, the Cove of Friendship. A neuro-affirming card game by Helen Edgar and Ryan Boren.
-- [Cavendish Cards](https://cavendish.app/) — area 10, the Campsite. An open deck for naming sensory and interaction needs.
+- [Cavendish Cards](https://cavendish.space/deck.html) — area 10, the Campsite. An open deck for naming sensory and interaction needs.
 - [Star Stuff](https://starstuff.earth/) — areas 8 and 17, the Rhizomatic Communities and the Forest of Joy, Awe and Wonder.

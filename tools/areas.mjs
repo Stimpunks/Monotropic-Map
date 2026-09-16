@@ -198,7 +198,7 @@ export const AREAS = [
     stimpunks: 'https://stimpunks.org/space/cavendish/',
     helps: 'Cave, campfire, watering hole, library, habitat — and the ability to choose between them. The point is not one perfect room; it is that a person can move to the zone that fits what they are doing right now.',
     borders: ['rhizomatic-communities', 'beach-of-body-doubling', 'forest-of-joy-awe-and-wonder'],
-    sibling: { name: 'Cavendish Cards', url: 'https://cavendish.app/' },
+    sibling: { name: 'Cavendish Cards', url: 'https://cavendish.space/deck.html' },
   },
   {
     n: 11,
@@ -334,7 +334,7 @@ export const AREAS = [
     stimpunks: 'https://stimpunks.org/access/sensory-experience/',
     helps: 'Control over the inputs. Light you can dim, sound you can leave, fabric you chose — the tide is not a mood, and the lever is in the room rather than in the person.',
     borders: ['panic-hills-of-low-object-permanence', 'sudden-storms-of-unexpected-events', 'burnout-whirlpools'],
-    sibling: { name: 'Cavendish Cards', url: 'https://cavendish.app/' },
+    sibling: { name: 'Cavendish Cards', url: 'https://cavendish.space/deck.html' },
   },
   {
     n: 20,
