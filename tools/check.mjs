@@ -395,6 +395,14 @@ console.log('\nthe map builder');
     if (counts.test(code)) fail('the builder looks like it renders a count — no score, no type, no result');
     else pass('the builder emits no count of the pieces');
 
+    /* A MAP YOU CANNOT UNDO IS A MAP YOU ARE CAREFUL WITH, and being careful with it is
+       the opposite of what this page is for. */
+    if (/id="canvas-undo"/.test(html) && /id="canvas-redo"/.test(html) && /function undo\(/.test(js)) {
+      pass('a move can be undone, and the undo redone');
+    } else {
+      fail('the builder has no undo — clearing or dropping a piece would be final');
+    }
+
     /* MOVED BY ATTRIBUTES, NEVER BY STYLE. This is the rule the first live deploy
        taught, and a drag tool is exactly where it would be broken again. */
     if (/\.style\b/.test(code)) fail('map-canvas.js touches .style — style-src \'self\' blocks inline styles, so pieces move by transform attribute');

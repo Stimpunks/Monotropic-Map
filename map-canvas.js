@@ -218,7 +218,7 @@
         g.removeEventListener("pointermove", move);
         g.removeEventListener("pointerup", up);
         g.removeEventListener("pointercancel", up);
-        if (moved) { speak(p.spoken + " — " + whereWords(p.x, p.y) + "."); save(); }
+        if (moved) { speak(p.spoken + " \u2014 " + whereWords(p.x, p.y) + "."); record(p.spoken + " moved", "move:" + p.key); }
         g.focus({ preventScroll: true });
       }
       g.addEventListener("pointermove", move);
@@ -245,8 +245,8 @@
       if (!moved) return;
       e.preventDefault();
       place(p);
-      speak(p.spoken + " — " + whereWords(p.x, p.y) + ".");
-      save();
+      speak(p.spoken + " \u2014 " + whereWords(p.x, p.y) + ".");
+      record(p.spoken + " moved", "move:" + p.key);
     });
   }
 
@@ -256,8 +256,8 @@
     if (next < 0.25) { speak(p.spoken + " is as small as it goes."); return; }
     p.s = next;
     place(p);
-    speak(p.spoken + (by > 1 ? " — bigger." : " — smaller."));
-    save();
+    speak(p.spoken + (by > 1 ? " \u2014 bigger." : " \u2014 smaller."));
+    record(p.spoken + (by > 1 ? " made bigger" : " made smaller"), "size:" + p.key);
   }
 
   /* Which way a turned shape now points, in words. "Turned" on its own tells a person
@@ -285,16 +285,16 @@
     if (p.kind !== "shape") { speak("A numbered place stays the right way up."); return; }
     p.r = ((p.r || 0) + by + 360) % 360;
     place(p);
-    speak(p.name + " — turned, " + bearing(p) + ".");
-    save();
+    speak(p.spoken + " \u2014 turned, " + bearing(p) + ".");
+    record(p.spoken + " turned", "turn:" + p.key);
   }
 
   function mirror(p) {
     if (p.kind !== "shape") { speak("A numbered place stays the right way round."); return; }
     p.fx = p.fx * -1;
     place(p);
-    speak(p.name + " — flipped.");
-    save();
+    speak(p.spoken + " \u2014 flipped.");
+    record(p.spoken + " flipped", "flip:" + p.key);
   }
 
   function drop(p) {
@@ -303,7 +303,7 @@
     if (selected === p) select(null);
     speak(p.spoken + " taken off the map.");
     markPlaced();
-    save();
+    record(p.spoken + " taken off", null);
   }
 
   function add(kind, key) {
@@ -325,7 +325,7 @@
     select(p);
     speak(p.spoken + " added, " + whereWords(x, y) + ". Drag it, or use the arrow keys.");
     markPlaced();
-    save();
+    record(p.spoken + " added", null);
   }
 
   /* The tray dims a place already on the map. Dimmed, not removed and not counted:
@@ -366,6 +366,8 @@
   onClick("turn", function () { if (selected) turn(selected, 45); });
   onClick("flip", function () { if (selected) mirror(selected); });
   onClick("remove", function () { if (selected) drop(selected); });
+  onClick("undo", undo);
+  onClick("redo", redo);
 
   /* Clearing asks twice, in the page. `window.confirm` is suppressed in a sandboxed
      frame and hands back false, which makes the button look broken; and asking here
@@ -395,36 +397,42 @@
       pieces = [];
       select(null);
       markPlaced();
-      speak("A blank ground again.");
-      save();
+      speak("A blank ground again. Undo brings it back.");
+      record("the map cleared", null);
     });
   }
 
   /* ---- remembering, guarded ------------------------------------------------ */
 
-  /* Saved in drawing order rather than the order things were added, so the island
+  /* Read in drawing order rather than the order things were added, so the island
      comes back underneath the map instead of on top of it. */
-  function save() {
-    try {
-      var byEl = [].slice.call(stage.childNodes).map(function (node) {
-        for (var i = 0; i < pieces.length; i++) if (pieces[i].el === node) return pieces[i];
-        return null;
-      }).filter(Boolean);
-      localStorage.setItem(KEY, JSON.stringify(byEl.map(function (p) {
-        return {
-          k: p.kind, i: p.key,
-          x: Math.round(p.x), y: Math.round(p.y),
-          s: Number(p.s.toFixed(3)), r: p.r || 0, f: p.fx === -1 ? 1 : 0,
-        };
-      })));
-    } catch (e) {}
+  function snapshot() {
+    var byEl = [].slice.call(stage.childNodes).map(function (node) {
+      for (var i = 0; i < pieces.length; i++) if (pieces[i].el === node) return pieces[i];
+      return null;
+    }).filter(Boolean);
+    return byEl.map(function (p) {
+      return {
+        k: p.kind, i: p.key,
+        x: Math.round(p.x), y: Math.round(p.y),
+        s: Number(p.s.toFixed(3)), r: p.r || 0, f: p.fx === -1 ? 1 : 0,
+      };
+    });
   }
 
-  function restore() {
-    var saved;
-    try { saved = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { return; }
-    if (!Array.isArray(saved)) return;
-    saved.forEach(function (rec) {
+  function save(state) {
+    try { localStorage.setItem(KEY, JSON.stringify(state || snapshot())); } catch (e) {}
+  }
+
+  /* Build the map back from a list of records — one saved from a previous visit, or a
+     step out of the history. Everything is checked on the way in: a shape that no
+     longer exists, a coordinate off the board or a size past the limits is dropped or
+     clamped rather than trusted. What comes out of storage is data, not instructions,
+     and undo comes back through the same door. */
+  function rebuild(state) {
+    pieces.slice().forEach(function (p) { if (p.el.parentNode) p.el.parentNode.removeChild(p.el); });
+    pieces = [];
+    (state || []).forEach(function (rec) {
       if (!rec || typeof rec !== "object") return;
       if (rec.k === "shape" && !SHAPE[rec.i]) return;
       if (rec.k === "place" && !PLACE[rec.i]) return;
@@ -435,7 +443,85 @@
         Math.max(0.25, Math.min(4, Number(rec.s) || 1)),
         Number(rec.r) || 0, rec.f ? -1 : 1);
     });
+    select(null);
+    markPlaced();
   }
+
+  function restore() {
+    var saved;
+    try { saved = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { return; }
+    if (Array.isArray(saved)) rebuild(saved);
+  }
+
+  /* ---- undo, redo ----------------------------------------------------------- */
+
+  /* WHOLE-MAP SNAPSHOTS, NOT UNDOABLE COMMANDS. A map is a few dozen small records, so
+     keeping a copy of the lot after every change costs nothing — and it cannot get the
+     inverse of an operation wrong, which is the whole failure mode of the other
+     approach and shows up as a flip that un-flips the wrong way a fortnight later.
+     Redrawing from a snapshot goes through the same guarded path a saved map comes
+     back through, so there is one way onto the board and it checks what it is given.
+
+     NO STEP COUNT ANYWHERE. Undo says what it undid, by name — "Undone — campfire
+     added." It never says how many moves are left, because that is a number, and a
+     number would be keeping score of somebody's map. */
+  var history = [];
+  var at = -1;
+  var LIMIT = 60;
+
+  function record(label, runKey) {
+    var state = snapshot();
+    var now = Date.now();
+    /* A run of arrow-key nudges on one piece is one step, not twelve. Same for leaning
+       on Bigger: a person means "that got bigger", not eleven separate sizes. */
+    if (at >= 0 && runKey && runKey === history[at].run && now - history[at].t < 900) {
+      history[at].state = state;
+      history[at].label = label;
+      history[at].t = now;
+    } else {
+      history = history.slice(0, at + 1);
+      history.push({ state: state, label: label, run: runKey || "", t: now });
+      if (history.length > LIMIT) history.shift();
+      at = history.length - 1;
+    }
+    save(state);
+    historyButtons();
+  }
+
+  function historyButtons() {
+    var u = document.getElementById("canvas-undo");
+    var r = document.getElementById("canvas-redo");
+    if (u) u.disabled = at <= 0;
+    if (r) r.disabled = at >= history.length - 1;
+  }
+
+  function undo() {
+    if (at <= 0) { speak("Nothing to undo."); return; }
+    var leaving = history[at];
+    at--;
+    rebuild(history[at].state);
+    save(history[at].state);
+    historyButtons();
+    speak(leaving.label ? "Undone \u2014 " + leaving.label + "." : "Undone.");
+  }
+
+  function redo() {
+    if (at >= history.length - 1) { speak("Nothing to redo."); return; }
+    at++;
+    rebuild(history[at].state);
+    save(history[at].state);
+    historyButtons();
+    speak(history[at].label ? "Redone \u2014 " + history[at].label + "." : "Redone.");
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (!(e.metaKey || e.ctrlKey) || e.altKey) return;
+    var t = e.target && e.target.tagName;
+    if (t === "INPUT" || t === "TEXTAREA" || (e.target && e.target.isContentEditable)) return;
+    var k = String(e.key).toLowerCase();
+    if (k === "z") { e.preventDefault(); if (e.shiftKey) redo(); else undo(); }
+    else if (k === "y") { e.preventDefault(); redo(); }
+  });
 
   /* ---- go ------------------------------------------------------------------ */
 
@@ -445,5 +531,7 @@
   restore();
   select(null);
   markPlaced();
+  /* The map as found is the step everything else undoes back to. */
+  record("", null);
   if (pieces.length) speak("Your map, as you left it.");
 })();
