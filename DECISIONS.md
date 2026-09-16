@@ -4,9 +4,6 @@ What was chosen while building this site, and what is still open. Read before re
 
 ## Open
 
-### One thing in Helen's review is still open
-**The Attention Tunnels replacement is not her wording.** She asked for an alternative to "a tunnel is cheap to stay in and expensive to re-enter" and offered "easy to settle into and hard to leave," marked as wanting Ryan's take. Those say different things: the original is about the cost of *coming back after an interruption*, not the cost of leaving. The page now reads "easy to settle into and hard to get back into once you have been pulled out of it," which keeps the meaning and drops the word she objected to. **If she meant the leaving, the paragraph is about the wrong thing and wants rewriting rather than rewording.**
-
 ### Two sets of our own words sit on Helen's map, and she has reviewed both
 **Forty short passages now, not twenty.** The *What changes this* paragraph and the *In plain words* definition on each area page are both drafted by Stimpunks. They are the places where we put our words into a map that is hers, and they should get her eye.
 
@@ -55,6 +52,14 @@ Penguin Pebbling has one. This site does not, and that is a deliberate not-yet r
 ----
 
 ## Settled
+
+### Attention Tunnels keeps our replacement wording, not Helen's suggestion
+
+**Helen asked for an alternative to "a tunnel is cheap to stay in and expensive to re-enter"** — the word *cheap* undersells what is happening — and offered "easy to settle into and hard to leave," marked as wanting Ryan's take.
+
+**The two say different things.** The paragraph is about the cost of *coming back after an interruption*, not the cost of leaving. So the page reads "easy to settle into and hard to get back into once you have been pulled out of it": her objection met, the meaning kept.
+
+**Ryan settled it on 2026-09-16: the shipped text stands.** Recorded because the next person to read her note beside the page will see wording that is not hers and wonder whether it was missed. It was not. It was weighed, and the difference was the point.
 
 ### The Shark Infested Waters are drunk, not just swum in
 
