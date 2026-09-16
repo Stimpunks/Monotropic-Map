@@ -576,17 +576,25 @@ div.gloss { border-inline-start: 1px solid var(--line); border-radius: 8px; }
   .canvas-tool > h3, .canvas-tool > .canvas-lede, .canvas-tool > .shape-defs { grid-column: 1 / -1; }
 }
 
-/* THE BOARD FOLLOWS YOU DOWN THE TRAY. Ninety-one shapes is a long list, and scrolling
+/* THE BOARD FOLLOWS YOU DOWN THE TRAY. Ninety-five shapes is a long list, and scrolling
    back up to see what you just put down is the difference between placing a piece and
    guessing at one. It also puts the empty column beside the tray to work, which is more
    than it was doing before.
 
-   Only where there is room for it. The offset clears the site header, which is sticky
-   itself and two rows tall at these widths, and the height condition keeps a board
-   taller than the window from being pinned with its own bottom cut off. Below either
-   threshold the page is one column and scrolls normally. */
-@media (min-width: 62rem) and (min-height: 44rem) {
+   IT USED TO GIVE UP ON A SHORT WINDOW, and silently. The rule asked for 44rem of
+   height — 704px — on the reasoning that a board taller than the window would be pinned
+   with its bottom cut off. A laptop window with a bookmarks bar, or Chrome at 110% zoom,
+   is under that, so the feature simply was not there for the person it was built for,
+   with nothing to say why. A board whose lower edge is cut off is still a board you can
+   see your map on; no board at all is not. The floor is now low enough to be about
+   genuinely tiny windows rather than ordinary ones, and the stage shrinks to fit what
+   room there is, so the whole thing usually stays on screen anyway.
+
+   The offset clears the site header, which is sticky itself and measures 90px at every
+   width this rule applies to. */
+@media (min-width: 62rem) and (min-height: 30rem) {
   .canvas-board { position: sticky; top: 6rem; }
+  .canvas-stage { max-height: calc(100vh - 19rem); }
 }
 .canvas-lede { max-width: var(--measure); color: var(--fg-soft); }
 .canvas-off {
