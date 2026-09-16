@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="An island in the sea">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="An island with a bay and a river running through it, in the sea">
   <rect width="64" height="64" rx="10" fill="#0b6b82"/>
-  <path d="M12 42c4-10 10-16 20-16s16 6 20 16c-5 6-12 9-20 9s-15-3-20-9z" fill="#e8d6ac"/>
-  <path d="M17 41c3-8 8-12 15-12s12 4 15 12c-4 4-9 6-15 6s-11-2-15-6z" fill="#4e9a4a"/>
-  <circle cx="32" cy="34" r="5" fill="#0b6b82"/>
+  <path d="M8 34 C 6 20, 18 8, 32 7 C 42 6, 48 12, 55 16 C 62 21, 61 35, 55 44 C 49 53, 36 59, 26 55 C 20 53, 22 46, 16 45 C 10 44, 9 40, 8 34 Z" fill="#e8d6ac"/>
+  <path d="M14 34 C 12 22, 22 13, 33 13 C 41 13, 46 18, 52 22 C 57 26, 56 36, 51 43 C 46 50, 36 54, 28 51 C 23 49, 25 43, 20 42 C 16 41, 15 38, 14 34 Z" fill="#5da54f"/>
+  <path d="M34 12 C 29 20, 39 25, 33 32 C 27 39, 33 44, 28 51" stroke="#63c6ef" stroke-width="7" fill="none" stroke-linecap="round"/>
 </svg>
