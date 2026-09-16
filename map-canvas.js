@@ -432,7 +432,10 @@
   }
 
   var ownBtn = document.getElementById("canvas-own");
-  if (ownBtn) ownBtn.addEventListener("click", addOwn);
+  if (ownBtn) {
+    carry(ownBtn, "own", "own");
+    ownBtn.addEventListener("click", clicked(addOwn));
+  }
   var saveBtn = document.getElementById("canvas-name-save");
   if (saveBtn) saveBtn.addEventListener("click", saveWords);
   if (nameInput) {
@@ -456,6 +459,67 @@
 
   /* ---- the tray ----------------------------------------------------------- */
 
+  /* DRAG IT OUT, OR CLICK IT IN. Dragging is what a person expects of a tray of shapes,
+     and it is also the only way to say "there" rather than "somewhere near the middle,
+     and now I move it". But it cannot be the only way in: a drag is unavailable to
+     anybody working from the keyboard, and awkward with a tremor or a trackpad. So a
+     click still drops the piece on the board, and the drag is an alternative rather
+     than a replacement.
+
+     Pointer events rather than HTML drag-and-drop, which does not exist on touch. */
+  function carry(b, kind, key) {
+    b.addEventListener("pointerdown", function (e) {
+      if (e.button && e.button !== 0) return;
+      var made = null;
+      try { b.setPointerCapture(e.pointerId); } catch (err) {}
+
+      function move(ev) {
+        var q = point(ev);
+        var inside = q.x > 0 && q.x < W && q.y > 0 && q.y < H;
+        if (!made) {
+          if (!inside) return;
+          /* It appears the moment the pointer is over the board, under the finger,
+             rather than after the drop — so you are placing something you can see. */
+          var sh = kind === "shape" ? SHAPE[key] : null;
+          made = makePiece(kind, key, q.x, q.y, (sh && sh.size) || 1, 0, 1, "");
+          if (!made) return;
+          if (sh && sh.back) stage.insertBefore(made.el, stage.firstChild);
+          select(made);
+          return;
+        }
+        made.x = Math.max(10, Math.min(W - 10, q.x));
+        made.y = Math.max(10, Math.min(H - 10, q.y));
+        place(made);
+      }
+
+      function up() {
+        b.removeEventListener("pointermove", move);
+        b.removeEventListener("pointerup", up);
+        b.removeEventListener("pointercancel", up);
+        if (!made) return;               /* never reached the board: let the click add it */
+        carried = true;                  /* and do not let the click add a second one */
+        markPlaced();
+        speak(made.spoken + " placed, " + whereWords(made.x, made.y) + ".");
+        record(made.spoken + " added", null);
+        made.el.focus({ preventScroll: true });
+      }
+
+      b.addEventListener("pointermove", move);
+      b.addEventListener("pointerup", up);
+      b.addEventListener("pointercancel", up);
+    });
+  }
+
+  /* A click follows a pointerup on the same button, so a piece dragged out would be
+     added twice without this. */
+  var carried = false;
+  function clicked(fn) {
+    return function () {
+      if (carried) { carried = false; return; }
+      fn();
+    };
+  }
+
   shapeBtns.forEach(function (b) {
     var key = b.getAttribute("data-shape");
     var prev = b.querySelector(".shapeprev");
@@ -463,10 +527,13 @@
       var art = drawing(key);
       if (art) prev.appendChild(art);
     }
-    b.addEventListener("click", function () { add("shape", key); });
+    carry(b, "shape", key);
+    b.addEventListener("click", clicked(function () { add("shape", key); }));
   });
   placeBtns.forEach(function (b) {
-    b.addEventListener("click", function () { add("place", b.getAttribute("data-place")); });
+    var n = b.getAttribute("data-place");
+    carry(b, "place", n);
+    b.addEventListener("click", clicked(function () { add("place", n); }));
   });
 
   /* ---- the bar ------------------------------------------------------------ */
@@ -569,6 +636,106 @@
     var saved;
     try { saved = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { return; }
     if (Array.isArray(saved)) rebuild(saved);
+  }
+
+  /* ---- taking it with you --------------------------------------------------- */
+
+  /* AN SVG, BECAUSE THAT IS WHAT THE MAP ALREADY IS. Every piece on the board is
+     vector, so the honest file is the drawing itself: it scales to a wall, it opens in
+     anything, and whoever downloads it can pull it apart and change it — which is the
+     same permission the licence gives them in words.
+
+     THE FILE CARRIES ITS OWN COLOURS. On the page a shape is painted by a class and a
+     custom property, and neither travels: opened anywhere else the drawing would be
+     black. So every element is asked what colour it actually is, and told to remember,
+     as a plain attribute. It costs a walk of the tree and it means the file looks the
+     same everywhere.
+
+     NOTHING IS UPLOADED TO MAKE THIS HAPPEN. The file is built here, handed to the
+     browser here, and the object URL is let go immediately after. There is no server in
+     it, which is the whole point. */
+  function exportSvg() {
+    var doc = document.documentElement;
+    var ground = getComputedStyle(canvas).backgroundColor || "#ffffff";
+    var out = document.createElementNS(SVGNS, "svg");
+    out.setAttribute("xmlns", SVGNS);
+    out.setAttribute("viewBox", "0 0 " + W + " " + H);
+    out.setAttribute("width", String(W));
+    out.setAttribute("height", String(H));
+
+    var title = el("title", {});
+    title.textContent = "My monotropic map";
+    var desc = el("desc", {});
+    desc.textContent = "Drawn with the map builder at monotropicmap.org. " +
+      "Shapes by the Stimpunks Foundation, CC BY-SA 4.0. " +
+      "The Map of Monotropic Experiences is by Helen Edgar, Autistic Realms, CC BY-SA 4.0.";
+    out.appendChild(title);
+    out.appendChild(desc);
+    out.appendChild(el("rect", { width: String(W), height: String(H), fill: ground }));
+
+    var copy = stage.cloneNode(true);
+    /* Marked now, removed at the end: the loop below strips class attributes, so by the
+       time the rings could be taken out there would be no ".ring" left to find them by. */
+    [].slice.call(copy.querySelectorAll(".ring")).forEach(function (r) { r.setAttribute("data-ring", "yes"); });
+    /* Ask each element what colour it is on screen and write the answer down. The two
+       trees are walked by position, so NOTHING may be removed from the copy until this
+       is finished — taking the selection rings out first shifts every element after the
+       first one by a place and hands each shape its neighbour's colours. */
+    var live = stage.querySelectorAll("*");
+    var made = copy.querySelectorAll("*");
+    for (var i = 0; i < live.length && i < made.length; i++) {
+      var cs = getComputedStyle(live[i]);
+      var m = made[i];
+      /* "none" is written down too. Skipping it leaves an outlined shape with no fill
+         of its own, which then inherits the black this loop just put on its parent
+         group — an outline exports as a solid black blob. */
+      /* Only things that draw. A <g> has a computed fill of black and paints nothing
+         with it, so writing it down just puts a misleading colour in the file. */
+      if (/^(path|circle|ellipse|rect|line|polyline|polygon|text|tspan)$/.test(m.tagName)) {
+        m.setAttribute("fill", cs.fill || "none");
+        m.setAttribute("stroke", cs.stroke || "none");
+      }
+      if (m.tagName === "text" || m.tagName === "tspan") {
+        m.setAttribute("font-family", cs.fontFamily || "sans-serif");
+      }
+      m.removeAttribute("class");
+      m.removeAttribute("tabindex");
+      m.removeAttribute("role");
+      m.removeAttribute("aria-roledescription");
+    }
+    [].slice.call(copy.querySelectorAll("[data-tone]")).forEach(function (g) { g.removeAttribute("data-tone"); });
+    /* Now the colours are written down, the board's own furniture can go. The selection
+       ring belongs to the tool, not to the map. */
+    [].slice.call(copy.querySelectorAll("[data-ring]")).forEach(function (r) {
+      if (r.parentNode) r.parentNode.removeChild(r);
+    });
+    out.appendChild(copy);
+
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' + new XMLSerializer().serializeToString(out) + "\n";
+  }
+
+  var downloadBtn = document.getElementById("canvas-download");
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", function () {
+      if (!pieces.length) { speak("There is nothing on the map to take with you yet."); return; }
+      var url;
+      try {
+        var blob = new Blob([exportSvg()], { type: "image/svg+xml" });
+        url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = "my-monotropic-map.svg";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        speak("Your map, downloaded as a drawing you can open and change anywhere.");
+      } catch (e) {
+        /* A browser that will not hand over a file says so, rather than appearing to
+           work and doing nothing. */
+        speak("This browser would not save the file. Printing the page keeps the map too.");
+      }
+      if (url) window.setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+    });
   }
 
   /* ---- undo, redo ----------------------------------------------------------- */
