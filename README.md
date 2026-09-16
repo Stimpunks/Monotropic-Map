@@ -19,7 +19,7 @@ areas.html                 all twenty, grouped by flow / connection / stuck / pr
 <twenty area pages>.html   generated, one per area
 neuronormative-domination.html   the second map and its nine zones
 training.html stories.html about.html privacy.html
-draw.html                  the map builder: blank ground, fifty-one shapes, the twenty places
+draw.html                  the map builder: blank ground, a tray of shapes, the twenty places
 map-canvas.js              the builder's behaviour; my-map.js is the marking tool's
 pages/*.md                 the prose sources for the pages above
 tools/areas.mjs            THE twenty areas — the single source for everything

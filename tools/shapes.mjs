@@ -55,6 +55,10 @@ export const SHAPES = {
   knot:    { set:"ways", name:"Knot",    tone:"stuck",    draw:'<path d="M -20 -54 C 52 -76 76 12 18 34 C -40 56 -74 4 -30 -18 C 14 -40 48 12 6 44" fill="none" stroke="TONE" stroke-width="10" stroke-linecap="round" opacity="0.9"/>' },
   reach:   { set:"ways", name:"Reach",   tone:"flow",     draw:'<path d="M -100 0 L 100 0" fill="none" stroke="TONE" stroke-width="34" opacity="0.85"/>' },
   meander: { set:"ways", name:"Meander", tone:"flow",     draw:'<path d="M -100 -34 C -58 -58 -56 -6 -18 -20 C 20 -34 18 22 56 12 C 78 6 88 26 100 34" fill="none" stroke="TONE" stroke-width="24" stroke-linecap="round" opacity="0.85"/>' },
+  /* Deck, one thin rail, one arch and two piers. An earlier version had a railing of
+     five posts, which read as a bridge lying level and as a jumble at every other
+     angle — and these are offered at four angles. */
+  bridge:  { set:"ways", name:"Bridge",  tone:"soft",     draw:'<g><path d="M -70 16 C -44 -32 -14 -48 0 -48 C 14 -48 44 -32 70 16" fill="none" stroke="TONE" stroke-width="10" opacity="0.5"/><rect x="-86" y="6" width="16" height="38" rx="5" fill="TONE" opacity="0.7"/><rect x="70" y="6" width="16" height="38" rx="5" fill="TONE" opacity="0.7"/><rect x="-100" y="-14" width="200" height="21" rx="8" fill="TONE" opacity="0.9"/><rect x="-100" y="-26" width="200" height="7" rx="3" fill="TONE" opacity="0.45"/></g>' },
   delta:   { set:"ways", name:"Delta",   tone:"flow",     draw:'<g fill="none" stroke="TONE" stroke-linecap="round" opacity="0.85"><path d="M -100 -14 C -56 -28 -34 -8 -10 -2" stroke-width="26"/><path d="M -12 -2 C 18 4 42 20 98 32" stroke-width="17"/><path d="M -12 -2 C 18 -10 44 -24 98 -36" stroke-width="15"/><path d="M -12 -2 C 14 -2 44 0 96 -2" stroke-width="11" opacity="0.8"/></g>' },
   spiral:  { set:"ways", name:"Spiral",  tone:"flow",     draw:"SPIRAL" },
 
@@ -97,6 +101,7 @@ export const SHAPES = {
   mound:    { set:"things", name:"Mound",    tone:"social", draw:'<g fill="TONE"><path d="M -86 46 C -70 4 -40 -32 0 -32 C 40 -32 70 4 86 46 Z" opacity="0.85"/><ellipse cx="-58" cy="52" rx="17" ry="8" opacity="0.6"/><ellipse cx="32" cy="54" rx="12" ry="6" opacity="0.5"/><ellipse cx="66" cy="50" rx="9" ry="5" opacity="0.45"/><ellipse cx="-14" cy="6" rx="22" ry="11" opacity="0.25"/></g>' },
   butterfly:{ set:"things", name:"Butterfly",tone:"pressure", draw:'<g><g fill="TONE" opacity="0.85"><path d="M -7 -6 C -30 -58 -78 -64 -86 -36 C -92 -12 -50 6 -7 4 Z"/><path d="M 7 -6 C 30 -58 78 -64 86 -36 C 92 -12 50 6 7 4 Z"/><path d="M -7 8 C -34 16 -66 40 -54 60 C -42 76 -14 48 -7 26 Z"/><path d="M 7 8 C 34 16 66 40 54 60 C 42 76 14 48 7 26 Z"/></g><g fill="TONE" opacity="0.45"><circle cx="-46" cy="-30" r="10"/><circle cx="46" cy="-30" r="10"/></g><ellipse cy="6" rx="6" ry="36" fill="var(--fg)" opacity="0.85"/><g fill="none" stroke="var(--fg)" stroke-width="3" stroke-linecap="round" opacity="0.8"><path d="M -3 -28 C -10 -46 -18 -54 -28 -58"/><path d="M 3 -28 C 10 -46 18 -54 28 -58"/></g></g>' },
   star:     { set:"things", name:"Star",     tone:"social", draw:"STAR" },
+  boat:     { set:"things", name:"Boat",     tone:"flow",   draw:'<g><path d="M -62 -66 L -62 24 L 46 -20 Z" fill="TONE" opacity="0.85"/><rect x="-68" y="-72" width="9" height="98" rx="4" fill="var(--social)" opacity="0.9"/><path d="M -86 26 C -70 48 66 48 86 26 C 74 56 -74 56 -86 26 Z" fill="var(--social)" opacity="0.95"/><path d="M -86 26 L 86 26" fill="none" stroke="var(--social)" stroke-width="7" opacity="0.6"/></g>' },
   pine:     { set:"things", name:"Pine",     tone:"leaf",   draw:'<g><rect x="-9" y="26" width="18" height="34" rx="5" fill="var(--social)" opacity="0.8"/><g fill="TONE" opacity="0.9"><path d="M 0 -64 L 28 -20 L -28 -20 Z"/><path d="M 0 -40 L 40 8 L -40 8 Z"/><path d="M 0 -14 L 52 40 L -52 40 Z"/></g></g>' }
 };
 
@@ -110,6 +115,49 @@ export const SETS = [
 
 /* Three shapes are generated rather than typed out, because long hand-written
    path data is where drawings go wrong silently. */
+/* ---- the ways run in more than one direction ------------------------------
+ *
+ * A river drawn left to right is a river that runs left to right, and a tray full of
+ * horizontal squiggles quietly says that is the only way a river goes. So the six
+ * shapes with a direction in them are offered four ways each — level, rising, falling
+ * and straight down the map — and with Flip that reaches all eight compass bearings
+ * without anybody having to find the Turn button first.
+ *
+ * THEY ARE ROTATIONS OF ONE DRAWING, not four drawings. The base shape is defined once
+ * above; these wrap it in a rotate() and take a plain-language name. Four hand-drawn
+ * bands would be four bands to keep in step with each other.
+ *
+ * The base keeps its own id, so a map somebody has already drawn still finds its
+ * pieces. */
+const DIRECTED = ['band', 'path', 'reach', 'meander', 'delta', 'bridge'];
+const BEARINGS = [['Rising', -45], ['Down', 90], ['Falling', 45]];
+
+{
+  /* Rebuilt in order rather than appended, so a shape's own directions sit next to it
+     in the tray instead of in a heap at the end of the set. */
+  const ordered = {};
+  for (const [id, base] of Object.entries(SHAPES)) {
+    ordered[id] = base;
+    if (!DIRECTED.includes(id)) continue;
+    for (const [word, angle] of BEARINGS) {
+      ordered[id + word] = {
+        set: base.set,
+        name: `${base.name} ${word.toLowerCase()}`,
+        tone: base.tone,
+        /* The angle is baked into the drawing, so it has to be recorded too: the tool
+           says which way a piece runs, and a variant that does not carry its own angle
+           would be described as though it were still lying level. */
+        angle: (angle + 360) % 360,
+        draw: `<g transform="rotate(${angle})">${base.draw}</g>`,
+      };
+    }
+  }
+  const missing = DIRECTED.filter((id) => !SHAPES[id]);
+  if (missing.length) throw new Error(`shapes: listed as directed but not defined: ${missing.join(', ')}`);
+  for (const id of Object.keys(SHAPES)) delete SHAPES[id];
+  Object.assign(SHAPES, ordered);
+}
+
 (function generate() {
   var pts = [], k, a, r;
   for (k = 0; k < 150; k++) { a = k * 0.22; r = 3 + k * 0.52; pts.push((r*Math.cos(a)).toFixed(1) + "," + (r*Math.sin(a)).toFixed(1)); }

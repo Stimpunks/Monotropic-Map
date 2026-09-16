@@ -70,6 +70,7 @@
       tone: b.getAttribute("data-tone") || "",
       back: b.getAttribute("data-back") === "yes",
       size: parseFloat(b.getAttribute("data-size")) || 1,
+      angle: parseFloat(b.getAttribute("data-angle")) || 0,
     };
   });
   var PLACE = {};
@@ -252,14 +253,32 @@
     save();
   }
 
+  /* Which way a turned shape now points, in words. "Turned" on its own tells a person
+     who cannot see the canvas nothing at all, and degrees would be a number. */
+  /* Eight bearings, in the order a turn actually passes through them. A shape is drawn
+     running left to right, and the canvas counts y downward, so a quarter turn sends it
+     down the map rather than up — getting this list out of order tells a person who
+     cannot see the canvas the opposite of what happened. */
+  var BEARINGS = ["level", "falling", "down the map", "falling the other way",
+                  "level the other way", "rising the other way", "up the map", "rising"];
+  /* A piece that came out of the tray already angled carries that angle in its drawing,
+     so the bearing is the two added together. */
+  function bearing(p) {
+    var baked = p.kind === "shape" && SHAPE[p.key] ? SHAPE[p.key].angle : 0;
+    return BEARINGS[Math.round((((p.r + baked) % 360) + 360) % 360 / 45) % 8];
+  }
+
   /* A numbered place carries a number and a name, and a number on its head is not a
      number any more. So turning and flipping are for shapes, and the tool says why
-     rather than appearing to ignore the button. */
+     rather than appearing to ignore the button.
+     The button turns by an eighth, which reaches all eight bearings in eight presses;
+     the bracket keys turn by a fifteenth of a turn, for a coastline that wants to sit
+     at an angle of its own. */
   function turn(p, by) {
     if (p.kind !== "shape") { speak("A numbered place stays the right way up."); return; }
     p.r = ((p.r || 0) + by + 360) % 360;
     place(p);
-    speak(p.name + " — turned.");
+    speak(p.name + " — turned, " + bearing(p) + ".");
     save();
   }
 
@@ -337,7 +356,7 @@
 
   onClick("bigger", function () { if (selected) resize(selected, 1.18); });
   onClick("smaller", function () { if (selected) resize(selected, 1 / 1.18); });
-  onClick("turn", function () { if (selected) turn(selected, 15); });
+  onClick("turn", function () { if (selected) turn(selected, 45); });
   onClick("flip", function () { if (selected) mirror(selected); });
   onClick("remove", function () { if (selected) drop(selected); });
 

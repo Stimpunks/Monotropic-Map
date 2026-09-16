@@ -530,8 +530,8 @@ ${groups}
 /**
  * EVERY DRAWING IS WRITTEN INTO THE PAGE ONCE, into a <defs> block, and map-canvas.js
  * copies one out whenever it needs it — for a tray preview, and for each piece a
- * person stamps on the canvas. Fifty-one drawings placed twenty times is still
- * fifty-one drawings in the file.
+ * person stamps on the canvas. Seventy drawings placed twenty times each is still
+ * one copy of each drawing in the file.
  *
  * COPIED, NOT <use>d, AS A PRECAUTION RATHER THAN A FIX. A <use> draws its reference
  * in a shadow tree, and how reliably CSS custom properties inherit into one varies by
@@ -603,7 +603,7 @@ function canvasTool() {
   const sets = SETS.map(([setId, setName, setNote]) => {
     const buttons = Object.entries(SHAPES).filter(([, sh]) => sh.set === setId).map(([id, sh]) =>
       `        <button class="shapebtn" type="button" data-shape="${id}" data-name="${esc(sh.name)}" data-tone="${sh.tone}"${
-        sh.back ? ' data-back="yes"' : ''}${sh.size ? ` data-size="${sh.size}"` : ''}>
+        sh.back ? ' data-back="yes"' : ''}${sh.size ? ` data-size="${sh.size}"` : ''}${sh.angle ? ` data-angle="${sh.angle}"` : ''}>
           <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
           <span>${esc(sh.name)}</span>
         </button>`).join('\n');
@@ -646,7 +646,7 @@ ${defs}
     </svg>
 
     <p class="canvas-say" id="canvas-say" role="status"></p>
-    <p class="canvas-keys">Drag a piece, or tab to it and use the <strong>arrow keys</strong> to move it, <strong>+</strong> and <strong>&#8722;</strong> to resize, <strong>[</strong> and <strong>]</strong> to turn, <strong>f</strong> to flip, <strong>Delete</strong> to take it off. A river turned is a river running the other way, which is why there is one of each shape rather than eight.</p>
+    <p class="canvas-keys">Drag a piece, or tab to it and use the <strong>arrow keys</strong> to move it, <strong>+</strong> and <strong>&#8722;</strong> to resize, <strong>[</strong> and <strong>]</strong> to turn it a little, <strong>f</strong> to flip it. <strong>Delete</strong> takes it off. Rivers, paths and bridges are in the tray running four ways already; <strong>Turn</strong> moves a piece an eighth of a circle at a time, and <strong>Flip</strong> mirrors it, so anything can end up pointing anywhere.</p>
   </div>
 
   <div class="canvas-tray">
