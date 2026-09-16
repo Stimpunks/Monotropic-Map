@@ -4,22 +4,52 @@ What was chosen while building this site, and what is still open. Read before re
 
 ## Open
 
-### "Blackwater" is a surname with no first name
-Area 17's definition is credited to Blackwater, which is what our own published page says, and the byline is not on the live article at themighty.com. Ask Helen or ask The Mighty. **Do not guess** — four names were guessed on the first pass and all four were wrong (`ATTRIBUTIONS.md`).
+### One thing in Helen's review is still open
+**The spelling of "echohydrofeminism."** That is how Helen wrote it, and it returns nothing anywhere. The established term is **hydrofeminism**, Astrida Neimanis's, and that is what area 13 says. Whether hers is a slip for it, a compound with *eco-*, or her own word doing work that *hydrofeminism* alone does not do, only she can say. **We are not printing a term we cannot source**, which is the same rule that kept Blackwater a surname. If it is hers, it should be credited as hers.
 
-### Two sets of our own words sit on Helen's map, and she has reviewed neither
+**The Attention Tunnels replacement is not her wording.** She asked for an alternative to "a tunnel is cheap to stay in and expensive to re-enter" and offered "easy to settle into and hard to leave," marked as wanting Ryan's take. Those say different things: the original is about the cost of *coming back after an interruption*, not the cost of leaving. The page now reads "easy to settle into and hard to get back into once you have been pulled out of it," which keeps the meaning and drops the word she objected to. **If she meant the leaving, the paragraph is about the wrong thing and wants rewriting rather than rewording.**
+
+### Two sets of our own words sit on Helen's map, and she has reviewed both
 **Forty short passages now, not twenty.** The *What changes this* paragraph and the *In plain words* definition on each area page are both drafted by Stimpunks. They are the places where we put our words into a map that is hers, and they should get her eye.
 
 The plain definitions are derived from the Stimpunks glossary entries, which are collections of academic quotations — useful, and not what somebody meeting an idea for the first time should have to read first.
 
 **Measured, not asserted**: 472 words over 63 sentences, 7.5 words a sentence, longest 14, reading ease 95/100, Flesch-Kincaid 1.9, 3% three-syllable words, no sentence over 15 words. `validate()` in `areas.mjs` fails any definition averaging over 15 words a sentence or containing one over 18, so this cannot quietly drift back into prose.
 
-**That is below ASAN's Easy Read band (grade 3–5) rather than inside it, and no script can certify Easy Read anyway** — that takes a focus group of people with intellectual and developmental disabilities. What the numbers show is that the text is short and simple. Whether it is *right* is a question for readers.
+**That is below the Easy Read band of the Autistic Self Advocacy Network (ASAN) — [autisticadvocacy.org](https://autisticadvocacy.org) — (grade 3–5) rather than inside it, and no script can certify Easy Read anyway** — that takes a focus group of people with intellectual and developmental disabilities. What the numbers show is that the text is short and simple. Whether it is *right* is a question for readers.
 
-**The packet that asks her is generated, not retyped.** `node tools/review.mjs` reads the forty passages out of `areas.mjs` and emits a review page; `--md` emits the same thing as Markdown to print or email. A packet with the passages copied into it would be a forty-first copy that drifts the moment either side is edited, and the drift would be the worst kind — Helen reviewing wording the site no longer carries, or approving wording it never carried. It marks *ours* and *hers* apart on purpose: a reviewer who cannot tell whose sentence she is reading cannot review it. It also carries the three questions only she can answer: Blackwater's first name, whether anyone named Rabbit Holes of Research or Infodump Canyon, and whether per-area artwork exists for version two of the marking tool.
+**The packet that asks her is generated, not retyped.** `node tools/review.mjs` reads the forty passages out of `areas.mjs` and emits a review page; `--md` emits the same thing as Markdown to print or email. A packet with the passages copied into it would be a forty-first copy that drifts the moment either side is edited, and the drift would be the worst kind — Helen reviewing wording the site no longer carries, or approving wording it never carried. It marks *ours* and *hers* apart on purpose: a reviewer who cannot tell whose sentence she is reading cannot review it. It also carried the three questions only she could answer: Blackwater's first name, whether anyone named Rabbit Holes of Research or Infodump Canyon, and whether per-area artwork exists for version two of the marking tool.
 
-### Version two of the marking tool needs artwork that may not exist
-Version one shipped on 2026-09-15 (below). Version two is the one that would let a person **drag and resize their own island** rather than mark Helen's, and it needs each area as a separable image. Whether those exist anywhere in the training decks **is a question for Helen, not an assumption**, and it is in the review packet. If the answer is no, version two does not happen: we are not redrawing her map to get it.
+**She answered all three on 2026-09-16, and returned notes on eighteen of the forty passages.** The answers: the byline is **Amelia Blackwater** ([her profile](https://themighty.com/u/amelia-blackwater)); **Rabbit Holes of Research and Infodump Canyon are both hers**; and the artwork question is superseded by what she wants version two to *be* (below). The wording changes are in `areas.mjs` and the three that are not are above.
+
+**Four of her notes were general and apply to the whole site**, not to one area: keep the capital A on Autistic; spell out Autistic Self Advocacy Network on first use and link it; "monotropic mind" becomes "monotropic person" everywhere; and the senses are eight, not five. The first was already true in our own words and is **deliberately not applied inside quotations** — several sources write it lowercase, and correcting someone else's words is not ours to do. The other three are applied.
+
+### Version two has its artwork, and a licence question in place of the old one
+**Answered on 2026-09-16: the separable artwork exists.** Helen sent the working files — a Pixelmator document and a 17 MB SVG export of the same thing — and they hold the map's drawings laid out unlabelled, without the landmass and without the printed names. Version one shipped on 2026-09-15 (below); version two is the one that would let a person **drag and resize their own island** rather than mark Helen's.
+
+**Both files are flat.** 2,347 objects at the top level, no groups, no layer names, in the Pixelmator document and the SVG alike. So a cut cannot follow the structure — there is none — and has to follow the pixels: render every object on its own, then join the ones whose ink actually touches.
+
+**Done that way, about thirty drawings come out whole**: the river, the orange canyon, the tornado, three waves, the sharks, the octopus, the surfer, the cave, the tent, the tunnel with its rabbit, the mushrooms, the storm cloud, the storm mountains, the pond, the campfire, the mud mountain, grass-and-rock, two penguins and three rabbits. **Two regions do not come out**: the flood-and-waves group on the left (608 shapes) and the stars-forest-sunbather group in the middle (131), because those drawings genuinely overlap on the canvas. They want a hand pass, or a re-export with them moved apart — not a cleverer script.
+
+**The rasters in the export are written twice**, once as colour and once as a greyscale `mask`, and a renderer that reads SVG masks differently draws the mask's black background instead of the transparency. Folding each pair into one RGBA image says the same thing and cannot be misread. Worth knowing before anybody looks at a preview and concludes the artwork is broken.
+
+**The blocker is now the licence, not the artwork: the pieces are Canva elements.** Canva's Content License Agreement §9 forbids, for free and Pro content alike, incorporating content in any product "that results in a re-distribution or re-use of the content or is otherwise made available in a manner such that a person can extract or access or reproduce the content as an electronic file". A drag-and-drop library of separable images is a description of that.
+
+**The map as published is not in question** — a flat exported design on a web page is the ordinary permitted use under §5, and that is what this site serves.
+
+**What decides version two is a fact only Helen can look up: whether every element in the map is Free Content.** §6 grants Free Content precisely what version two needs — standalone download, use in templates, a copy posted on a web server. §3 denies it to Pro Content: "You may not copy, download or distribute the Pro Content as a standalone item." And §1 says that where a design mixes categories **the most restrictive category governs the whole design**, so a single Pro element anywhere in the map means no piece of it can ship. In Canva it is visible per element: hover, the three dots, Content source information. Some free elements are CC0 or come from Pixabay or Pexels, which is a better answer again, because those licences are ours to pass on.
+
+**ShareAlike sharpens it rather than softening it.** Publishing under CC BY-SA 4.0 tells every reader they may adapt and redistribute what we publish, and §9 forbids sub-licensing Canva content. That tension is already present in the composed map and it is Helen's call, made. Publishing the *pieces* under the same licence would be handing on a right we do not hold, twenty times over, which is a different act and not one to slide into.
+
+**If the answer is Pro, version two is still possible without the artwork.** What a person drags could be the twenty numbered markers and their names on a blank ground, which is ours to give away. Smaller, and not a redraw of anybody's map.
+
+**Helen's own answer, 2026-09-16, is close to that and better than it.** A blank map; icons a person places wherever they like; and open **"?" symbols** they can fill with their own image, art or wording for an experience the twenty do not name. Her one structural instruction: **the maps should be joined by fresh water rather than kept as separate islands, "which feels neuronormative"** — bridges between islands, and boats acting like rhizome networks, so nobody's map is marooned.
+
+**That changes what version two is for.** The old sketch let a person re-arrange *her* twenty areas. Hers lets a person add what is missing and connect to other people. It needs less of the Canva artwork, not more, which means the licence question above stops being the blocker for this design — and a "?" a reader fills in is content they own, which is a question for [privacy](pages/privacy.md) before any of it is built.
+
+**Nothing has been cut into this repository.** The cutting pass exists as a scratch experiment and no piece, manifest or tool has been committed.
+
+**The review packet still asks the old question.** `tools/review.mjs` question 3 asks whether per-area artwork exists; it has been answered, and what it should ask instead is whether the Canva elements are Free or Pro.
 
 ### There is no service worker and no offline copy
 Penguin Pebbling has one. This site does not, and that is a deliberate not-yet rather than a no: **once a worker ships it lives on people's devices until something unregisters it**, so it is worth being sure of the page shapes first.
@@ -27,6 +57,30 @@ Penguin Pebbling has one. This site does not, and that is a deliberate not-yet r
 ----
 
 ## Settled
+
+### The Shark Infested Waters are drunk, not just swum in
+
+**Helen's notes on area 13, relayed 2026-09-16:** we absorb the water and it becomes part of us; explore it through hydrofeminism; and *"we need to drink from other waters, nourishing community water vs normative waters."*
+
+**The area used to say only that the water is around everything else.** That made neuronormativity ambient and external — weather to be got out of. It is not. It is swallowed, and it does its work from inside, which is the mechanism of internalised ableism without needing the phrase. The page now says: *you do not just swim in it, you drink it, and it becomes part of you.*
+
+**Hydrofeminism is borrowed, not claimed.** Neimanis writes that bodies are permeable and water passes through them, so there is no clean edge where the outside stops. She is not writing about neuronormativity; applying it here is Helen's move, and `ATTRIBUTIONS.md` says so.
+
+**The third note needed care, because as written it breaks the one rule.** "We need to drink from other waters" is an instruction to the person, and *What changes this* never instructs the person — on the one area that is explicitly about institutions, it would be the worst possible place to slip. So the paragraph states it as a condition instead: **nourishing water has to be within reach.** Not *go and find community* but *community has to exist and be reachable*, which is an environmental claim and somebody's job.
+
+**This also resolves what the paragraph could not say before.** "Nothing a person does to themselves" was true and empty — it named no lever at all, on the one area with a politics. Other water is the lever, and most of the rest of the map is that water: rhizomatic communities, Cavendish spaces, penguin pebbling, body doubling.
+
+**It is the same argument as her design for version two** — islands joined by fresh water rather than kept separate, "which feels neuronormative." The answer to bad water is not dry land. It is different water. Worth holding on to when version two gets built.
+
+### A quotation from an unrecorded talk is on the page, and says so
+
+**"Cultivating resilience becomes an act of defiance" is Nick Walker's, from a talk at the 2026 Autistic Mental Health Conference**, and there is no public video, transcript or published text of it. Recordings went to ticket holders. Helen suggested the line; she was in the room and helped organise the event.
+
+**Every other quotation here links to the words themselves, and this one cannot.** What it links instead is [the conference page](https://neurohubcommunity.org/2026/08/09/16166/), which names Walker and the talk — *unorthodox approaches to Autistic psychological resilience*. The provenance is written down in `ATTRIBUTIONS.md` rather than left implicit, because a weaker basis that is stated is a different thing from a weaker basis that is hidden.
+
+**It went in rather than being left out because the map's author heard it said and vouches for the wording.** The alternative was dropping a line she asked for on a technicality about media. **If a published version turns up, cite that instead.**
+
+**Placement matters more than usual here.** *What changes this* names what the environment changes and never instructs the reader, and a bare "cultivate resilience" would break that rule in the one paragraph about burnout — the exact place the site cannot afford to read as advice. So the page says the resilience that gets trained into people is compliance under another name, and gives Walker the line that turns it round. The defiance is of the training, not a task set for the reader.
 
 ### The site's voice says "map", not "island" — except in alt text
 Changed 2026-09-15, on Ryan's call. **"Island" now carries a Jeffrey Epstein association for a lot of readers**, which is not something a page about Autistic flow states should be making anybody think about.

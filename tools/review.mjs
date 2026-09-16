@@ -74,7 +74,7 @@ if (MD) {
   L.push('');
   L.push('## The constraint every "In plain words" definition is held to');
   L.push('');
-  L.push(`Short sentences, one idea each, everyday words — ASAN's shape. As it stands: **${m.words} words over ${m.sentences} sentences, ${m.avg} words a sentence, longest ${m.longest}.**`);
+  L.push(`Short sentences, one idea each, everyday words — the shape the [Autistic Self Advocacy Network (ASAN)](https://autisticadvocacy.org) sets out. As it stands: **${m.words} words over ${m.sentences} sentences, ${m.avg} words a sentence, longest ${m.longest}.**`);
   L.push('');
   L.push('The site refuses to build a definition that averages over 15 words a sentence or contains one over 18, so a rewrite has to stay short. **No script can certify Easy Read** — that takes a focus group of people with intellectual and developmental disabilities. The numbers only say the text is short.');
   L.push('');
@@ -107,13 +107,15 @@ if (MD) {
   }
   L.push('----');
   L.push('');
-  L.push('## Three questions only you can answer');
+  L.push('## The three questions, answered 2026-09-16');
   L.push('');
-  L.push('**1. Blackwater\'s first name.** Area 17 credits the definition to Blackwater, which is what our own published page says, and the byline is not on the live article at The Mighty. We are not guessing this one — four names were invented on the first pass and all four were wrong. Do you have the full name, or should we ask The Mighty?');
+  L.push('**1. Blackwater\'s first name.** Answered: **Amelia Blackwater**, <https://themighty.com/u/amelia-blackwater>. Area 17 now carries the full name.');
   L.push('');
-  L.push('**2. Two areas have no named originator.** Rabbit Holes of Research and Infodump Canyon are recorded as shared idiom and community usage. If you know who named either, we will credit them. If not they keep saying so, because the alternative is defaulting to our name.');
+  L.push('**2. Two areas had no named originator.** Answered: **Rabbit Holes of Research and Infodump Canyon are both yours.** Both now say so. The definitions quoted on those two pages are still general ones rather than your words, so the page credits you with the area and not with the sentence.');
   L.push('');
-  L.push('**3. Per-area artwork.** A marking tool is described on the site and not built. Version one marks your existing map and needs no new art. Version two would let a person drag and resize their own island, which needs each area as a separable image — do those exist anywhere in the training decks? If they do not, version two does not happen; we are not redrawing your map.');
+  L.push('**3. Per-area artwork.** Answered, and superseded by your own design for version two: a blank map, icons a person places where they like, open "?" symbols they fill with their own image, art or wording, and the maps joined by fresh water with bridges and boats rather than left as separate islands. Recorded in `DECISIONS.md`; nothing is built yet.');
+  L.push('');
+  L.push('**One question is open in their place.** The map is composed of Canva elements, and Canva\'s licence turns on whether every one of them is Free Content rather than Pro. It is visible per element in Canva: hover, the three dots, Content source information. A single Pro element anywhere governs the whole design.');
   L.push('');
   if (problems.length) {
     L.push('----');
@@ -300,7 +302,7 @@ a { color: var(--accent); text-underline-offset: 0.15em; }
 
   <section class="note">
     <h2>The constraint every &ldquo;In plain words&rdquo; definition is held to</h2>
-    <p>Short sentences, one idea each, everyday words &mdash; ASAN&rsquo;s shape. As the twenty stand:</p>
+    <p>Short sentences, one idea each, everyday words &mdash; the shape the <a href="https://autisticadvocacy.org" rel="noopener">Autistic Self Advocacy Network (ASAN)</a> sets out. As the twenty stand:</p>
     <p class="metric">${m.words} words &middot; ${m.sentences} sentences &middot; ${m.avg} words a sentence &middot; longest sentence ${m.longest} words</p>
     <p>The site refuses to build a definition that averages over 15 words a sentence or contains one over 18, so a rewrite has to stay short. <strong>No script can certify Easy Read</strong> &mdash; that takes a focus group of people with intellectual and developmental disabilities. The numbers only say the text is short. Whether it is right is what we are asking you.</p>
   </section>
@@ -322,12 +324,13 @@ ${blocks}
   </div>
 
   <section class="qs">
-    <h2>Three questions only you can answer</h2>
+    <h2>The three questions, answered 2026-09-16</h2>
     <ol>
-      <li><strong>Blackwater&rsquo;s first name.</strong> Area 17 credits the definition to Blackwater, which is what our own published page says, and the byline is not on the live article at The Mighty. We are not guessing this one &mdash; four names were invented on the first pass and all four were wrong. Do you have the full name, or should we ask The Mighty?</li>
-      <li><strong>Two areas have no named originator.</strong> Rabbit Holes of Research and Infodump Canyon are recorded as shared idiom and community usage. If you know who named either, we will credit them. If not, they keep saying so &mdash; the alternative is defaulting to our name.</li>
-      <li><strong>Per-area artwork.</strong> A marking tool is described on the site and not built. Version one marks your existing map and needs no new art. Version two would let a person drag and resize their own island, which needs each area as a separable image &mdash; do those exist anywhere in the training decks? If they do not, version two does not happen. We are not redrawing your map.</li>
+      <li><strong>Blackwater&rsquo;s first name.</strong> Answered: <strong>Amelia Blackwater</strong>, <a href="https://themighty.com/u/amelia-blackwater" rel="noopener">her profile at The Mighty</a>. Area 17 now carries the full name.</li>
+      <li><strong>Two areas had no named originator.</strong> Answered: <strong>Rabbit Holes of Research and Infodump Canyon are both yours.</strong> Both now say so. The definitions quoted on those two pages are still general ones rather than your words, so the page credits you with the area and not with the sentence.</li>
+      <li><strong>Per-area artwork.</strong> Answered, and superseded by your own design for version two: a blank map, icons a person places where they like, open &ldquo;?&rdquo; symbols they fill with their own image, art or wording, and the maps joined by fresh water with bridges and boats rather than left as separate islands. Recorded in <code>DECISIONS.md</code>; nothing is built yet.</li>
     </ol>
+    <p><strong>One question is open in their place.</strong> The map is composed of Canva elements, and Canva&rsquo;s licence turns on whether every one of them is Free Content rather than Pro. It is visible per element in Canva: hover, the three dots, Content source information. A single Pro element anywhere governs the whole design.</p>
   </section>
 
   <p class="foot">Generated from <code>tools/areas.mjs</code> by <code>tools/review.mjs</code>, so this packet cannot drift from the live pages. The map, the area names and the wording printed on the artwork are Helen Edgar&rsquo;s. Map of Monotropic Experiences is CC BY-SA 4.0.</p>

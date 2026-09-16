@@ -12,7 +12,7 @@ This site is a joint Stimpunks and Autistic Realms project, like [Star Stuff](ht
 
 Monotropism is a neurodiversity-affirming theory of autism, developed by Autistic people — initially by Dinah Murray and Wenn Lawson, with Mike Lesser.
 
-Monotropic minds pull attention more strongly toward a smaller number of interests at any given time, leaving fewer resources for everything else. Things outside the attention tunnel get missed, and moving between tunnels is expensive.
+Monotropic people pull attention more strongly toward a smaller number of interests at any given time, leaving fewer resources for everything else. Things outside the attention tunnel get missed, and moving between tunnels is expensive.
 
 Autistic, ADHD and AuDHD people are more likely to be monotropic.
 

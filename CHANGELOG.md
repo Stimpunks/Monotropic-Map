@@ -6,6 +6,67 @@ We publish the mistakes too. A changelog that only lists wins is an advertisemen
 
 ----
 
+## 2026-09-16 — Helen's review came back
+
+**The map's author read the forty passages Stimpunks wrote onto her map, and sent notes on eighteen of them.** Those notes are now the pages. This is the part of the process the site was built around: our words sit on her map, so she gets to say whether they are right.
+
+### What changed across the whole site
+
+- **"Monotropic mind" is now "monotropic person"** everywhere it was ours to change. It stays as written inside quotations, because correcting someone else's words is not ours to do.
+- **The senses are eight, not five.** [Tides of the Sensory Sea](tides-of-the-sensory-sea.html) counted sound, light, touch and smell. It now counts taste as well, and **interoception, proprioception and the vestibular sense** — the three the familiar five leave out.
+- **The Autistic Self Advocacy Network is spelled out and linked** where the abbreviation stood alone.
+
+### What changed on the areas
+
+- **[Attention Tunnels](attention-tunnels.html)** — a tunnel can go the other way, and the page no longer presents it as purely good. The word *cheap* is gone.
+- **[Penguin Pebbling Cove of Friendship](penguin-pebbling-cove-of-friendship.html)** — says why it is called that. Penguins give each other pebbles to show they care.
+- **[Mountains of Ruminating Thoughts](mountains-of-ruminating-thoughts.html)** — tired, cross, **or anxious**.
+- **[Cyclones of Unmet Needs](cyclones-of-unmet-needs.html)** — advocacy moves the side that holds the resources, and community support holds a person up while it shifts.
+- **[Infodump Canyon](infodump-canyon.html)** — an infodump shows trust. It can be a sign of friendship.
+- **[Rhizomatic Communities](rhizomatic-communities.html)** — says what a rhizome actually is, in plain words, and names both online and in-person communities.
+- **[River of Monotropic Flow States](river-of-monotropic-flow-states.html)** — time may feel like it has melted away.
+- **[Meerkat Mounds](meerkat-mounds.html)** — on high alert, and unable to find a way into flow.
+- **[Riverbanks of Monotropic Time](river-banks-of-monotropic-time.html)** — "clocks that bend" is now timetables that flex and people who adapt to needs that fluctuate.
+- **[Beach of Body Doubling](beach-of-body-doubling.html)** — a body double is a **shared presence**, and there is no pressure to perform. The page had described only what the other person does *not* do.
+- **[Burnout Whirlpools](burnout-whirlpools.html)** — run on empty for **too long**, not for years, and without enough left to manage or refill. Not cured by **neuronormative** resilience training, and carrying Nick Walker's line: *"Cultivating resilience becomes an act of defiance."*
+- **[Panic Hills of Low Object Permanence](panic-hills-of-low-object-permanence.html)** — things you cannot see fall outside the attention tunnel. Phone reminders and apps sit alongside open shelving and visible lists.
+- **[Forest of Joy, Awe and Wonder](forest-of-joy-awe-and-wonder.html)** — **stimming** is named.
+- **[Shark Infested Waters](shark-infested-waters.html)** — the water is **drunk, not just swum in**. See below.
+
+### Two credits were completed
+
+**The Forest of Joy, Awe and Wonder credit is finished.** The last changelog asked for a byline the live article does not carry; Helen had it. It is **[Amelia Blackwater](https://themighty.com/u/amelia-blackwater)**. The surname stood alone rather than getting a guessed first name, which is the rule working.
+
+**Two areas stopped saying they had no originator.** [Rabbit Holes of Research](rabbit-holes-of-research.html) and [Infodump Canyon](infodump-canyon.html) are **Helen Edgar's own**. The definitions quoted on those pages are still general ones rather than her words, so each page credits her with the area and says the definition is not a quotation from her.
+
+### One quotation on this site has no public recording
+
+**Nick Walker's line is from a talk at the 2026 Autistic Mental Health Conference**, and there is no video, transcript or published text of it to link. Recordings went to ticket holders. The page links [the conference page](https://neurohubcommunity.org/2026/08/09/16166/), which names Walker and the talk.
+
+**The wording rests on Helen, who was in the room and helped organise the event.** That is a weaker basis than every other quotation here, all of which link to the words themselves — which is why it is written down in `ATTRIBUTIONS.md` instead of passing quietly. If a published version turns up, we will cite that instead.
+
+### The water is absorbed, and the answer to it is other water
+
+**[Shark Infested Waters](shark-infested-waters.html) said the water was around everything else.** That made neuronormativity ambient — weather you might get out of. Helen's note: we absorb it, and it becomes part of us. The page now says so. *You do not just swim in it. You drink it, and it becomes part of you.*
+
+**The frame is Astrida Neimanis's hydrofeminism**, borrowed and credited: bodies are permeable, and there is no clean edge where the outside stops. Neimanis is not writing about neuronormativity — applying it here is Helen's move, and [ATTRIBUTIONS](https://github.com/Stimpunks/Monotropic-Map/blob/main/ATTRIBUTIONS.md) says so.
+
+**What changes it is other water.** Not getting out — you cannot, you are made of it — but nourishing water being within reach: Autistic community, spaces built for the bodies in them, people who do not read you as a deficit. Most of the rest of this map is that water.
+
+### An attribution error on that same area, now fixed
+
+**The definition on [Shark Infested Waters](shark-infested-waters.html) was this site's own summary, printed as a quotation under Damian Milton's name**, with a link to his handout. Only one of its three ideas is his, and none of its sentences are. It has been marked up as a quotation since launch.
+
+It is no longer a blockquote, and the credit says what it is: a summary written here, with the double empathy problem attributed to Milton and linked. **This is the failure the credit fields exist to prevent, committed against the definition instead of the credit.**
+
+### What did not change, and why
+
+**One word is still open: "echohydrofeminism."** That is how Helen wrote it and it returns nothing anywhere. The page uses **hydrofeminism**, which is Neimanis's own term and sourceable. If the other is Helen's own word, it should be credited as hers rather than quietly corrected — and that is a question for her, not a guess for us.
+
+**The capital A on Autistic was already house style** and stays lowercase inside quotations that were written that way.
+
+----
+
 ## 2026-09-15 — the site went live
 
 **[monotropicmap.org](https://monotropicmap.org/) exists.** The Map of Monotropic Experiences has its own home, built on Helen Edgar's go-ahead with joint Stimpunks and Autistic Realms attribution settled first.
@@ -35,7 +96,7 @@ The first draft of the area pages carried **four invented names** — attributio
 
 They were caught by opening the sources, and corrected: the training video is **Kieran Rose's**, and the sensory-sea graphics are **Janae Elisabeth's**. A surname you can source beats a full name you cannot.
 
-One is still incomplete: the Forest of Joy, Awe and Wonder credits **Blackwater**, and the byline is not on the live article. If you know it, [tell us](mailto:hello@stimpunks.org).
+One was still incomplete on the day: the Forest of Joy, Awe and Wonder credited **Blackwater**, and the byline is not on the live article. Helen supplied it the next day — see the entry above.
 
 ### A bug that only existed once it was public
 

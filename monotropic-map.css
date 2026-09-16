@@ -240,14 +240,20 @@ footer.site .wrap > * + * { margin-block-start: 0.75rem; }
 .areahead .num { font-family: var(--mono); color: var(--fg-soft); }
 .areahead h1 { margin-block-start: 0.2rem; }
 
-blockquote.gloss {
+.gloss {
   margin: 1.25rem 0; padding: 0.9rem 1.2rem;
   background: var(--wash); border-inline-start: 5px solid var(--tone, var(--accent));
   border-radius: 0 8px 8px 0;
   max-width: var(--measure);
 }
-blockquote.gloss p { margin: 0; }
-blockquote.gloss cite { display: block; margin-block-start: 0.6rem; font-style: normal; color: var(--fg-soft); font-size: 0.92rem; }
+.gloss p { margin: 0; }
+.gloss cite { display: block; margin-block-start: 0.6rem; font-style: normal; color: var(--fg-soft); font-size: 0.92rem; }
+
+/* A gloss that is NOT a quotation ships as a div rather than a blockquote — see
+   `glossNote` in areas.mjs. It keeps the panel so it still reads as the definition,
+   and loses the heavy rule down the side, which is what says "quotation" here. The
+   difference has to be visible before anybody reaches the credit under it. */
+div.gloss { border-inline-start: 1px solid var(--line); border-radius: 8px; }
 
 .panel {
   background: var(--card); border: 1px solid var(--line); border-radius: 10px;
@@ -269,7 +275,7 @@ blockquote.gloss cite { display: block; margin-block-start: 0.6rem; font-style: 
   .bar, .theme-toggle, .pager, .skip { display: none !important; }
   body { background: #fff; color: #000; font-size: 11pt; }
   a { color: #000; }
-  .panel, blockquote.gloss, .arealist a { border: 1px solid #999; background: #fff; }
+  .panel, .gloss, .arealist a { border: 1px solid #999; background: #fff; }
   .arealist { grid-template-columns: repeat(2, 1fr); }
 }
 

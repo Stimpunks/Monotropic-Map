@@ -266,7 +266,7 @@ function stateGroups() {
 }
 
 function buildIndex() {
-  const body = `<p class="prose">Twenty places a monotropic mind goes. Some of them are where the good work happens; some of them are weather that other people make. This is Helen Edgar's map of her own Autistic and ADHD experience, and it turned out that a great many of us live here too.</p>
+  const body = `<p class="prose">Twenty places a monotropic person goes. Some of them are where the good work happens; some of them are weather that other people make. This is Helen Edgar's map of her own Autistic and ADHD experience, and it turned out that a great many of us live here too.</p>
 
   <figure class="mapframe">
 ${mapPicture({
@@ -293,7 +293,7 @@ ${numberedKey()}
     slug: 'index',
     title: SITE.title,
     h1: SITE.title,
-    description: "Twenty places a monotropic mind goes. Helen Edgar's Map of Monotropic Experiences, with an area-by-area guide, the free training, and the frame that explains who makes the weather.",
+    description: "Twenty places a monotropic person goes. Helen Edgar's Map of Monotropic Experiences, with an area-by-area guide, the free training, and the frame that explains who makes the weather.",
     body,
   });
 }
@@ -329,10 +329,10 @@ function buildArea(a) {
   <p>${a.plain}</p>
 </section>
 
-<blockquote class="gloss" data-tone="${a.state}">
+${a.glossNote ? `<div class="gloss" data-tone="${a.state}">` : `<blockquote class="gloss" data-tone="${a.state}">`}
   <p>${a.gloss}</p>
-  ${a.who ? `<cite>${a.coiner ? `Named by ${a.coiner}. Definition quoted from ` : ''}${a.coiner ? `<a href="${a.who.url}" rel="noopener">${a.who.name}</a>.` : `${a.who.name} — <a href="${a.who.url}" rel="noopener">in their own words</a>`}</cite>` : `<cite>A shared community coinage with no single originator.</cite>`}
-</blockquote>
+  ${a.glossNote ? `<cite>${a.glossNote} <a href="${a.who.url}" rel="noopener">in their own words</a>.</cite>` : a.who ? `<cite>${a.coiner ? `Named by ${a.coiner}. Definition quoted from ` : ''}${a.coiner ? `<a href="${a.who.url}" rel="noopener">${a.who.name}</a>.` : `${a.who.name} — <a href="${a.who.url}" rel="noopener">in their own words</a>`}</cite>` : a.coiner ? `<cite>Named by ${a.coiner}. The definition above is a general one, not a quotation from the person who named this area.</cite>` : `<cite>A shared community coinage with no single originator.</cite>`}
+${a.glossNote ? `</div>` : `</blockquote>`}
 
 <div class="panel" data-tone="${a.state}">
   <h2>What changes this</h2>
@@ -531,7 +531,7 @@ function searchIndex() {
       url: `${SITE.origin}/${a.slug}`,
       plain_language: plain(a.plain),
       definition: plain(a.gloss),
-      named_by: a.who ? plain(a.who.name) : null,
+      named_by: a.coiner || (a.who ? plain(a.who.name) : null),
       source: a.who ? a.who.url : null,
       what_changes_this: plain(a.helps),
       borders: a.borders,
@@ -554,7 +554,7 @@ function llmsTxt() {
 
 > ${SITE.tagline}. Twenty areas of monotropic experience, mapped by Helen Edgar (Autistic Realms) and developed with the Stimpunks Foundation. CC BY-SA 4.0.
 
-Monotropism is a neurodiversity-affirming theory of autism (Murray, Lesser & Lawson, 2005): monotropic minds pull more attention toward fewer interests at a time. This site maps what that is like, area by area, and names who coined each one.
+Monotropism is a neurodiversity-affirming theory of autism (Murray, Lesser & Lawson, 2005): monotropic people pull more attention toward fewer interests at a time. This site maps what that is like, area by area, and names who coined each one.
 
 ## The map
 - [The map](${SITE.origin}/): the map itself, as a picture and as a list.
@@ -562,7 +562,7 @@ Monotropism is a neurodiversity-affirming theory of autism (Murray, Lesser & Law
 - [The frame](${SITE.origin}/neuronormative-domination): why stuck states are produced rather than personal.
 
 ## The twenty areas
-${AREAS.map((a) => `- [${plain(a.label)}](${SITE.origin}/${a.slug}): ${plain(a.plain)}${a.who ? ` Named by ${plain(a.coiner || a.who.name)}.` : ''}`).join('\n')}
+${AREAS.map((a) => `- [${plain(a.label)}](${SITE.origin}/${a.slug}): ${plain(a.plain)}${a.coiner || a.who ? ` Named by ${plain(a.coiner || a.who.name)}.` : ''}`).join('\n')}
 
 ## The nine zones of neuronormative domination
 ${ZONES.map((z, i) => `- [${plain(z.label)}](${SITE.origin}/neuronormative-domination#${z.slug}): ${plain(z.body)}`).join('\n')}

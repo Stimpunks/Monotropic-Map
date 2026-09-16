@@ -27,9 +27,17 @@
  * `plain` IS THE PLAIN-LANGUAGE DEFINITION, and it comes FIRST on the page — before the
  * quoted one, not after it as a simplified afterthought. The glossary entries this is derived
  * from are collections of academic quotations; useful, and not the first thing somebody
- * meeting an idea should have to read. Target is ASAN's: 10-15 words a sentence, one idea a
+ * meeting an idea should have to read. Target is the Autistic Self Advocacy Network's
+ * (ASAN, autisticadvocacy.org): 10-15 words a sentence, one idea a
  * sentence, everyday words. `validate()` enforces the sentence length so it cannot drift back
  * into prose.
+ *
+ * `glossNote` SAYS THE GLOSS IS NOT A QUOTATION, where it is not one. Area 13's gloss is a
+ * summary this site composed out of three ideas; only one of them is Milton's, and none of the
+ * sentences are his. Without this the page printed our prose inside a blockquote under his name
+ * and a link to his paper, which is the precise failure `who`/`coiner` exist to prevent — done
+ * to the definition instead of the credit. When it is set the page stops calling the passage a
+ * quotation at all.
  *
  * `helps` IS NEW TEXT AND IS ABOUT THE ENVIRONMENT, NEVER THE PERSON. This is the one
  * rule that keeps the site from reading as a personality quiz: a stuck state is produced
@@ -57,11 +65,11 @@ export const AREAS = [
     title: 'Attention Tunnels',
     state: 'flow',
     hot: [30, 16],
-    plain: "Your attention goes deep into one thing. The rest of the world fades out. It feels good, and it helps you think. Coming back out again is hard.",
+    plain: "Your attention goes deep into one thing. The rest of the world fades out. Sometimes that feels good and helps you think. Sometimes it takes you somewhere you did not want to go. Coming back out again is hard.",
     gloss: 'Entering flow states — or attention tunnels — is a necessary coping strategy for many of us. Flow states are the pinnacle of intrinsic motivation.',
     who: { name: 'Fergus Murray', url: 'https://oolong.medium.com/craft-flow-and-cognitive-styles-a47f827fcd6a' },
     stimpunks: 'https://stimpunks.org/glossary/flow/',
-    helps: 'Time that is not interrupted, and a warning before it ends. A tunnel is cheap to stay in and expensive to re-enter, so the thing an environment can give is a long uninterrupted stretch and notice before the end of it.',
+    helps: 'Time that is not interrupted, and a warning before it ends. A tunnel is easy to settle into and hard to get back into once you have been pulled out of it, so the thing an environment can give is a long uninterrupted stretch and notice before the end of it.',
     borders: ['river-of-monotropic-flow-states', 'tendril-theory', 'sudden-storms-of-unexpected-events'],
     sibling: null,
   },
@@ -72,7 +80,7 @@ export const AREAS = [
     title: 'Penguin Pebbling Cove of Friendship',
     state: 'social',
     hot: [60, 16],
-    plain: "You send someone a small thing you found. A link, a photo, a funny picture. It means: I was thinking about you. It is a way of saying love.",
+    plain: "Penguins give each other pebbles to show they care. You send someone a small thing you found. A link, a photo, a funny picture. It means: I was thinking about you. It is a way of saying love.",
     gloss: '“Penguin pebbling” is a little exchange between two people to show that they care and want to build a meaningful connection.',
     who: { name: 'Helen Edgar', url: 'https://autisticrealms.com/penguin-pebbling-an-autistic-love-language/' },
     stimpunks: 'https://stimpunks.org/glossary/penguin-pebbling/',
@@ -102,7 +110,7 @@ export const AREAS = [
     title: 'Mountains of Ruminating Thoughts',
     state: 'stuck',
     hot: [7, 19],
-    plain: "The same thought goes round and round. You cannot put it down. It gets in the way, and it can leave you tired or cross.",
+    plain: "The same thought goes round and round. You cannot put it down. It gets in the way, and it can leave you tired, cross, or anxious.",
     gloss: 'When your thoughts are all swirly and you just keep chewing on the same thought over and over and you can’t stop thinking about it and it’s distracting you and sometimes even putting you in a really bad mood or making you irritable.',
     who: { name: 'Dusty Chipura', url: 'https://twitter.com/dustychipura/status/1303759000022908928' },
     stimpunks: 'https://stimpunks.org/glossary/rumination/',
@@ -121,7 +129,7 @@ export const AREAS = [
     gloss: 'Mismatch between the areas we actually receive support, compared to the areas we would ideally like support.',
     who: { name: 'Cassidy et al.', url: 'https://molecularautism.biomedcentral.com/articles/10.1186/s13229-018-0226-4' },
     stimpunks: 'https://stimpunks.org/glossary/unmet-needs/',
-    helps: 'Meeting the need. This one is not a metaphor and it does not need reframing — it is a gap between support asked for and support given, and it closes from the side that holds the resources.',
+    helps: 'Meeting the need. This one is not a metaphor and it does not need reframing — it is a gap between support asked for and support given, and it closes from the side that holds the resources. Advocacy moves that side, and community support holds a person up while it shifts.',
     borders: ['shark-infested-waters', 'burnout-whirlpools', 'mountains-of-ruminating-thoughts'],
     sibling: null,
   },
@@ -135,8 +143,9 @@ export const AREAS = [
     plain: "You start looking one thing up. Hours later you are still going. You end up knowing a great deal about it.",
     gloss: '“Down the rabbit hole” is an English-language idiom or trope which refers to getting deep into something, or ending up somewhere strange.',
     who: null,
+    coiner: 'Helen Edgar',
     stimpunks: 'https://stimpunks.org/glossary/rabbit-hole/',
-    helps: 'Being allowed to go all the way down. Depth is the point, and an environment that rewards only breadth is asking a monotropic mind to work against its own grain and calling the result a focus problem.',
+    helps: 'Being allowed to go all the way down. Depth is the point, and an environment that rewards only breadth is asking a monotropic person to work against their own grain and calling the result a focus problem.',
     borders: ['infodump-canyon', 'attention-tunnels', 'river-of-monotropic-flow-states'],
     sibling: null,
   },
@@ -147,11 +156,12 @@ export const AREAS = [
     title: 'Infodump Canyon',
     state: 'social',
     hot: [64, 34],
-    plain: "You tell someone everything about a thing you love. All of the detail. This is a gift, not a lecture.",
+    plain: "You tell someone everything about a thing you love. All of the detail. This is a gift, not a lecture. It shows you trust someone and care about them. It can be a sign of friendship.",
     gloss: 'Talking a lot about a topic in great detail.',
     who: null,
+    coiner: 'Helen Edgar',
     stimpunks: 'https://stimpunks.org/glossary/infodump/',
-    helps: 'Somewhere it lands as a gift. An infodump is an act of intimacy — it is how a lot of us say *I want you to have this* — and a room that hears it as domination will get less of everything, not just less talking.',
+    helps: 'Somewhere it lands as a gift. An infodump is an act of intimacy — it is how a lot of us say <em>I want you to have this</em> — and a room that hears it as domination will get less of everything, not just less talking.',
     borders: ['rabbit-holes-of-research', 'penguin-pebbling-cove-of-friendship', 'rhizomatic-communities'],
     sibling: null,
   },
@@ -162,7 +172,7 @@ export const AREAS = [
     title: 'Rhizomatic Communities',
     state: 'social',
     hot: [23, 42],
-    plain: "Lots of small Autistic groups, all joined up. Nobody is in charge. If one group stops, the rest carry on.",
+    plain: "A rhizome is a root that spreads sideways and puts up new shoots. Lots of small Autistic groups, joined up like that. Some meet online and some meet in person. Nobody is in charge. If one group stops, the rest carry on.",
     gloss: 'A growing and evolving network of Autistic communities with no hierarchy or dependence on anothers existence.',
     who: { name: 'Helen Edgar', url: 'https://autisticrealms.com/the-autistic-rhizome/' },
     stimpunks: 'https://stimpunks.org/glossary/autistic-rhizome/',
@@ -177,7 +187,7 @@ export const AREAS = [
     title: 'River of Monotropic Flow States',
     state: 'flow',
     hot: [54, 46],
-    plain: "You are deep in something and time goes soft. Your body settles. This is how a monotropic person gets energy back.",
+    plain: "You are deep in something and time goes soft. It may feel like it has melted away. Your body settles. This is how a monotropic person gets energy back.",
     gloss: 'Entering flow states — or attention tunnels — is a necessary coping strategy for many of us. Flow states are the pinnacle of intrinsic motivation.',
     who: { name: 'Fergus Murray', url: 'https://oolong.medium.com/craft-flow-and-cognitive-styles-a47f827fcd6a' },
     stimpunks: 'https://stimpunks.org/glossary/flow/',
@@ -207,7 +217,7 @@ export const AREAS = [
     title: 'Meerkat Mounds',
     state: 'stuck',
     hot: [27, 52],
-    plain: "You are watching for danger all the time. You cannot settle into anything. This happens when a place does not feel safe.",
+    plain: "You are watching for danger all the time, like a meerkat. You cannot settle into anything, and you cannot find your way into flow. This happens when a place does not feel safe.",
     gloss: 'Heightened state of vigilance and arousal that involves constantly looking for danger and threat. It is more than hyper-arousal, it is an overwhelmed monotropic person desperately looking for a hook into a monotropic flow-state.',
     who: { name: 'Tanya Adkin &amp; David Gray-Hammond', url: 'https://emergentdivergence.com/2023/06/06/what-is-meerkat-mode-and-how-does-it-relate-to-audhd/' },
     stimpunks: 'https://stimpunks.org/glossary/meerkat-mode/',
@@ -226,7 +236,7 @@ export const AREAS = [
     gloss: 'When absorbed in our special interests or passions it can feel like entering a portal. Normal time can feel like it is dissolving, the outside world may feel like it is melting away. This can be really rejuvenating for the sensory system and help to recharge the bodymind.',
     who: { name: 'Helen Edgar', url: 'https://autisticrealms.com/monotropic-time/' },
     stimpunks: 'https://stimpunks.org/glossary/monotropic-time/',
-    helps: 'Clocks that bend. Deadlines that arrive without warning, meetings that fragment a day into unusable pieces, and “it only takes five minutes” are all the same request: leave monotropic time and keep working anyway.',
+    helps: 'Timetables that flex, and people who adapt to needs that fluctuate. Deadlines that arrive without warning, meetings that fragment a day into unusable pieces, and “it only takes five minutes” are all the same request: leave monotropic time and keep working anyway.',
     borders: ['river-of-monotropic-flow-states', 'tendril-theory', 'attention-tunnels'],
     sibling: null,
   },
@@ -237,11 +247,12 @@ export const AREAS = [
     title: 'Shark Infested Waters',
     state: 'pressure',
     hot: [11, 91],
-    plain: "The water around everything else. It is the idea that there is one right way to have a mind. It is in schools, jobs and doctors' rooms.",
+    plain: "The water around everything else. It is the idea that there is one right way to have a mind. It is in schools, jobs and doctors' rooms. You do not just swim in it. You drink it, and it becomes part of you.",
     gloss: 'The water the whole map sits in: neuronormativity, behaviourism, and the double empathy problem. Neuronormativity is the assumption that there is a correct way to exist in this world. Behaviorism reduces human beings to simple inputs and outputs. The double empathy problem names the mutual incomprehension between people of different dispositional outlooks — mutual, and not the Autistic person’s fault.',
     who: { name: 'Damian Milton', url: 'https://www.autscape.org/2013/programme/handouts/Double%20empathy%20problem.pdf' },
+    glossNote: 'A summary written for this site, not a quotation. The double empathy problem in it is Damian Milton\u2019s,',
     stimpunks: 'https://stimpunks.org/glossary/double-empathy-problem/',
-    helps: 'Nothing a person does to themselves. These are the conditions the rest of the map sits in, and they are made and maintained by institutions. This is the area that has a politics rather than a coping strategy.',
+    helps: 'Other water to drink. These are the conditions the rest of the map sits in, made and maintained by institutions, and they do not stay outside a person — the water gets absorbed. Astrida Neimanis\u2019s <a href="https://doi.org/10.5040/9781474275415" rel="noopener">hydrofeminism</a> is the borrowed frame here (<em>Bodies of Water</em>, 2017): bodies are permeable, and there is no clean edge where the outside stops. So the change is not scrubbing the water out of somebody, which cannot be done. It is that nourishing water has to be within reach \u2014 Autistic community, spaces built for the bodies in them, people who do not read you as a deficit. Most of the rest of this map is that water. This is the area with a politics rather than a coping strategy.',
     borders: ['cyclones-of-unmet-needs', 'meerkat-mounds', 'burnout-whirlpools'],
     sibling: null,
   },
@@ -252,11 +263,11 @@ export const AREAS = [
     title: 'Beach of Body Doubling',
     state: 'social',
     hot: [38, 81],
-    plain: "Someone sits nearby while you work. They do not help you and they do not watch you. Having them there makes it easier to start.",
+    plain: "Someone sits nearby while you work. There is no pressure to perform. It is a shared presence, not a check on you. Having them there makes it easier to start.",
     gloss: 'A “body double” is a person or even pet who is present with us while we work. This provides a gentle form of accountability — their presence serves as a reminder of what we’re supposed to be doing so we’re less likely to get distracted.',
     who: { name: 'Jessica McCabe', url: 'https://www.youtube.com/watch?v=ni9biXNDZe0' },
     stimpunks: 'https://stimpunks.org/glossary/body-doubling/',
-    helps: 'Company without supervision. The difference matters: a body double is present, not watching. The moment presence becomes monitoring it stops working and starts costing.',
+    helps: 'Company without supervision. The difference matters: a body double is a shared presence, not a watcher — being alongside someone steadies the nervous system and carries a gentle accountability at the same time. The moment presence becomes monitoring it stops working and starts costing.',
     borders: ['campsite-of-cavendish-spaces', 'rhizomatic-communities', 'river-of-monotropic-flow-states'],
     sibling: null,
   },
@@ -267,11 +278,11 @@ export const AREAS = [
     title: 'Burnout Whirlpools',
     state: 'stuck',
     hot: [53, 61],
-    plain: "You have run on empty for years. Now things you used to do are too hard. Rest on its own does not fix it. The demands have to come down.",
+    plain: "You have run on empty for too long, without enough left to manage or refill. Now things you used to do are too hard. Rest on its own does not fix it. The demands have to come down.",
     gloss: 'Autistic burnout is a state of physical and mental fatigue, heightened stress, and diminished capacity to manage life skills, sensory input, and/or social interactions, which comes from years of being severely overtaxed by the strain of trying to live up to demands that are out of sync with our needs.',
     who: { name: 'Dora Raymaker', url: 'https://pubmed.ncbi.nlm.nih.gov/32851204/' },
     stimpunks: 'https://stimpunks.org/burnout/',
-    helps: 'Lowering the demands that caused it. Burnout is manufactured by years of mismatch, so it is not cured by resilience training, and a return to the same conditions is a return to the whirlpool.',
+    helps: 'Lowering the demands that caused it. Burnout is manufactured by years of mismatch, so it is not cured by neuronormative resilience training, and a return to the same conditions is a return to the whirlpool. The resilience that gets trained into people is compliance under another name, which is why Nick Walker, speaking at the <a href="https://neurohubcommunity.org/2026/08/09/16166/" rel="noopener">2026 Autistic Mental Health Conference</a>, put it the other way round: <q>Cultivating resilience becomes an act of defiance.</q>',
     borders: ['cyclones-of-unmet-needs', 'shark-infested-waters', 'meerkat-mounds'],
     sibling: null,
   },
@@ -282,11 +293,11 @@ export const AREAS = [
     title: 'Panic Hills of Low Object Permanence',
     state: 'stuck',
     hot: [81, 63],
-    plain: "Out of sight, out of mind. Things, jobs and people you cannot see can drop away. Then you remember, and it is a shock.",
+    plain: "Out of sight, out of mind. Things, jobs and people you cannot see fall outside the attention tunnel. Then you remember, and it comes as a surprise.",
     gloss: 'Autistic children have difficulties with their understanding of: what’s here, what’s now, what is permanent, and so on.',
     who: { name: 'Wenn Lawson', url: 'https://www.researchgate.net/publication/319456203_Problems_with_Object_Permanence_Rethinking_Traditional_Beliefs_Associated_with_Poor_Theory_of_Mind_in_Autism' },
     stimpunks: 'https://stimpunks.org/glossary/object-permanence/',
-    helps: 'Making things visible. Out of sight really is out of mind here — for objects, for tasks, and for people — so open shelving, a visible list, and a friend who does not read silence as rejection do more than any reminder to try harder.',
+    helps: 'Making things visible. Out of sight really is out of mind here — for objects, for tasks, and for people — so open shelving, a visible list, a phone reminder or an app that keeps things in view, and a friend who does not read silence as rejection do more than any reminder to try harder.',
     borders: ['mountains-of-ruminating-thoughts', 'lake-of-limerence', 'tides-of-the-sensory-sea'],
     sibling: null,
   },
@@ -297,9 +308,9 @@ export const AREAS = [
     title: 'Forest of Joy, Awe and Wonder',
     state: 'social',
     hot: [62, 84],
-    plain: "Happiness so big that your body has to move. Flapping, bouncing, dancing. This is one of the best parts of being Autistic.",
+    plain: "Happiness so big that your body has to move. Flapping, bouncing, dancing. This is stimming, and it is one of the best parts of being Autistic.",
     gloss: 'Autistic joy is one of our favorite things about being autistic. It can be intense as a meltdown, but filled with overwhelming happiness and excitement. When we experience joy, we feel the excited vibrations throughout our bodies. To release the energy, we do a “happy stim.”',
-    who: { name: 'Blackwater', url: 'https://themighty.com/topic/autism-spectrum-disorder/how-i-experience-autistic-joy/' },
+    who: { name: 'Amelia Blackwater', url: 'https://themighty.com/topic/autism-spectrum-disorder/how-i-experience-autistic-joy/' },
     stimpunks: 'https://stimpunks.org/glossary/autistic-joy/',
     helps: 'Room to show it. Autistic joy is loud in the body, and an environment that requires it to be performed quietly is asking for the joy without the person.',
     borders: ['rhizomatic-communities', 'penguin-pebbling-cove-of-friendship', 'campsite-of-cavendish-spaces'],
@@ -328,11 +339,11 @@ export const AREAS = [
     title: 'Tides of the Sensory Sea',
     state: 'stuck',
     hot: [91, 79],
-    plain: "Sound, light, touch and smell come in strong. Some days much more than others. It is not a mood. It is your senses.",
+    plain: "Sound, light, touch, taste and smell come in strong. So do balance, body position, and signals from inside your body. Some days much more than others. It is not a mood. It is your senses.",
     gloss: 'Neurodivergent people are hypersensitive to mindset and environment due to a greater number of neuronal connections. They have both a higher risk for trauma and a large capacity for sensing safety.',
     who: { name: 'Janae Elisabeth', url: 'https://medium.com/age-of-awareness/neuroception-and-the-3-part-brain-b38f482c34b0' },
     stimpunks: 'https://stimpunks.org/access/sensory-experience/',
-    helps: 'Control over the inputs. Light you can dim, sound you can leave, fabric you chose — the tide is not a mood, and the lever is in the room rather than in the person.',
+    helps: 'Control over the inputs, and all eight senses counted. Light you can dim, sound you can leave, fabric you chose — and room for interoception, proprioception and the vestibular sense, which the familiar five leave out. The tide is not a mood, and the lever is in the room rather than in the person.',
     borders: ['panic-hills-of-low-object-permanence', 'sudden-storms-of-unexpected-events', 'burnout-whirlpools'],
     sibling: { name: 'Cavendish Cards', url: 'https://cavendish.space/deck.html' },
   },
@@ -364,7 +375,8 @@ export function validate() {
     if (seen.has(a.slug)) problems.push(`duplicate slug: ${a.slug}`);
     seen.add(a.slug);
     if (!STATES.has(a.state)) problems.push(`${a.slug}: unknown state "${a.state}"`);
-    /* Plain language, held to ASAN's shape: short sentences, one idea each. A long
+    /* Plain language, held to ASAN's shape (Autistic Self Advocacy Network): short
+       sentences, one idea each. A long
        sentence here is the failure mode — it is how a plain definition quietly turns
        back into the prose it was written to replace. */
     if (!a.plain) problems.push(`${a.slug}: no plain-language definition`);

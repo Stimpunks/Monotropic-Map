@@ -24,8 +24,8 @@ This is the part that is easy to get lazy about and the part that matters most. 
 | 3 | Tendril Theory | Erin Human (@EisforErin) |
 | 4 | Mountains of Ruminating Thoughts | Dusty Chipura |
 | 5 | Cyclones of Unmet Needs | Cassidy et al. |
-| 6 | Rabbit Holes of Research | — a shared idiom, no single originator |
-| 7 | Infodump Canyon | — community usage, no single originator |
+| 6 | Rabbit Holes of Research | Helen Edgar (the area; *down the rabbit hole* is a shared idiom) |
+| 7 | Infodump Canyon | Helen Edgar (the area; *infodump* is community usage) |
 | 8 | Rhizomatic Communities | Helen Edgar |
 | 9 | River of Monotropic Flow States | Fergus Murray |
 | 10 | Campsite of Cavendish Spaces | Ryan Boren |
@@ -35,7 +35,7 @@ This is the part that is easy to get lazy about and the part that matters most. 
 | 14 | Beach of Body Doubling | Jessica McCabe |
 | 15 | Burnout Whirlpools | Dora Raymaker |
 | 16 | Panic Hills of Low Object Permanence | Wenn Lawson |
-| 17 | Forest of Joy, Awe and Wonder | Blackwater |
+| 17 | Forest of Joy, Awe and Wonder | Amelia Blackwater |
 | 18 | Lake of Limerence | Dorothy Tennov (definition quoted from Psychology Today) |
 | 19 | Tides of the Sensory Sea | Janae Elisabeth |
 | 20 | Sudden Storms of Unexpected Events | Kieran Rose |
@@ -50,7 +50,11 @@ Recorded because the failure is instructive, not because it is interesting. On 2
 
 Every one came from filling in a first name that our own published page gave only as a surname. **A surname you can source beats a full name you cannot.** They were caught by opening the sources: the YouTube video is *An Introduction to Monotropism* by The Autistic Advocate — Kieran Rose — and the Medium graphics are Janae Elisabeth's.
 
-**Blackwater is still a surname only.** The byline is not on the live article on themighty.com. Ask Helen, or ask The Mighty, before writing a first name.
+**Blackwater's first name came from Helen, not from a guess.** The byline is not on the live article on themighty.com, and the site carried the surname alone until 2026-09-16, when Helen Edgar gave the full name and the profile it belongs to: **Amelia Blackwater**, [themighty.com/u/amelia-blackwater](https://themighty.com/u/amelia-blackwater). That is the rule working — a surname you can source held the page until somebody who knew could fill it in.
+
+## Two areas are Helen's own, and now say so
+
+**Rabbit Holes of Research and Infodump Canyon were recorded as having no single originator.** Both are Helen Edgar's own additions to the map; she said so on 2026-09-16. *Down the rabbit hole* is a shared English idiom and *infodump* is community usage, so the **definitions** quoted on those two pages are still general ones rather than quotations from her — `who` stays null and `coiner` is Helen Edgar. The page says exactly that, because crediting her with a sentence she did not write would be the same error in the other direction.
 
 ## The training slides
 
@@ -87,6 +91,26 @@ Intersectionality is **Kimberlé Crenshaw's**. The double empathy problem is **D
 ## Quoted definitions
 
 The definitions on the area pages are quoted from their originators or from the Stimpunks glossary, and each one is credited on the page with a link. They are short, attributed, and used for comment and education. **Original capitalization and wording are preserved in quotes even where they differ from house style** — several sources write "autistic" lowercase, and correcting someone else's words is not ours to do.
+
+### Area 13's gloss was our prose under somebody else's name
+
+**The Shark Infested Waters definition is a summary this site composed**, out of neuronormativity, behaviourism and the double empathy problem. Only the last of those three is **Damian Milton's**, and none of the sentences are his. Until 2026-09-16 the page printed it inside a `<blockquote>` with the credit *"Damian Milton — in their own words"* and a link to his Autscape handout, which reads as a quotation and is not one.
+
+**Fixed:** the passage is no longer marked up as a quotation, and the credit now says what it is — a summary written here, with the double empathy problem attributed to Milton and linked. `glossNote` in `areas.mjs` carries the wording; it is the same discipline as `who` and `coiner`, applied to the definition instead of the credit.
+
+## The water, and where the frame comes from
+
+**Area 13 borrows hydrofeminism from [Astrida Neimanis](https://doi.org/10.5040/9781474275415)** — *Bodies of Water: Posthuman Feminist Phenomenology* (Bloomsbury, 2017), and the earlier essay *"Hydrofeminism: Or, On Becoming a Body of Water"* in **Undutiful Daughters: New Directions in Feminist Thought and Practice**, eds. Gunkel, Nigianni and Söderbäck (Palgrave Macmillan, 2012).
+
+**Neimanis is not writing about neuronormativity**, and the page does not suggest otherwise. What is borrowed is the claim that bodies are permeable and water passes through them, so there is no clean edge where the outside stops. **Applying that to the water this map is drawn in is Helen Edgar's move, made in her review of 2026-09-16**, and the credit for the application belongs to her.
+
+### One quotation has no public recording
+
+**Burnout Whirlpools quotes Nick Walker: "Cultivating resilience becomes an act of defiance."** It is from a talk — *unorthodox approaches to Autistic psychological resilience* — given at the **2026 Autistic Mental Health Conference**, held online and in Brighton on 14–16 August 2026 by [NeuroHub Community](https://neurohubcommunity.org/2026/08/09/16166/).
+
+**There is no public video, transcript or published text of it.** Recordings went to ticket holders. What can be linked is the conference page that names Walker and the talk, and that is what the page links.
+
+**The wording rests on Helen Edgar, who was in the room and helped organise the event.** That is recorded here rather than left implicit, because it is a weaker basis than every other quotation on this site — those link to the words themselves. It is on the page because the map's author heard it said and vouches for it, not because we found it written down. **If a published version turns up, cite that instead.**
 
 ## Text that is ours
 
