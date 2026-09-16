@@ -24,6 +24,8 @@ The [workbook](https://autisticrealms.com/product/my-monotropic-map-workbook/) d
 
 Nothing you place is sent anywhere. There is no account, no upload and nowhere for a map to go: the site has no server that accepts one, and its own security headers forbid the browser from trying.
 
+**The words you write on a place of your own are yours.** They are kept the same way everything else here is — in this browser, on this device — and there is nowhere for them to go: no account, no upload, and security headers that forbid the page from trying. Nobody at Stimpunks or Autistic Realms can read them, because they never arrive anywhere to be read.
+
 Your map is kept in this browser, on this device, so it is still here when you come back — and it is gone the moment you clear the site's data, or press **Clear the map**. A different browser, or a different device, starts from blank ground.
 
 The shapes are [Stimpunks](https://stimpunks.org/)' own drawing and, like everything else here, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Take them, change them, pass them on.

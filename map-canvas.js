@@ -50,7 +50,10 @@
   var say = document.getElementById("canvas-say");
   var off = document.getElementById("canvas-off");
   var shapeBtns = [].slice.call(root.querySelectorAll(".shapebtn"));
-  var placeBtns = [].slice.call(root.querySelectorAll(".placebtn"));
+  /* The twenty, and not the "?" button — it wears the same class so it looks like one of
+     them, and for a while it behaved like one too: every click added a nameless place
+     beside the question mark, because this list had adopted it. */
+  var placeBtns = [].slice.call(root.querySelectorAll(".placebtn:not(.placebtn-own)"));
 
   /* The stage's own coordinates, read off the element rather than repeated here. */
   var box = (canvas.getAttribute("viewBox") || "0 0 1000 720").split(/\s+/);
@@ -116,8 +119,13 @@
     var nm = p.el.querySelector(".nm");
     if (nm) {
       var other = p.x > W * 0.58;
-      nm.setAttribute("x", other ? "-34" : "34");
+      var side = other ? "-34" : "34";
+      nm.setAttribute("x", side);
       nm.setAttribute("text-anchor", other ? "end" : "start");
+      /* A tspan carries its own x, and a tspan that keeps the old one ignores the flip
+         and hangs off the edge of the board. The words of a place of your own are set
+         in tspans, so they have to move with it. */
+      [].slice.call(nm.querySelectorAll("tspan")).forEach(function (t) { t.setAttribute("x", side); });
     }
   }
 
@@ -131,6 +139,14 @@
       var b = document.getElementById("canvas-" + id);
       if (b) b.disabled = !p;
     });
+    /* The writing strip belongs to the "?" pieces and appears only for them. A text box
+       that is always there is a text box a person has to work out the purpose of. */
+    var strip = document.getElementById("canvas-name");
+    if (strip) {
+      var own = !!p && p.kind === "own";
+      strip.hidden = !own;
+      if (own && nameInput) nameInput.value = p.text || "";
+    }
   }
 
   /* A copy of one of the drawings build.mjs wrote into the page. The id is dropped
@@ -150,7 +166,49 @@
     return e;
   }
 
-  function makePiece(kind, key, x, y, s, r, fx) {
+  /* YOUR WORDS GO IN AS TEXT, ALWAYS. Every one of these is written with textContent and
+     never innerHTML: what a person types is their sentence, not markup, and the one way
+     to be sure it is never read as markup is never to parse it as any. Sixty characters,
+     control characters stripped, and it goes nowhere but this device. */
+  var OWN_LIMIT = 60;
+  function clean(text) {
+    return String(text == null ? "" : text)
+      .replace(/[\x00-\x1f\x7f]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, OWN_LIMIT);
+  }
+
+  /* Two short lines rather than one long one running off the board. */
+  function wrap(text) {
+    if (text.length <= 26) return [text];
+    var words = text.split(" "), a = "", b = "";
+    for (var i = 0; i < words.length; i++) {
+      if (!b && (a + " " + words[i]).trim().length <= 26) a = (a + " " + words[i]).trim();
+      else b = (b + " " + words[i]).trim();
+    }
+    return b ? [a, b] : [a];
+  }
+
+  function drawOwn(p) {
+    var nm = p.el.querySelector(".nm");
+    if (!nm) return;
+    nm.textContent = "";
+    wrap(p.text || "").forEach(function (line, i) {
+      var t = el("tspan", { x: "34", dy: i === 0 ? "0" : "24" });
+      t.textContent = line;
+      nm.appendChild(t);
+    });
+    /* Unfilled it is a question, and the dashes say so. Filled it is a place, and the
+       ring stops asking. */
+    var mark = p.el.querySelector(".ownmark");
+    if (mark) mark.setAttribute("stroke-dasharray", p.text ? "none" : "6 5");
+    p.name = p.text || "An unnamed place of your own";
+    p.spoken = p.name;
+    place(p);
+  }
+
+  function makePiece(kind, key, x, y, s, r, fx, text) {
     var g = el("g", { "class": "piece", tabindex: "0", role: "button" });
     g.setAttribute("aria-roledescription", "Movable piece");
     var name;
@@ -165,6 +223,15 @@
       if (!art) return null;
       g.appendChild(art);
       g.appendChild(el("circle", { "class": "ring", r: "112", opacity: "0" }));
+    } else if (kind === "own") {
+      name = clean(text) || "An unnamed place of your own";
+      g.setAttribute("data-own", "yes");
+      g.appendChild(el("circle", { "class": "f-card s-tone ownmark", r: "24", "stroke-width": "4", "stroke-dasharray": "6 5" }));
+      var q = el("text", { "class": "f-fg", x: "0", y: "9", "text-anchor": "middle", "font-size": "24", "font-weight": "700" });
+      q.textContent = "?";
+      g.appendChild(q);
+      g.appendChild(el("text", { "class": "nm f-fg", x: "34", y: "8", "font-size": "21" }));
+      g.appendChild(el("circle", { "class": "ring", r: "38", opacity: "0" }));
     } else {
       var pl = PLACE[key];
       if (!pl) return null;
@@ -182,10 +249,12 @@
     }
 
     var spoken = kind === "shape" && SHAPE[key] && SHAPE[key].spoken ? SHAPE[key].spoken : name;
-    var p = { el: g, kind: kind, key: key, name: name, spoken: spoken, x: x, y: y, s: s, r: r || 0, fx: fx || 1 };
+    var p = { el: g, kind: kind, key: key, name: name, spoken: spoken, text: clean(text),
+              x: x, y: y, s: s, r: r || 0, fx: fx || 1 };
     pieces.push(p);
     stage.appendChild(g);
     place(p);
+    if (kind === "own") drawOwn(p);
     wire(p);
     return p;
   }
@@ -240,6 +309,11 @@
       else if (e.key === "[") { e.preventDefault(); turn(p, -15); return; }
       else if (e.key === "]") { e.preventDefault(); turn(p, 15); return; }
       else if (e.key === "f" || e.key === "F") { e.preventDefault(); mirror(p); return; }
+      else if ((e.key === "Enter" || e.key === " ") && p.kind === "own") {
+        e.preventDefault();
+        if (nameInput) { select(p); nameInput.focus(); nameInput.select(); }
+        return;
+      }
       else if (e.key === "Delete" || e.key === "Backspace") { e.preventDefault(); drop(p); return; }
       else moved = false;
       if (!moved) return;
@@ -282,7 +356,7 @@
      the bracket keys turn by a fifteenth of a turn, for a coastline that wants to sit
      at an angle of its own. */
   function turn(p, by) {
-    if (p.kind !== "shape") { speak("A numbered place stays the right way up."); return; }
+    if (p.kind !== "shape") { speak(p.kind === "own" ? "Your own place stays the right way up." : "A numbered place stays the right way up."); return; }
     p.r = ((p.r || 0) + by + 360) % 360;
     place(p);
     speak(p.spoken + " \u2014 turned, " + bearing(p) + ".");
@@ -290,7 +364,7 @@
   }
 
   function mirror(p) {
-    if (p.kind !== "shape") { speak("A numbered place stays the right way round."); return; }
+    if (p.kind !== "shape") { speak(p.kind === "own" ? "Your own place stays the right way round." : "A numbered place stays the right way round."); return; }
     p.fx = p.fx * -1;
     place(p);
     speak(p.spoken + " \u2014 flipped.");
@@ -326,6 +400,48 @@
     speak(p.spoken + " added, " + whereWords(x, y) + ". Drag it, or use the arrow keys.");
     markPlaced();
     record(p.spoken + " added", null);
+  }
+
+  /* ---- places of your own --------------------------------------------------- */
+
+  var nameInput = document.getElementById("canvas-name-input");
+
+  function addOwn() {
+    disarm();
+    dropAt = (dropAt + 1) % 6;
+    var x = W / 2 + (dropAt - 2.5) * 46;
+    var y = H / 2 + ((dropAt % 3) - 1) * 54;
+    var p = makePiece("own", "own", x, y, 1, 0, 1, "");
+    if (!p) return;
+    p.el.focus({ preventScroll: true });
+    select(p);
+    speak("A place of your own, " + whereWords(x, y) + ". Write what it is.");
+    record("a place of your own added", null);
+    if (nameInput) { nameInput.value = ""; nameInput.focus(); }
+  }
+
+  function saveWords() {
+    if (!selected || selected.kind !== "own" || !nameInput) return;
+    var was = selected.text;
+    var now = clean(nameInput.value);
+    if (now === was) return;
+    selected.text = now;
+    drawOwn(selected);
+    speak(now ? "Named — " + now + "." : "The words cleared. It is a question again.");
+    record(now ? "a place named" : "a name cleared", null);
+  }
+
+  var ownBtn = document.getElementById("canvas-own");
+  if (ownBtn) ownBtn.addEventListener("click", addOwn);
+  var saveBtn = document.getElementById("canvas-name-save");
+  if (saveBtn) saveBtn.addEventListener("click", saveWords);
+  if (nameInput) {
+    nameInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { e.preventDefault(); saveWords(); }
+      /* Escape gives the board back without writing anything. */
+      if (e.key === "Escape" && selected) { e.preventDefault(); nameInput.value = selected.text || ""; selected.el.focus(); }
+    });
+    nameInput.addEventListener("blur", saveWords);
   }
 
   /* The tray dims a place already on the map. Dimmed, not removed and not counted:
@@ -412,11 +528,13 @@
       return null;
     }).filter(Boolean);
     return byEl.map(function (p) {
-      return {
+      var rec = {
         k: p.kind, i: p.key,
         x: Math.round(p.x), y: Math.round(p.y),
         s: Number(p.s.toFixed(3)), r: p.r || 0, f: p.fx === -1 ? 1 : 0,
       };
+      if (p.kind === "own" && p.text) rec.w = p.text;
+      return rec;
     });
   }
 
@@ -436,12 +554,12 @@
       if (!rec || typeof rec !== "object") return;
       if (rec.k === "shape" && !SHAPE[rec.i]) return;
       if (rec.k === "place" && !PLACE[rec.i]) return;
-      if (rec.k !== "shape" && rec.k !== "place") return;
+      if (rec.k !== "shape" && rec.k !== "place" && rec.k !== "own") return;
       makePiece(rec.k, rec.i,
         Math.max(10, Math.min(W - 10, Number(rec.x) || W / 2)),
         Math.max(10, Math.min(H - 10, Number(rec.y) || H / 2)),
         Math.max(0.25, Math.min(4, Number(rec.s) || 1)),
-        Number(rec.r) || 0, rec.f ? -1 : 1);
+        Number(rec.r) || 0, rec.f ? -1 : 1, rec.w);
     });
     select(null);
     markPlaced();

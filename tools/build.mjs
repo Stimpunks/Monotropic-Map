@@ -682,8 +682,14 @@ ${defs}
       <g id="canvas-pieces"></g>
     </svg>
 
+    <div class="canvas-name" id="canvas-name" hidden>
+      <label for="canvas-name-input">Your words for this place</label>
+      <input type="text" id="canvas-name-input" maxlength="60" autocomplete="off" spellcheck="true">
+      <button class="btn" type="button" id="canvas-name-save">Save</button>
+    </div>
+
     <p class="canvas-say" id="canvas-say" role="status"></p>
-    <p class="canvas-keys">Drag a piece, or tab to it and use the <strong>arrow keys</strong> to move it, <strong>+</strong> and <strong>&#8722;</strong> to resize, <strong>[</strong> and <strong>]</strong> to turn it a little, <strong>f</strong> to flip it. <strong>Delete</strong> takes it off, and <strong>Ctrl</strong> or <strong>\u2318</strong> with <strong>Z</strong> undoes it. Rivers, paths and bridges are in the tray running four ways already; <strong>Turn</strong> moves a piece an eighth of a circle at a time, and <strong>Flip</strong> mirrors it, so anything can end up pointing anywhere.</p>
+    <p class="canvas-keys">Drag a piece, or tab to it and use the <strong>arrow keys</strong> to move it, <strong>+</strong> and <strong>&#8722;</strong> to resize, <strong>[</strong> and <strong>]</strong> to turn it a little, <strong>f</strong> to flip it. <strong>Delete</strong> takes it off, and <strong>Ctrl</strong> or <strong>\u2318</strong> with <strong>Z</strong> undoes it. On a <strong>?</strong> of your own, <strong>Enter</strong> opens it for writing. Rivers, paths and bridges are in the tray running four ways already; <strong>Turn</strong> moves a piece an eighth of a circle at a time, and <strong>Flip</strong> mirrors it, so anything can end up pointing anywhere.</p>
   </div>
 
   <div class="canvas-tray">
@@ -701,6 +707,14 @@ ${sets}
       <ul class="places">
 ${places}
       </ul>
+    </section>
+
+    <section>
+      <h4 class="trayhead">Places of your own</h4>
+      <p class="setnote">The twenty do not name everything. Put a <strong>?</strong> where something of yours belongs and write what it is &mdash; your words, kept on this device and nowhere else.</p>
+      <button class="placebtn placebtn-own" type="button" id="canvas-own">
+        <span class="placen">?</span><span>Add a place of your own</span>
+      </button>
     </section>
   </div>
 </section>

@@ -403,6 +403,24 @@ console.log('\nthe map builder');
       fail('the builder has no undo — clearing or dropping a piece would be final');
     }
 
+    /* WHAT A PERSON WRITES IS TEXT, NOT MARKUP. A place of your own holds words a reader
+       typed, and the one way to be certain they are never parsed as markup is never to
+       parse them: textContent only, nowhere near innerHTML. */
+    if (/id="canvas-own"/.test(html) && /id="canvas-name-input"/.test(html)) {
+      if (/\.innerHTML\s*=/.test(code)) fail('map-canvas.js assigns innerHTML — what a person writes must go in as text');
+      else pass('a place of your own can be written, and the words go in as text');
+    } else {
+      fail('the builder offers no place of your own — Helen\'s "?" is not built');
+    }
+
+    /* A reader's own words are the one thing here the site did not put on the page, so
+       the page has to say where they go. */
+    {
+      const md = readFileSync(join(ROOT, 'pages', 'draw.md'), 'utf8');
+      if (/words you write[\s\S]*?this device/i.test(md)) pass('the page says the words stay on the device');
+      else fail('draw.md does not say what happens to the words a person writes');
+    }
+
     /* MOVED BY ATTRIBUTES, NEVER BY STYLE. This is the rule the first live deploy
        taught, and a drag tool is exactly where it would be broken again. */
     if (/\.style\b/.test(code)) fail('map-canvas.js touches .style — style-src \'self\' blocks inline styles, so pieces move by transform attribute');
