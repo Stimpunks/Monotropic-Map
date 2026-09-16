@@ -545,6 +545,19 @@ div.gloss { border-inline-start: 1px solid var(--line); border-radius: 8px; }
   .canvas-tool { grid-template-columns: minmax(0, 1fr) 21rem; align-items: start; }
   .canvas-tool > h3, .canvas-tool > .canvas-lede, .canvas-tool > .shape-defs { grid-column: 1 / -1; }
 }
+
+/* THE BOARD FOLLOWS YOU DOWN THE TRAY. Ninety-one shapes is a long list, and scrolling
+   back up to see what you just put down is the difference between placing a piece and
+   guessing at one. It also puts the empty column beside the tray to work, which is more
+   than it was doing before.
+
+   Only where there is room for it. The offset clears the site header, which is sticky
+   itself and two rows tall at these widths, and the height condition keeps a board
+   taller than the window from being pinned with its own bottom cut off. Below either
+   threshold the page is one column and scrolls normally. */
+@media (min-width: 62rem) and (min-height: 44rem) {
+  .canvas-board { position: sticky; top: 6rem; }
+}
 .canvas-lede { max-width: var(--measure); color: var(--fg-soft); }
 .canvas-off {
   background: var(--wash); border-inline-start: 5px solid var(--accent);
@@ -619,7 +632,10 @@ div.gloss { border-inline-start: 1px solid var(--line); border-radius: 8px; }
 .shapebtn:hover { border-color: var(--accent); }
 .shapebtn svg { display: block; }
 
-.places { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; max-height: 24rem; overflow-y: auto; }
+/* The twenty used to scroll inside their own box, because the board was long gone by
+   the time you reached them. With the board following you down there is no reason for a
+   second scrollbar inside the first. */
+.places { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
 .places li { margin: 0; }
 .placebtn {
   width: 100%; display: flex; gap: 0.55rem; align-items: center; text-align: start;
