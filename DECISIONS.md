@@ -48,7 +48,13 @@ They are now a `<picture>` chain: WebP first, **the original PNG still there as 
 
 **`check.mjs` also fails on a `<source>` pointing at a file that is not there.** That failure is invisible by design: the browser drops silently to the `<img>` fallback, so the page looks perfect while every visitor downloads the big PNG. Same shape as the inline-style bug — correct-looking and wrong. Both gates were tested by breaking them.
 
-**Not done, and worth knowing: AVIF is dramatically better here.** Lossless AVIF measured 231 KB and 72 KB against WebP's 376 KB and 220 KB — the domination map is a quarter of the size again. The spec says to encode AVIF first and keep the chain. It was left out of this pass only because WebP was what was asked for; adding a third `<source>` is one line and the tool already has the encoder.
+**AVIF was tried and rejected, and the reason is a trap worth writing down.** The first measurement said lossless AVIF was 231 KB and 72 KB, against WebP's 376 KB and 220 KB — dramatically better, and it was recorded here as such. **It was wrong.** Those files came from Pillow's `lossless=True`, which for AVIF silently produces *lossy* output: decoding it back and comparing to the PNG showed 2.8 million bytes altered. Pillow also accepts `matrix_coefficients=0` and ignores it, returning a byte-identical file, so the parameter that would have fixed it fails silently too.
+
+**True lossless AVIF is bigger than the PNG, never mind the WebP.** `avifenc --lossless`, which sets the identity matrix and does decode pixel-for-pixel, gives **1,410,221 bytes** for the main map and **382,390** for the other at maximum effort `-s 0` — against WebP's 376 KB and 220 KB. Adding AVIF would have tripled the front page's largest asset. It is not in the chain and should not be added on the strength of a number nobody decoded and checked.
+
+**Lossy AVIF is genuinely much smaller — 231 KB and 72 KB — and it is Helen's call, not ours.** It alters her artwork, which is the one thing `ATTRIBUTIONS.md` says we do not do. It is worth asking her, because 72 KB against 220 KB is a real difference for anybody on a slow connection; it is not worth assuming.
+
+**The general lesson, and it is the same one the CSP taught: a flag is a claim, and only a comparison is evidence.** `make-map-webp.py` decodes and compares for exactly this reason, and it is what caught this.
 
 ### My Monotropic Map, version one, marks Helen's map and emits no number
 Built 2026-09-15, on Ryan's call, into `stories.html` rather than a page of its own — the page already promised it, in that exact spot, under *Mark where you are*, and "Your map" in the nav already led here. A separate URL would have meant an eighth nav item or a page reachable only by a link from the page that describes it.
