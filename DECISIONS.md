@@ -71,7 +71,9 @@ Settled 2026-09-16, on Ryan's call, and it closes the licence question above rat
 
 **The twenty illustrations are arrangements, not new drawings.** Each is a short list of shapes the builder already offers, placed and sized and turned, so an area's artwork is four or five readable lines and every part of it has already been seen to render. The palette and the illustrations cannot drift apart: a change to a shape reaches all twenty at once.
 
-**They are not a second map.** They are pictures of the twenty ideas in our hand, for the builder's tray. **The map is Helen's** — the island, the arrangement, the wording printed on it. Putting these illustrations anywhere that speaks for the map itself, the area pages included, is a question for her before it is a commit.
+**They are on the twenty area pages as well as in the tray**, added 2026-09-16 on Ryan's call. The first version carried a caption saying the drawing was ours and *not* from Helen's map — twenty pages carrying a denial nobody had asked for, which plants the doubt it is trying to settle, and which treats her map as something to be kept at arm's length from the rest of the site. It does not need protecting from a drawing of a tent. **Who drew what is recorded here and in `ATTRIBUTIONS.md`**, which is where a provenance question gets answered. The caption on the page now says what the drawing is made of and links to the builder, so a reader who likes it can go and use the same pieces.
+
+**They are still not a second map.** The island, the arrangement and the wording printed on the artwork are Helen's.
 
 ### Attention Tunnels keeps our replacement wording, not Helen's suggestion
 

@@ -13,7 +13,7 @@ import { AREAS, STATES, BY_SLUG, validate } from './areas.mjs';
 import { ZONES, validate as validateZones } from './domination.mjs';
 import { SLIDES, validate as validateSlides } from './slides.mjs';
 import { SHAPES, SETS, validate as validateShapes } from './shapes.mjs';
-import { composeAreaArt, validate as validateAreaArt } from './area-art.mjs';
+import { AREA_ART, composeAreaArt, validate as validateAreaArt } from './area-art.mjs';
 
 /* The twenty, drawn in our own hand, composed from the shapes above and offered in the
    builder like any other drawing. They are added to the vocabulary rather than kept
@@ -323,6 +323,32 @@ ${stateGroups()}`;
   });
 }
 
+
+/**
+ * The area's own illustration, inlined on its page.
+ *
+ * THE CAPTION IS AN INVITATION, NOT A DISCLAIMER. An earlier version said this was
+ * drawn by Stimpunks and *not* from Helen's map — twenty pages carrying a denial
+ * nobody had asked for, which plants the doubt it is trying to settle. Who drew what
+ * is recorded in ATTRIBUTIONS.md, which is where a provenance question gets answered.
+ * What is worth saying on the page is that the drawing is made of pieces the reader
+ * can pick up themselves, and where to go and do it.
+ *
+ * The parts name themselves. An accessible name is built from the shapes the drawing
+ * is made of — "shore, pair" — rather than written out by hand for twenty areas and
+ * left to drift the first time a composition changes.
+ */
+function areaArtFigure(a) {
+  const art = SHAPES[`area${a.n}`];
+  if (!art) return '';
+  const parts = (AREA_ART[a.slug] || []).map((p) => (SHAPES[p.shape] || {}).name || p.shape);
+  const made = parts.length ? parts.join(', ').toLowerCase() : 'the builder\u2019s shapes';
+  return `<figure class="areaart" data-tone="${a.state}">
+  <svg viewBox="-118 -92 236 184" role="img" aria-label="This area drawn with the map builder\u2019s shapes: ${esc(made)}.">${paintToClasses(art.draw, `area${a.n}`)}</svg>
+  <figcaption>${esc(made.charAt(0).toUpperCase() + made.slice(1))} &mdash; drawn with shapes from the <a href="draw.html">map builder</a>, which you can use to draw your own.</figcaption>
+</figure>`;
+}
+
 function buildArea(a) {
   const prev = AREAS[(a.n - 2 + 20) % 20];
   const next = AREAS[a.n % 20];
@@ -336,6 +362,8 @@ function buildArea(a) {
   const body = `<div class="areahead" data-tone="${a.state}">
   <p><span class="tag">${esc(st.name)}</span></p>
 </div>
+
+${areaArtFigure(a)}
 
 <section class="plain" data-tone="${a.state}" aria-labelledby="plain-heading">
   <h2 id="plain-heading">In plain words</h2>

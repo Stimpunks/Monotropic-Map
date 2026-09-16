@@ -402,6 +402,29 @@ console.log('\nthe map builder');
   }
 }
 
+/* ---- 6e. the area illustrations -------------------------------------------- */
+/* Twenty pages, twenty drawings, each with a name a screen reader can use and a way
+   through to the tool it is made of. Who drew it is ATTRIBUTIONS.md's job, not a line
+   repeated under every picture. */
+console.log('\nthe area illustrations');
+{
+  let missing = 0, unattributed = 0, unnamed = 0;
+  for (const a of AREAS) {
+    const html = readFileSync(join(ROOT, `${a.slug}.html`), 'utf8');
+    const fig = html.match(/<figure class="areaart"[\s\S]*?<\/figure>/);
+    if (!fig) { missing++; fail(`${a.slug}.html has no illustration`); continue; }
+    if (!/href="draw\.html"/.test(fig[0])) {
+      unattributed++;
+      fail(`${a.slug}.html: the illustration does not lead to the builder it is made of`);
+    }
+    if (!/role="img" aria-label="[^"]{20,}"/.test(fig[0])) {
+      unnamed++;
+      fail(`${a.slug}.html: the illustration has no usable accessible name`);
+    }
+  }
+  if (!missing && !unattributed && !unnamed) pass('all twenty area pages carry an illustration, named and linked to the builder');
+}
+
 /* ---- 7. contrast --------------------------------------------------------- */
 console.log('\ncontrast (WCAG AA, 4.5:1 for body text)');
 {
