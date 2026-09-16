@@ -61,8 +61,6 @@ It is no longer a blockquote, and the credit says what it is: a summary written 
 
 ### What did not change, and why
 
-**One word is still open: "echohydrofeminism."** That is how Helen wrote it and it returns nothing anywhere. The page uses **hydrofeminism**, which is Neimanis's own term and sourceable. If the other is Helen's own word, it should be credited as hers rather than quietly corrected — and that is a question for her, not a guess for us.
-
 **The capital A on Autistic was already house style** and stays lowercase inside quotations that were written that way.
 
 ----

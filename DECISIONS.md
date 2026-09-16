@@ -5,8 +5,6 @@ What was chosen while building this site, and what is still open. Read before re
 ## Open
 
 ### One thing in Helen's review is still open
-**The spelling of "echohydrofeminism."** That is how Helen wrote it, and it returns nothing anywhere. The established term is **hydrofeminism**, Astrida Neimanis's, and that is what area 13 says. Whether hers is a slip for it, a compound with *eco-*, or her own word doing work that *hydrofeminism* alone does not do, only she can say. **We are not printing a term we cannot source**, which is the same rule that kept Blackwater a surname. If it is hers, it should be credited as hers.
-
 **The Attention Tunnels replacement is not her wording.** She asked for an alternative to "a tunnel is cheap to stay in and expensive to re-enter" and offered "easy to settle into and hard to leave," marked as wanting Ryan's take. Those say different things: the original is about the cost of *coming back after an interruption*, not the cost of leaving. The page now reads "easy to settle into and hard to get back into once you have been pulled out of it," which keeps the meaning and drops the word she objected to. **If she meant the leaving, the paragraph is about the wrong thing and wants rewriting rather than rewording.**
 
 ### Two sets of our own words sit on Helen's map, and she has reviewed both
