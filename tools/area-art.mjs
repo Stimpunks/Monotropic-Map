@@ -174,9 +174,14 @@ export function composeAreaArt(SHAPES, AREAS) {
       if (p.s || p.flip) moves.push(`scale(${(p.s ?? 1) * (p.flip ? -1 : 1)} ${p.s ?? 1})`);
       return `<g data-tone="${base.tone}"${moves.length ? ` transform="${moves.join(' ')}"` : ''}>${base.draw}</g>`;
     }).join('');
+    const full = String(area.label).replace(/&amp;/g, '&').replace(/<[^>]+>/g, '');
     out[`area${area.n}`] = {
       set: 'areas',
-      name: String(area.label).replace(/&amp;/g, '&').replace(/<[^>]+>/g, ''),
+      name: full,
+      /* Shown in the tray where a long name would stretch the whole row. It is the
+         front of the real name, never a different one, and `name` above is what a
+         screen reader announces and what a placed piece is called. */
+      short: area.short ? String(area.short).replace(/&amp;/g, '&') : undefined,
       tone: area.state,
       draw,
     };

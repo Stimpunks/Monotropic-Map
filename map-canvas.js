@@ -67,6 +67,12 @@
   shapeBtns.forEach(function (b) {
     SHAPE[b.getAttribute("data-shape")] = {
       name: b.getAttribute("data-name") || b.getAttribute("data-shape"),
+      /* What to say when a piece moves. One of the twenty is eighty-four characters
+         long, and a live region that reads all of it on every arrow press is a live
+         region a person turns off. The full name stays on the piece itself, which is
+         what a screen reader reads when it lands there. */
+      spoken: b.getAttribute("data-short") || b.getAttribute("data-name") || "",
+      short: b.getAttribute("data-short") || "",
       tone: b.getAttribute("data-tone") || "",
       back: b.getAttribute("data-back") === "yes",
       size: parseFloat(b.getAttribute("data-size")) || 1,
@@ -175,7 +181,8 @@
       g.appendChild(el("circle", { "class": "ring", r: "38", opacity: "0" }));
     }
 
-    var p = { el: g, kind: kind, key: key, name: name, x: x, y: y, s: s, r: r || 0, fx: fx || 1 };
+    var spoken = kind === "shape" && SHAPE[key] && SHAPE[key].spoken ? SHAPE[key].spoken : name;
+    var p = { el: g, kind: kind, key: key, name: name, spoken: spoken, x: x, y: y, s: s, r: r || 0, fx: fx || 1 };
     pieces.push(p);
     stage.appendChild(g);
     place(p);
@@ -211,7 +218,7 @@
         g.removeEventListener("pointermove", move);
         g.removeEventListener("pointerup", up);
         g.removeEventListener("pointercancel", up);
-        if (moved) { speak(p.name + " — " + whereWords(p.x, p.y) + "."); save(); }
+        if (moved) { speak(p.spoken + " — " + whereWords(p.x, p.y) + "."); save(); }
         g.focus({ preventScroll: true });
       }
       g.addEventListener("pointermove", move);
@@ -238,18 +245,18 @@
       if (!moved) return;
       e.preventDefault();
       place(p);
-      speak(p.name + " — " + whereWords(p.x, p.y) + ".");
+      speak(p.spoken + " — " + whereWords(p.x, p.y) + ".");
       save();
     });
   }
 
   function resize(p, by) {
     var next = p.s * by;
-    if (next > 4) { speak(p.name + " is as big as it goes."); return; }
-    if (next < 0.25) { speak(p.name + " is as small as it goes."); return; }
+    if (next > 4) { speak(p.spoken + " is as big as it goes."); return; }
+    if (next < 0.25) { speak(p.spoken + " is as small as it goes."); return; }
     p.s = next;
     place(p);
-    speak(p.name + (by > 1 ? " — bigger." : " — smaller."));
+    speak(p.spoken + (by > 1 ? " — bigger." : " — smaller."));
     save();
   }
 
@@ -294,7 +301,7 @@
     if (p.el.parentNode) p.el.parentNode.removeChild(p.el);
     pieces = pieces.filter(function (q) { return q !== p; });
     if (selected === p) select(null);
-    speak(p.name + " taken off the map.");
+    speak(p.spoken + " taken off the map.");
     markPlaced();
     save();
   }
@@ -316,7 +323,7 @@
     if (back) stage.insertBefore(p.el, stage.firstChild);
     p.el.focus({ preventScroll: true });
     select(p);
-    speak(p.name + " added, " + whereWords(x, y) + ". Drag it, or use the arrow keys.");
+    speak(p.spoken + " added, " + whereWords(x, y) + ". Drag it, or use the arrow keys.");
     markPlaced();
     save();
   }

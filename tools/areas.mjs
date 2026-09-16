@@ -77,6 +77,7 @@ export const AREAS = [
     n: 2,
     slug: 'penguin-pebbling-cove-of-friendship',
     label: 'Penguin Pebbling Cove of Friendship',
+    short: 'Penguin Pebbling Cove',
     title: 'Penguin Pebbling Cove of Friendship',
     state: 'social',
     hot: [60, 16],
@@ -107,6 +108,7 @@ export const AREAS = [
     n: 4,
     slug: 'mountains-of-ruminating-thoughts',
     label: 'Mountains of Ruminating Thoughts',
+    short: 'Mountains of Ruminating',
     title: 'Mountains of Ruminating Thoughts',
     state: 'stuck',
     hot: [7, 19],
@@ -184,6 +186,7 @@ export const AREAS = [
     n: 9,
     slug: 'river-of-monotropic-flow-states',
     label: 'River of Monotropic Flow States',
+    short: 'River of Monotropic Flow',
     title: 'River of Monotropic Flow States',
     state: 'flow',
     hot: [54, 46],
@@ -199,6 +202,7 @@ export const AREAS = [
     n: 10,
     slug: 'campsite-of-cavendish-spaces',
     label: 'Campsite of Cavendish Spaces',
+    short: 'Campsite of Cavendish',
     title: 'Campsite of Cavendish Spaces',
     state: 'social',
     hot: [78, 46],
@@ -229,6 +233,7 @@ export const AREAS = [
     n: 12,
     slug: 'river-banks-of-monotropic-time',
     label: 'River Banks of Monotropic Time',
+    short: 'River Banks',
     title: 'Riverbanks of Monotropic Time',
     state: 'flow',
     hot: [39, 48],
@@ -244,6 +249,7 @@ export const AREAS = [
     n: 13,
     slug: 'shark-infested-waters',
     label: 'Shark Infested Waters of Neuronormativity and Behaviourism &amp; Double Empathy Problems',
+    short: 'Shark Infested Waters',
     title: 'Shark Infested Waters',
     state: 'pressure',
     hot: [11, 91],
@@ -290,6 +296,7 @@ export const AREAS = [
     n: 16,
     slug: 'panic-hills-of-low-object-permanence',
     label: 'Panic Hills of Low Object Permanence',
+    short: 'Panic Hills',
     title: 'Panic Hills of Low Object Permanence',
     state: 'stuck',
     hot: [81, 63],
@@ -305,6 +312,7 @@ export const AREAS = [
     n: 17,
     slug: 'forest-of-joy-awe-and-wonder',
     label: 'Forest of Joy, Awe &amp; Wonder',
+    short: 'Forest of Joy',
     title: 'Forest of Joy, Awe and Wonder',
     state: 'social',
     hot: [62, 84],
@@ -351,6 +359,7 @@ export const AREAS = [
     n: 20,
     slug: 'sudden-storms-of-unexpected-events',
     label: 'Sudden Storms of Unexpected Events',
+    short: 'Sudden Storms',
     title: 'Sudden Storms of Unexpected Events',
     state: 'stuck',
     hot: [14, 6],
@@ -375,6 +384,18 @@ export function validate() {
     if (seen.has(a.slug)) problems.push(`duplicate slug: ${a.slug}`);
     seen.add(a.slug);
     if (!STATES.has(a.state)) problems.push(`${a.slug}: unknown state "${a.state}"`);
+    /* A SHORT NAME IS THE FRONT OF THE REAL NAME AND NOTHING ELSE. The builder's tray
+       shows it, because one eighty-four-character label stretches every button in the
+       row and leaves the drawings sitting in uneven cells. Shortening what is *shown*
+       is a display decision; shortening what a thing is called would be renaming one
+       of Helen's areas, which is not ours to do. So it has to be a prefix, it has to
+       be shorter, and the full name stays in the accessible name either way. */
+    if (a.short !== undefined) {
+      const full = String(a.label).replace(/&amp;/g, '&');
+      const short = String(a.short).replace(/&amp;/g, '&');
+      if (!full.startsWith(short)) problems.push(`${a.slug}: short name "${short}" is not the beginning of "${full}" — a short name may trim a name, never change it`);
+      if (short.length >= full.length) problems.push(`${a.slug}: short name is not shorter than the name`);
+    }
     /* Plain language, held to ASAN's shape (Autistic Self Advocacy Network): short
        sentences, one idea each. A long
        sentence here is the failure mode — it is how a plain definition quietly turns

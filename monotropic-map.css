@@ -598,11 +598,23 @@ div.gloss { border-inline-start: 1px solid var(--line); border-radius: 8px; }
   text-transform: uppercase; color: var(--fg-soft);
 }
 .shapes { display: grid; grid-template-columns: repeat(auto-fill, minmax(5.2rem, 1fr)); gap: 0.5rem; }
+/* EVERY TILE THE SAME HEIGHT, whatever it is called. A grid row is as tall as its
+   tallest item, so one eighty-four-character area name used to stretch its whole row
+   and leave the drawings floating in uneven cells. Two things stop that: the tray
+   shows a short name (see `short` in areas.mjs — the front of the real name, with the
+   full one still in the accessible name), and the label is clamped to two lines here
+   so the next long name cannot do it again. */
 .shapebtn {
-  display: grid; gap: 0.25rem; place-items: center; padding: 0.5rem 0.3rem;
+  display: grid; gap: 0.25rem; place-items: center; align-content: start;
+  padding: 0.5rem 0.3rem; min-height: 6.4rem;
   background: var(--card); color: var(--fg);
   border: 1px solid var(--line); border-radius: 10px;
   font: inherit; font-size: 0.78rem; cursor: pointer;
+}
+.shapebtn > span[aria-hidden] {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  line-clamp: 2; overflow: hidden;
+  text-align: center; line-height: 1.25; text-wrap: balance;
 }
 .shapebtn:hover { border-color: var(--accent); }
 .shapebtn svg { display: block; }

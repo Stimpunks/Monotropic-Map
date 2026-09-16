@@ -608,10 +608,11 @@ function canvasTool() {
 
   const sets = SETS.map(([setId, setName, setNote]) => {
     const buttons = Object.entries(SHAPES).filter(([, sh]) => sh.set === setId).map(([id, sh]) =>
-      `        <button class="shapebtn" type="button" data-shape="${id}" data-name="${esc(sh.name)}" data-tone="${sh.tone}"${
+      `        <button class="shapebtn" type="button" data-shape="${id}" data-name="${esc(sh.name)}"${sh.short ? ` data-short="${esc(sh.short)}"` : ''} data-tone="${sh.tone}"${
         sh.back ? ' data-back="yes"' : ''}${sh.size ? ` data-size="${sh.size}"` : ''}${sh.angle ? ` data-angle="${sh.angle}"` : ''}>
           <svg class="shapeprev" viewBox="-112 -84 224 168" width="58" height="44" aria-hidden="true" focusable="false"></svg>
-          <span>${esc(sh.name)}</span>
+          <span aria-hidden="true">${esc(sh.short ? sh.short + '\u2026' : sh.name)}</span>
+          <span class="sr">${esc(sh.name)}</span>
         </button>`).join('\n');
     return `      <section class="shapeset">
         <h4>${esc(setName)}</h4>
