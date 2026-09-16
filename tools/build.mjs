@@ -658,7 +658,7 @@ ${buttons}
 
   return `<section class="canvas-tool" id="map-canvas" aria-labelledby="canvas-h" hidden>
   <h3 id="canvas-h">Draw your own map</h3>
-  <p class="canvas-lede">Put an island down, add what belongs on it, and move things until it looks like your year. Nothing you draw leaves this device, there is no score at the end, and no two maps are supposed to match.</p>
+  <p class="canvas-lede">The board is fresh water. Put land where you need it, join it up with rivers, bridges and boats, and move things until it looks like your year. Nothing you draw leaves this device, there is no score at the end, and no two maps are supposed to match.</p>
 
   <svg class="shape-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
 ${defs}

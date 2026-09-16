@@ -117,6 +117,14 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+/* `hidden` MEANS HIDDEN, whatever else a rule says about display. The attribute is only
+   a UA default, so any class that sets `display` outranks it — which is how the writing
+   strip for a place of your own shipped visible under every piece on the board, `hidden`
+   dutifully set to true and ignored. Everything on this site that reveals itself with a
+   script relies on this: the theme toggle, the builder, the buttons in the marking
+   tool. */
+[hidden] { display: none !important; }
+
 body {
   margin: 0;
   padding-block: 0;
@@ -635,6 +643,9 @@ div.gloss { border-inline-start: 1px solid var(--line); border-radius: 8px; }
 .f-leaf   { fill: var(--leaf); }
 .f-social { fill: var(--social); }
 .s-tone   { stroke: var(--tone, var(--accent)); }
+.s-ground { stroke: var(--wash); }
+.s-card   { stroke: var(--card); }
+.s-leaf   { stroke: var(--leaf); }
 .s-fg     { stroke: var(--fg); }
 .s-flow   { stroke: var(--flow); }
 .s-social { stroke: var(--social); }

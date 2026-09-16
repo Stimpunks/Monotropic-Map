@@ -403,6 +403,32 @@ console.log('\nthe map builder');
       fail('the builder has no undo — clearing or dropping a piece would be final');
     }
 
+    /* `hidden` HAS TO WIN. This whole page is built on it: the board ships hidden and the
+       script reveals it, the writing strip appears only for a "?", the no-JavaScript
+       note hides itself. The attribute is a UA default that any class setting `display`
+       silently beats, so the stylesheet has to say so out loud. */
+    {
+      const css = readFileSync(join(ROOT, 'monotropic-map.css'), 'utf8');
+      if (/\[hidden\]\s*\{[^}]*display:\s*none\s*!important/.test(css)) pass('the stylesheet makes `hidden` outrank display');
+      else fail('nothing in the stylesheet makes [hidden] beat a class that sets display — anything revealed by script can ship visible');
+    }
+
+    /* EVERY PAINT CLASS THE BUILD EMITS HAS A RULE. build.mjs turns fill="var(--x)" into
+       a class, and a class with no rule behind it is not a colour — it is the initial
+       fill, which is black, or no stroke at all. That is how a bridge shipped with
+       invisible planks: the drawing asked for a stroke in the ground colour, the build
+       wrote s-ground, and only f-ground had ever been written in the stylesheet. */
+    {
+      const css = readFileSync(join(ROOT, 'monotropic-map.css'), 'utf8');
+      const used = new Set();
+      for (const m of html.matchAll(/class="([^"]*)"/g)) {
+        for (const c of m[1].split(/\s+/)) if (/^[fs]-[a-z]+$/.test(c)) used.add(c);
+      }
+      const orphans = [...used].filter((c) => !new RegExp(`\\.${c}\\s*[,{]`).test(css));
+      if (orphans.length) fail(`paint classes with no rule in the stylesheet: ${orphans.join(', ')} — they render as black, or as nothing`);
+      else pass(`all ${used.size} paint classes the build emits have a rule behind them`);
+    }
+
     /* WHAT A PERSON WRITES IS TEXT, NOT MARKUP. A place of your own holds words a reader
        typed, and the one way to be certain they are never parsed as markup is never to
        parse them: textContent only, nowhere near innerHTML. */

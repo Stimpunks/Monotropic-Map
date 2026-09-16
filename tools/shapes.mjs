@@ -59,6 +59,11 @@ export const SHAPES = {
      five posts, which read as a bridge lying level and as a jumble at every other
      angle — and these are offered at four angles. */
   bridge:  { set:"ways", name:"Bridge",  tone:"soft",     draw:'<g><path d="M -70 16 C -44 -32 -14 -48 0 -48 C 14 -48 44 -32 70 16" fill="none" stroke="TONE" stroke-width="10" opacity="0.5"/><rect x="-86" y="6" width="16" height="38" rx="5" fill="TONE" opacity="0.7"/><rect x="70" y="6" width="16" height="38" rx="5" fill="TONE" opacity="0.7"/><rect x="-100" y="-14" width="200" height="21" rx="8" fill="TONE" opacity="0.9"/><rect x="-100" y="-26" width="200" height="7" rx="3" fill="TONE" opacity="0.45"/></g>' },
+  /* A BRIDGE FROM ABOVE, which is the one that survives being turned. The side view
+     below has an implied up in it, so at forty-five degrees it reads as a bridge tilted
+     in the air rather than a crossing laid at an angle. A plan view has no up: turn it
+     and it is still a crossing, which is what you want between two islands. */
+  span:    { set:"ways", name:"Span",    tone:"soft",     draw:"SPAN" },
   delta:   { set:"ways", name:"Delta",   tone:"flow",     draw:'<g fill="none" stroke="TONE" stroke-linecap="round" opacity="0.85"><path d="M -100 -14 C -56 -28 -34 -8 -10 -2" stroke-width="26"/><path d="M -12 -2 C 18 4 42 20 98 32" stroke-width="17"/><path d="M -12 -2 C 18 -10 44 -24 98 -36" stroke-width="15"/><path d="M -12 -2 C 14 -2 44 0 96 -2" stroke-width="11" opacity="0.8"/></g>' },
   spiral:  { set:"ways", name:"Spiral",  tone:"flow",     draw:"SPIRAL" },
 
@@ -105,60 +110,22 @@ export const SHAPES = {
   pine:     { set:"things", name:"Pine",     tone:"leaf",   draw:'<g><rect x="-9" y="26" width="18" height="34" rx="5" fill="var(--social)" opacity="0.8"/><g fill="TONE" opacity="0.9"><path d="M 0 -64 L 28 -20 L -28 -20 Z"/><path d="M 0 -40 L 40 8 L -40 8 Z"/><path d="M 0 -14 L 52 40 L -52 40 Z"/></g></g>' }
 };
 
+/* THE TRAY OPENS WITH JOINING. It used to open with "Start here" on a set of single
+   islands, which taught the tool's first lesson as *put yourself on your own rock* —
+   and separate islands are the arrangement the map's author named as the neuronormative
+   one. The board is already fresh water. So the first thing offered is what crosses it,
+   and land comes after, described as something that need not sit on its own. */
 export const SETS = [
+  ["ways",   "Water, and the ways across it", "The board is fresh water. Rivers run through a map, bridges cross to another one, boats go between. Nothing here has to be marooned to be yours."],
   ["areas",  "The twenty, drawn", "Each of Helen's twenty areas as we picture it. Ours, not hers — use them, or build your own out of the shapes below."],
-  ["islands","Islands", "Start here. These go behind everything else."],
+  ["islands","Land", "Ground to stand on, as much or as little as you want. It drops behind everything else — and it does not have to sit on its own."],
   ["ground", "Ground",  "What an area is made of."],
-  ["ways",   "Ways",    "Things you travel along, or round and round."],
   ["marks",  "Marks",   "Things that sit on the ground."],
   ["things", "Things",  "The twenty, covered. Drawn by us, from scratch — combine them, and nobody's map has to look like anybody else's."]
 ];
 
 /* Three shapes are generated rather than typed out, because long hand-written
    path data is where drawings go wrong silently. */
-/* ---- the ways run in more than one direction ------------------------------
- *
- * A river drawn left to right is a river that runs left to right, and a tray full of
- * horizontal squiggles quietly says that is the only way a river goes. So the six
- * shapes with a direction in them are offered four ways each — level, rising, falling
- * and straight down the map — and with Flip that reaches all eight compass bearings
- * without anybody having to find the Turn button first.
- *
- * THEY ARE ROTATIONS OF ONE DRAWING, not four drawings. The base shape is defined once
- * above; these wrap it in a rotate() and take a plain-language name. Four hand-drawn
- * bands would be four bands to keep in step with each other.
- *
- * The base keeps its own id, so a map somebody has already drawn still finds its
- * pieces. */
-const DIRECTED = ['band', 'path', 'reach', 'meander', 'delta', 'bridge'];
-const BEARINGS = [['Rising', -45], ['Down', 90], ['Falling', 45]];
-
-{
-  /* Rebuilt in order rather than appended, so a shape's own directions sit next to it
-     in the tray instead of in a heap at the end of the set. */
-  const ordered = {};
-  for (const [id, base] of Object.entries(SHAPES)) {
-    ordered[id] = base;
-    if (!DIRECTED.includes(id)) continue;
-    for (const [word, angle] of BEARINGS) {
-      ordered[id + word] = {
-        set: base.set,
-        name: `${base.name} ${word.toLowerCase()}`,
-        tone: base.tone,
-        /* The angle is baked into the drawing, so it has to be recorded too: the tool
-           says which way a piece runs, and a variant that does not carry its own angle
-           would be described as though it were still lying level. */
-        angle: (angle + 360) % 360,
-        draw: `<g transform="rotate(${angle})">${base.draw}</g>`,
-      };
-    }
-  }
-  const missing = DIRECTED.filter((id) => !SHAPES[id]);
-  if (missing.length) throw new Error(`shapes: listed as directed but not defined: ${missing.join(', ')}`);
-  for (const id of Object.keys(SHAPES)) delete SHAPES[id];
-  Object.assign(SHAPES, ordered);
-}
-
 (function generate() {
   var pts = [], k, a, r;
   for (k = 0; k < 150; k++) { a = k * 0.22; r = 3 + k * 0.52; pts.push((r*Math.cos(a)).toFixed(1) + "," + (r*Math.sin(a)).toFixed(1)); }
@@ -180,6 +147,19 @@ const BEARINGS = [['Rising', -45], ['Down', 90], ['Falling', 45]];
   }
   SHAPES.burst.draw = '<g stroke="TONE" stroke-width="9" stroke-linecap="round" opacity="0.85">' + rays +
                       '</g><circle r="13" fill="TONE" opacity="0.85"/>';
+
+  /* Evenly spaced planks typed by hand are planks typed wrong. */
+  var planks = "";
+  for (k = -4; k <= 4; k++) {
+    planks += '<line x1="' + (k * 21) + '" y1="-25" x2="' + (k * 21) + '" y2="25"/>';
+  }
+  SHAPES.span.draw =
+    '<g><rect x="-100" y="-26" width="200" height="52" rx="5" fill="TONE" opacity="0.8"/>' +
+    '<g stroke="var(--ground)" stroke-width="4" stroke-linecap="round" opacity="0.5">' + planks + '</g>' +
+    '<rect x="-100" y="-32" width="200" height="9" rx="4" fill="TONE" opacity="0.95"/>' +
+    '<rect x="-100" y="23" width="200" height="9" rx="4" fill="TONE" opacity="0.95"/>' +
+    '<rect x="-110" y="-40" width="15" height="80" rx="5" fill="TONE" opacity="0.55"/>' +
+    '<rect x="95" y="-40" width="15" height="80" rx="5" fill="TONE" opacity="0.55"/></g>';
 
   /* ---- coastlines -----------------------------------------------------
      A seeded generator, so every island is a different irregular shape and
@@ -297,6 +277,58 @@ const BEARINGS = [['Rising', -45], ['Down', 90], ['Falling', 45]];
   SHAPES.mesh.draw = '<g stroke="TONE" stroke-width="5" stroke-linecap="round" opacity="0.55">' + lines + '</g>';
 })();
 
+/* These are built AFTER the generators above, and the order is load-bearing: a
+   variant is a rotation of a finished drawing, and rotating a placeholder that has not
+   been generated yet gives you a <g> wrapped around the word "SPAN". Which renders as
+   nothing at all, silently, in four directions. */
+/* ---- the ways run in more than one direction ------------------------------
+ *
+ * A river drawn left to right is a river that runs left to right, and a tray full of
+ * horizontal squiggles quietly says that is the only way a river goes. So the six
+ * shapes with a direction in them are offered four ways each — level, rising, falling
+ * and straight down the map — and with Flip that reaches all eight compass bearings
+ * without anybody having to find the Turn button first.
+ *
+ * THEY ARE ROTATIONS OF ONE DRAWING, not four drawings. The base shape is defined once
+ * above; these wrap it in a rotate() and take a plain-language name. Four hand-drawn
+ * bands would be four bands to keep in step with each other.
+ *
+ * The base keeps its own id, so a map somebody has already drawn still finds its
+ * pieces. */
+const DIRECTED = ['band', 'path', 'reach', 'meander', 'delta', 'bridge', 'span'];
+const BEARINGS = [['Rising', -45], ['Down', 90], ['Falling', 45]];
+
+{
+  /* Rebuilt in order rather than appended, so a shape's own directions sit next to it
+     in the tray instead of in a heap at the end of the set. */
+  const ordered = {};
+  for (const [id, base] of Object.entries(SHAPES)) {
+    ordered[id] = base;
+    if (!DIRECTED.includes(id)) continue;
+    for (const [word, angle] of BEARINGS) {
+      ordered[id + word] = {
+        set: base.set,
+        name: `${base.name} ${word.toLowerCase()}`,
+        tone: base.tone,
+        /* The angle is baked into the drawing, so it has to be recorded too: the tool
+           says which way a piece runs, and a variant that does not carry its own angle
+           would be described as though it were still lying level. */
+        angle: (angle + 360) % 360,
+        draw: `<g transform="rotate(${angle})">${base.draw}</g>`,
+      };
+    }
+  }
+  const missing = DIRECTED.filter((id) => !SHAPES[id]);
+  if (missing.length) throw new Error(`shapes: listed as directed but not defined: ${missing.join(', ')}`);
+  for (const id of Object.keys(SHAPES)) delete SHAPES[id];
+  Object.assign(SHAPES, ordered);
+}
+
+
+/** Every drawing that is computed rather than typed leaves one of these in its place
+ *  until its generator fills it in. Nothing should survive with one still in it. */
+const PLACEHOLDERS = ['SPIRAL', 'TENDRIL', 'BURST', 'MESH', 'SPARKLE', 'WHIRL', 'SPAN', 'ISLE1', 'ISLE2', 'ISLE3', 'ISLE4', 'ISLE5', 'ISLE6'];
+
 /** The tray is grouped by what a shape does, so every shape has to belong to a group
  *  that exists, and every group has to have something in it. A shape with a set of
  *  "thigns" would silently never be rendered. */
@@ -306,10 +338,20 @@ export function validate() {
   for (const [id, sh] of Object.entries(SHAPES)) {
     if (!sets.has(sh.set)) problems.push(`${id}: set "${sh.set}" is not one of ${[...sets].join(', ')}`);
     if (!sh.name) problems.push(`${id}: no name, and the name is what a screen reader announces`);
-    if (!sh.draw || /^[A-Z]+$/.test(sh.draw)) problems.push(`${id}: draw is still the placeholder "${sh.draw}" — its generator did not run`);
+    if (!sh.draw) problems.push(`${id}: no drawing`);
+    /* A placeholder left anywhere in a drawing, not only as the whole of one — a
+       rotated variant hides it inside a <g> and renders as nothing. */
+    else for (const token of PLACEHOLDERS) {
+      if (new RegExp(`(^|[^A-Z])${token}([^A-Z]|$)`).test(sh.draw)) {
+        problems.push(`${id}: the placeholder ${token} is still in its drawing — a generator did not run, or ran too late`);
+      }
+    }
     if (sh.draw && sh.draw.includes('#')) problems.push(`${id}: a literal colour, which cannot follow the theme — use a token`);
   }
   for (const [id, label] of SETS) {
+    /* "areas" is filled by tools/area-art.mjs and added to SHAPES by build.mjs, so this
+       file cannot see its shapes and must not claim the set is empty. */
+    if (id === 'areas') continue;
     if (!Object.values(SHAPES).some((sh) => sh.set === id)) problems.push(`set "${label}" has no shapes in it`);
   }
   return problems;

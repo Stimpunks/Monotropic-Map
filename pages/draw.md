@@ -4,7 +4,9 @@ The map on this site is one Autistic person's. Helen Edgar drew it in 2024 as a 
 
 The invitation has always been to draw your own. This is somewhere to do that.
 
-Put an island down. Run a river through it, or don't. Make the whirlpool big enough to swallow half the coast if that is the kind of year it has been. Add the places from Helen's map that are yours, leave off the ones that are not, and add nothing at all if the shapes say it better.
+You start on open water, not on an empty page. Put land where you need it, and then join it up: a river running through, a bridge across to the next part, a boat going between. **A map does not have to be a single island to be yours, and it does not have to be marooned.** The pieces for crossing are the first ones in the tray for that reason.
+
+Make the whirlpool big enough to swallow half the coast if that is the kind of year it has been. Add the places from Helen's map that are yours, leave off the ones that are not, and add nothing at all if the shapes say it better.
 
 @canvas
 
