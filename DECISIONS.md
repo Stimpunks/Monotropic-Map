@@ -51,7 +51,7 @@ So `stories` keeps the marking tool, and the canvas gets **its own page**, added
 
 **Nothing has been cut into this repository.** The cutting pass exists as a scratch experiment and no piece, manifest or tool has been committed.
 
-**The review packet still asks the old question.** `tools/review.mjs` question 3 asks whether per-area artwork exists; it has been answered, and what it should ask instead is whether the Canva elements are Free or Pro.
+**The review packet has been updated** and now carries Helen's answer rather than the question. What is still unbuilt from her answer is the **"?" symbol**: the shapes and the twenty illustrations exist, bridges and boats exist, and a placeholder a reader fills with their own image, art or wording does not.
 
 ### There is no service worker and no offline copy
 Penguin Pebbling has one. This site does not, and that is a deliberate not-yet rather than a no: **once a worker ships it lives on people's devices until something unregisters it**, so it is worth being sure of the page shapes first.
@@ -59,6 +59,19 @@ Penguin Pebbling has one. This site does not, and that is a deliberate not-yet r
 ----
 
 ## Settled
+
+### The site draws its own artwork, and uses no Canva content
+Settled 2026-09-16, on Ryan's call, and it closes the licence question above rather than answering it. **Nothing the site draws for itself comes from a stock library.** Every shape in `tools/shapes.mjs` and all twenty illustrations in `tools/area-art.mjs` are Stimpunks' own work, built from circles, triangles, rounded rectangles and generated curves in the site's own tones.
+
+**So whether Helen's elements are Free or Pro decides nothing here.** It would have decided whether her pieces could ever be published; we are not publishing them. **Her map stays exactly as she made it, reproduced unaltered** — the ordinary permitted use under Canva's §5 — and the pieces stay in her working files.
+
+**What we gain is the right to give ours away.** CC BY-SA 4.0 tells every reader they may adapt and redistribute what we publish. That promise could never have covered somebody else's stock elements. It covers these, because we drew them.
+
+**A recognisable rabbit is nobody's property. A particular drawing of one is.** So "our own" means drawn from scratch and never traced — not from Helen's map, and not from a stock element that happens to show the same animal. Tracing is copying with extra steps.
+
+**The twenty illustrations are arrangements, not new drawings.** Each is a short list of shapes the builder already offers, placed and sized and turned, so an area's artwork is four or five readable lines and every part of it has already been seen to render. The palette and the illustrations cannot drift apart: a change to a shape reaches all twenty at once.
+
+**They are not a second map.** They are pictures of the twenty ideas in our hand, for the builder's tray. **The map is Helen's** — the island, the arrangement, the wording printed on it. Putting these illustrations anywhere that speaks for the map itself, the area pages included, is a question for her before it is a commit.
 
 ### Attention Tunnels keeps our replacement wording, not Helen's suggestion
 

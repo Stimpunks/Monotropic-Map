@@ -106,6 +106,7 @@ export const SHAPES = {
 };
 
 export const SETS = [
+  ["areas",  "The twenty, drawn", "Each of Helen's twenty areas as we picture it. Ours, not hers — use them, or build your own out of the shapes below."],
   ["islands","Islands", "Start here. These go behind everything else."],
   ["ground", "Ground",  "What an area is made of."],
   ["ways",   "Ways",    "Things you travel along, or round and round."],

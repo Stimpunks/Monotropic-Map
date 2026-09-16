@@ -15,6 +15,10 @@ import { execFileSync } from 'node:child_process';
    itself — a generated page agreeing with its own generator proves nothing. */
 import { AREAS } from './areas.mjs';
 import { SHAPES } from './shapes.mjs';
+import { composeAreaArt, validate as validateAreaArt } from './area-art.mjs';
+/* build.mjs adds the twenty illustrations to the vocabulary before rendering, so the
+   sweep has to do the same or it would gate the shapes and quietly ignore the areas. */
+Object.assign(SHAPES, composeAreaArt(SHAPES, AREAS));
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const NET = process.argv.includes('--net');
@@ -353,6 +357,16 @@ console.log('\nthe map builder');
     if (noSymbol.length || noButton.length)
       fail(`shapes missing from draw.html: ${noSymbol.length ? `no symbol for ${noSymbol.join(', ')}` : ''}${noSymbol.length && noButton.length ? '; ' : ''}${noButton.length ? `no button for ${noButton.join(', ')}` : ''}`);
     else pass(`all ${ids.length} shapes are in the page, each drawn once and offered once`);
+
+    /* Every area has an illustration, and it is in the tray. Twenty pictures of the
+       twenty is the one part of the vocabulary that can fall behind areas.mjs. */
+    const artProblems = validateAreaArt(SHAPES, AREAS);
+    if (artProblems.length) artProblems.forEach(fail);
+    else {
+      const drawn = AREAS.filter((a) => buttons.has(`area${a.n}`));
+      if (drawn.length === 20) pass('all twenty areas have an illustration of our own, and it is offered');
+      else fail(`${20 - drawn.length} area(s) have no illustration in the tray`);
+    }
 
     /* The twenty are the twenty here too. */
     const placed = [...html.matchAll(/data-place="(\d+)"/g)].map((m) => Number(m[1]));

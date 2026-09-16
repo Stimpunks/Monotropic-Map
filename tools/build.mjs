@@ -13,6 +13,12 @@ import { AREAS, STATES, BY_SLUG, validate } from './areas.mjs';
 import { ZONES, validate as validateZones } from './domination.mjs';
 import { SLIDES, validate as validateSlides } from './slides.mjs';
 import { SHAPES, SETS, validate as validateShapes } from './shapes.mjs';
+import { composeAreaArt, validate as validateAreaArt } from './area-art.mjs';
+
+/* The twenty, drawn in our own hand, composed from the shapes above and offered in the
+   builder like any other drawing. They are added to the vocabulary rather than kept
+   beside it, so the tray, the <defs> block and every gate treat them the same. */
+Object.assign(SHAPES, composeAreaArt(SHAPES, AREAS));
 import { render } from './md.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -736,7 +742,7 @@ ${ZONES.map((z, i) => `- [${plain(z.label)}](${SITE.origin}/neuronormative-domin
 
 /* ---- run ---------------------------------------------------------------- */
 
-const problems = [...validate(), ...validateZones(), ...validateSlides(), ...validateShapes()];
+const problems = [...validate(), ...validateZones(), ...validateSlides(), ...validateShapes(), ...validateAreaArt(SHAPES, AREAS)];
 if (problems.length) { console.error('map data:\n  ' + problems.join('\n  ')); process.exit(1); }
 
 const outputs = new Map();

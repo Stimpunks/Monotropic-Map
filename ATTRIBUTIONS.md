@@ -11,6 +11,12 @@
 
 Both artworks are reproduced here unaltered. The hotspot layer is positioned **over** the image with CSS; it does not modify, recolour, crop or re-set the artwork. If a future change would alter either image, that is Helen's call and not ours.
 
+## The site's own drawings are not Helen's, and not anybody's stock
+
+The shapes in the map builder and the twenty area illustrations are **Stimpunks' own work**, drawn from scratch in `tools/shapes.mjs` and arranged in `tools/area-art.mjs`. They are CC BY-SA 4.0 like the rest of this site: take them, change them, pass them on.
+
+They are **not** traced from Helen's map and **not** derived from the Canva elements it is composed of — which is exactly what makes them ours to license. See `DECISIONS.md`.
+
 The training, the workbook and the further development of the map are a collaboration between **Helen Edgar (Autistic Realms)** and the **Stimpunks Foundation** — Ryan Boren, Norah Hobbs and Chelsea Adams.
 
 ## The twenty areas are twenty other people's words
