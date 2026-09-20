@@ -220,6 +220,10 @@ footer.site .wrap > * + * { margin-block-start: 0.75rem; }
 
 .mapnote { color: var(--fg-soft); font-size: 0.92rem; max-width: var(--measure); }
 
+/* The offer of the changelog feed, above the entries. Quiet, and the same muted
+   colour the contrast gate already holds to 4.5:1 in both themes. */
+.feednote { color: var(--fg-soft); font-size: 0.92rem; max-width: var(--measure); margin-block: 0 1.5rem; }
+
 /* ---- area lists -------------------------------------------------------- */
 
 .stategroup + .stategroup { margin-block-start: 2.5rem; }

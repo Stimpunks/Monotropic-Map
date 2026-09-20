@@ -317,6 +317,81 @@ console.log('\nllms.txt');
   }
 }
 
+/* ---- 6c-ter. the changelog feed -------------------------------------------- */
+/* THE FEED AND THE PAGE ARE TWO RENDERINGS OF ONE FILE, and the failure worth guarding
+   is them drifting apart: an entry that is on the page and not in the feed, or an item
+   whose guid lands on an anchor that no longer exists. Both directions are checked
+   against CHANGELOG.md and changelog.html rather than against the generator, because a
+   generated file agreeing with its own generator proves nothing.
+
+   A guid must be stable for the life of an entry — it is what readers key off, and
+   rewriting one re-floods everybody who subscribed. */
+console.log('\nchangelog feed');
+{
+  const feedPath = join(ROOT, 'feed.xml');
+  if (!existsSync(feedPath)) fail('feed.xml is missing — run `node tools/build.mjs`');
+  else {
+    const xml = readFileSync(feedPath, 'utf8');
+    const md = readFileSync(join(ROOT, 'CHANGELOG.md'), 'utf8');
+    const page = readFileSync(join(ROOT, 'changelog.html'), 'utf8');
+
+    const headings = [...md.matchAll(/^## (.+)$/gm)].map((m) => m[1].trim());
+    const items = xml.split('<item>').slice(1);
+    const guids = items.map((it) => (/<guid[^>]*>([^<]+)<\/guid>/.exec(it) || [, ''])[1]);
+    const pageIds = new Set([...page.matchAll(/<h2 id="([^"]+)"/g)].map((m) => m[1]));
+
+    if (items.length !== headings.length) {
+      fail(`feed.xml has ${items.length} items but CHANGELOG.md has ${headings.length} entries`);
+    } else {
+      let drifted = 0;
+      for (const g of guids) {
+        const id = g.split('#')[1];
+        if (!id) { drifted++; fail(`feed.xml guid "${g}" has no fragment, so it does not point at an entry`); }
+        else if (!pageIds.has(id)) { drifted++; fail(`feed.xml points at /changelog#${id}, which is not an id on changelog.html`); }
+      }
+      for (const id of pageIds) {
+        if (!guids.some((g) => g.endsWith(`#${id}`))) { drifted++; fail(`changelog.html has the entry #${id} and the feed does not`); }
+      }
+      if (!drifted) pass(`${items.length} items, each landing on an entry that exists on the page`);
+    }
+
+    if (new Set(guids).size !== guids.length) fail('feed.xml repeats a guid — readers would treat two entries as one');
+
+    /* RSS dates are RFC 822, and an item dated in the future is silently dropped by
+       some aggregators. lastBuildDate is the newest entry, never the build clock. */
+    const dates = [...xml.matchAll(/<pubDate>([^<]+)<\/pubDate>/g)].map((m) => Date.parse(m[1]));
+    const built = Date.parse((/<lastBuildDate>([^<]+)<\/lastBuildDate>/.exec(xml) || [, ''])[1]);
+    if (dates.some(Number.isNaN) || Number.isNaN(built)) fail('feed.xml has a date RSS cannot read — they are RFC 822');
+    else if (built < Math.max(...dates)) fail('feed.xml lastBuildDate is older than its newest item');
+    else if (Math.max(...dates) > Date.now() + 864e5) fail('feed.xml has an item dated in the future — some aggregators drop those');
+    else pass(`${dates.length} dates, all readable, newest ${new Date(Math.max(...dates)).toISOString().slice(0, 10)}`);
+
+    const self = /<atom:link href="([^"]+)" rel="self"/.exec(xml);
+    if (!self) fail('feed.xml has no atom:link rel="self" — a mirrored or forwarded copy could not name its own address');
+    else if (self[1] !== 'https://monotropicmap.org/feed.xml') fail(`feed.xml names itself ${self[1]}, which is not where it is served`);
+    else pass('the feed identifies itself, absolutely');
+
+    /* A feed item is read somewhere other than the page it came from, so a relative
+       href in one resolves against the reader. */
+    const relative = [...xml.matchAll(/(?:href|src)="(?!https?:|mailto:)([^"]+)"/g)].map((m) => m[1]);
+    if (relative.length) fail(`feed.xml carries ${relative.length} relative link(s) (${relative[0]}) — they would resolve against the reader, not the site`);
+    else pass('every link and image in the feed is absolute');
+
+    /* 404.html is hand-written and deliberately bare — no nav, no footer, no canonical,
+       and nothing to announce. It is excluded here for the same reason it is excluded
+       from the metadata gate above. */
+    const announce = pages.filter((f) => f !== '404.html');
+    const missing = announce.filter((f) => !/<link rel="alternate" type="application\/rss\+xml"[^>]*href="\/feed\.xml"/.test(readFileSync(join(ROOT, f), 'utf8')));
+    if (missing.length) fail(`${missing.length} page(s) do not announce the feed: ${missing.slice(0, 3).join(', ')}`);
+    else pass(`all ${announce.length} pages announce the feed in <head>`);
+
+    const headers = readFileSync(join(ROOT, '_headers'), 'utf8');
+    if (!/Content-Type:\s*application\/rss\+xml/i.test(headers)) {
+      fail('_headers does not serve feed.xml as application/rss+xml — with nosniff, the declared type is the only one the browser trusts');
+    } else pass('_headers serves the feed as application/rss+xml');
+  }
+}
+
 /* ---- 6d. the map builder --------------------------------------------------- */
 /* THE SAME THREE PROMISES, PLUS THE ONE THIS TOOL ADDS. Version two says the same
    things version one does — no score, nothing leaves the device, every area reachable —

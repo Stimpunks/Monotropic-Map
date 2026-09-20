@@ -1,63 +1,40 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Changelog — Map of Monotropic Experiences</title>
-<meta name="description" content="What has changed on monotropicmap.org, newest first — including what we got wrong.">
-<link rel="canonical" href="https://monotropicmap.org/changelog">
-<link rel="preload" href="fonts/atkinson-hyperlegible-regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="monotropic-map.css">
-
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Changelog — Map of Monotropic Experiences">
-<meta property="og:description" content="What has changed on monotropicmap.org, newest first — including what we got wrong.">
-<meta property="og:url" content="https://monotropicmap.org/changelog">
-<meta property="og:image" content="https://monotropicmap.org/images/map-of-monotropic-experiences.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="alternate" type="application/rss+xml" title="Map of Monotropic Experiences — Changelog" href="/feed.xml">
-<script src="theme.js"></script>
-</head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="bar">
-  <div class="bar-in">
-    <a class="home" href="/">Map of Monotropic Experiences</a>
-    <nav aria-label="Sections">
-      <ul>
-        <li><a href="/">The map</a></li>
-        <li><a href="areas.html">The twenty areas</a></li>
-        <li><a href="neuronormative-domination.html">The frame</a></li>
-        <li><a href="training.html">Training</a></li>
-        <li><a href="stories.html">Your map</a></li>
-        <li><a href="draw.html">Draw a map</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="changelog.html" aria-current="page">Changelog</a></li>
-      </ul>
-    </nav>
-    <button class="theme-toggle" type="button" hidden>Dark</button>
-  </div>
-</header>
-<main id="main" class="wrap">
-<h1>Changelog</h1>
-<p class="feednote">There is a <a href="/feed.xml">feed</a> of this page, so a reader can bring the changes to you rather than you coming back to look.</p>
-<div class="prose">
-<p>What has changed here, newest first. This is the site's own account of itself — what was built, what was got wrong, and what is still missing.</p>
-<p>We publish the mistakes too. A changelog that only lists wins is an advertisement.</p>
-<hr>
-<h2 id="2026-09-20-the-changelog-has-a-feed">2026-09-20 — The changelog has a feed</h2>
-<p><strong><a href="https://monotropicmap.org/feed.xml">A feed</a> of this page now exists, so a reader can bring the changes to you rather than you coming back to look.</strong> It carries each entry in full, not a teaser and a link — what is on the page is what arrives in the reader.</p>
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/">
+  <channel>
+    <title>Map of Monotropic Experiences — Changelog</title>
+    <link>https://monotropicmap.org/changelog</link>
+    <description>What has changed on monotropicmap.org, newest first — including what we got wrong.</description>
+    <language>en</language>
+    <copyright>CC BY-SA 4.0 — Helen Edgar (Autistic Realms) and the Stimpunks Foundation</copyright>
+    <atom:link href="https://monotropicmap.org/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 20 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <sy:updatePeriod>weekly</sy:updatePeriod>
+    <sy:updateFrequency>1</sy:updateFrequency>
+    <item>
+      <title>The changelog has a feed</title>
+      <link>https://monotropicmap.org/changelog#2026-09-20-the-changelog-has-a-feed</link>
+      <guid isPermaLink="true">https://monotropicmap.org/changelog#2026-09-20-the-changelog-has-a-feed</guid>
+      <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
+      <description>A feed of this page now exists, so a reader can bring the changes to you rather than you coming back to look. It carries each entry in full, not a teaser and a link — what is on the page is what arrives in the reader.</description>
+      <content:encoded><![CDATA[<p><strong><a href="https://monotropicmap.org/feed.xml">A feed</a> of this page now exists, so a reader can bring the changes to you rather than you coming back to look.</strong> It carries each entry in full, not a teaser and a link — what is on the page is what arrives in the reader.</p>
 <ul>
   <li><strong>It is built from this file</strong>, the same one the page is rendered from, so there is no second account of the history to go stale. <code>tools/check.mjs</code> holds the two against each other: every entry here is an item in the feed, and every item in the feed lands on an anchor that exists on the page.</li>
   <li><strong>Every page announces it</strong> in its <code>&lt;head&gt;</code>, so a reader finds it from anywhere on the site without being told the address.</li>
   <li><strong>Nothing in it is the build clock.</strong> The feed's <code>lastBuildDate</code> is the newest entry's date, not the moment the site was built — a timestamp there would tell subscribers something had changed every time anything was published.</li>
   <li><strong>Nothing is fetched from a third party to do it</strong>, and the CSP did not need editing. That is the test this repository applies to anything new.</li>
   <li><strong>No tracking, and no way to add any.</strong> A feed is a file; there is no open rate, no per-subscriber URL and nothing counted. Whoever reads it is nobody's business but theirs.</li>
-</ul>
-<hr>
-<h2 id="2026-09-16-a-second-tool-draw-your-own-map">2026-09-16 — A second tool: draw your own map</h2>
-<p><strong><a href="draw.html">Draw a map</a> is new, and version one has not gone anywhere.</strong> They ask different questions. The <a href="stories.html">marking tool</a> asks where you are on Helen's map; the new one hands over blank ground and a tray of shapes and asks what yours looks like. Shipping only the second would have taken the easier door away.</p>
+</ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>A second tool: draw your own map</title>
+      <link>https://monotropicmap.org/changelog#2026-09-16-a-second-tool-draw-your-own-map</link>
+      <guid isPermaLink="true">https://monotropicmap.org/changelog#2026-09-16-a-second-tool-draw-your-own-map</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Draw a map is new, and version one has not gone anywhere. They ask different questions. The marking tool asks where you are on Helen's map; the new one hands over blank ground and a tray of shapes and asks what yours looks like. Shipping only the second would have taken the easier door away.</description>
+      <content:encoded><![CDATA[<p><strong><a href="https://monotropicmap.org/draw">Draw a map</a> is new, and version one has not gone anywhere.</strong> They ask different questions. The <a href="https://monotropicmap.org/stories">marking tool</a> asks where you are on Helen's map; the new one hands over blank ground and a tray of shapes and asks what yours looks like. Shipping only the second would have taken the easier door away.</p>
 <ul>
   <li><strong>The shapes are ours, drawn from scratch.</strong> Islands with beaches and without, rivers that turn whichever way you turn them, a rabbit, a penguin, a meerkat, an octopus, a tent, a campfire, a shark, a storm, a canyon, a whirlpool. Nothing is traced from Helen's map or from anybody's stock library, which is what makes them yours to keep, copy and change under the same licence as everything else here.</li>
   <li><strong>Land and islands come first in the tray again.</strong> They had been moved down so the tray would open with what joins a map rather than with separate islands — and then the first person to use it did not find the land at all. Third in a tray of ninety-five is the same as not being there. The point about joining is now in the words instead of the order: the land does not have to sit on its own, and the water, bridges and boats are named right there.</li>
@@ -76,51 +53,61 @@
   <li><strong>Nothing you draw leaves the device.</strong> No account, no upload, nowhere for a map to go. It is kept in your browser and gone when you clear the site's data.</li>
   <li><strong>Two colours were added to the palette</strong>, a leaf green and a storm navy, because a tree painted in one of the four area colours would be claiming the tree is a state. Both are checked for contrast in both themes like the rest.</li>
   <li><strong>The board needs JavaScript and says so.</strong> Drawing does in a way that marking does not, so the page shows the sentence rather than a board that will never respond, and points at the marking tool and the paper workbook instead.</li>
-</ul>
-<hr>
-<h2 id="2026-09-16-helen-s-review-came-back">2026-09-16 — Helen's review came back</h2>
-<p><strong>The map's author read the forty passages Stimpunks wrote onto her map, and sent notes on eighteen of them.</strong> Those notes are now the pages. This is the part of the process the site was built around: our words sit on her map, so she gets to say whether they are right.</p>
+</ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>Helen's review came back</title>
+      <link>https://monotropicmap.org/changelog#2026-09-16-helen-s-review-came-back</link>
+      <guid isPermaLink="true">https://monotropicmap.org/changelog#2026-09-16-helen-s-review-came-back</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+      <description>The map's author read the forty passages Stimpunks wrote onto her map, and sent notes on eighteen of them. Those notes are now the pages. This is the part of the process the site was built around: our words sit on her map, so she gets to say whether they are right.</description>
+      <content:encoded><![CDATA[<p><strong>The map's author read the forty passages Stimpunks wrote onto her map, and sent notes on eighteen of them.</strong> Those notes are now the pages. This is the part of the process the site was built around: our words sit on her map, so she gets to say whether they are right.</p>
 <h3 id="what-changed-across-the-whole-site">What changed across the whole site</h3>
 <ul>
   <li><strong>"Monotropic mind" is now "monotropic person"</strong> everywhere it was ours to change. It stays as written inside quotations, because correcting someone else's words is not ours to do.</li>
-  <li><strong>The senses are eight, not five.</strong> <a href="tides-of-the-sensory-sea.html">Tides of the Sensory Sea</a> counted sound, light, touch and smell. It now counts taste as well, and <strong>interoception, proprioception and the vestibular sense</strong> — the three the familiar five leave out.</li>
+  <li><strong>The senses are eight, not five.</strong> <a href="https://monotropicmap.org/tides-of-the-sensory-sea">Tides of the Sensory Sea</a> counted sound, light, touch and smell. It now counts taste as well, and <strong>interoception, proprioception and the vestibular sense</strong> — the three the familiar five leave out.</li>
   <li><strong>The Autistic Self Advocacy Network is spelled out and linked</strong> where the abbreviation stood alone.</li>
 </ul>
 <h3 id="what-changed-on-the-areas">What changed on the areas</h3>
 <ul>
-  <li><strong><a href="attention-tunnels.html">Attention Tunnels</a></strong> — a tunnel can go the other way, and the page no longer presents it as purely good. The word <em>cheap</em> is gone.</li>
-  <li><strong><a href="penguin-pebbling-cove-of-friendship.html">Penguin Pebbling Cove of Friendship</a></strong> — says why it is called that. Penguins give each other pebbles to show they care.</li>
-  <li><strong><a href="mountains-of-ruminating-thoughts.html">Mountains of Ruminating Thoughts</a></strong> — tired, cross, <strong>or anxious</strong>.</li>
-  <li><strong><a href="cyclones-of-unmet-needs.html">Cyclones of Unmet Needs</a></strong> — advocacy moves the side that holds the resources, and community support holds a person up while it shifts.</li>
-  <li><strong><a href="infodump-canyon.html">Infodump Canyon</a></strong> — an infodump shows trust. It can be a sign of friendship.</li>
-  <li><strong><a href="rhizomatic-communities.html">Rhizomatic Communities</a></strong> — says what a rhizome actually is, in plain words, and names both online and in-person communities.</li>
-  <li><strong><a href="river-of-monotropic-flow-states.html">River of Monotropic Flow States</a></strong> — time may feel like it has melted away.</li>
-  <li><strong><a href="meerkat-mounds.html">Meerkat Mounds</a></strong> — on high alert, and unable to find a way into flow.</li>
-  <li><strong><a href="river-banks-of-monotropic-time.html">Riverbanks of Monotropic Time</a></strong> — "clocks that bend" is now timetables that flex and people who adapt to needs that fluctuate.</li>
-  <li><strong><a href="beach-of-body-doubling.html">Beach of Body Doubling</a></strong> — a body double is a <strong>shared presence</strong>, and there is no pressure to perform. The page had described only what the other person does <em>not</em> do.</li>
-  <li><strong><a href="burnout-whirlpools.html">Burnout Whirlpools</a></strong> — run on empty for <strong>too long</strong>, not for years, and without enough left to manage or refill. Not cured by <strong>neuronormative</strong> resilience training, and carrying Nick Walker's line: <em>"Cultivating resilience becomes an act of defiance."</em></li>
-  <li><strong><a href="panic-hills-of-low-object-permanence.html">Panic Hills of Low Object Permanence</a></strong> — things you cannot see fall outside the attention tunnel. Phone reminders and apps sit alongside open shelving and visible lists.</li>
-  <li><strong><a href="forest-of-joy-awe-and-wonder.html">Forest of Joy, Awe and Wonder</a></strong> — <strong>stimming</strong> is named.</li>
-  <li><strong><a href="shark-infested-waters.html">Shark Infested Waters</a></strong> — the water is <strong>drunk, not just swum in</strong>. See below.</li>
+  <li><strong><a href="https://monotropicmap.org/attention-tunnels">Attention Tunnels</a></strong> — a tunnel can go the other way, and the page no longer presents it as purely good. The word <em>cheap</em> is gone.</li>
+  <li><strong><a href="https://monotropicmap.org/penguin-pebbling-cove-of-friendship">Penguin Pebbling Cove of Friendship</a></strong> — says why it is called that. Penguins give each other pebbles to show they care.</li>
+  <li><strong><a href="https://monotropicmap.org/mountains-of-ruminating-thoughts">Mountains of Ruminating Thoughts</a></strong> — tired, cross, <strong>or anxious</strong>.</li>
+  <li><strong><a href="https://monotropicmap.org/cyclones-of-unmet-needs">Cyclones of Unmet Needs</a></strong> — advocacy moves the side that holds the resources, and community support holds a person up while it shifts.</li>
+  <li><strong><a href="https://monotropicmap.org/infodump-canyon">Infodump Canyon</a></strong> — an infodump shows trust. It can be a sign of friendship.</li>
+  <li><strong><a href="https://monotropicmap.org/rhizomatic-communities">Rhizomatic Communities</a></strong> — says what a rhizome actually is, in plain words, and names both online and in-person communities.</li>
+  <li><strong><a href="https://monotropicmap.org/river-of-monotropic-flow-states">River of Monotropic Flow States</a></strong> — time may feel like it has melted away.</li>
+  <li><strong><a href="https://monotropicmap.org/meerkat-mounds">Meerkat Mounds</a></strong> — on high alert, and unable to find a way into flow.</li>
+  <li><strong><a href="https://monotropicmap.org/river-banks-of-monotropic-time">Riverbanks of Monotropic Time</a></strong> — "clocks that bend" is now timetables that flex and people who adapt to needs that fluctuate.</li>
+  <li><strong><a href="https://monotropicmap.org/beach-of-body-doubling">Beach of Body Doubling</a></strong> — a body double is a <strong>shared presence</strong>, and there is no pressure to perform. The page had described only what the other person does <em>not</em> do.</li>
+  <li><strong><a href="https://monotropicmap.org/burnout-whirlpools">Burnout Whirlpools</a></strong> — run on empty for <strong>too long</strong>, not for years, and without enough left to manage or refill. Not cured by <strong>neuronormative</strong> resilience training, and carrying Nick Walker's line: <em>"Cultivating resilience becomes an act of defiance."</em></li>
+  <li><strong><a href="https://monotropicmap.org/panic-hills-of-low-object-permanence">Panic Hills of Low Object Permanence</a></strong> — things you cannot see fall outside the attention tunnel. Phone reminders and apps sit alongside open shelving and visible lists.</li>
+  <li><strong><a href="https://monotropicmap.org/forest-of-joy-awe-and-wonder">Forest of Joy, Awe and Wonder</a></strong> — <strong>stimming</strong> is named.</li>
+  <li><strong><a href="https://monotropicmap.org/shark-infested-waters">Shark Infested Waters</a></strong> — the water is <strong>drunk, not just swum in</strong>. See below.</li>
 </ul>
 <h3 id="two-credits-were-completed">Two credits were completed</h3>
 <p><strong>The Forest of Joy, Awe and Wonder credit is finished.</strong> The last changelog asked for a byline the live article does not carry; Helen had it. It is <strong><a href="https://themighty.com/u/amelia-blackwater" rel="noopener">Amelia Blackwater</a></strong>. The surname stood alone rather than getting a guessed first name, which is the rule working.</p>
-<p><strong>Two areas stopped saying they had no originator.</strong> <a href="rabbit-holes-of-research.html">Rabbit Holes of Research</a> and <a href="infodump-canyon.html">Infodump Canyon</a> are <strong>Helen Edgar's own</strong>. The definitions quoted on those pages are still general ones rather than her words, so each page credits her with the area and says the definition is not a quotation from her.</p>
+<p><strong>Two areas stopped saying they had no originator.</strong> <a href="https://monotropicmap.org/rabbit-holes-of-research">Rabbit Holes of Research</a> and <a href="https://monotropicmap.org/infodump-canyon">Infodump Canyon</a> are <strong>Helen Edgar's own</strong>. The definitions quoted on those pages are still general ones rather than her words, so each page credits her with the area and says the definition is not a quotation from her.</p>
 <h3 id="one-quotation-on-this-site-has-no-public-recording">One quotation on this site has no public recording</h3>
 <p><strong>Nick Walker's line is from a talk at the 2026 Autistic Mental Health Conference</strong>, and there is no video, transcript or published text of it to link. Recordings went to ticket holders. The page links <a href="https://neurohubcommunity.org/2026/08/09/16166/" rel="noopener">the conference page</a>, which names Walker and the talk.</p>
 <p><strong>The wording rests on Helen, who was in the room and helped organise the event.</strong> That is a weaker basis than every other quotation here, all of which link to the words themselves — which is why it is written down in <code>ATTRIBUTIONS.md</code> instead of passing quietly. If a published version turns up, we will cite that instead.</p>
 <h3 id="the-water-is-absorbed-and-the-answer-to-it-is-other-water">The water is absorbed, and the answer to it is other water</h3>
-<p><strong><a href="shark-infested-waters.html">Shark Infested Waters</a> said the water was around everything else.</strong> That made neuronormativity ambient — weather you might get out of. Helen's note: we absorb it, and it becomes part of us. The page now says so. <em>You do not just swim in it. You drink it, and it becomes part of you.</em></p>
+<p><strong><a href="https://monotropicmap.org/shark-infested-waters">Shark Infested Waters</a> said the water was around everything else.</strong> That made neuronormativity ambient — weather you might get out of. Helen's note: we absorb it, and it becomes part of us. The page now says so. <em>You do not just swim in it. You drink it, and it becomes part of you.</em></p>
 <p><strong>The frame is Astrida Neimanis's hydrofeminism</strong>, borrowed and credited: bodies are permeable, and there is no clean edge where the outside stops. Neimanis is not writing about neuronormativity — applying it here is Helen's move, and <a href="https://github.com/Stimpunks/Monotropic-Map/blob/main/ATTRIBUTIONS.md" rel="noopener">ATTRIBUTIONS</a> says so.</p>
 <p><strong>What changes it is other water.</strong> Not getting out — you cannot, you are made of it — but nourishing water being within reach: Autistic community, spaces built for the bodies in them, people who do not read you as a deficit. Most of the rest of this map is that water.</p>
 <h3 id="an-attribution-error-on-that-same-area-now-fixed">An attribution error on that same area, now fixed</h3>
-<p><strong>The definition on <a href="shark-infested-waters.html">Shark Infested Waters</a> was this site's own summary, printed as a quotation under Damian Milton's name</strong>, with a link to his handout. Only one of its three ideas is his, and none of its sentences are. It has been marked up as a quotation since launch.</p>
+<p><strong>The definition on <a href="https://monotropicmap.org/shark-infested-waters">Shark Infested Waters</a> was this site's own summary, printed as a quotation under Damian Milton's name</strong>, with a link to his handout. Only one of its three ideas is his, and none of its sentences are. It has been marked up as a quotation since launch.</p>
 <p>It is no longer a blockquote, and the credit says what it is: a summary written here, with the double empathy problem attributed to Milton and linked. <strong>This is the failure the credit fields exist to prevent, committed against the definition instead of the credit.</strong></p>
 <h3 id="what-did-not-change-and-why">What did not change, and why</h3>
-<p><strong>The capital A on Autistic was already house style</strong> and stays lowercase inside quotations that were written that way.</p>
-<hr>
-<h2 id="2026-09-15-the-site-went-live">2026-09-15 — the site went live</h2>
-<p><strong><a href="https://monotropicmap.org/">monotropicmap.org</a> exists.</strong> The Map of Monotropic Experiences has its own home, built on Helen Edgar's go-ahead with joint Stimpunks and Autistic Realms attribution settled first.</p>
+<p><strong>The capital A on Autistic was already house style</strong> and stays lowercase inside quotations that were written that way.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>the site went live</title>
+      <link>https://monotropicmap.org/changelog#2026-09-15-the-site-went-live</link>
+      <guid isPermaLink="true">https://monotropicmap.org/changelog#2026-09-15-the-site-went-live</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+      <description>monotropicmap.org exists. The Map of Monotropic Experiences has its own home, built on Helen Edgar's go-ahead with joint Stimpunks and Autistic Realms attribution settled first.</description>
+      <content:encoded><![CDATA[<p><strong><a href="https://monotropicmap.org/">monotropicmap.org</a> exists.</strong> The Map of Monotropic Experiences has its own home, built on Helen Edgar's go-ahead with joint Stimpunks and Autistic Realms attribution settled first.</p>
 <h3 id="what-is-here">What is here</h3>
 <ul>
   <li><strong>Both maps, and you can click them.</strong> The map's twenty areas, and the nine zones of <em>Autism &amp; The Map of Neuronormative Domination</em>. The markers sit <strong>over</strong> Helen's original artwork — nothing about the pictures was redrawn, recoloured or cropped.</li>
@@ -130,7 +117,7 @@
   <li><strong>The frame is structural, not an appendix.</strong> The second map has a page of its own, and every area page follows the rule it implies: <em>what changes a stuck state is a change to the conditions, never an instruction to the person.</em> You will not find "rest more" here.</li>
   <li><strong>The whole free training</strong>, about 4,000 words with presenter notes, all sixteen slides, and all eight <em>Consider</em> reflection prompts. The training pack and workbook stay at <a href="https://autisticrealms.com/product/training-with-notes-the-map-of-monotropic-experiences/" rel="noopener">Autistic Realms</a> — buying them there is what funds this work.</li>
   <li><strong>The community story project</strong>, and the questions for marking your own map.</li>
-  <li><strong>No accounts, no analytics, no tracking, no third parties.</strong> See <a href="privacy.html">privacy</a>.</li>
+  <li><strong>No accounts, no analytics, no tracking, no third parties.</strong> See <a href="https://monotropicmap.org/privacy">privacy</a>.</li>
 </ul>
 <h3 id="the-front-page-needs-no-javascript-at-all">The front page needs no JavaScript at all</h3>
 <p>The map, its key, and every name on it are in the page before any script runs. Not as a degraded fallback — as the only mode there is. The page loads nothing but a light/dark toggle.</p>
@@ -162,21 +149,13 @@
 <p>One thing it does not cover: <strong>the font has no ← or → glyph</strong>, and the previous/next links at the foot of each area page use both. Those two characters fall back to the system stack. They are arrows; they look like arrows.</p>
 <h3 id="open-and-said-out-loud">Open, and said out loud</h3>
 <ul>
-  <li><strong>The marking tool marks our map, not yours yet.</strong> Version one is on <a href="stories.html">your map</a>. Version two would let you drag and resize your own island, and it needs each area as a separate drawing — which may not exist. That is Helen's to answer.</li>
+  <li><strong>The marking tool marks our map, not yours yet.</strong> Version one is on <a href="https://monotropicmap.org/stories">your map</a>. Version two would let you drag and resize your own island, and it needs each area as a separate drawing — which may not exist. That is Helen's to answer.</li>
   <li>The twenty <em>What changes this</em> paragraphs are <strong>ours, and Helen has not reviewed them</strong>.</li>
   <li>No offline copy yet. <strong>Once a service worker ships it lives on people's devices until something unregisters it</strong>, so it is worth being sure of the page shapes first.</li>
 </ul>
 <h3 id="this-page-exists">This page exists</h3>
 <p>All of our sites publish a changelog. This was the one that did not.</p>
-<p>The full record, including what was decided and why, is in <a href="https://github.com/Stimpunks/Monotropic-Map/blob/main/DECISIONS.md" rel="noopener">DECISIONS.md</a>. Credits are in <a href="https://github.com/Stimpunks/Monotropic-Map/blob/main/ATTRIBUTIONS.md" rel="noopener">ATTRIBUTIONS.md</a>. The whole site is <a href="https://github.com/Stimpunks/Monotropic-Map" rel="noopener">open source</a>, CC BY-SA 4.0.</p>
-</div>
-</main>
-<footer class="site">
-  <div class="wrap">
-    <p><strong>Map of Monotropic Experiences</strong> is by Helen Edgar (Autistic Realms) and the Stimpunks Foundation — Ryan Boren, Norah Hobbs and Chelsea Adams. The original map was created by Helen Edgar in 2024.</p>
-    <p>The map and everything on this site derived from it are licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>. Share it, adapt it, keep the credit, keep the licence.</p>
-    <p><a href="privacy.html">Privacy</a> · <a href="https://autisticrealms.com" rel="noopener">Autistic Realms</a> · <a href="https://stimpunks.org" rel="noopener">Stimpunks</a> · <a href="https://monotropism.org" rel="noopener">monotropism.org</a></p>
-  </div>
-</footer>
-</body>
-</html>
+<p>The full record, including what was decided and why, is in <a href="https://github.com/Stimpunks/Monotropic-Map/blob/main/DECISIONS.md" rel="noopener">DECISIONS.md</a>. Credits are in <a href="https://github.com/Stimpunks/Monotropic-Map/blob/main/ATTRIBUTIONS.md" rel="noopener">ATTRIBUTIONS.md</a>. The whole site is <a href="https://github.com/Stimpunks/Monotropic-Map" rel="noopener">open source</a>, CC BY-SA 4.0.</p>]]></content:encoded>
+    </item>
+  </channel>
+</rss>

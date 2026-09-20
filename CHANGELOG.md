@@ -6,6 +6,18 @@ We publish the mistakes too. A changelog that only lists wins is an advertisemen
 
 ----
 
+## 2026-09-20 — The changelog has a feed
+
+**[A feed](https://monotropicmap.org/feed.xml) of this page now exists, so a reader can bring the changes to you rather than you coming back to look.** It carries each entry in full, not a teaser and a link — what is on the page is what arrives in the reader.
+
+- **It is built from this file**, the same one the page is rendered from, so there is no second account of the history to go stale. `tools/check.mjs` holds the two against each other: every entry here is an item in the feed, and every item in the feed lands on an anchor that exists on the page.
+- **Every page announces it** in its `<head>`, so a reader finds it from anywhere on the site without being told the address.
+- **Nothing in it is the build clock.** The feed's `lastBuildDate` is the newest entry's date, not the moment the site was built — a timestamp there would tell subscribers something had changed every time anything was published.
+- **Nothing is fetched from a third party to do it**, and the CSP did not need editing. That is the test this repository applies to anything new.
+- **No tracking, and no way to add any.** A feed is a file; there is no open rate, no per-subscriber URL and nothing counted. Whoever reads it is nobody's business but theirs.
+
+----
+
 ## 2026-09-16 — A second tool: draw your own map
 
 **[Draw a map](draw.html) is new, and version one has not gone anywhere.** They ask different questions. The [marking tool](stories.html) asks where you are on Helen's map; the new one hands over blank ground and a tray of shapes and asks what yours looks like. Shipping only the second would have taken the easier door away.

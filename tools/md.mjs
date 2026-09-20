@@ -40,6 +40,13 @@ function inline(s, where) {
   return out;
 }
 
+/** The id a `##`/`###` heading gets, and the only place that rule lives. build.mjs
+ *  needs the same ids to point the changelog feed at the entries on the page, and a
+ *  second copy of this expression would drift the first time either was touched. */
+export function headingId(text) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
 /** `ctx.slides` is a Map of slug -> {src, alt, width, height}, supplied by build.mjs
  *  from slides.mjs and the generated manifest. An `@slide` naming a slug that is not
  *  in it is a hard error: a missing slide must not render as nothing. */
@@ -127,7 +134,7 @@ export function render(src, where = 'markdown', ctx = {}) {
     let m = /^(#{2,3})\s+(.+)$/.exec(line);
     if (m) {
       const level = m[1].length;
-      const id = m[2].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      const id = headingId(m[2]);
       out.push(`<h${level} id="${id}">${inline(m[2], where)}</h${level}>`);
       i++; continue;
     }

@@ -60,6 +60,19 @@ Penguin Pebbling has one. This site does not, and that is a deliberate not-yet r
 
 ## Settled
 
+### The changelog has an RSS feed, built from the same file the page is
+Settled 2026-09-20. **`feed.xml` is generated from `CHANGELOG.md`**, the same file `changelog.html` is rendered from, so there is no second account of the history to go stale. Every page announces it in `<head>`, and `tools/check.mjs` gates the feed and the page against each other in both directions: every entry on the page is an item in the feed, and every item's `guid` lands on an anchor that exists on the page.
+
+**RSS 2.0 rather than Atom or JSON Feed**, because "an RSS feed" is what people ask for and what every reader takes. It carries the Atom and Syndication namespaces for the parts RSS 2.0 lacks — `atom:link rel="self"` so a forwarded copy can still name its own address, and `sy:updatePeriod` so a polite aggregator knows not to poll daily.
+
+**The whole entry travels, not a teaser.** `content:encoded` carries the rendered entry; `description` carries its first paragraph as plain text for readers that show only that. A changelog whose feed says "read more on the site" is an advertisement for the site rather than a way to read it — the same objection as a changelog that only lists wins.
+
+**`lastBuildDate` is the newest entry's date, never the build clock.** A timestamp there would rewrite the file on every build, show as drift in every check, and tell every subscriber something had changed when nothing had.
+
+**A `guid` is the entry's anchor on the changelog page, and is never rewritten once published.** It is the identifier readers key off; changing one re-floods everybody who subscribed. That is also why entry headings are enforced as `YYYY-MM-DD — Title` and a heading that is not is a hard error, not an entry quietly missing from the feed.
+
+**Nothing was fetched from a third party to do it and the CSP did not need editing**, which is the test this repository applies to anything new. There is no tracking in a feed and no way to add any: no open rate, no per-subscriber URL, nothing counted.
+
 ### The site draws its own artwork, and uses no Canva content
 Settled 2026-09-16, on Ryan's call, and it closes the licence question above rather than answering it. **Nothing the site draws for itself comes from a stock library.** Every shape in `tools/shapes.mjs` and all twenty illustrations in `tools/area-art.mjs` are Stimpunks' own work, built from circles, triangles, rounded rectangles and generated curves in the site's own tones.
 

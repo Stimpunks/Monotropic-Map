@@ -49,13 +49,14 @@ An area with no single originator **says so**, and never defaults to our name.
 
 ## Never hand-edit a generated file
 
-Every `.html` at the root is output, as are `search-index.json`, `sitemap.xml` and `llms.txt`.
+Every `.html` at the root is output, as are `search-index.json`, `sitemap.xml`, `llms.txt` and `feed.xml`.
 
 | Generated | From |
 |---|---|
 | every root `.html` | `tools/areas.mjs`, `tools/domination.mjs`, `pages/*.md`, `tools/build.mjs` |
 | `search-index.json` | `tools/areas.mjs` |
 | `sitemap.xml`, `llms.txt` | the page list in `tools/build.mjs` |
+| `feed.xml` | `CHANGELOG.md` — the same file `changelog.html` is rendered from |
 | `images/slides/*.webp` + `manifest.json` | the training PDF, via `tools/make-slides.py` |
 
 Edit the left-hand side and an edit is lost on the next run, silently.

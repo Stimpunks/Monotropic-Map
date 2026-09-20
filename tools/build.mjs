@@ -19,7 +19,7 @@ import { AREA_ART, composeAreaArt, validate as validateAreaArt } from './area-ar
    builder like any other drawing. They are added to the vocabulary rather than kept
    beside it, so the tray, the <defs> block and every gate treat them the same. */
 Object.assign(SHAPES, composeAreaArt(SHAPES, AREAS));
-import { render } from './md.mjs';
+import { render, headingId } from './md.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const CHECK = process.argv.includes('--check');
@@ -63,6 +63,15 @@ const NAV = [
 ];
 const FOOTER_ONLY = ['privacy'];
 
+/** The changelog feed. One file, named once, so the autodiscovery link in every
+ *  <head>, the line in llms.txt, the self-link inside the feed and the gate in
+ *  check.mjs are all talking about the same URL. */
+const FEED = {
+  path: 'feed.xml',
+  title: `${SITE.title} — Changelog`,
+  description: 'What has changed on monotropicmap.org, newest first — including what we got wrong.',
+};
+
 const esc = (s) => String(s).replace(/&(?![a-zA-Z]+;|#\d+;)/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 /** Strip tags and entities for use in <meta> and JSON. */
 const plain = (s) => String(s).replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&#(\d+);/g, (_, d) => String.fromCharCode(+d)).replace(/&[a-z]+;/g, ' ').replace(/\s+/g, ' ').trim();
@@ -103,6 +112,7 @@ ${MAP_PAGES.has(slug) ? '<link rel="stylesheet" href="map-hotspots.css">\n' : ''
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${SITE.origin}/images/map-of-monotropic-experiences.png">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="${esc(FEED.title)}" href="/${FEED.path}">
 <script src="theme.js"></script>
 ${TOOL_SCRIPTS.has(slug) ? `<script src="${TOOL_SCRIPTS.get(slug)}" defer></script>\n` : ''}</head>
 <body>
@@ -432,12 +442,118 @@ function buildChangelog() {
   const lines = src.split('\n');
   if (!lines[0].startsWith('# ')) throw new Error('CHANGELOG.md must open with "# Changelog"');
   const html = render(lines.slice(1).join('\n'), 'CHANGELOG.md', { slides: SLIDE_CTX });
+  const feedNote = `<p class="feednote">There is a <a href="/${FEED.path}">feed</a> of this page, so a reader can bring the changes to you rather than you coming back to look.</p>\n`;
   return shell({
     slug: 'changelog',
     title: lines[0].slice(2).trim(),
-    description: "What has changed on monotropicmap.org, newest first — including what we got wrong.",
-    body: `${tableOfContents(html)}<div class="prose">\n${html}\n</div>`,
+    description: FEED.description,
+    body: `${feedNote}${tableOfContents(html)}<div class="prose">\n${html}\n</div>`,
   });
+}
+
+/* ---- the changelog feed -------------------------------------------------- */
+
+/** Every dated entry in CHANGELOG.md, newest first, as the feed needs them.
+ *
+ *  THE SHAPE OF A HEADING IS ENFORCED, not guessed at. An `##` that is not
+ *  `YYYY-MM-DD — Title` is a hard error rather than an entry quietly missing from the
+ *  feed — the same rule md.mjs works by, for the same reason: a feed that silently
+ *  drops an entry still looks like a feed. */
+function changelogEntries() {
+  const lines = readFileSync(join(ROOT, 'CHANGELOG.md'), 'utf8').split('\n');
+  const entries = [];
+  for (let i = 0; i < lines.length; i++) {
+    if (!lines[i].startsWith('## ')) continue;
+    const head = lines[i].slice(3).trim();
+    const m = /^(\d{4})-(\d{2})-(\d{2})\s+—\s+(.+)$/.exec(head);
+    if (!m) throw new Error(`CHANGELOG.md line ${i + 1}: an entry heading is "YYYY-MM-DD — Title", got "${head}"`);
+    const body = [];
+    for (let j = i + 1; j < lines.length && !lines[j].startsWith('## '); j++) body.push(lines[j]);
+    while (body.length && (!body[body.length - 1].trim() || body[body.length - 1] === '----')) body.pop();
+    entries.push({
+      id: headingId(head),
+      date: new Date(Date.UTC(+m[1], +m[2] - 1, +m[3])),
+      title: plain(render(`## ${m[4]}`, 'CHANGELOG.md', {})),
+      html: render(body.join('\n'), `CHANGELOG.md (${head})`, { slides: SLIDE_CTX }),
+    });
+  }
+  if (!entries.length) throw new Error('CHANGELOG.md has no dated entries, so the feed would be empty');
+  return entries;
+}
+
+/** Relative links and images, made absolute. A feed item is read somewhere other than
+ *  the page it came from, so `stories.html` in a reader resolves against the reader.
+ *  `.html` is dropped on the way, because `/stories` is what the canonical and the
+ *  sitemap say, and a feed should point at the same address everything else does. */
+function absolutise(html, pageUrl) {
+  return html.replace(/(href|src)="([^"]+)"/g, (whole, attr, url) => {
+    if (/^(https?:|mailto:|\/\/|data:)/.test(url)) return whole;
+    if (url.startsWith('#')) return `${attr}="${pageUrl}${url}"`;
+    const [path, frag] = url.replace(/^\//, '').split('#');
+    const pretty = path === 'index.html' ? '' : path.replace(/\.html$/, '');
+    return `${attr}="${SITE.origin}/${pretty}${frag ? `#${frag}` : ''}"`;
+  });
+}
+
+/** RFC 822, which is what RSS dates are. */
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const rfc822 = (d) => `${DAYS[d.getUTCDay()]}, ${String(d.getUTCDate()).padStart(2, '0')} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()} 00:00:00 GMT`;
+
+/**
+ * feed.xml — the changelog, for readers rather than for visits.
+ *
+ * ONE SOURCE, STILL. The feed is parsed out of the same CHANGELOG.md the page is
+ * rendered from, so there is no second account to go stale. `check.mjs` gates the two
+ * against each other: every entry on the page is an item here, and every item here
+ * lands on an id that exists on the page.
+ *
+ * NOTHING IN IT IS THE BUILD CLOCK. `lastBuildDate` is the newest entry's date, not
+ * the time this ran — a timestamp would rewrite the file on every build, show as drift
+ * in every check, and tell subscribers something changed when nothing had.
+ *
+ * `<guid isPermaLink="true">` is the entry's anchor on the changelog page and must
+ * never be rewritten for an entry already published: it is the identifier readers key
+ * off, and changing one re-floods everybody who subscribed.
+ */
+function feed() {
+  const entries = changelogEntries();
+  const pageUrl = `${SITE.origin}/changelog`;
+  const items = entries.map((e) => {
+    const url = `${pageUrl}#${e.id}`;
+    const body = absolutise(e.html, pageUrl);
+    if (body.includes(']]>')) throw new Error(`CHANGELOG.md entry "${e.title}" contains "]]>", which would close the CDATA section early`);
+    const first = /<p>([\s\S]*?)<\/p>/.exec(body);
+    const summary = plain(first ? first[1] : e.title).slice(0, 400);
+    return `    <item>
+      <title>${esc(e.title)}</title>
+      <link>${url}</link>
+      <guid isPermaLink="true">${url}</guid>
+      <pubDate>${rfc822(e.date)}</pubDate>
+      <description>${esc(summary)}</description>
+      <content:encoded><![CDATA[${body}]]></content:encoded>
+    </item>`;
+  });
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/">
+  <channel>
+    <title>${esc(FEED.title)}</title>
+    <link>${pageUrl}</link>
+    <description>${esc(FEED.description)}</description>
+    <language>en</language>
+    <copyright>CC BY-SA 4.0 — ${esc(SITE.authors)}</copyright>
+    <atom:link href="${SITE.origin}/${FEED.path}" rel="self" type="application/rss+xml" />
+    <lastBuildDate>${rfc822(entries[0].date)}</lastBuildDate>
+    <sy:updatePeriod>weekly</sy:updatePeriod>
+    <sy:updateFrequency>1</sy:updateFrequency>
+${items.join('\n')}
+  </channel>
+</rss>
+`;
 }
 
 function buildProse(slug) {
@@ -782,6 +898,7 @@ ${ZONES.map((z, i) => `- [${plain(z.label)}](${SITE.origin}/neuronormative-domin
 - [Draw a map](${SITE.origin}/draw): blank ground and a tray of shapes, for drawing your own instead of marking hers.
 - [About](${SITE.origin}/about): who made this, and the licence.
 - [Changelog](${SITE.origin}/changelog): what has changed, including what we got wrong.
+- Changelog feed (RSS): ${SITE.origin}/${FEED.path}
 - Machine-readable areas: ${SITE.origin}/search-index.json
 `;
 }
@@ -802,6 +919,7 @@ for (const slug of [...NAV.map(([s]) => s).filter((s) => !['index', 'areas', 'ne
 }
 outputs.set('map-hotspots.css', hotspotCss());
 outputs.set('search-index.json', searchIndex());
+outputs.set(FEED.path, feed());
 outputs.set('sitemap.xml', sitemap());
 outputs.set('llms.txt', llmsTxt());
 

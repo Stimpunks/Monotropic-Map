@@ -48,4 +48,5 @@ Monotropism is a neurodiversity-affirming theory of autism (Murray, Lesser & Law
 - [Draw a map](https://monotropicmap.org/draw): blank ground and a tray of shapes, for drawing your own instead of marking hers.
 - [About](https://monotropicmap.org/about): who made this, and the licence.
 - [Changelog](https://monotropicmap.org/changelog): what has changed, including what we got wrong.
+- Changelog feed (RSS): https://monotropicmap.org/feed.xml
 - Machine-readable areas: https://monotropicmap.org/search-index.json

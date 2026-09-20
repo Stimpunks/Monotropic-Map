@@ -11,6 +11,12 @@
 /*.css
   Cache-Control: public, max-age=0, must-revalidate
 
+# The changelog feed. Netlify would serve a .xml as application/xml; readers want the
+# feed type, and `nosniff` means the declared type is the only one the browser trusts.
+/feed.xml
+  Content-Type: application/rss+xml; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+
 /*.js
   Cache-Control: public, max-age=0, must-revalidate
 

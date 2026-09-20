@@ -25,7 +25,7 @@ pages/*.md                 the prose sources for the pages above
 tools/areas.mjs            THE twenty areas — the single source for everything
 tools/domination.mjs       the nine zones of the second map
 tools/shapes.mjs           THE shapes the builder offers — drawn by us, never traced
-tools/build.mjs            generates every .html, search-index.json, sitemap.xml, llms.txt
+tools/build.mjs            generates every .html, search-index.json, sitemap.xml, llms.txt, feed.xml
 tools/md.mjs               a small, strict Markdown dialect
 tools/slides.mjs           the sixteen training slides and their alt text
 tools/make-slides.py       renders those slides out of the published training PDF
@@ -36,7 +36,7 @@ images/slides/             the training deck, generated — never hand-edit
 
 ## Never hand-edit a generated file
 
-**Every `.html` at the root is output.** So are `search-index.json`, `sitemap.xml` and `llms.txt`. The sources are `tools/areas.mjs`, `tools/domination.mjs`, `pages/*.md` and `tools/build.mjs`.
+**Every `.html` at the root is output.** So are `search-index.json`, `sitemap.xml`, `llms.txt` and `feed.xml` (the changelog feed, generated from `CHANGELOG.md`). The sources are `tools/areas.mjs`, `tools/domination.mjs`, `pages/*.md` and `tools/build.mjs`.
 
 Edit the source, then:
 
