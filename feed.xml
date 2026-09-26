@@ -10,9 +10,24 @@
     <language>en</language>
     <copyright>CC BY-SA 4.0 — Helen Edgar (Autistic Realms) and the Stimpunks Foundation</copyright>
     <atom:link href="https://monotropicmap.org/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Sun, 20 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 00:00:00 GMT</lastBuildDate>
     <sy:updatePeriod>weekly</sy:updatePeriod>
     <sy:updateFrequency>1</sy:updateFrequency>
+    <item>
+      <title>Mapping Monotropism in Education</title>
+      <link>https://monotropicmap.org/changelog#2026-09-26-mapping-monotropism-in-education</link>
+      <guid isPermaLink="true">https://monotropicmap.org/changelog#2026-09-26-mapping-monotropism-in-education</guid>
+      <pubDate>Sat, 26 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Mapping Monotropism in Education is new: Helen Edgar on what the map means at school. It comes from the Yellow Ladybugs panel she gave with Dr Wenn Lawson in June 2025, and it is for teachers, support staff and families. It walks through the landmarks of the map as they show up in a school day, then executive function, the senses, communication, interests, transitions and burnout, and ends every p</description>
+      <content:encoded><![CDATA[<p><strong><a href="https://monotropicmap.org/education">Mapping Monotropism in Education</a> is new: Helen Edgar on what the map means at school.</strong> It comes from the Yellow Ladybugs panel she gave with Dr Wenn Lawson in June 2025, and it is for teachers, support staff and families. It walks through the landmarks of the map as they show up in a school day, then executive function, the senses, communication, interests, transitions and burnout, and ends every part with what helps — which is always a change to the setting, never an instruction to the child.</p>
+<ul>
+  <li><strong>It is linked from the front page, the <a href="https://monotropicmap.org/training">training</a></strong>, and the three areas it leans on most: the <a href="https://monotropicmap.org/shark-infested-waters">Shark Infested Waters</a>, the <a href="https://monotropicmap.org/tides-of-the-sensory-sea">Tides of the Sensory Sea</a> and the <a href="https://monotropicmap.org/river-of-monotropic-flow-states">River of Monotropic Flow States</a>.</li>
+  <li><strong>Fixed before it could matter: the page renderer printed what it did not understand.</strong> It was built to stop on anything unfamiliar, so a page could never quietly lose a line. It did stop on a lost line — and turned a table into paragraphs of pipe characters instead, with no complaint. Nothing published had a table, so nobody saw it; this page would have been the first. It now renders tables and numbered lists, and stops on the rest.</li>
+  <li><strong>Tables read top to bottom on a phone</strong>, each row under its own heading, instead of three squeezed columns.</li>
+  <li><strong>The Meerkat Mounds link follows its post</strong> to NeuroHub Community, where Emergent Divergence now lives.</li>
+  <li><strong>Corrected: Meerkat Mounds was named by Tanya Adkin</strong>, not by Tanya Adkin and David Gray-Hammond together. The definition it quotes is still credited to both of them, because those words are theirs jointly; the name is hers.</li>
+</ul>]]></content:encoded>
+    </item>
     <item>
       <title>The changelog has a feed</title>
       <link>https://monotropicmap.org/changelog#2026-09-20-the-changelog-has-a-feed</link>

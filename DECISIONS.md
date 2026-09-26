@@ -4,6 +4,12 @@ What was chosen while building this site, and what is still open. Read before re
 
 ## Open
 
+### Islands of Internalised Ableism, as area 21
+**Helen wants it on the map eventually, and asked on 2026-09-26 whether an area page could go up now, ahead of the artwork.** Not built yet, for two reasons that are both hers to settle.
+
+- **The page needs words nobody here has.** Every area carries a plain definition, a quoted definition with a source, who named it, and what changes it. We have the name and nothing else, and inventing any of the four is the failure `ATTRIBUTIONS.md` exists to prevent.
+- **"Twenty" is a property of the site, not a count.** The key, the marking tool, the builder's tray, the pager, `validate()` and `check.mjs` all hold to twenty areas with a place on the artwork. A twenty-first with no marker either breaks all of those or sits outside them — which is a real choice, a page in the ring of areas or a page beside it, and should be made on purpose.
+
 ### Two sets of our own words sit on Helen's map, and she has reviewed both
 **Forty short passages now, not twenty.** The *What changes this* paragraph and the *In plain words* definition on each area page are both drafted by Stimpunks. They are the places where we put our words into a map that is hers, and they should get her eye.
 
@@ -59,6 +65,25 @@ Penguin Pebbling has one. This site does not, and that is a deliberate not-yet r
 ----
 
 ## Settled
+
+### Mapping Monotropism in Education: Helen's answers, 2026-09-26
+**She answered all eight questions the build raised, and said to verify what we could and publish.**
+
+- **No recording.** The byline links [Yellow Ladybugs](https://www.yellowladybugs.com.au/) itself.
+- **Beardon is *Avoiding Anxiety in Autistic Children* (Sheldon Press, 2021)**, not the 2017 book, so the page's "Beardon's (2017)" is now 2021. The ISBN she gave, 9781529394764, matches the title and subtitle in Open Library.
+- **The six features of monotropic cognition are from Fergus Murray's [*Starting points for understanding autism*](https://oolong.medium.com/starting-points-for-understanding-autism-3573817402f2)**, published 2019-01-19, not the *Psychologist* article. Medium refuses scripted requests, so it was read from the Internet Archive's copy of 2020-11-12; all six are there, numbered, in the order the page gives them.
+- **Meerkat mode is Tanya Adkin's, 2023.** The page now says "Adkin (2023) describes", and area 11's credit changed with it — see `ATTRIBUTIONS.md`.
+- **Kelly Mahler** is in the references, pointing to [her site](https://www.kelly-mahler.com/).
+- **Cavendish Spaces: the "we" is right.** It is Helen, Autistic Realms and the Stimpunks team together; Ryan conceptualised Cavendish, which is what this site already credits. Nothing changed.
+- **Author lists, volumes and pages were verified against the record** — Crossref for the six DOIs, OSF for Garau et al. All matched except one year: **Wood** was online in 2019 and is in volume 73(1), which is 2021, so both the reference and "Wood (2021) found" now say 2021.
+- **Two small corrections of our own**, not hers: the Emergent Divergence references now name NeuroHub Community, the site they are served from; and the Heasman and Buckle links point at the DOIs their text shows.
+
+**The Emergent Divergence posts moved to neurohubcommunity.org**, which Ryan confirmed and the old address now redirects to. The page's references already used the new address; area 11's link was updated to match.
+
+### Education is in the nav, after Training
+**It is a primary destination, not a footer page.** The people it is for — teachers and families — are the people the training is for, and the two sit together. That makes the bar nine items; at 375px it still wraps to the same three rows it did at eight. Helen asked for it to be linked from the home page, the training page and three area pages, and it is linked from all of those too. Whether it belongs in the nav at all is an editorial call and an easy one to reverse.
+
+**Area pages link to it through `further` in `areas.mjs`**, a list of page slugs. The link text is read from the page's own title, so a rename cannot leave the area pages calling it by an old name, and a slug that is not a built page stops the build.
 
 ### The changelog has an RSS feed, built from the same file the page is
 Settled 2026-09-20. **`feed.xml` is generated from `CHANGELOG.md`**, the same file `changelog.html` is rendered from, so there is no second account of the history to go stale. Every page announces it in `<head>`, and `tools/check.mjs` gates the feed and the page against each other in both directions: every entry on the page is an item in the feed, and every item's `guid` lands on an anchor that exists on the page.
@@ -288,3 +313,9 @@ Matches [Star Stuff](https://starstuff.earth/) and [Queering Earth](https://quee
 
 ### `tools/md.mjs` hard-errors on anything it does not understand
 A page that quietly loses a paragraph still looks fine. That is precisely why it must not be possible. Four-dash rules are house style and three dashes are an error, not a rule.
+
+**It was not true until 2026-09-26, and nothing had caught it.** Anything the dialect did not claim fell through to a paragraph, so Helen's education page rendered its comparison table as six paragraphs of pipes, its ten principles as ten loose paragraphs, and `<https://…>` references as literal text — with no error, because nothing was *dropped*. Printing raw syntax is the same failure as losing a line. The dialect now has pipe tables, numbered lists (which must count from one, in order), autolinks and backslash escapes, and it refuses task lists, `*` bullets, `####` headings, code fences and raw HTML rather than printing them.
+
+**Repeated headings get numbered ids** — the second "What Helps" is `what-helps-2` — and `check.mjs` fails any page that uses one id twice. Four sections sharing an id pass a fragment check and still send every link to the first.
+
+**Tables stack on a phone.** Three columns at 375px either break words mid-way or scroll sideways; each row becomes its heading with each cell under its column's name. The cells carry explicit ARIA roles, because changing a table's `display` in CSS strips its table semantics in some browsers.

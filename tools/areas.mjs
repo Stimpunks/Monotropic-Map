@@ -196,6 +196,7 @@ export const AREAS = [
     stimpunks: 'https://stimpunks.org/glossary/flow/',
     helps: 'Let the river run. Flow is how a monotropic bodymind recharges, so time in it is not time off the work — and an environment that treats it as a reward to be earned after the real tasks has the arithmetic backwards.',
     borders: ['attention-tunnels', 'river-banks-of-monotropic-time', 'burnout-whirlpools'],
+    further: ['education'],
     sibling: null,
   },
   {
@@ -223,7 +224,8 @@ export const AREAS = [
     hot: [27, 52],
     plain: "You are watching for danger all the time, like a meerkat. You cannot settle into anything, and you cannot find your way into flow. This happens when a place does not feel safe.",
     gloss: 'Heightened state of vigilance and arousal that involves constantly looking for danger and threat. It is more than hyper-arousal, it is an overwhelmed monotropic person desperately looking for a hook into a monotropic flow-state.',
-    who: { name: 'Tanya Adkin &amp; David Gray-Hammond', url: 'https://emergentdivergence.com/2023/06/06/what-is-meerkat-mode-and-how-does-it-relate-to-audhd/' },
+    who: { name: 'Tanya Adkin &amp; David Gray-Hammond', url: 'https://neurohubcommunity.org/2023/06/06/what-is-meerkat-mode-and-how-does-it-relate-to-audhd/' },
+    coiner: 'Tanya Adkin',
     stimpunks: 'https://stimpunks.org/glossary/meerkat-mode/',
     helps: 'Removing the threat, not the vigilance. Meerkat mode is an accurate reading of an unsafe room. It stops when the room is safe, and telling somebody to calm down inside it is asking them to stop perceiving correctly.',
     borders: ['mountains-of-ruminating-thoughts', 'shark-infested-waters', 'burnout-whirlpools'],
@@ -260,6 +262,7 @@ export const AREAS = [
     stimpunks: 'https://stimpunks.org/glossary/double-empathy-problem/',
     helps: 'Other water to drink. These are the conditions the rest of the map sits in, made and maintained by institutions, and they do not stay outside a person — the water gets absorbed. Astrida Neimanis\u2019s <a href="https://doi.org/10.5040/9781474275415" rel="noopener">hydrofeminism</a> is the borrowed frame here (<em>Bodies of Water</em>, 2017): bodies are permeable, and there is no clean edge where the outside stops. So the change is not scrubbing the water out of somebody, which cannot be done. It is that nourishing water has to be within reach \u2014 Autistic community, spaces built for the bodies in them, people who do not read you as a deficit. Most of the rest of this map is that water. This is the area with a politics rather than a coping strategy.',
     borders: ['cyclones-of-unmet-needs', 'meerkat-mounds', 'burnout-whirlpools'],
+    further: ['education'],
     sibling: null,
   },
   {
@@ -353,6 +356,7 @@ export const AREAS = [
     stimpunks: 'https://stimpunks.org/access/sensory-experience/',
     helps: 'Control over the inputs, and all eight senses counted. Light you can dim, sound you can leave, fabric you chose — and room for interoception, proprioception and the vestibular sense, which the familiar five leave out. The tide is not a mood, and the lever is in the room rather than in the person.',
     borders: ['panic-hills-of-low-object-permanence', 'sudden-storms-of-unexpected-events', 'burnout-whirlpools'],
+    further: ['education'],
     sibling: { name: 'Cavendish Cards', url: 'https://cavendish.space/deck.html' },
   },
   {

@@ -35,7 +35,7 @@ This is the part that is easy to get lazy about and the part that matters most. 
 | 8 | Rhizomatic Communities | Helen Edgar |
 | 9 | River of Monotropic Flow States | Fergus Murray |
 | 10 | Campsite of Cavendish Spaces | Ryan Boren |
-| 11 | Meerkat Mounds | Tanya Adkin &amp; David Gray-Hammond |
+| 11 | Meerkat Mounds | Tanya Adkin (definition quoted from Adkin &amp; Gray-Hammond, 2023) |
 | 12 | Riverbanks of Monotropic Time | Helen Edgar |
 | 13 | Shark Infested Waters | Damian Milton (double empathy problem) |
 | 14 | Beach of Body Doubling | Jessica McCabe |
@@ -58,6 +58,10 @@ Every one came from filling in a first name that our own published page gave onl
 
 **Blackwater's first name came from Helen, not from a guess.** The byline is not on the live article on themighty.com, and the site carried the surname alone until 2026-09-16, when Helen Edgar gave the full name and the profile it belongs to: **Amelia Blackwater**, [themighty.com/u/amelia-blackwater](https://themighty.com/u/amelia-blackwater). That is the rule working — a surname you can source held the page until somebody who knew could fill it in.
 
+## Meerkat Mounds was named by Tanya Adkin
+
+**Area 11 credited Tanya Adkin and David Gray-Hammond jointly with naming it. The name is Tanya's.** The post it links says it "was authored by Tanya Adkin" and that meerkat mode was dubbed so by Tanya; Helen Edgar confirmed it on 2026-09-26. **David Gray-Hammond is still credited, for the right thing:** the definition the page quotes is a passage the post itself attributes to Adkin &amp; Gray-Hammond (2023). So `coiner` is Tanya Adkin and `who` stays both of them — naming and wording are two credits, and collapsing them was the error.
+
 ## Two areas are Helen's own, and now say so
 
 **Rabbit Holes of Research and Infodump Canyon were recorded as having no single originator.** Both are Helen Edgar's own additions to the map; she said so on 2026-09-16. *Down the rabbit hole* is a shared English idiom and *infodump* is community usage, so the **definitions** quoted on those two pages are still general ones rather than quotations from her — `who` stays null and `coiner` is Helen Edgar. The page says exactly that, because crediting her with a sentence she did not write would be the same error in the other direction.
@@ -73,6 +77,14 @@ The sixteen slides on [the training page](https://monotropicmap.org/training) ar
 The **Intersectionality and Double Empathy** slide reproduces the **Wheel of Power and Privilege by [Sylvia Duckworth](https://sylviaduckworth.com/)**, itself adapted from ccrweb.ca. Her handle is printed on the wheel and stays visible in our crop — **do not crop it out, and do not reproduce that wheel anywhere on this site without it.**
 
 The slide also credits **Kimberlé Crenshaw**, who coined *intersectionality* in her essays of 1989 and 1991.
+
+## Mapping Monotropism in Education
+
+**The page at `/education` is Helen Edgar's**, of Autistic Realms. It is based on the Yellow Ladybugs panel *Mapping the Monotropic Mind: An Introduction to This Autistic Thinking and Processing Style*, which she presented with **Dr Wenn Lawson** in June 2025, and it is a shorter version of an unpublished Autistic Realms draft of that panel. She sent it as a finished page on 2026-09-26; the draft stays unpublished, so this is the only place it lives. CC BY-SA 4.0, like everything else here.
+
+**The words are hers and are not edited here.** What we changed is formatting only: links to our own pages are relative rather than absolute, so `check.mjs` can verify them; the note to Ryan and the editing notes to Helen are left out; and the "to confirm" remarks on two references are held in `DECISIONS.md`, not printed on the page.
+
+**The references are hers too**, and they credit other people's work — Tanya Adkin for monotropic split, Luke Beardon for *Autism + Environment = Outcome*, Kristen Buckle and colleagues for Autistic inertia, Fergus Murray for the account of monotropic cognition. Helen confirmed or corrected each one on 2026-09-26; what changed is in `DECISIONS.md`.
 
 ## The typeface
 

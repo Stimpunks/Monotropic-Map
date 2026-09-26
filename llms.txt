@@ -20,7 +20,7 @@ Monotropism is a neurodiversity-affirming theory of autism (Murray, Lesser & Law
 - [Rhizomatic Communities](https://monotropicmap.org/rhizomatic-communities): A rhizome is a root that spreads sideways and puts up new shoots. Lots of small Autistic groups, joined up like that. Some meet online and some meet in person. Nobody is in charge. If one group stops, the rest carry on. Named by Helen Edgar.
 - [River of Monotropic Flow States](https://monotropicmap.org/river-of-monotropic-flow-states): You are deep in something and time goes soft. It may feel like it has melted away. Your body settles. This is how a monotropic person gets energy back. Named by Fergus Murray.
 - [Campsite of Cavendish Spaces](https://monotropicmap.org/campsite-of-cavendish-spaces): A place that fits your body and your senses. Somewhere you can work, rest, or be with people without it costing you. Named by Ryan Boren.
-- [Meerkat Mounds](https://monotropicmap.org/meerkat-mounds): You are watching for danger all the time, like a meerkat. You cannot settle into anything, and you cannot find your way into flow. This happens when a place does not feel safe. Named by Tanya Adkin & David Gray-Hammond.
+- [Meerkat Mounds](https://monotropicmap.org/meerkat-mounds): You are watching for danger all the time, like a meerkat. You cannot settle into anything, and you cannot find your way into flow. This happens when a place does not feel safe. Named by Tanya Adkin.
 - [River Banks of Monotropic Time](https://monotropicmap.org/river-banks-of-monotropic-time): Deep focus changes time. An hour can feel like ten minutes. The outside world melts away for a while. Named by Helen Edgar.
 - [Shark Infested Waters of Neuronormativity and Behaviourism & Double Empathy Problems](https://monotropicmap.org/shark-infested-waters): The water around everything else. It is the idea that there is one right way to have a mind. It is in schools, jobs and doctors' rooms. You do not just swim in it. You drink it, and it becomes part of you. Named by Damian Milton.
 - [Beach of Body Doubling](https://monotropicmap.org/beach-of-body-doubling): Someone sits nearby while you work. There is no pressure to perform. It is a shared presence, not a check on you. Having them there makes it easier to start. Named by Jessica McCabe.
@@ -44,6 +44,7 @@ Monotropism is a neurodiversity-affirming theory of autism (Murray, Lesser & Law
 
 ## Also
 - [Training](https://monotropicmap.org/training): free open-source training, about 45 minutes.
+- [Education](https://monotropicmap.org/education): Mapping Monotropism in Education — Helen Edgar on supporting young Autistic people at school.
 - [Your map](https://monotropicmap.org/stories): mark where you are on the map, and the community story project.
 - [Draw a map](https://monotropicmap.org/draw): blank ground and a tray of shapes, for drawing your own instead of marking hers.
 - [About](https://monotropicmap.org/about): who made this, and the licence.

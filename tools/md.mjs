@@ -3,9 +3,15 @@
  *
  * ANYTHING IT DOES NOT UNDERSTAND IS A HARD ERROR, never a silent drop. A page that
  * quietly loses a paragraph still looks fine, which is exactly why it must not be
- * possible. Supported: `##`/`###` headings, paragraphs, `-` lists, `>` quotes,
- * `----` rules (four dashes, house style), links, **bold**, *italic*, `code`,
- * `::: consider` … `:::` callouts, `@slide <slug>`, `@mymap` and `@canvas`.
+ * possible. Supported: `##`/`###` headings, paragraphs, `-` and `1.` lists, `>` quotes,
+ * `|` pipe tables, `----` rules (four dashes, house style), links, `<https://…>`
+ * autolinks, `\[` escapes, **bold**, *italic*, `code`, `::: consider` … `:::`
+ * callouts, `@slide <slug>`, `@mymap` and `@canvas`.
+ *
+ * THE PARAGRAPH IS NOT A FALLBACK. Until 2026-09-26 any line nothing else claimed became
+ * a <p>, so a table rendered as six paragraphs of pipes and a numbered list as ten loose
+ * paragraphs — with no error, because nothing was dropped. A line that opens like a
+ * construct this dialect lacks is now refused rather than printed as its raw syntax.
  *
  * THE CALLOUT NAME IS CHECKED. `::: whatever` is a hard error rather than a div with a
  * class nobody styled — a callout that renders as an unstyled paragraph is the same
@@ -25,9 +31,18 @@ function esc(s) {
   return s.replace(/&(?![a-zA-Z]+;|#\d+;)|[<>]/g, (c) => ESC[c]);
 }
 
+/** Backslash escapes, as numeric entities so nothing later reads them as syntax. */
+const ESCAPES = { '[': '&#91;', ']': '&#93;', '*': '&#42;', '_': '&#95;', '`': '&#96;', '\\': '&#92;', '|': '&#124;' };
+
 function inline(s, where) {
-  let out = esc(s);
+  let out = esc(s.replace(/\\([[\]*_`\\|])/g, (_, c) => ESCAPES[c]));
   out = out.replace(/`([^`]+)`/g, (_, c) => `<code>${c}</code>`);
+  /* `<https://…>` is a link to itself. Matched after esc(), so the angle brackets are
+     already &lt; and &gt; and any `&` in the address is already &amp;. */
+  out = out.replace(/&lt;(https?:\/\/[^\s]+?)&gt;/g, (_, href) => {
+    const ext = !href.includes('monotropicmap.org');
+    return `<a href="${href}"${ext ? ' rel="noopener"' : ''}>${href}</a>`;
+  });
   out = out.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, href) => {
     const ext = /^https?:\/\//.test(href) && !href.includes('monotropicmap.org');
     const rel = ext ? ' rel="noopener"' : '';
@@ -54,6 +69,10 @@ export function render(src, where = 'markdown', ctx = {}) {
   const lines = src.replace(/\r\n/g, '\n').split('\n');
   const out = [];
   let i = 0;
+  /* Heading ids already used on this page. A long page can repeat a heading — four
+     sections each ending "What Helps" — and four elements sharing one id is a page
+     where every link to the third goes to the first. The second becomes -2, and so on. */
+  const used = new Map();
 
   while (i < lines.length) {
     const line = lines[i];
@@ -134,16 +153,87 @@ export function render(src, where = 'markdown', ctx = {}) {
     let m = /^(#{2,3})\s+(.+)$/.exec(line);
     if (m) {
       const level = m[1].length;
-      const id = headingId(m[2]);
+      const base = headingId(m[2]);
+      const n = (used.get(base) || 0) + 1;
+      used.set(base, n);
+      const id = n === 1 ? base : `${base}-${n}`;
       out.push(`<h${level} id="${id}">${inline(m[2], where)}</h${level}>`);
       i++; continue;
     }
     if (/^#\s/.test(line)) throw new Error(`md: the h1 comes from the page title, not the body (${where}, line ${i + 1})`);
 
+    /* Constructs this dialect does not have. Each would otherwise fall through to a
+       paragraph and print its own syntax. */
+    const lacking = [
+      [/^#{4,}\s/, 'headings deeper than ### are not supported'],
+      [/^- \[[ xX]\]\s/, 'task lists are not supported'],
+      [/^[*+]\s/, 'lists use "- ", not "* " or "+ "'],
+      [/^\d+\)\s/, 'numbered lists use "1. ", not "1) "'],
+      [/^```/, 'code blocks are not supported'],
+      [/^<(?!https?:\/\/)[a-zA-Z!/]/, 'raw HTML is not supported'],
+    ];
+    for (const [re, why] of lacking) {
+      if (re.test(line)) throw new Error(`md: ${why} (${where}, line ${i + 1}): ${line}`);
+    }
+
     if (line.startsWith('- ')) {
       const items = [];
       while (i < lines.length && lines[i].startsWith('- ')) { items.push(inline(lines[i].slice(2), where)); i++; }
       out.push(`<ul>\n${items.map((t) => `  <li>${t}</li>`).join('\n')}\n</ul>`);
+      continue;
+    }
+
+    /* Numbered lists count from one, in order. A list that skips or restarts is almost
+       always two lists run together or an item lost in an edit, and <ol> would silently
+       renumber it — so the numbers written are checked against the numbers shown. */
+    if (/^\d+\.\s/.test(line)) {
+      const items = [];
+      while (i < lines.length && /^\d+\.\s/.test(lines[i])) {
+        const [, num, text] = /^(\d+)\.\s+(.*)$/.exec(lines[i]);
+        if (+num !== items.length + 1) throw new Error(`md: numbered list item ${num} should be ${items.length + 1} (${where}, line ${i + 1})`);
+        items.push(inline(text, where)); i++;
+      }
+      out.push(`<ol>\n${items.map((t) => `  <li>${t}</li>`).join('\n')}\n</ol>`);
+      continue;
+    }
+
+    /* Pipe tables: a header row, a `| --- |` rule, then body rows, every row the same
+       width. An empty top-left cell means the first column names its rows, so those
+       cells become row headers and the corner is an ordinary empty cell rather than a
+       header with no name.
+       ON A PHONE THE ROWS STACK. Three columns at 375px either break words mid-way or
+       scroll sideways, and both are harder to read than a row heading with each cell
+       under its column's name. So every cell carries that name in `data-label` for the
+       stylesheet to print. The explicit roles are there because changing a table's
+       `display` in CSS strips its table semantics in some browsers; with them, a screen
+       reader still hears a table at any width. The wrapper stays focusable and scrolls
+       on its own, for a table too wide even for that. */
+    if (line.startsWith('|')) {
+      const rows = [];
+      const start = i;
+      while (i < lines.length && lines[i].startsWith('|')) {
+        const raw = lines[i].trim();
+        if (!raw.endsWith('|')) throw new Error(`md: table row does not end with "|" (${where}, line ${i + 1})`);
+        rows.push(raw.slice(1, -1).replace(/\\\|/g, '\u0000').split('|').map((c) => c.replace(/\u0000/g, '\\|').trim()));
+        i++;
+      }
+      if (rows.length < 3 || !rows[1].every((c) => /^:?-{3,}:?$/.test(c))) {
+        throw new Error(`md: a table is a header row, a "| --- |" rule and at least one body row (${where}, line ${start + 1})`);
+      }
+      const width = rows[0].length;
+      rows.forEach((r, k) => {
+        if (r.length !== width) throw new Error(`md: table row has ${r.length} cells, the header has ${width} (${where}, line ${start + k + 1})`);
+      });
+      const rowHeads = rows[0][0] === '';
+      const names = rows[0].map((c) => inline(c, where).replace(/<[^>]+>/g, '').replace(/"/g, '&quot;'));
+      const head = rows[0].map((c, k) => (k === 0 && rowHeads)
+        ? '<td role="cell"></td>'
+        : `<th scope="col" role="columnheader">${inline(c, where)}</th>`).join('');
+      const body = rows.slice(2).map((r) => '    <tr role="row">' + r.map((c, k) => (k === 0 && rowHeads)
+        ? `<th scope="row" role="rowheader">${inline(c, where)}</th>`
+        : `<td role="cell" data-label="${names[k]}">${inline(c, where)}</td>`).join('') + '</tr>').join('\n');
+      const label = names.filter(Boolean).join(', ');
+      out.push(`<div class="tablewrap" role="region" aria-label="Table: ${label}" tabindex="0">\n<table role="table">\n  <thead role="rowgroup">\n    <tr role="row">${head}</tr>\n  </thead>\n  <tbody role="rowgroup">\n${body}\n  </tbody>\n</table>\n</div>`);
       continue;
     }
 

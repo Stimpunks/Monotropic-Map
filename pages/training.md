@@ -312,6 +312,7 @@ Leave open space for questions and discussion. Please visit [Autistic Realms](ht
 - [monotropism.org](https://monotropism.org)
 - [Purchase a poster of the Map of Monotropic Experiences](https://stimpunks.org/shop/map-of-monotropic-experiences-poster/) in the Stimpunks shop.
 - [The training pack](https://autisticrealms.com/product/training-with-notes-the-map-of-monotropic-experiences/) and [the workbook](https://autisticrealms.com/product/my-monotropic-map-workbook/) at Autistic Realms — free for individuals and anyone with limited funds, with a suggested donation for organisations and professionals.
+- [Mapping Monotropism in Education](education.html) — Helen Edgar on what the map means at school, and a companion to this training for teachers and families.
 - [Donate to Stimpunks](https://stimpunks.org/give/) and support our community.
 
 Thank you for showing an interest in our training. We hope you have found this valuable. Please do share your feedback with us — we'd love to hear from you.

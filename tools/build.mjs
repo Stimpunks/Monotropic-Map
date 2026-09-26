@@ -56,12 +56,20 @@ const NAV = [
   ['areas', 'The twenty areas'],
   ['neuronormative-domination', 'The frame'],
   ['training', 'Training'],
+  ['education', 'Education'],
   ['stories', 'Your map'],
   ['draw', 'Draw a map'],
   ['about', 'About'],
   ['changelog', 'Changelog'],
 ];
 const FOOTER_ONLY = ['privacy'];
+
+/** A prose page's description is its first line of text unless it is named here.
+ *  `education` opens with its byline, which is a credit and not a summary. The
+ *  wording is Helen Edgar's, from the note she sent with the page. */
+const DESCRIPTIONS = new Map([
+  ['education', 'How the Map of Monotropic Experiences can help schools and families support young Autistic people.'],
+]);
 
 /** The changelog feed. One file, named once, so the autodiscovery link in every
  *  <head>, the line in llms.txt, the self-link inside the feed and the gate in
@@ -309,6 +317,7 @@ ${numberedKey()}
 <h2>Take it further</h2>
 <ul class="prose">
   <li><a href="training.html">Free open-source training</a> — about forty-five minutes, for schools, workplaces, health settings and community groups.</li>
+  <li><a href="education.html">Mapping Monotropism in Education</a> — Helen Edgar on what the map means at school, for teachers and families.</li>
   <li><a href="stories.html">Mark your own map</a>, and share it with the community story project.</li>
   <li><a href="https://pa11erns.com/psychometrics/mq/" rel="noopener">The Monotropism Questionnaire</a> — Garau et al.'s validated measure, shared under CC BY-NC-SA. We link it rather than copying it.</li>
 </ul>`;
@@ -359,6 +368,25 @@ function areaArtFigure(a) {
 </figure>`;
 }
 
+/** Pages on this site that an area sends its reader on to — `further` in areas.mjs,
+ *  a list of page slugs. The link text is the page's own title, read from its source,
+ *  so a renamed page cannot leave twenty area pages calling it by its old name. A slug
+ *  that is not a built page is a hard error rather than a link check.mjs finds later. */
+function furtherReading(a) {
+  return (a.further || []).map((slug) => {
+    if (!NAV.some(([s]) => s === slug) && !FOOTER_ONLY.includes(slug)) {
+      throw new Error(`areas.mjs: ${a.slug} sends readers on to "${slug}", which is not a page in NAV or FOOTER_ONLY`);
+    }
+    const title = readFileSync(join(ROOT, 'pages', `${slug}.md`), 'utf8').split('\n')[0].slice(2).trim();
+    return `  <li><a href="${slug}.html">${esc(title)}</a> — ${esc(FURTHER_NOTES.get(slug) || '')}</li>\n`;
+  }).join('');
+}
+
+/** What each page offers a reader arriving from an area. One line per page, not per area. */
+const FURTHER_NOTES = new Map([
+  ['education', 'what this part of the map means at school, by Helen Edgar.'],
+]);
+
 function buildArea(a) {
   const prev = AREAS[(a.n - 2 + 20) % 20];
   const next = AREAS[a.n % 20];
@@ -399,7 +427,7 @@ ${borders}
 <h2>Read more</h2>
 <ul class="prose">
   <li><a href="${a.stimpunks}" rel="noopener">Stimpunks glossary</a></li>
-${a.who ? `  <li><a href="${a.who.url}" rel="noopener">${esc(a.who.name)} on ${esc(plain(a.title).toLowerCase())}</a></li>\n` : ''}${a.sibling ? `  <li><a href="${a.sibling.url}" rel="noopener">${esc(a.sibling.name)}</a> — a whole site about this part of the map.</li>\n` : ''}</ul>
+${furtherReading(a)}${a.who ? `  <li><a href="${a.who.url}" rel="noopener">${esc(a.who.name)} on ${esc(plain(a.title).toLowerCase())}</a></li>\n` : ''}${a.sibling ? `  <li><a href="${a.sibling.url}" rel="noopener">${esc(a.sibling.name)}</a> — a whole site about this part of the map.</li>\n` : ''}</ul>
 
 <nav class="pager" aria-label="Areas">
   <a href="${prev.slug}.html">← ${prev.n}. ${prev.label}</a>
@@ -478,6 +506,10 @@ function changelogEntries() {
     });
   }
   if (!entries.length) throw new Error('CHANGELOG.md has no dated entries, so the feed would be empty');
+  /* md.mjs gives a repeated heading a -2 id, and this list does not know that. Two entries
+     with one heading would send both feed items to the first. */
+  const dup = entries.find((e, k) => entries.findIndex((f) => f.id === e.id) !== k);
+  if (dup) throw new Error(`CHANGELOG.md has two entries headed "${dup.title}" — the feed links each by its heading, so they must differ`);
   return entries;
 }
 
@@ -561,7 +593,7 @@ function buildProse(slug) {
   const lines = src.split('\n');
   if (!lines[0].startsWith('# ')) throw new Error(`pages/${slug}.md must open with "# Title"`);
   const title = lines[0].slice(2).trim();
-  const desc = (lines.slice(1).find((l) => l.trim() && !l.startsWith('#')) || title).replace(/[*\[\]]|\(https?:[^)]+\)/g, '').trim();
+  const desc = DESCRIPTIONS.get(slug) || (lines.slice(1).find((l) => l.trim() && !l.startsWith('#')) || title).replace(/[*\[\]]|\(https?:[^)]+\)/g, '').trim();
   const html = render(lines.slice(1).join('\n'), `pages/${slug}.md`, {
     slides: SLIDE_CTX,
     mymap: slug === 'stories' ? myMapTool() : null,
@@ -894,6 +926,7 @@ ${ZONES.map((z, i) => `- [${plain(z.label)}](${SITE.origin}/neuronormative-domin
 
 ## Also
 - [Training](${SITE.origin}/training): free open-source training, about 45 minutes.
+- [Education](${SITE.origin}/education): Mapping Monotropism in Education — Helen Edgar on supporting young Autistic people at school.
 - [Your map](${SITE.origin}/stories): mark where you are on the map, and the community story project.
 - [Draw a map](${SITE.origin}/draw): blank ground and a tray of shapes, for drawing your own instead of marking hers.
 - [About](${SITE.origin}/about): who made this, and the licence.

@@ -6,6 +6,18 @@ We publish the mistakes too. A changelog that only lists wins is an advertisemen
 
 ----
 
+## 2026-09-26 — Mapping Monotropism in Education
+
+**[Mapping Monotropism in Education](education.html) is new: Helen Edgar on what the map means at school.** It comes from the Yellow Ladybugs panel she gave with Dr Wenn Lawson in June 2025, and it is for teachers, support staff and families. It walks through the landmarks of the map as they show up in a school day, then executive function, the senses, communication, interests, transitions and burnout, and ends every part with what helps — which is always a change to the setting, never an instruction to the child.
+
+- **It is linked from the front page, the [training](training.html)**, and the three areas it leans on most: the [Shark Infested Waters](shark-infested-waters.html), the [Tides of the Sensory Sea](tides-of-the-sensory-sea.html) and the [River of Monotropic Flow States](river-of-monotropic-flow-states.html).
+- **Fixed before it could matter: the page renderer printed what it did not understand.** It was built to stop on anything unfamiliar, so a page could never quietly lose a line. It did stop on a lost line — and turned a table into paragraphs of pipe characters instead, with no complaint. Nothing published had a table, so nobody saw it; this page would have been the first. It now renders tables and numbered lists, and stops on the rest.
+- **Tables read top to bottom on a phone**, each row under its own heading, instead of three squeezed columns.
+- **The Meerkat Mounds link follows its post** to NeuroHub Community, where Emergent Divergence now lives.
+- **Corrected: Meerkat Mounds was named by Tanya Adkin**, not by Tanya Adkin and David Gray-Hammond together. The definition it quotes is still credited to both of them, because those words are theirs jointly; the name is hers.
+
+----
+
 ## 2026-09-20 — The changelog has a feed
 
 **[A feed](https://monotropicmap.org/feed.xml) of this page now exists, so a reader can bring the changes to you rather than you coming back to look.** It carries each entry in full, not a teaser and a link — what is on the page is what arrives in the reader.

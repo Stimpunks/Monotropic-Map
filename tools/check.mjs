@@ -78,6 +78,19 @@ for (const page of pages) {
 }
 if (!broken) pass(`${checked} internal links and fragments all resolve across ${pages.length} pages`);
 
+/* A fragment that resolves can still resolve to the wrong place. Two elements sharing an
+   id pass the check above, and every link to the second lands on the first — which is
+   what a page repeating a "What Helps" heading did before md.mjs numbered them. */
+let dupes = 0;
+for (const page of pages) {
+  const seen = new Set();
+  for (const [, id] of readFileSync(join(ROOT, page), 'utf8').matchAll(/\sid="([^"]+)"/g)) {
+    if (seen.has(id)) { dupes++; fail(`${page} uses id="${id}" more than once`); }
+    seen.add(id);
+  }
+}
+if (!dupes) pass(`no id is used twice on any of ${pages.length} pages`);
+
 /* ---- 3. every page reachable and in the sitemap -------------------------- */
 console.log('\nsitemap');
 const sitemap = readFileSync(join(ROOT, 'sitemap.xml'), 'utf8');
@@ -338,7 +351,11 @@ console.log('\nchangelog feed');
     const headings = [...md.matchAll(/^## (.+)$/gm)].map((m) => m[1].trim());
     const items = xml.split('<item>').slice(1);
     const guids = items.map((it) => (/<guid[^>]*>([^<]+)<\/guid>/.exec(it) || [, ''])[1]);
-    const pageIds = new Set([...page.matchAll(/<h2 id="([^"]+)"/g)].map((m) => m[1]));
+    /* Entries only. At five entries the page grows a contents list, and its own
+       "On this page" h2 is page furniture, not a sixth entry. Read from inside the
+       prose wrapper, which is where build.mjs puts the entries and nothing else. */
+    const entriesHtml = page.slice(page.indexOf('<div class="prose">'));
+    const pageIds = new Set([...entriesHtml.matchAll(/<h2 id="([^"]+)"/g)].map((m) => m[1]));
 
     if (items.length !== headings.length) {
       fail(`feed.xml has ${items.length} items but CHANGELOG.md has ${headings.length} entries`);
@@ -613,10 +630,12 @@ console.log('\nexternal links');
     /* Publishers that refuse robots are a known, separate category. A 403 from one of
        these is NOT evidence the page is gone — verified by hand in a real browser on
        2026-09-15 — so it is reported and not failed. Anything else that 4xx/5xx fails.
-       Add to this list only after opening the URL yourself. */
+       Add to this list only after opening the URL yourself. Wiley was added on
+       2026-09-26, after Ryan opened the Heasman et al. DOI in a browser. */
     const BLOCKS_ROBOTS = [
       /(^|\.)medium\.com$/, /(^|\.)researchgate\.net$/,
       /(^|\.)sagepub\.com$/, /(^|\.)tandfonline\.com$/, /(^|\.)liebertpub\.com$/,
+      /(^|\.)wiley\.com$/,
     ];
     let dead = 0, blocked = 0;
     for (const url of ext) {
