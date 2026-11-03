@@ -6,6 +6,17 @@ We publish the mistakes too. A changelog that only lists wins is an advertisemen
 
 ----
 
+## 2026-11-03 — The code is MIT, and the map stays CC BY-SA
+
+**The code that builds this site is now under the MIT License, and nothing else is.** The map, the twenty areas, every word on every page, the shapes and the illustrations stay [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), exactly as before. It was Ryan Boren's decision for the Stimpunks Foundation, and Helen Edgar agreed to it.
+
+- **What is code**: the tools that build and check the site, the three scripts it runs in your browser, and the configuration that serves it.
+- **What a script carries is not code.** The areas, the credits, the alt text, the drawings and where the markers sit on the map are written down inside some of those files, and they stay CC BY-SA 4.0 like the rest.
+- **Why**: Netlify's Open Source plan asks for a software licence, and Creative Commons advises against its own licences for software.
+- **Nothing anybody else made changed hands.** The quoted definitions, the typeface and Sylvia Duckworth's wheel on one of the training slides keep their own terms, and every credit stays where it was. [The licence](https://github.com/Stimpunks/Monotropic-Map/blob/main/LICENSE.md) says where the line is.
+
+----
+
 ## 2026-09-26 — Mapping Monotropism in Education
 
 **[Mapping Monotropism in Education](education.html) is new: Helen Edgar on what the map means at school.** It comes from the Yellow Ladybugs panel she gave with Dr Wenn Lawson in June 2025, and it is for teachers, support staff and families. It walks through the landmarks of the map as they show up in a school day, then executive function, the senses, communication, interests, transitions and burnout, and ends every part with what helps — which is always a change to the setting, never an instruction to the child.

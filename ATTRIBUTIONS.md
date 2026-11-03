@@ -13,7 +13,7 @@ Both artworks are reproduced here unaltered. The hotspot layer is positioned **o
 
 ## The site's own drawings are not Helen's, and not anybody's stock
 
-The shapes in the map builder and the twenty area illustrations are **Stimpunks' own work**, drawn from scratch in `tools/shapes.mjs` and arranged in `tools/area-art.mjs`. They are CC BY-SA 4.0 like the rest of this site: take them, change them, pass them on.
+The shapes in the map builder and the twenty area illustrations are **Stimpunks' own work**, drawn from scratch in `tools/shapes.mjs` and arranged in `tools/area-art.mjs`. They are CC BY-SA 4.0 like the map and the words on this site: take them, change them, pass them on. The code that draws them is MIT, from 2026-11-03; the drawings themselves are not, and `LICENSE.md` says where the line is.
 
 They are **not** traced from Helen's map and **not** derived from the Canva elements it is composed of — which is exactly what makes them ours to license. See `DECISIONS.md`.
 
@@ -80,7 +80,7 @@ The slide also credits **Kimberlé Crenshaw**, who coined *intersectionality* in
 
 ## Mapping Monotropism in Education
 
-**The page at `/education` is Helen Edgar's**, of Autistic Realms. It is based on the Yellow Ladybugs panel *Mapping the Monotropic Mind: An Introduction to This Autistic Thinking and Processing Style*, which she presented with **Dr Wenn Lawson** in June 2025, and it is a shorter version of an unpublished Autistic Realms draft of that panel. She sent it as a finished page on 2026-09-26; the draft stays unpublished, so this is the only place it lives. CC BY-SA 4.0, like everything else here.
+**The page at `/education` is Helen Edgar's**, of Autistic Realms. It is based on the Yellow Ladybugs panel *Mapping the Monotropic Mind: An Introduction to This Autistic Thinking and Processing Style*, which she presented with **Dr Wenn Lawson** in June 2025, and it is a shorter version of an unpublished Autistic Realms draft of that panel. She sent it as a finished page on 2026-09-26; the draft stays unpublished, so this is the only place it lives. CC BY-SA 4.0, like every other page here.
 
 **The words are hers and are not edited here.** What we changed is formatting only: links to our own pages are relative rather than absolute, so `check.mjs` can verify them; the note to Ryan and the editing notes to Helen are left out; and the "to confirm" remarks on two references are held in `DECISIONS.md`, not printed on the page.
 

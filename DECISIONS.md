@@ -66,6 +66,13 @@ Penguin Pebbling has one. This site does not, and that is a deliberate not-yet r
 
 ## Settled
 
+### The code is MIT, and everything else stays CC BY-SA 4.0
+Settled 2026-11-03, on Ryan's call for the Stimpunks Foundation, and **Helen Edgar agreed the same day**. Netlify's Open Source plan wants a software licence, and Creative Commons advises against its licences for software. So the code went MIT and nothing else moved.
+
+**The code is `tools/`, the top-level `.js` files and the configuration that serves the site** (`netlify.toml`, `_headers`, `_redirects`, `serve.json`). **What a script carries is not code**: the twenty areas and every word about them in `tools/areas.mjs`, the zones in `tools/domination.mjs`, the alt text in `tools/slides.mjs`, the shapes and illustrations drawn in `tools/shapes.mjs` and `tools/area-art.mjs`, the words written onto pages and where the hotspots sit. Those stay CC BY-SA 4.0, as do the stylesheets, the markup and `pages/*.md`. Copies of the code taken before 2026-11-03 may still be used under CC BY-SA 4.0.
+
+**The friendly mistake is calling the whole repository MIT "to keep it simple".** That would release Helen's map, and the words built on it, under a licence she did not choose. `LICENSE.md` draws the line, and every credit and exclusion it carried before is in it, unchanged.
+
 ### Mapping Monotropism in Education: Helen's answers, 2026-09-26
 **She answered all eight questions the build raised, and said to verify what we could and publish.**
 
@@ -271,7 +278,7 @@ The markers are a CSS layer positioned by percentage over Helen's original PNG. 
 
 The markers were **too big on the first pass** and swallowed the island — twenty 44px circles over a 350px image. They are now 1.9rem with an invisible `::after` extending the hit area past the 44px minimum, so the target is large while the badge is small.
 
-### The licence is CC BY-SA 4.0 and cannot become CC BY-NC-SA
+### The CC BY-SA 4.0 licence cannot become CC BY-NC-SA
 The map is BY-SA. **ShareAlike forbids adding restrictions, and NonCommercial is an added restriction**, so an NC variant is not a compatible licence for anything derived from this map — we could not relicense it that way even if we wanted to.
 
 This is written down because the instinct will be to match [Penguin Pebbling](https://penguinpebbling.app/), which adopted CC BY-NC-SA 4.0 on 2026-09-15. Different work, different origin. **Do not copy its licence header into this repository.**

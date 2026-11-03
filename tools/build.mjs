@@ -909,7 +909,7 @@ function sitemap() {
 function llmsTxt() {
   return `# ${SITE.title}
 
-> ${SITE.tagline}. Twenty areas of monotropic experience, mapped by Helen Edgar (Autistic Realms) and developed with the Stimpunks Foundation. CC BY-SA 4.0.
+> ${SITE.tagline}. Twenty areas of monotropic experience, mapped by Helen Edgar (Autistic Realms) and developed with the Stimpunks Foundation. The map and the words are CC BY-SA 4.0; the code that builds the site is MIT.
 
 Monotropism is a neurodiversity-affirming theory of autism (Murray, Lesser & Lawson, 2005): monotropic people pull more attention toward fewer interests at a time. This site maps what that is like, area by area, and names who coined each one.
 

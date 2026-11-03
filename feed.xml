@@ -10,9 +10,23 @@
     <language>en</language>
     <copyright>CC BY-SA 4.0 — Helen Edgar (Autistic Realms) and the Stimpunks Foundation</copyright>
     <atom:link href="https://monotropicmap.org/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Sat, 26 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 00:00:00 GMT</lastBuildDate>
     <sy:updatePeriod>weekly</sy:updatePeriod>
     <sy:updateFrequency>1</sy:updateFrequency>
+    <item>
+      <title>The code is MIT, and the map stays CC BY-SA</title>
+      <link>https://monotropicmap.org/changelog#2026-11-03-the-code-is-mit-and-the-map-stays-cc-by-sa</link>
+      <guid isPermaLink="true">https://monotropicmap.org/changelog#2026-11-03-the-code-is-mit-and-the-map-stays-cc-by-sa</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <description>The code that builds this site is now under the MIT License, and nothing else is. The map, the twenty areas, every word on every page, the shapes and the illustrations stay CC BY-SA 4.0, exactly as before. It was Ryan Boren's decision for the Stimpunks Foundation, and Helen Edgar agreed to it.</description>
+      <content:encoded><![CDATA[<p><strong>The code that builds this site is now under the MIT License, and nothing else is.</strong> The map, the twenty areas, every word on every page, the shapes and the illustrations stay <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>, exactly as before. It was Ryan Boren's decision for the Stimpunks Foundation, and Helen Edgar agreed to it.</p>
+<ul>
+  <li><strong>What is code</strong>: the tools that build and check the site, the three scripts it runs in your browser, and the configuration that serves it.</li>
+  <li><strong>What a script carries is not code.</strong> The areas, the credits, the alt text, the drawings and where the markers sit on the map are written down inside some of those files, and they stay CC BY-SA 4.0 like the rest.</li>
+  <li><strong>Why</strong>: Netlify's Open Source plan asks for a software licence, and Creative Commons advises against its own licences for software.</li>
+  <li><strong>Nothing anybody else made changed hands.</strong> The quoted definitions, the typeface and Sylvia Duckworth's wheel on one of the training slides keep their own terms, and every credit stays where it was. <a href="https://github.com/Stimpunks/Monotropic-Map/blob/main/LICENSE.md" rel="noopener">The licence</a> says where the line is.</li>
+</ul>]]></content:encoded>
+    </item>
     <item>
       <title>Mapping Monotropism in Education</title>
       <link>https://monotropicmap.org/changelog#2026-09-26-mapping-monotropism-in-education</link>

@@ -35,6 +35,8 @@ Everything on this site derived from the map carries the same licence. You can s
 
 **We cannot add a non-commercial restriction to it and neither can anyone else** — ShareAlike does not allow an adaptation to be more restrictive than the original. If you have seen our other work under a non-commercial licence, this one is deliberately different.
 
+**The code that builds this site is under the [MIT License](https://github.com/Stimpunks/Monotropic-Map/blob/main/LICENSE.md)**, from 3 November 2026, and nothing else is. The map, the words, the shapes and the illustrations are not code, and they stay CC BY-SA 4.0.
+
 ## What this site does not do
 
 - **No Monotropism Questionnaire here.** The MQ is a validated self-report measure developed by Garau et al. in 2023, with 47 items written by Autistic adults from lived experience and academic expertise. You can [take it online](https://pa11erns.com/psychometrics/mq/), hosted elsewhere with its authors cited. We link it. Copying somebody else's validated instrument would invite people to read our numbers as theirs.

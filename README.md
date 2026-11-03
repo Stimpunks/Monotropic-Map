@@ -79,6 +79,6 @@ Everything here is world-readable, **including the history**. No secrets, no tok
 
 ## Licence
 
-**CC BY-SA 4.0.** See `LICENSE.md` — and note that **it cannot become CC BY-NC-SA**, whatever the sibling repositories do.
+**The code is MIT and everything else is CC BY-SA 4.0**, from 2026-11-03. The code is `tools/`, the top-level `.js` files and the configuration that serves the site; the map, the words, the pictures (the drawings in `tools/shapes.mjs` and `tools/area-art.mjs` included), the markup and the stylesheets stay CC BY-SA 4.0. See `LICENSE.md` — and note that **the CC BY-SA part cannot become CC BY-NC-SA**, whatever the sibling repositories do.
 
 Credit lives in `ATTRIBUTIONS.md`. Read it before touching an area's `who`.

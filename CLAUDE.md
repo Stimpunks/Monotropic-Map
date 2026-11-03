@@ -35,7 +35,8 @@ So every `helps` field in `tools/areas.mjs` names what the environment changes. 
 - **Horizontal rules in Markdown are `----`, four dashes.** `tools/md.mjs` treats three as a hard error. YAML fences stay at three.
 - **One line per paragraph in Markdown.** No hard-wrapping prose.
 - **British spelling in page copy where the map uses it** — the artwork says *Behaviourism*, and the page must match the picture.
-- **The licence is CC BY-SA 4.0 and cannot become CC BY-NC-SA.** ShareAlike forbids added restrictions. Penguin Pebbling is NC-SA; **do not copy its licence header here.**
+- **The code is MIT and everything else is CC BY-SA 4.0**, from 2026-11-03 (Ryan's decision; Helen agreed the same day). The code is `tools/`, the top-level `.js` files and the configuration that serves the site. **The words and pictures a script carries stay CC BY-SA**: the areas, zones and alt text in `tools/*.mjs`, the shapes and illustrations, the words written onto pages, the hotspot positions. So do the stylesheets, the markup and `pages/*.md`. The friendly mistake is calling the whole repository MIT "to keep it simple", which releases Helen's map under a licence nobody chose. `LICENSE.md` has the line.
+- **The CC BY-SA part cannot become CC BY-NC-SA.** ShareAlike forbids added restrictions. Penguin Pebbling is NC-SA; **do not copy its licence header here.**
 
 ## Attribution is the content
 

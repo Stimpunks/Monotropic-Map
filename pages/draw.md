@@ -30,7 +30,7 @@ Nothing you place is sent anywhere. There is no account, no upload and nowhere f
 
 Your map is kept in this browser, on this device, so it is still here when you come back — and it is gone the moment you clear the site's data, or press **Clear the map**. A different browser, or a different device, starts from blank ground.
 
-The shapes are [Stimpunks](https://stimpunks.org/)' own drawing and, like everything else here, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Take them, change them, pass them on.
+The shapes are [Stimpunks](https://stimpunks.org/)' own drawing and, like the map and the words on this site, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Take them, change them, pass them on.
 
 ## Share what you make
 
